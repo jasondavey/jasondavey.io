@@ -10,48 +10,60 @@ interface ExperienceItem {
   role: string;
   period: string;
   description: string[];
-  technologies: string[];
+  achievements: string[];
 }
 
 const experiences: ExperienceItem[] = [
   {
-    id: "tech-corp",
-    company: "Tech Corporation",
-    role: "Senior Software Engineer",
-    period: "January 2021 - Present",
+    id: "verascore",
+    company: "VeraScore",
+    role: "VP Engineering",
+    period: "June 2022 - Present",
     description: [
-      "Led the development of a microservices architecture that improved system reliability by 35%",
-      "Mentored junior developers and conducted code reviews to maintain high code quality standards",
-      "Implemented CI/CD pipelines that reduced deployment time by 50%",
-      "Collaborated with product managers to refine and implement new features"
+      "As Vice President of Engineering at VeraScore, I lead cross-functional engineering efforts to deliver an inclusive, data-forward financial health platform designed to empower underserved communities with access to fair credit.",
+      "My role combines high-level technical strategy, team leadership, and cross-disciplinary collaboration to build systems that are fast, trustworthy, and deeply human-centered."
     ],
-    technologies: ["React", "TypeScript", "Node.js", "AWS", "Docker"]
+    achievements: [
+      "Architected and led development of VeraScore's flagship financial scoring platform from prototype to production in under six months",
+      "Directed the end-to-end design and implementation of VeraScore's flagship platform, balancing rapid iteration with long-term architectural resilience",
+      "Architected a modern JAMStack-based platform with a CI/CD pipeline and cost-efficient cloud infrastructure to support scalable deployment",
+      "Currently developing an early-stage system leveraging Model Context Protocol (MCP) and AI assistants to provide customized insights",
+      "Cultivated a high-trust engineering culture rooted in curiosity, ownership, and continuous learning"
+    ]
   },
   {
-    id: "innovative-startup",
-    company: "Innovative Startup",
-    role: "Full Stack Developer",
-    period: "June 2018 - December 2020",
+    id: "eqis",
+    company: "EQIS Capital",
+    role: "VP Engineering",
+    period: "August 2017 - November 2022",
     description: [
-      "Built and deployed a customer-facing web application from scratch using React and Node.js",
-      "Designed and implemented REST APIs for mobile and web applications",
-      "Optimized database queries resulting in a 40% reduction in page load times",
-      "Participated in agile development cycles and sprint planning"
+      "At EQIS Capital, I led high-performing, cross-functional teams across engineering, QA, product management, and UI/UX to modernize and scale our digital investment platform.",
+      "My focus was on delivering performance-optimized, secure, and user-centric systems through a culture of technical excellence and iterative innovation."
     ],
-    technologies: ["JavaScript", "React", "Express", "MongoDB", "Redis"]
+    achievements: [
+      "Spearheaded Project Phoenix, resulting in a 70% reduction in operational costs and accelerated time-to-market by 4x",
+      "Directed a company-wide migration to cloud infrastructure, enhancing deployment agility and improving system resilience by 30%",
+      "Built a team environment rooted in psychological safety, fast iteration, and shared ownership of outcomes",
+      "Instituted advanced security protocols, elevating platform-wide protection against cyber threats",
+      "Redesigned the feature release lifecycle, cutting time-to-market by 25%"
+    ]
   },
   {
-    id: "digital-solutions",
-    company: "Digital Solutions Inc.",
-    role: "Web Developer",
-    period: "August 2016 - May 2018",
+    id: "stamps",
+    company: "Stamps.com",
+    role: "Principal Engineer",
+    period: "June 2010 - August 2017",
     description: [
-      "Developed responsive web interfaces for client projects",
-      "Maintained legacy code and implemented new features as required",
-      "Collaborated with designers to implement pixel-perfect UI components",
-      "Created documentation for coding standards and best practices"
+      "As Principal Engineer at Stamps.com, I led the development of scalable, user-focused shipping and mailing solutions that merged innovation with operational excellence.",
+      "My work centered on creating high-impact platforms that optimized global logistics, enhanced user experience, and demonstrated measurable performance and reliability improvements."
     ],
-    technologies: ["HTML5", "CSS3", "JavaScript", "jQuery", "PHP"]
+    achievements: [
+      "Architected and led the development of the GlobalPost system, significantly improving international shipping efficiency",
+      "Secured a U.S. postal patent for technical innovation",
+      "Spearheaded the launch of DYMO Stamps Online®, a cloud-native solution praised by PC Mag for its intuitive user experience",
+      "Automated deployment pipelines and infrastructure provisioning, elevating release reliability and engineering velocity",
+      "Championed best practices in CI/CD and DevOps to enhance delivery consistency and operational resilience"
+    ]
   }
 ];
 
@@ -64,10 +76,10 @@ const Experience = () => {
         <div className="text-center mb-16 animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
           <h2 className="heading-lg inline-flex items-center">
             <span className="text-engineering-accent mr-3">04.</span>
-            Where I've Worked
+            Professional Experience
           </h2>
           <p className="mt-4 text-engineering-gray max-w-2xl mx-auto">
-            My professional journey has allowed me to work with amazing teams on impactful projects.
+            My leadership journey has allowed me to work with amazing teams on impactful projects across multiple industries.
           </p>
         </div>
 
@@ -99,22 +111,21 @@ const Experience = () => {
                   </div>
                   <p className="text-sm text-engineering-accent mb-6">{exp.period}</p>
 
-                  <ul className="space-y-3 mb-6">
+                  <div className="space-y-4 mb-6 text-engineering-gray">
                     {exp.description.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
+                  </div>
+
+                  <h4 className="font-semibold mb-3">Key Achievements:</h4>
+                  <ul className="space-y-3 mb-6">
+                    {exp.achievements.map((item, index) => (
                       <li key={index} className="flex gap-3">
                         <span className="text-engineering-accent">▹</span>
                         <span className="text-engineering-gray">{item}</span>
                       </li>
                     ))}
                   </ul>
-
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, index) => (
-                      <span key={index} className="px-3 py-1 rounded-full bg-engineering-accent/10 text-sm text-engineering-accent">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
                 </Card>
               </TabsContent>
             ))}

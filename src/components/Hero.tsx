@@ -17,19 +17,21 @@ const Hero = () => {
             Hi, my name is
           </span>
           <h1 className="heading-xl mb-6">
-            <span className="block text-foreground">John Doe.</span>
-            <span className="block text-engineering-gray mt-2">I build things for the web.</span>
+            <span className="block text-foreground">Jason Davey.</span>
+            <span className="block text-engineering-gray mt-2">VP Engineering & Technical Leader.</span>
           </h1>
           <p className="text-lg text-engineering-gray mb-8 max-w-2xl">
-            I'm a software engineer specializing in building exceptional digital experiences.
-            Currently, I'm focused on building accessible, human-centered products
-            that solve real-world problems.
+            I guide engineering teams to deliver business value early and often. With 15+ years of experience 
+            in engineering leadership and cloud architecture, I build high-performing teams that create 
+            scalable, user-centric systems to solve complex business challenges.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button size="lg" className="bg-engineering-accent hover:bg-engineering-accent/90">
+            <Button size="lg" className="bg-engineering-accent hover:bg-engineering-accent/90" 
+                    onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View My Projects
             </Button>
-            <Button size="lg" variant="outline" className="border-engineering-accent text-engineering-accent hover:bg-engineering-accent/10">
+            <Button size="lg" variant="outline" className="border-engineering-accent text-engineering-accent hover:bg-engineering-accent/10"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
               Contact Me
             </Button>
           </div>

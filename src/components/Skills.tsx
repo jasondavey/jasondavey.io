@@ -4,9 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Code, Settings, Server } from "lucide-react";
 
 const SkillsSection = () => {
-  const frontendSkills = ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Redux"];
-  const backendSkills = ["Node.js", "Express", "Python", "Django", "GraphQL", "REST API", "MongoDB", "PostgreSQL"];
-  const toolsSkills = ["Git", "GitHub", "Docker", "AWS", "CI/CD", "Jest", "Webpack"];
+  const leadershipSkills = ["Engineering Leadership", "Team Building", "Product Strategy", "Cross-functional Collaboration", "Agile Methodologies", "Technical Mentorship"];
+  const technicalSkills = ["Cloud Architecture", "Full-stack Development", "JAMStack", "DevOps", "CI/CD", "Infrastructure as Code", "API Integration"];
+  const domainSkills = ["Financial Technology", "Security & Compliance", "User Experience", "Performance Optimization", "Shipping & Logistics", "AI/ML Integration"];
 
   return (
     <section id="skills" className="bg-white">
@@ -14,34 +14,34 @@ const SkillsSection = () => {
         <div className="text-center mb-16 animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
           <h2 className="heading-lg inline-flex items-center">
             <span className="text-engineering-accent mr-3">02.</span>
-            My Technical Skills
+            Technical Skills
           </h2>
           <p className="mt-4 text-engineering-gray max-w-2xl mx-auto">
-            I've worked with a variety of technologies throughout my journey as a software engineer.
-            Here's a quick overview of my technical skillset.
+            Throughout my career, I've developed a diverse skillset spanning leadership, technical architecture, 
+            and domain expertise across multiple industries.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           <SkillCard 
-            title="Frontend Development"
-            description="Building responsive, accessible, and performant user interfaces"
-            skills={frontendSkills}
-            icon={<Code />}
+            title="Leadership & Strategy"
+            description="Building high-performing engineering teams and driving organizational success"
+            skills={leadershipSkills}
+            icon={<Settings />}
             delay="0.3s"
           />
           <SkillCard 
-            title="Backend Development"
-            description="Crafting scalable and reliable server-side applications"
-            skills={backendSkills}
-            icon={<Server />}
+            title="Technical Expertise"
+            description="Architecting and implementing scalable, secure, and efficient systems"
+            skills={technicalSkills}
+            icon={<Code />}
             delay="0.4s"
           />
           <SkillCard 
-            title="Tools & Platforms"
-            description="Leveraging modern tools to streamline development workflows"
-            skills={toolsSkills}
-            icon={<Settings />}
+            title="Domain Knowledge"
+            description="Applying technology to solve complex business problems across industries"
+            skills={domainSkills}
+            icon={<Server />}
             delay="0.5s"
           />
         </div>

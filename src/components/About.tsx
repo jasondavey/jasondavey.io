@@ -14,14 +14,15 @@ const About = () => {
             </h2>
             <div className="space-y-4 text-engineering-gray">
               <p>
-                Hello! My name is John Doe, and I enjoy creating things that live on the internet. 
-                My interest in technology started back in 2010 when I decided to try customizing WordPress themes — turns out hacking together a custom reblog button taught me a lot about HTML & CSS!
+                Hello! My name is Jason Davey, and I'm passionate about guiding engineering teams to deliver business value early and often. 
+                I'm deeply involved from conception to release, fostering success through hands-on technical and project leadership.
               </p>
               <p>
-                Fast-forward to today, and I've had the privilege of working at a technology consultancy, a start-up, and a large corporation. My main focus these days is building accessible, inclusive products and digital experiences for various clients.
+                I believe in employing community best practices and techniques across applications and infrastructure stacks. My approach is underlined by the belief that 
+                success comes from having genuine passion in what you do.
               </p>
               <p>
-                When I'm not at the computer, I'm usually rock climbing, playing basketball, or exploring new coffee shops in the city.
+                With extensive experience in full-stack development, cloud architecture, and team leadership, I focus on building systems that are fast, trustworthy, and human-centered.
               </p>
             </div>
           </div>
@@ -34,12 +35,12 @@ const About = () => {
                   <User className="w-24 h-24 text-engineering-blue" />
                 </div>
                 <div>
-                  <h3 className="heading-md mb-3">John Doe</h3>
-                  <p className="text-engineering-gray mb-3">Software Engineer</p>
+                  <h3 className="heading-md mb-3">Jason Davey</h3>
+                  <p className="text-engineering-gray mb-3">VP Engineering</p>
                   <p className="text-sm text-engineering-gray">
-                    Based in San Francisco, CA<br />
-                    10+ years of experience<br />
-                    Specializing in full-stack development
+                    Based in Decatur, GA<br />
+                    15+ years of experience<br />
+                    Specializing in engineering leadership & cloud architecture
                   </p>
                 </div>
               </div>
