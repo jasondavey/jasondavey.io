@@ -1,5 +1,6 @@
 
 import { Card } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { User } from "lucide-react";
 
 const About = () => {
@@ -31,8 +32,17 @@ const About = () => {
             <Card className="bg-white p-6 rounded-lg shadow-md border-none relative overflow-hidden">
               <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-engineering-accent/20"></div>
               <div className="flex flex-col sm:flex-row gap-6 items-center">
-                <div className="relative w-48 h-48 rounded-full bg-engineering-light flex items-center justify-center">
-                  <User className="w-24 h-24 text-engineering-blue" />
+                <div className="relative w-48 h-48 rounded-full overflow-hidden bg-engineering-light flex items-center justify-center">
+                  <Avatar className="w-full h-full">
+                    <AvatarImage 
+                      src="/lovable-uploads/64c4d2e4-128f-48d7-abf5-9d8990cd9f93.png" 
+                      alt="Jason Davey" 
+                      className="object-cover"
+                    />
+                    <AvatarFallback>
+                      <User className="w-24 h-24 text-engineering-blue" />
+                    </AvatarFallback>
+                  </Avatar>
                 </div>
                 <div>
                   <h3 className="heading-md mb-3">Jason Davey</h3>
