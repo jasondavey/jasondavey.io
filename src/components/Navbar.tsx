@@ -54,7 +54,7 @@ const Navbar = () => {
         <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
           <Button variant="outline" className="hidden md:flex items-center gap-2">
             <FileText className="h-4 w-4" />
-            Résumé
+            Resumé
           </Button>
         </a>
 
