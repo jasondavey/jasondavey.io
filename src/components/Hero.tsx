@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="section-container relative z-10">
         <div className="max-w-3xl animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
           <h1 className="heading-xl mb-6">
-            <span className="block text-foreground">Jason Davey.</span>
+            <span className="block text-foreground">Jason Davey</span>
             <span className="block text-engineering-gray mt-2">VP Engineering & Technical Leader.</span>
           </h1>
           <p className="text-lg text-engineering-gray mb-8 max-w-2xl">
