@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Code } from "lucide-react";
+import { Code, FileText } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,9 +51,12 @@ const Navbar = () => {
           </a>
         </nav>
         
-        <Button variant="outline" className="hidden md:flex">
-          Resume
-        </Button>
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+          <Button variant="outline" className="hidden md:flex items-center gap-2">
+            <FileText className="h-4 w-4" />
+            Résumé
+          </Button>
+        </a>
 
         <Button variant="ghost" size="icon" className="md:hidden">
           <span className="sr-only">Toggle menu</span>
