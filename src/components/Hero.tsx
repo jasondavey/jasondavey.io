@@ -17,18 +17,7 @@ const Hero = () => {
             <span className="block text-engineering-gray mt-2">Jason D</span>
           </h1>
           <p className="text-lg text-engineering-gray mb-8 max-w-2xl">I recently read that job titles are out, job outcomes are in. </p>
-          <div className="flex flex-wrap gap-4">
-            <Button size="lg" className="bg-engineering-accent hover:bg-engineering-accent/90" onClick={() => document.getElementById("projects")?.scrollIntoView({
-            behavior: "smooth"
-          })}>
-              View My Projects
-            </Button>
-            <Button size="lg" variant="outline" className="border-engineering-accent text-engineering-accent hover:bg-engineering-accent/10" onClick={() => document.getElementById("contact")?.scrollIntoView({
-            behavior: "smooth"
-          })}>
-              Contact Me
-            </Button>
-          </div>
+
         </div>
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">

@@ -35,31 +35,31 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center gap-6">
           <a
             href="#stack"
-            className="text-sm font-medium hover:text-engineering-accent transition-colors"
+            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
           >
             About
           </a>
           <a
             href="#skills"
-            className="text-sm font-medium hover:text-engineering-accent transition-colors"
+            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
           >
             Skills
           </a>
           <a
             href="#projects"
-            className="text-sm font-medium hover:text-engineering-accent transition-colors"
+            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
           >
             Projects
           </a>
           <a
             href="#experience"
-            className="text-sm font-medium hover:text-engineering-accent transition-colors"
+            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
           >
             Experience
           </a>
           <a
             href="#contact"
-            className="text-sm font-medium hover:text-engineering-accent transition-colors"
+            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
           >
             Contact
           </a>
