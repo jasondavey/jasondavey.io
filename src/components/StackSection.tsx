@@ -67,7 +67,7 @@ const StackSection = () => {
         </p>
       </div>
       {/* Tools Used Section */}
-      <div className="section-container text-center mt-0 py-0">
+      <div className="section-container text-center mt-0 py-4">
         <h2 className="heading-lg mb-4">tools used</h2>
         <div className="flex flex-wrap items-center justify-center gap-8 mb-6">
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64">
