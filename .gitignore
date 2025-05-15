@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 .history
 .env
+.vercel
+src/build-info.ts
