@@ -1,5 +1,5 @@
 
-import { Code, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Code, Github, Linkedin, Mail, XIcon } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,11 +32,19 @@ const Footer = () => {
               <Linkedin className="h-4 w-4" />
               LinkedIn
             </a>
-            <a href="#" className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1">
-              <Twitter className="h-4 w-4" />
-              Twitter
+            <a 
+              href="https://x.com/ydohdohdoh" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
+            >
+              <XIcon className="h-4 w-4" />
+              X
             </a>
-            <a href="#" className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1">
+            <a 
+              href="mailto:jasonrdavey@gmail.com" 
+              className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
+            >
               <Mail className="h-4 w-4" />
               Email
             </a>

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Code, FileText, Github, Linkedin } from "lucide-react";
+import { Code, FileText, Github, Linkedin, Mail, XIcon } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -85,6 +85,22 @@ const Navbar = () => {
               aria-label="LinkedIn"
             >
               <Linkedin className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://x.com/ydohdohdoh" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-engineering-accent transition-colors"
+              aria-label="X"
+            >
+              <XIcon className="h-5 w-5" />
+            </a>
+            <a 
+              href="mailto:jasonrdavey@gmail.com" 
+              className="text-gray-600 hover:text-engineering-accent transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="h-5 w-5" />
             </a>
           </div>
           
