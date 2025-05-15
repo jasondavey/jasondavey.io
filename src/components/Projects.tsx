@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -22,7 +23,7 @@ const projects: Project[] = [
       "A full-stack e-commerce platform with product management, shopping cart, user authentication, and payment processing. Implemented responsive design and optimized performance.",
     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe API"],
-    github: "#",
+    github: "https://github.com/jasondavey/video-captioning",
     demo: "#",
     featured: true,
   },
@@ -33,7 +34,7 @@ const projects: Project[] = [
       "A dashboard for visualizing business metrics in real-time. Features include customizable widgets, data filtering, and export capabilities.",
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
     technologies: ["TypeScript", "React", "D3.js", "Socket.io", "Express"],
-    github: "#",
+    github: "https://github.com/jasondavey/analytics-dashboard",
     demo: "#",
     featured: true,
   },
@@ -44,7 +45,7 @@ const projects: Project[] = [
       "A collaborative task management application with drag-and-drop interface, task prioritization, team collaboration, and progress tracking.",
     image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     technologies: ["React", "Redux", "Node.js", "PostgreSQL", "WebSockets"],
-    github: "#",
+    github: "https://github.com/jasondavey/task-manager",
     demo: "#",
     featured: true,
   },

@@ -1,5 +1,5 @@
 
-import { Code } from "lucide-react";
+import { Code, Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,16 +14,30 @@ const Footer = () => {
           </div>
           
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-gray-300 hover:text-engineering-accent transition-colors">
+            <a 
+              href="https://github.com/jasondavey/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
+            >
+              <Github className="h-4 w-4" />
               GitHub
             </a>
-            <a href="#" className="text-sm text-gray-300 hover:text-engineering-accent transition-colors">
+            <a 
+              href="https://www.linkedin.com/in/jasondavey/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
+            >
+              <Linkedin className="h-4 w-4" />
               LinkedIn
             </a>
-            <a href="#" className="text-sm text-gray-300 hover:text-engineering-accent transition-colors">
+            <a href="#" className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1">
+              <Twitter className="h-4 w-4" />
               Twitter
             </a>
-            <a href="#" className="text-sm text-gray-300 hover:text-engineering-accent transition-colors">
+            <a href="#" className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1">
+              <Mail className="h-4 w-4" />
               Email
             </a>
           </div>

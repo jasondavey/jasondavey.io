@@ -1,6 +1,7 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Code, FileText } from "lucide-react";
+import { Code, FileText, Github, Linkedin } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,15 +66,38 @@ const Navbar = () => {
           </a>
         </nav>
 
-        <a href="/resume.pdf" download>
-          <Button
-            variant="outline"
-            className="hidden md:flex items-center gap-2"
-          >
-            <FileText className="h-4 w-4" />
-            Resumé
-          </Button>
-        </a>
+        <div className="hidden md:flex items-center gap-4">
+          <div className="flex items-center gap-3 mr-2">
+            <a 
+              href="https://github.com/jasondavey/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-engineering-accent transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/jasondavey/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-engineering-accent transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+          </div>
+          
+          <a href="/resume.pdf" download>
+            <Button
+              variant="outline"
+              className="items-center gap-2"
+            >
+              <FileText className="h-4 w-4" />
+              Resumé
+            </Button>
+          </a>
+        </div>
 
         <Button variant="ghost" size="icon" className="md:hidden">
           <span className="sr-only">Toggle menu</span>
