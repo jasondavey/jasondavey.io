@@ -37,9 +37,9 @@ const StackSection = () => {
 
   return (
     <section id="stack" className="py-16 bg-white dark:bg-black border-b">
-      <div className="section-container text-center">
+      <div className="section-container text-center py-8">
         <h2 className="heading-lg mb-4">stack used at {hostName}</h2>
-        <p className="text-engineering-gray mb-8 max-w-2xl mx-auto">
+        <p className="text-engineering-gray mb-2 max-w-2xl mx-auto">
           This website <strong>{hostName}</strong> is built with a modern stack
           for speed, scalability, and great developer experience. The favicon
           was generated using{" "}
@@ -64,6 +64,43 @@ const StackSection = () => {
         <p className="mt-8 text-xs text-engineering-gray">
           Deployed on <span className="font-semibold">Vercel</span>. Domain
           managed with <span className="font-semibold">AWS Route53</span>.
+        </p>
+      </div>
+      {/* Tools Used Section */}
+      <div className="section-container text-center mt-0 py-0">
+        <h2 className="heading-lg mb-4">tools used</h2>
+        <div className="flex flex-wrap items-center justify-center gap-8 mb-6">
+          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64">
+            <div className="font-bold text-lg mb-2 text-engineering-accent">
+              Loveable
+            </div>
+            <div className="text-sm text-engineering-gray">
+              Content and code for this project were generated and orchestrated
+              using Loveable's AI-driven workflow.
+            </div>
+          </div>
+          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64">
+            <div className="font-bold text-lg mb-2 text-engineering-accent">
+              Windsurf IDE
+            </div>
+            <div className="text-sm text-engineering-gray">
+              Development was performed in Windsurf, an AI-powered IDE
+              seamlessly integrated with ChatGPT for agentic coding.
+            </div>
+          </div>
+          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64">
+            <div className="font-bold text-lg mb-2 text-engineering-accent">
+              ChatGPT
+            </div>
+            <div className="text-sm text-engineering-gray">
+              ChatGPT provided intelligent assistance, code suggestions, and
+              content generation throughout the build process.
+            </div>
+          </div>
+        </div>
+        <p className="text-xs text-engineering-gray">
+          These tools enabled rapid prototyping, high-quality code, and seamless
+          collaboration between human and AI.
         </p>
       </div>
     </section>
