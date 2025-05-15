@@ -51,14 +51,19 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>© {currentYear} John Doe. All rights reserved.</p>
+          <p>© {currentYear} Jason Davey. All rights reserved.</p>
           <p className="mt-2">
             Designed & Built with React, TypeScript & Tailwind CSS
           </p>
         </div>
         <div className="mt-4 text-xs text-gray-500 text-center">
-          Last built: {new Date(BUILD_TIMESTAMP).toLocaleString(undefined, {
-            year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+          Last built:{" "}
+          {new Date(BUILD_TIMESTAMP).toLocaleString(undefined, {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
           })}
         </div>
       </div>
