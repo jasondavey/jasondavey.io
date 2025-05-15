@@ -38,10 +38,10 @@ const StackSection = () => {
   return (
     <section id="stack" className="py-16 bg-white dark:bg-black border-b">
       <div className="section-container text-center">
-        <h2 className="heading-lg mb-4">stack used In {hostName}</h2>
+        <h2 className="heading-lg mb-4">stack used at {hostName}</h2>
         <p className="text-engineering-gray mb-8 max-w-2xl mx-auto">
-          This website {hostName} is built with a modern stack for speed,
-          scalability, and great developer experience.
+          This website <strong>{hostName}</strong> is built with a modern stack
+          for speed, scalability, and great developer experience.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-8">
           {stack.map(({ name, icon }) => (
