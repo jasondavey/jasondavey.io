@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDownIcon } from "lucide-react";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center bg-background">
+  return <section className="relative min-h-screen flex items-center bg-background">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-engineering-accent/10 blur-3xl"></div>
@@ -11,65 +9,36 @@ const Hero = () => {
       </div>
 
       <div className="section-container relative z-10">
-        <div
-          className="max-w-3xl animate-fade-in opacity-0"
-          style={{ animationDelay: "0.2s" }}
-        >
+        <div className="max-w-3xl animate-fade-in opacity-0" style={{
+        animationDelay: "0.2s"
+      }}>
           <h1 className="heading-xl mb-6">
-            <span className="block text-foreground">Jason Davey</span>
-            <span className="block text-engineering-gray mt-2">
-              Technologist
-            </span>
+            <span className="block text-foreground">Build Tech With</span>
+            <span className="block text-engineering-gray mt-2">Jason D</span>
           </h1>
-          <p className="text-lg text-engineering-gray mb-8 max-w-2xl">
-            I guide engineering teams to deliver business value early and often.
-            With 15+ years of experience in engineering leadership and cloud
-            architecture, I build high-performing teams that create scalable,
-            user-centric systems to solve complex business challenges.
-          </p>
+          <p className="text-lg text-engineering-gray mb-8 max-w-2xl">I recently read that job titles are out, job outcomes are in. </p>
           <div className="flex flex-wrap gap-4">
-            <Button
-              size="lg"
-              className="bg-engineering-accent hover:bg-engineering-accent/90"
-              onClick={() =>
-                document
-                  .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
+            <Button size="lg" className="bg-engineering-accent hover:bg-engineering-accent/90" onClick={() => document.getElementById("projects")?.scrollIntoView({
+            behavior: "smooth"
+          })}>
               View My Projects
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-engineering-accent text-engineering-accent hover:bg-engineering-accent/10"
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
+            <Button size="lg" variant="outline" className="border-engineering-accent text-engineering-accent hover:bg-engineering-accent/10" onClick={() => document.getElementById("contact")?.scrollIntoView({
+            behavior: "smooth"
+          })}>
               Contact Me
             </Button>
           </div>
         </div>
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() =>
-              document
-                .getElementById("about")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
+          <Button variant="ghost" size="icon" onClick={() => document.getElementById("about")?.scrollIntoView({
+          behavior: "smooth"
+        })}>
             <ArrowDownIcon className="h-6 w-6 animate-bounce" />
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
