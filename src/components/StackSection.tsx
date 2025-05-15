@@ -41,7 +41,17 @@ const StackSection = () => {
         <h2 className="heading-lg mb-4">stack used at {hostName}</h2>
         <p className="text-engineering-gray mb-8 max-w-2xl mx-auto">
           This website <strong>{hostName}</strong> is built with a modern stack
-          for speed, scalability, and great developer experience.
+          for speed, scalability, and great developer experience. The favicon
+          was generated using{" "}
+          <a
+            href="https://favicon.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-engineering-accent"
+          >
+            favicon.io
+          </a>
+          .
         </p>
         <div className="flex flex-wrap items-center justify-center gap-8">
           {stack.map(({ name, icon }) => (
