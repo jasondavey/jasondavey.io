@@ -34,7 +34,7 @@ const Navbar = () => {
 
         <nav className="hidden md:flex items-center gap-6">
           <a
-            href="#about"
+            href="#stack"
             className="text-sm font-medium hover:text-engineering-accent transition-colors"
           >
             About
