@@ -2,12 +2,20 @@ import { Code } from "lucide-react";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
-import { BUILD_TIMESTAMP } from "../build-info";
+// Dynamically import BUILD_TIMESTAMP with fallback
+import React, { useEffect, useState } from "react";
 import StackSection from "./StackSection";
 import { TbFileCv } from "react-icons/tb";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [buildTimestamp, setBuildTimestamp] = useState<string | null>(null);
+
+  useEffect(() => {
+    import("../build-info")
+      .then((mod) => setBuildTimestamp(mod.BUILD_TIMESTAMP))
+      .catch(() => setBuildTimestamp(null)); // fallback if module doesn't exist
+  }, []);
 
   return (
     <footer className="bg-engineering-dark text-white py-12">
@@ -67,13 +75,15 @@ const Footer = () => {
         </div>
         <div className="mt-4 text-xs text-gray-500 text-center">
           Last built:{" "}
-          {new Date(BUILD_TIMESTAMP).toLocaleString(undefined, {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
+          {buildTimestamp
+            ? new Date(buildTimestamp).toLocaleString(undefined, {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })
+            : "N/A"}
         </div>
       </div>
     </footer>
