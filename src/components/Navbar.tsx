@@ -11,6 +11,7 @@ import {
 import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { FaGithubSquare } from "react-icons/fa";
+import { TbFileCv } from "react-icons/tb";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -111,14 +112,10 @@ const Navbar = () => {
             >
               <SiGmail className="h-5 w-5" color="red" />
             </a>
+            <a href="/resume.pdf" download>
+              <TbFileCv className="h-7 w-7" />
+            </a>
           </div>
-
-          <a href="/resume.pdf" download>
-            <Button variant="outline" className="items-center gap-2">
-              Resumé
-              <DownloadIcon className="h-4 w-4" />
-            </Button>
-          </a>
         </div>
 
         <Button variant="ghost" size="icon" className="md:hidden">

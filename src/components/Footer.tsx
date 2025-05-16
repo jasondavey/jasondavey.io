@@ -4,6 +4,7 @@ import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { BUILD_TIMESTAMP } from "../build-info";
 import StackSection from "./StackSection";
+import { TbFileCv } from "react-icons/tb";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -51,6 +52,9 @@ const Footer = () => {
               aria-label="Email"
             >
               <SiGmail className="h-5 w-5" />
+            </a>
+            <a href="/resume.pdf" download>
+              <TbFileCv className="h-5 w-5" />
             </a>
           </div>
         </div>

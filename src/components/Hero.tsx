@@ -22,7 +22,7 @@ const Hero = () => {
             <span className="block text-engineering-gray mt-2">Jason D</span>
           </h1>
           <p className="text-lg text-engineering-gray mb-8 max-w-2xl">
-            I recently read that job titles are out, job outcomes are in.{" "}
+            I bend over backwards to be lazy.{" "}
           </p>
 
           {/* Close max-w-3xl animate-fade-in opacity-0 div */}
