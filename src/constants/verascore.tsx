@@ -11,6 +11,7 @@ import { FaAddressBook } from "react-icons/fa";
 import { FaNodeJs } from "react-icons/fa";
 import { FaExchangeAlt } from "react-icons/fa";
 import { CrsCreditApiIcon } from "./CrsCreditApiIcon";
+import { IoLogoIonic } from "react-icons/io5";
 
 export const VerascoreTechMap: Record<string, JSX.Element> = {
   TypeScript: <SiTypescript className="text-blue-600" title="TypeScript" />,
@@ -25,4 +26,5 @@ export const VerascoreTechMap: Record<string, JSX.Element> = {
   Nodejs: <FaNodeJs className="text-green-700" title="Node.js" />,
   Mailgun: <FaEnvelope className="text-red-500" title="Mailgun" />,
   CRS: <CrsCreditApiIcon title="CRS Credit API" className="w-10 h-5" />,
+  Ionic: <IoLogoIonic className="text-blue-500" title="Ionic" />,
 };
