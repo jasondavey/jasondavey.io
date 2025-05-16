@@ -40,7 +40,7 @@ const Hero = () => {
                 '"I bend over backwards to be lazy."',
                 "I like to build systems that work for people.",
                 "I like to deliver business value early and often.",
-                'I believe that "done" means it\'s being used by the customer, not just dev complete or built.',
+                'I believe that "done" means it\'s being used by the customer.',
                 "I believe that success comes from having passion in what you do.",
                 "Get in touch with me at jasonrdavey@gmail.com",
                 "or call or text me at",
