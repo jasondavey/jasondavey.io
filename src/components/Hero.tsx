@@ -35,7 +35,7 @@ const Hero = () => {
           <p className="text-lg text-green-500 mb-8 max-w-2xl">
             <TypingQuotes
               quotes={[
-                "Hello friend...",
+                "Hello...",
                 "Ask me what I mean by...",
                 '"I bend over backwards to be lazy."',
                 "I like to build systems that work for people.",
@@ -45,6 +45,7 @@ const Hero = () => {
                 "Get in touch with me at jasonrdavey@gmail.com",
                 "or call or text me at",
                 "(415) 693-8290",
+                "Explore this site, get to know my work, and let's build something great!",
               ]}
             />
           </p>
