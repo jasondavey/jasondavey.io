@@ -14,10 +14,10 @@ const stack = [
   { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
   {
     name: "shadcn/ui",
-    icon: <SiShadcnui className="text-black dark:text-white" />,
+    icon: <SiShadcnui />,
   },
   { name: "EmailJS", icon: <MdEmail className="text-pink-400" /> },
-  { name: "Vercel", icon: <SiVercel className="text-black dark:text-white" /> },
+  { name: "Vercel", icon: <SiVercel /> },
   {
     name: "AWS Route53",
     icon: <SiAmazonroute53 className="text-orange-500" />,
@@ -36,9 +36,8 @@ const StackSection = () => {
   }, []);
 
   return (
-    <section id="stack" className="py-16 bg-white dark:bg-black border-b">
-      <div className="section-container text-center py-8">
-        <h2 className="heading-lg mb-4">stack used at {hostName}</h2>
+    <section id="stack" className="py-4 border-b">
+      <div className="section-container text-center py-1">
         <p className="text-engineering-gray mb-2 max-w-2xl mx-auto">
           This website <strong>{hostName}</strong> is built with a modern stack
           for speed, scalability, and great developer experience. The favicon
@@ -68,7 +67,6 @@ const StackSection = () => {
       </div>
       {/* Tools Used Section */}
       <div className="section-container text-center mt-0 py-4">
-        <h2 className="heading-lg mb-4">tools used</h2>
         <div className="flex flex-wrap items-center justify-center gap-8 mb-6">
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64">
             <div className="font-bold text-lg mb-2 text-engineering-accent">

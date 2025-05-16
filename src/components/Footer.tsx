@@ -1,5 +1,7 @@
 import { Code, Github, Linkedin, Mail, XIcon } from "lucide-react";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import { BUILD_TIMESTAMP } from "../build-info";
+import StackSection from "./StackSection";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +12,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <Code className="h-5 w-5 text-engineering-accent" />
-            <span className="font-bold">Portfolio</span>
+            <span className="font-bold">jasondavey.io</span>
           </div>
 
           <div className="flex gap-6">
@@ -38,7 +40,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
             >
-              <XIcon className="h-4 w-4" />
+              <FaSquareXTwitter className="h-4 w-4" />
             </a>
             <a
               href="mailto:jasonrdavey@gmail.com"
@@ -49,7 +51,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-
+        <StackSection />
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
           <p>© {currentYear} Jason Davey. All rights reserved.</p>
           <p className="mt-2">

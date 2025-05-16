@@ -1,7 +1,16 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Code, FileText, Github, Linkedin, Mail, XIcon } from "lucide-react";
+import {
+  Code,
+  DownloadIcon,
+  Github,
+  Linkedin,
+  Mail,
+  XIcon,
+} from "lucide-react";
+import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
+import { SiGmail } from "react-icons/si";
+import { FaGithubSquare } from "react-icons/fa";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +39,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16 md:h-20">
         <a href="#" className="flex items-center gap-2">
           <Code className="h-6 w-6 text-engineering-accent" />
-          <span className="font-bold text-lg">Portfolio</span>
+          <span className="font-bold text-lg">jasondavey.io</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-6">
@@ -68,49 +77,46 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-4">
           <div className="flex items-center gap-3 mr-2">
-            <a 
-              href="https://github.com/jasondavey/" 
-              target="_blank" 
+            <a
+              href="https://github.com/jasondavey/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-engineering-accent transition-colors"
               aria-label="GitHub"
             >
-              <Github className="h-5 w-5" />
+              <FaGithubSquare className="h-5 w-5" color="black" />
             </a>
-            <a 
-              href="https://www.linkedin.com/in/jasondavey/" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/jasondavey/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-engineering-accent transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-5 w-5" />
+              <FaLinkedin className="h-5 w-5" color="blue" />
             </a>
-            <a 
-              href="https://x.com/ydohdohdoh" 
-              target="_blank" 
+            <a
+              href="https://x.com/ydohdohdoh"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-engineering-accent transition-colors"
               aria-label="X"
             >
-              <XIcon className="h-5 w-5" />
+              <FaSquareXTwitter className="h-5 w-5" color="black" />
             </a>
-            <a 
-              href="mailto:jasonrdavey@gmail.com" 
+            <a
+              href="mailto:jasonrdavey@gmail.com"
               className="text-gray-600 hover:text-engineering-accent transition-colors"
               aria-label="Email"
             >
-              <Mail className="h-5 w-5" />
+              <SiGmail className="h-5 w-5" color="red" />
             </a>
           </div>
-          
+
           <a href="/resume.pdf" download>
-            <Button
-              variant="outline"
-              className="items-center gap-2"
-            >
-              <FileText className="h-4 w-4" />
+            <Button variant="outline" className="items-center gap-2">
               Resumé
+              <DownloadIcon className="h-4 w-4" />
             </Button>
           </a>
         </div>

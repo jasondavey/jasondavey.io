@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDownIcon } from "lucide-react";
+import { ArrowDownIcon, DownloadIcon } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -24,6 +24,8 @@ const Hero = () => {
           <p className="text-lg text-engineering-gray mb-8 max-w-2xl">
             I recently read that job titles are out, job outcomes are in.{" "}
           </p>
+
+          {/* Close max-w-3xl animate-fade-in opacity-0 div */}
         </div>
 
         <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center">
