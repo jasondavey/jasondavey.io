@@ -45,7 +45,7 @@ const Navbar = () => {
 
         <nav className="hidden md:flex items-center gap-6">
           <a
-            href="#stack"
+            href="#about"
             className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
           >
             About
