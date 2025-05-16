@@ -1,5 +1,3 @@
-import { title } from "process";
-
 import { SiTypescript } from "react-icons/si";
 import { FaEnvelope, FaReact } from "react-icons/fa";
 import { SiNetlify } from "react-icons/si";
