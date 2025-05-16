@@ -1,4 +1,5 @@
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { FiMoreHorizontal } from "react-icons/fi";
 
 interface ProjectCardProps {
   title: string;
@@ -114,10 +115,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 <>
                   {truncatedDescription}
                   <button
-                    className="text-engineering-accent underline cursor-pointer"
+                    className="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-engineering-accent ml-1"
                     onClick={() => setModalOpen(true)}
+                    aria-label="Show more description"
+                    title="Show more description"
                   >
-                    More...
+                    <FiMoreHorizontal className="w-6 h-6 text-engineering-accent" />
                   </button>
                 </>
               ) : (
