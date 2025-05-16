@@ -1,5 +1,7 @@
-import { Code, Github, Linkedin, Mail, XIcon } from "lucide-react";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { Code } from "lucide-react";
+import { FaGithubSquare } from "react-icons/fa";
+import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
+import { SiGmail } from "react-icons/si";
 import { BUILD_TIMESTAMP } from "../build-info";
 import StackSection from "./StackSection";
 
@@ -20,34 +22,35 @@ const Footer = () => {
               href="https://github.com/jasondavey/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
+              className="text-gray-200 hover:text-engineering-accent transition-colors"
+              aria-label="GitHub"
             >
-              <Github className="h-4 w-4" />
-              GitHub
+              <FaGithubSquare className="h-5 w-5" />
             </a>
             <a
               href="https://www.linkedin.com/in/jasondavey/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
+              className="text-gray-200 hover:text-engineering-accent transition-colors"
+              aria-label="LinkedIn"
             >
-              <Linkedin className="h-4 w-4" />
-              LinkedIn
+              <FaLinkedin className="h-5 w-5" />
             </a>
             <a
               href="https://x.com/ydohdohdoh"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
+              className="text-gray-200 hover:text-engineering-accent transition-colors"
+              aria-label="X"
             >
-              <FaSquareXTwitter className="h-4 w-4" />
+              <FaSquareXTwitter className="h-5 w-5" />
             </a>
             <a
               href="mailto:jasonrdavey@gmail.com"
-              className="text-sm text-gray-300 hover:text-engineering-accent transition-colors flex items-center gap-1"
+              className="text-gray-200 hover:text-engineering-accent transition-colors"
+              aria-label="Email"
             >
-              <Mail className="h-4 w-4" />
-              Email
+              <SiGmail className="h-5 w-5" />
             </a>
           </div>
         </div>
