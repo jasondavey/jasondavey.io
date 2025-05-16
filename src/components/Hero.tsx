@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDownIcon } from "lucide-react";
+import TypingQuotes from "@/components/TypingQuotes";
 
 const Hero = () => {
   return (
@@ -31,9 +32,37 @@ const Hero = () => {
             <span className="block text-foreground">Build Tech With</span>
             <span className="block text-engineering-gray mt-2">Jason D</span>
           </h1>
-          <p className="text-lg text-engineering-gray mb-8 max-w-2xl">
-            I bend over backwards to be lazy.{" "}
+          <p className="text-lg text-green-500 mb-8 max-w-2xl">
+            <TypingQuotes
+              quotes={[
+                "Hello friend...",
+                "Ask me what I mean by...",
+                '"I bend over backwards to be lazy."',
+                "I like to build systems that work for people.",
+                "I like to deliver business value early and often.",
+                'I believe that "done" means it\'s being used by the customer, not just dev complete or built.',
+                "I believe that success comes from having passion in what you do.",
+                "Get in touch with me at jasonrdavey@gmail.com",
+                "or call or text me at",
+                "(415) 693-8290",
+              ]}
+            />
           </p>
+          <style>{`
+            .blinking-cursor {
+              display: inline-block;
+              width: 0.7ch;
+              height: 1.2em;
+              line-height: 1.2em;
+              background: currentColor;
+              margin-left: 2px;
+              animation: blink 1s step-end infinite;
+            }
+            @keyframes blink {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0; }
+            }
+          `}</style>
         </div>
 
         <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
