@@ -1,5 +1,6 @@
+
 import { Button } from "@/components/ui/button";
-import { ArrowDownIcon, DownloadIcon } from "lucide-react";
+import { ArrowDownIcon } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -8,6 +9,16 @@ const Hero = () => {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-engineering-accent/10 blur-3xl"></div>
         <div className="absolute top-1/3 -left-20 w-60 h-60 rounded-full bg-blue-400/10 blur-3xl"></div>
+        
+        {/* Added image as background */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/lovable-uploads/8fdf2308-40d8-4dc0-b34e-3f2f1a0d2c83.png" 
+            alt="Jason at whiteboard" 
+            className="w-full h-full object-cover opacity-20 md:opacity-25"
+          />
+          <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
+        </div>
       </div>
 
       <div className="section-container relative z-10">
@@ -24,23 +35,23 @@ const Hero = () => {
           <p className="text-lg text-engineering-gray mb-8 max-w-2xl">
             I bend over backwards to be lazy.{" "}
           </p>
-
-          {/* Close max-w-3xl animate-fade-in opacity-0 div */}
         </div>
 
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center">
+        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="bg-engineering-accent/10 hover:bg-engineering-accent/20 p-2 rounded-full animate-bounce"
+            className="bg-engineering-accent/20 hover:bg-engineering-accent/30 p-3 rounded-full animate-bounce"
             onClick={() =>
               document.getElementById("stack")?.scrollIntoView({
                 behavior: "smooth",
               })
             }
+            aria-label="Scroll down"
           >
             <ArrowDownIcon className="h-8 w-8 text-engineering-accent" />
           </Button>
+          <span className="text-sm text-engineering-accent mt-2 font-medium">Scroll down</span>
         </div>
       </div>
     </section>
