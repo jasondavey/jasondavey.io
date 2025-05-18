@@ -2,7 +2,6 @@ import ProjectCard from "@/components/ProjectCard";
 import { VerascoreTechMap } from "@/constants/verascore";
 import { VideoSanitizerTechMap } from "@/constants/video";
 
-// const projects: Project[] = [
 //   {
 //     id: 1,
 //     title: "Video Captioning and Profanity Filtering (Sound and Captions)",
@@ -64,10 +63,25 @@ const projects = [
           (financial services interface), and Tardis (admin console), each
           deployed under a unique subdomain (e.g., partner-y.myverascore.com).
         </p>
-        <p>
+        <p className="mb-2">
           Partner-specific data configurations are managed centrally in a Client
           Registry, while tenant isolation is enforced via dedicated child
           databases in Fauna and scoped configuration in Auth0.
+        </p>
+        <p className="mb-2">
+          The platform’s authentication and authorization are managed by Auth0,
+          utilizing OAuth2 flows, refresh tokens, and role-based access control
+          (RBAC) across all front-end applications. APIs are structured into two
+          primary services: the SPA API, responsible for core user operations
+          like onboarding, 2FA, and profile management, and the Integrations
+          API, which orchestrates third-party services such as Plaid for
+          transaction ingestion, Equifax for soft credit pulls, and Twilio for
+          secure user communication.{" "}
+        </p>
+        <p className="mb-2">
+          Data privacy and isolation are a top priority, with personally
+          identifiable information (PII) stored in Auth0 and financial data
+          siloed per tenant in Fauna databases.
         </p>
       </>
     ),

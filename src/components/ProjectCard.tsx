@@ -8,7 +8,7 @@ interface ProjectCardProps {
   technologies: string[];
   github?: string;
   demo?: string;
-  techIconMap: Record<string, JSX.Element>;
+  techIconMap: Record<string, { icon: JSX.Element; url: string }>;
   details?: React.ReactNode;
   index: number;
   showDemoButton?: boolean;
@@ -110,18 +110,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
           <h3 className="text-2xl font-bold mb-4">{title}</h3>
           <div className="bg-white/80 backdrop-blur shadow-lg border-none mb-4 p-6">
-            <div className="text-engineering-gray">
+            <div className="flex flex-col h-full justify-between text-engineering-gray">
               {isTruncated ? (
                 <>
-                  {truncatedDescription}
-                  <button
-                    className="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-engineering-accent ml-1"
-                    onClick={() => setModalOpen(true)}
-                    aria-label="Show more description"
-                    title="Show more description"
-                  >
-                    <FiMoreHorizontal className="w-6 h-6 text-engineering-accent" />
-                  </button>
+                  <span>{truncatedDescription}</span>
+                  <div className="flex justify-end mt-2">
+                    <button
+                      className="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-engineering-accent"
+                      onClick={() => setModalOpen(true)}
+                      aria-label="Show more description"
+                      title="Show more description"
+                    >
+                      <FiMoreHorizontal className="w-6 h-6 text-engineering-accent" />
+                    </button>
+                  </div>
                 </>
               ) : (
                 description
@@ -129,11 +131,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
           </div>
           <div className="flex flex-wrap gap-2 mb-4">
-            {technologies.map((tech) =>
-              techIconMap[tech] ? (
-                <span key={tech} className="text-2xl" title={tech}>
-                  {techIconMap[tech]}
-                </span>
+            {technologies.map((tech) => {
+              const techInfo = techIconMap[tech];
+              return techInfo ? (
+                <a
+                  key={tech}
+                  href={techInfo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-2xl hover:scale-110 transition-transform"
+                  title={techInfo.icon.props.title}
+                >
+                  {techInfo.icon}
+                </a>
               ) : (
                 <span
                   key={tech}
@@ -141,8 +151,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 >
                   {tech}
                 </span>
-              )
-            )}
+              );
+            })}
           </div>
           {details}
           <div className="flex gap-4 mt-4">
@@ -170,8 +180,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         {/* Modal for full description */}
         {modalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white rounded-lg shadow-lg max-w-xl w-full p-8 relative">
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            onClick={() => setModalOpen(false)}
+            aria-modal="true"
+            role="dialog"
+          >
+            <div
+              className="bg-white rounded-lg shadow-lg max-w-[900px] w-full p-8 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
                 className="absolute top-2 right-2 text-xl text-gray-400 hover:text-gray-700"
                 onClick={() => setModalOpen(false)}
