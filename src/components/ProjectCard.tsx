@@ -8,7 +8,14 @@ interface ProjectCardProps {
   technologies: string[];
   github?: string;
   demo?: string;
-  techIconMap: Record<string, { icon: JSX.Element; url: string }>;
+  techIconMap: Record<
+    string,
+    {
+      category: string;
+      icon: JSX.Element;
+      url: string;
+    }
+  >;
   details?: React.ReactNode;
   index: number;
   showDemoButton?: boolean;
@@ -86,6 +93,49 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <>
+      {/* Tech icons and related links below title, spanning both columns */}
+      <div className="w-full mb-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        {/* Related links (GitHub, Demo) */}
+        <div className="flex gap-2 mt-2 lg:mt-0">
+          {github && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-3 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition"
+              title="View on GitHub"
+            >
+              <svg
+                className="w-4 h-4 mr-1"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.084-.729.084-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.809 1.304 3.495.997.107-.775.418-1.305.762-1.605-2.665-.303-5.466-1.334-5.466-5.933 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.984-.399 3.003-.404 1.018.005 2.046.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.654 1.653.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.804 5.625-5.475 5.921.43.371.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.299 24 12c0-6.627-5.373-12-12-12z" />
+              </svg>
+              GitHub
+            </a>
+          )}
+          {demo && (
+            <a
+              href={demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition"
+              title="View Demo"
+            >
+              <svg
+                className="w-4 h-4 mr-1"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Demo
+            </a>
+          )}
+        </div>
+      </div>
+
       <div
         className={`w-full flex flex-col ${
           isEven ? "lg:flex-row" : "lg:flex-row-reverse"
@@ -108,7 +158,71 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <div className="text-engineering-accent font-mono text-sm mb-2">
             Featured Project
           </div>
-          <h3 className="text-2xl font-bold mb-4">{title}</h3>
+          <h3 className="text-2xl font-bold mb-2">{title}</h3>
+          {/* Tech icon group below title, spanning full row */}
+          <div className="flex-1">
+            {(() => {
+              const techInfos = technologies
+                .map((tech) => ({ tech, info: techIconMap[tech] }))
+                .filter(({ info }) => !!info);
+              const groups: Record<
+                string,
+                { tech: string; info: (typeof techInfos)[0]["info"] }[]
+              > = {};
+              techInfos.forEach(({ tech, info }) => {
+                const category = info.category;
+                if (!groups[category]) groups[category] = [];
+                groups[category].push({ tech, info });
+              });
+              return (
+                <div className="flex flex-wrap gap-8 w-full">
+                  {Object.entries(groups).map(([category, items]) => (
+                    <div key={category} className="mb-2">
+                      <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
+                        {category}
+                      </div>
+                      <div className="flex flex-wrap gap-2 w-full justify-center">
+                        {items.map(({ tech, info }) => (
+                          <a
+                            key={tech}
+                            href={info.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-2xl hover:scale-110 transition-transform"
+                            title={info.icon.props.title}
+                          >
+                            {info.icon}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                  {/* Render unknown techs */}
+                  {technologies.filter((tech) => !techIconMap[tech]).length >
+                    0 && (
+                    <div className="mb-2">
+                      <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
+                        Other
+                      </div>
+                      <div className="flex flex-wrap gap-2 w-full justify-center">
+                        {technologies
+                          .filter((tech) => !techIconMap[tech])
+                          .map((tech) => (
+                            <span
+                              key={tech}
+                              className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+          </div>
+          <div className="w-full mb-4"></div>
           <div className="bg-white/80 backdrop-blur shadow-lg border-none mb-4 p-6">
             <div className="flex flex-col h-full justify-between text-engineering-gray">
               {isTruncated ? (
@@ -130,30 +244,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               )}
             </div>
           </div>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {technologies.map((tech) => {
-              const techInfo = techIconMap[tech];
-              return techInfo ? (
-                <a
-                  key={tech}
-                  href={techInfo.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-2xl hover:scale-110 transition-transform"
-                  title={techInfo.icon.props.title}
-                >
-                  {techInfo.icon}
-                </a>
-              ) : (
-                <span
-                  key={tech}
-                  className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs"
-                >
-                  {tech}
-                </span>
-              );
-            })}
-          </div>
+          {/* Group tech icons by category and render with headings */}
+
           {details}
           <div className="flex gap-4 mt-4">
             {showDemoButton && demo && (

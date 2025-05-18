@@ -94,7 +94,6 @@ const projects = [
       "FaunaDB",
       "Auth0",
       "Plaid",
-      "Equifax",
       "Twilio",
       "Mailgun",
       "Datadog",
