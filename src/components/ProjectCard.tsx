@@ -161,66 +161,72 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <h3 className="text-2xl font-bold mb-2">{title}</h3>
           {/* Tech icon group below title, spanning full row */}
           <div className="flex-1">
-            {(() => {
-              const techInfos = technologies
-                .map((tech) => ({ tech, info: techIconMap[tech] }))
-                .filter(({ info }) => !!info);
-              const groups: Record<
-                string,
-                { tech: string; info: (typeof techInfos)[0]["info"] }[]
-              > = {};
-              techInfos.forEach(({ tech, info }) => {
-                const category = info.category;
-                if (!groups[category]) groups[category] = [];
-                groups[category].push({ tech, info });
-              });
-              return (
-                <div className="flex flex-wrap gap-8 w-full">
-                  {Object.entries(groups).map(([category, items]) => (
-                    <div key={category} className="mb-2">
-                      <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
-                        {category}
-                      </div>
-                      <div className="flex flex-wrap gap-2 w-full justify-center">
-                        {items.map(({ tech, info }) => (
-                          <a
-                            key={tech}
-                            href={info.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-2xl hover:scale-110 transition-transform"
-                            title={info.icon.props.title}
-                          >
-                            {info.icon}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                  {/* Render unknown techs */}
-                  {technologies.filter((tech) => !techIconMap[tech]).length >
-                    0 && (
-                    <div className="mb-2">
-                      <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
-                        Other
-                      </div>
-                      <div className="flex flex-wrap gap-2 w-full justify-center">
-                        {technologies
-                          .filter((tech) => !techIconMap[tech])
-                          .map((tech) => (
-                            <span
+            {/* Technology Stack Section with border */}
+            <div className="w-full mb-2 p-4 rounded-xl border border-gray-200 bg-gray-50">
+              <h4 className="text-lg font-semibold tracking-wide text-gray-800 mb-4 border-b border-gray-200 pb-1 uppercase">
+                Technology Stack
+              </h4>
+              {(() => {
+                const techInfos = technologies
+                  .map((tech) => ({ tech, info: techIconMap[tech] }))
+                  .filter(({ info }) => !!info);
+                const groups: Record<
+                  string,
+                  { tech: string; info: (typeof techInfos)[0]["info"] }[]
+                > = {};
+                techInfos.forEach(({ tech, info }) => {
+                  const category = info.category;
+                  if (!groups[category]) groups[category] = [];
+                  groups[category].push({ tech, info });
+                });
+                return (
+                  <div className="flex flex-wrap gap-8 w-full">
+                    {Object.entries(groups).map(([category, items]) => (
+                      <div key={category} className="mb-2">
+                        <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
+                          {category}
+                        </div>
+                        <div className="flex flex-wrap gap-2 w-full justify-center">
+                          {items.map(({ tech, info }) => (
+                            <a
                               key={tech}
-                              className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs"
+                              href={info.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-2xl hover:scale-110 transition-transform"
+                              title={info.icon.props.title}
                             >
-                              {tech}
-                            </span>
+                              {info.icon}
+                            </a>
                           ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })()}
+                    ))}
+                    {/* Render unknown techs */}
+                    {technologies.filter((tech) => !techIconMap[tech]).length >
+                      0 && (
+                      <div className="mb-2">
+                        <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
+                          Other
+                        </div>
+                        <div className="flex flex-wrap gap-2 w-full justify-center">
+                          {technologies
+                            .filter((tech) => !techIconMap[tech])
+                            .map((tech) => (
+                              <span
+                                key={tech}
+                                className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+            </div>
           </div>
           <div className="w-full mb-4"></div>
           <div className="bg-white/80 backdrop-blur shadow-lg border-none mb-4 p-6">
