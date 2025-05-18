@@ -49,7 +49,7 @@ import { VideoSanitizerTechMap } from "@/constants/video";
 
 const projects = [
   {
-    title: "Financial Health Scoring Platform (VeraScore)",
+    title: "Financial Health Scoring Platform",
     description: (
       <>
         <p className="mb-2">
