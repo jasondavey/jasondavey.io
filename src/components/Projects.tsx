@@ -1,51 +1,6 @@
 import ProjectCard from "@/components/ProjectCard";
-import { VerascoreTechMap } from "@/constants/verascore";
 import { VideoSanitizerTechMap } from "@/constants/video";
-
-//   {
-//     id: 1,
-//     title: "Video Captioning and Profanity Filtering (Sound and Captions)",
-//     description:
-//       "A full-stack e-commerce platform with product management, shopping cart, user authentication, and payment processing. Implemented responsive design and optimized performance.",
-//     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-//     technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe API"],
-//     github: "https://github.com/jasondavey/video-captioning",
-//     demo: "#",
-//     featured: true,
-//   },
-//   {
-//     id: 2,
-//     title: "Financial Health Scoring Platform",
-//     description:
-//       "I ran technology at VeraScore, a platform designed to give customers seeking credit and lenders lending credit a more comprehensive understanding of an individual’s financial health. The goal was to address the shortcomings of traditional credit scoring systems, which often exclude financially responsible people with low or limited credit histories. By building tools that analyze broader financial behaviors, we aimed to support more inclusive and equitable lending decisions. My role involved shaping the platform’s strategy and execution to ensure it delivered meaningful insights that could improve access to credit for underserved populations.",
-//     image: "./verascore_dashboard.png",
-//     technologies: [
-//       "TypeScript",
-//       "React",
-//       "Netlify",
-//       "Auth0",
-//       "FaunaDB",
-//       "Plaid",
-//       "Datadog",
-//       "Smarty",
-//       "Twilio",
-//     ],
-//     github: "https://github.com/jasondavey/analytics-dashboard",
-//     demo: "#",
-//     featured: true,
-//   },
-//   {
-//     id: 3,
-//     title: "Task Management System",
-//     description:
-//       "A collaborative task management application with drag-and-drop interface, task prioritization, team collaboration, and progress tracking.",
-//     image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-//     technologies: ["React", "Redux", "Node.js", "PostgreSQL", "WebSockets"],
-//     github: "https://github.com/jasondavey/task-manager",
-//     demo: "#",
-//     featured: true,
-//   },
-// ];
+import { VerascoreTechMap } from "@/constants/verascore";
 
 const projects = [
   {
@@ -53,9 +8,10 @@ const projects = [
     description: (
       <>
         <p className="mb-2">
-          VeraScore is a multi-tenant B2B2C platform designed to empower
-          partners—such as fintechs, lenders, or financial coaches—to launch
-          their own branded version of the product.
+          VeraScore is a multi-tenant{" "}
+          <strong>business to business to consumer</strong> (B2B2C) platform
+          designed to empower partners—such as fintechs, lenders, or financial
+          coaches—to launch their own branded version of the product.
         </p>
         <p className="mb-2">
           Each partner is provisioned with a set of customized React single-page
@@ -118,11 +74,13 @@ const projects = [
         </ul>
       </>
     ),
+    companyIcon: "/verascore.png",
     showDemoButton: false,
     showCodeButton: false,
+    techIconMap: VerascoreTechMap,
   },
   {
-    title: "Automated Video Profanity Filtering & Captioning Pipeline",
+    title: "Video Profanity & Captioning Pipeline",
     description: (
       <>
         <p className="mb-2">
@@ -226,10 +184,19 @@ const Projects = () => (
       <div className="space-y-24">
         {projects.map((project, idx) => (
           <ProjectCard
+            key={idx}
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            technologies={project.technologies}
+            github={project.github}
+            demo={project.demo}
+            techIconMap={project.techIconMap}
+            details={project.details}
             index={idx + 1}
-            key={project.title + idx}
-            {...project}
-            techIconMap={VerascoreTechMap}
+            showDemoButton={project.showDemoButton}
+            showCodeButton={project.showCodeButton}
+            companyIcon={project.companyIcon || "/jdLogo.png"}
           />
         ))}
       </div>

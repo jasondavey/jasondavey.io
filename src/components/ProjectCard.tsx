@@ -20,6 +20,7 @@ interface ProjectCardProps {
   index: number;
   showDemoButton?: boolean;
   showCodeButton?: boolean;
+  companyIcon?: string;
 }
 
 import React, { useState } from "react";
@@ -36,6 +37,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   index,
   showDemoButton = true,
   showCodeButton = true,
+  companyIcon,
 }) => {
   // idx starts at 1 in Projects.tsx
   const isEven = index % 2 === 0;
@@ -141,7 +143,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             Featured Project
           </div>
           <div className="flex items-center justify-between mb-2 w-full">
-            <h3 className="text-2xl font-bold m-0 p-0">{title}</h3>
+            <div className="flex items-center gap-2 min-w-0">
+              <img
+                src={companyIcon || "/jdLogo.png"}
+                alt="Company Logo"
+                className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+                style={{ minWidth: 32, minHeight: 32 }}
+              />
+              <h3 className="text-2xl font-bold m-0 p-0 truncate">{title}</h3>
+            </div>
             <div className="flex gap-2 ml-4">
               {github && showCodeButton && (
                 <a
