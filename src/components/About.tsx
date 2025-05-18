@@ -41,13 +41,6 @@ const About = () => {
             style={{ animationDelay: "0.5s" }}
           >
             <Card className="bg-white p-6 rounded-lg shadow-md border-none relative overflow-hidden">
-                {/* Three dots icon at top right */}
-                <button
-                  className="absolute top-4 right-4 z-10 p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-engineering-accent"
-                  aria-label="More options"
-                >
-                  <MoreHorizontal className="w-6 h-6 text-engineering-accent" />
-                </button>
               <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-engineering-accent/20"></div>
               <div className="flex flex-col sm:flex-row gap-6 items-center">
                 <div className="relative w-48 h-48 rounded-full overflow-hidden bg-engineering-light flex items-center justify-center">
