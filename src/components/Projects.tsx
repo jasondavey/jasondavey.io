@@ -1,8 +1,10 @@
 import ProjectCard from "@/components/ProjectCard";
 import { VideoSanitizerTechMap } from "@/constants/video";
 import { VerascoreTechMap } from "@/constants/verascore";
+import { Technology } from "../constants/TechnologyEnum";
+import { Project } from "./Project";
 
-const projects = [
+const projects: Project[] = [
   {
     title: "Financial Health Scoring Platform",
     description: (
@@ -43,17 +45,17 @@ const projects = [
     ),
     image: "./verascore_dashboard.png",
     technologies: [
-      "React",
-      "Ionic",
-      "TypeScript",
-      "Netlify",
-      "FaunaDB",
-      "Auth0",
-      "Plaid",
-      "Twilio",
-      "Mailgun",
-      "Datadog",
-      "CRS",
+      Technology.React,
+      Technology.Ionic,
+      Technology.TypeScript,
+      Technology.Netlify,
+      Technology.FaunaDB,
+      Technology.Auth0,
+      Technology.Plaid,
+      Technology.Twilio,
+      Technology.Mailgun,
+      Technology.Datadog,
+      Technology.CRS,
     ],
     github: "https://github.com/myverascore",
     demo: "https://www.myverascore.com/how-it-works",
@@ -78,6 +80,18 @@ const projects = [
     showDemoButton: false,
     showCodeButton: false,
     techIconMap: VerascoreTechMap,
+    index: 1,
+    keyArchitecture: `
+Three React SPAs (Members, Lenders, Tardis)
+Centralized Auth (Auth0, RBAC, OAuth2)
+FaunaDB for tenant-isolated data; S3 for file storage
+Integrations: Plaid, Equifax, Twilio, Mailgun, Datadog
+`,
+    resultsImpact: `
+Broader, fairer lending decisions
+Improved onboarding with SMS and address verification
+`,
+    archImage: "/verascore_architecture.svg",
   },
   {
     title: "Video Profanity & Captioning Pipeline",
@@ -118,15 +132,15 @@ const projects = [
     ),
     image: "./video_sanitize.png",
     technologies: [
-      "AWS Lambda",
-      "Amazon S3",
-      "Amazon Transcribe",
-      "TypeScript",
-      "Nodejs",
-      "FFmpeg",
-      "Bash",
-      "WebVTT",
-      "JSON",
+      Technology.AWSLambda,
+      Technology.AmazonS3,
+      Technology.AmazonTranscribe,
+      Technology.TypeScript,
+      Technology.Nodejs,
+      Technology.FFmpeg,
+      Technology.Bash,
+      Technology.WebVTT,
+      Technology.JSON,
     ],
     github: "https://github.com/jasondavey/videokilledtheradiostar",
     featured: true,
@@ -157,11 +171,15 @@ const projects = [
     showDemoButton: false,
     showCodeButton: true,
     techIconMap: VideoSanitizerTechMap,
+    index: 2,
+    keyArchitecture: "",
+    resultsImpact: "",
+    archImage: "",
   },
   // ...other projects
 ];
 
-const Projects = () => (
+const Projects: React.FC = () => (
   <section id="projects" className="bg-background">
     <div className="section-container">
       <div
@@ -194,6 +212,9 @@ const Projects = () => (
             showDemoButton={project.showDemoButton}
             showCodeButton={project.showCodeButton}
             companyIcon={project.companyIcon || "/jdLogo.png"}
+            keyArchitecture={project.keyArchitecture}
+            resultsImpact={project.resultsImpact}
+            archImage={project.archImage}
           />
         ))}
       </div>

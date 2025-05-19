@@ -1,0 +1,45 @@
+<svg width="740" height="420" viewBox="0 0 740 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="740" height="420" fill="#fff"/>
+  <!-- Frontend -->
+  <rect x="40" y="60" width="180" height="70" rx="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="130" y="90" font-size="18" text-anchor="middle" fill="#3730a3" font-family="sans-serif">React + Ionic</text>
+  <text x="130" y="112" font-size="14" text-anchor="middle" fill="#6366f1" font-family="sans-serif">TypeScript</text>
+  <!-- Arrow to Netlify -->
+  <line x1="220" y1="95" x2="300" y2="95" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Netlify -->
+  <rect x="300" y="60" width="110" height="70" rx="12" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+  <text x="355" y="100" font-size="18" text-anchor="middle" fill="#065f46" font-family="sans-serif">Netlify</text>
+  <!-- Arrow to Auth0 -->
+  <line x1="410" y1="95" x2="500" y2="95" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Auth0 -->
+  <rect x="500" y="60" width="110" height="70" rx="12" fill="#fef3c7" stroke="#f59e42" stroke-width="2"/>
+  <text x="555" y="100" font-size="18" text-anchor="middle" fill="#b45309" font-family="sans-serif">Auth0</text>
+  <!-- Down arrow to FaunaDB -->
+  <line x1="555" y1="130" x2="555" y2="180" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- FaunaDB -->
+  <rect x="480" y="180" width="150" height="70" rx="12" fill="#f0fdf4" stroke="#22d3ee" stroke-width="2"/>
+  <text x="555" y="220" font-size="18" text-anchor="middle" fill="#0e7490" font-family="sans-serif">FaunaDB</text>
+  <!-- Plaid -->
+  <rect x="40" y="180" width="110" height="70" rx="12" fill="#f1f5f9" stroke="#06b6d4" stroke-width="2"/>
+  <text x="95" y="220" font-size="18" text-anchor="middle" fill="#0e7490" font-family="sans-serif">Plaid</text>
+  <!-- Arrow from Netlify to Plaid -->
+  <line x1="300" y1="95" x2="95" y2="180" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- CRS -->
+  <rect x="180" y="180" width="110" height="70" rx="12" fill="#f1f5f9" stroke="#818cf8" stroke-width="2"/>
+  <text x="235" y="220" font-size="18" text-anchor="middle" fill="#3730a3" font-family="sans-serif">CRS</text>
+  <!-- Twilio -->
+  <rect x="320" y="180" width="70" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="355" y="205" font-size="14" text-anchor="middle" fill="#b91c1c" font-family="sans-serif">Twilio</text>
+  <!-- Mailgun -->
+  <rect x="320" y="230" width="70" height="40" rx="8" fill="#fef2f2" stroke="#f59e42" stroke-width="2"/>
+  <text x="355" y="255" font-size="14" text-anchor="middle" fill="#b45309" font-family="sans-serif">Mailgun</text>
+  <!-- Datadog -->
+  <rect x="40" y="300" width="110" height="40" rx="8" fill="#f3e8ff" stroke="#a78bfa" stroke-width="2"/>
+  <text x="95" y="325" font-size="16" text-anchor="middle" fill="#7c3aed" font-family="sans-serif">Datadog</text>
+  <!-- Arrow defs -->
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#6366f1"/>
+    </marker>
+  </defs>
+</svg>

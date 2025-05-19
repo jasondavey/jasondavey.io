@@ -1,31 +1,10 @@
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
 
-interface ProjectCardProps {
-  title: string;
-  description: React.ReactNode;
-  image?: string;
-  technologies: string[];
-  github?: string;
-  demo?: string;
-  techIconMap: Record<
-    string,
-    {
-      category: string;
-      icon: JSX.Element;
-      url: string;
-    }
-  >;
-  details?: React.ReactNode;
-  index: number;
-  showDemoButton?: boolean;
-  showCodeButton?: boolean;
-  companyIcon?: string;
-}
-
 import React, { useState } from "react";
+import { Project } from "./Project";
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
+const ProjectCard: React.FC<Project> = ({
   title,
   description,
   image,
@@ -38,10 +17,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   showDemoButton = true,
   showCodeButton = true,
   companyIcon,
+  keyArchitecture,
+  resultsImpact,
+  archImage,
 }) => {
   // idx starts at 1 in Projects.tsx
   const isEven = index % 2 === 0;
   const [modalOpen, setModalOpen] = useState(false);
+  const [archModalOpen, setArchModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"architecture" | "results">(
+    "architecture"
+  );
 
   // Helper to count and render up to a max number of words, preserving paragraphs
   function renderTruncatedDescription(
@@ -282,7 +268,114 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               )}
             </div>
           </div>
-          {/* Group tech icons by category and render with headings */}
+          {/* Tabbed interface for Key Architecture and Results & Impact */}
+          {(keyArchitecture || resultsImpact) && (
+            <div className="mb-6">
+              <div className="flex gap-2 mb-4">
+                <button
+                  className={`px-4 py-2 rounded-full font-medium transition-colors ${
+                    activeTab === "architecture"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground hover:bg-accent"
+                  }`}
+                  onClick={() => setActiveTab("architecture")}
+                  aria-selected={activeTab === "architecture"}
+                  aria-controls="architecture-panel"
+                >
+                  Key Architecture
+                </button>
+                <button
+                  className={`px-4 py-2 rounded-full font-medium transition-colors ${
+                    activeTab === "results"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground hover:bg-accent"
+                  }`}
+                  onClick={() => setActiveTab("results")}
+                  aria-selected={activeTab === "results"}
+                  aria-controls="results-panel"
+                >
+                  Results & Impact
+                </button>
+              </div>
+              <div>
+                {activeTab === "architecture" && (
+                  <div id="architecture-panel">
+                    {archImage && (
+                      <div className="relative mb-4">
+                        <img
+                          src={archImage}
+                          alt="Architecture diagram"
+                          className="w-full max-h-48 object-cover rounded-lg cursor-pointer hover:opacity-80 transition"
+                          onClick={() => setArchModalOpen(true)}
+                        />
+                        <button
+                          className="absolute bottom-2 right-2 bg-background/80 rounded-full p-2 shadow"
+                          onClick={() => setArchModalOpen(true)}
+                          aria-label="Zoom image"
+                        >
+                          <svg
+                            className="w-5 h-5 text-primary"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M21 21l-4.35-4.35M10.5 18A7.5 7.5 0 1018 10.5 7.5 7.5 0 0010.5 18z"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    )}
+                    {keyArchitecture && (
+                      <p className="text-foreground whitespace-pre-line">
+                        {keyArchitecture}
+                      </p>
+                    )}
+                  </div>
+                )}
+                {activeTab === "results" && (
+                  <div id="results-panel">
+                    {resultsImpact && (
+                      <p className="text-foreground whitespace-pre-line">
+                        {resultsImpact}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+          {/* Modal for architecture image */}
+          {archModalOpen && archImage && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+              onClick={() => setArchModalOpen(false)}
+              aria-modal="true"
+              role="dialog"
+            >
+              <div
+                className="bg-background text-foreground rounded-xl shadow-xl border border-border max-w-3xl w-full p-6 relative transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  className="absolute top-2 right-2 text-xl text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setArchModalOpen(false)}
+                  aria-label="Close"
+                >
+                  ×
+                </button>
+                <img
+                  src={archImage}
+                  alt="Architecture Full"
+                  className="w-full rounded-lg mb-4"
+                />
+                {keyArchitecture && (
+                  <div className="text-foreground whitespace-pre-line">
+                    {keyArchitecture}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           {details}
           <div className="flex gap-4 mt-4">
