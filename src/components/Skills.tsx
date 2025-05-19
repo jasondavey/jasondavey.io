@@ -60,7 +60,7 @@ interface SkillCardProps {
 
 const SkillCard = ({ title, description, skills, icon, delay }: SkillCardProps) => {
   return (
-    <Card className="border-none shadow-lg animate-fade-in opacity-0" style={{ animationDelay: delay }}>
+    <Card className="border-none" style={{ animationDelay: delay }}>
       <CardContent className="p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="p-2 rounded-md bg-engineering-light text-engineering-accent">
@@ -71,7 +71,7 @@ const SkillCard = ({ title, description, skills, icon, delay }: SkillCardProps) 
         <p className="text-engineering-gray mb-6">{description}</p>
         <div className="flex flex-wrap gap-2">
           {skills.map((skill, index) => (
-            <Badge key={index} variant="secondary" className="bg-engineering-light text-engineering-dark">
+            <Badge key={index} variant="secondary" className="bg-muted text-foreground">
               {skill}
             </Badge>
           ))}
