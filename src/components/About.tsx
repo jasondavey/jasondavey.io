@@ -4,7 +4,7 @@ import { User, MoreHorizontal } from "lucide-react";
 
 const About = () => {
   return (
-    <section id="about" className="bg-engineering-light">
+    <section id="about" className="bg-background transition-colors">
       <div className="section-container">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           <div
@@ -12,7 +12,7 @@ const About = () => {
             style={{ animationDelay: "0.3s" }}
           >
             <h2 className="heading-lg mb-6 flex items-center">
-              <span className="text-engineering-accent mr-3">01.</span>
+              <span className="text-primary mr-3">01.</span>
               About Me
             </h2>
             <div className="space-y-4 text-engineering-gray">
@@ -56,7 +56,7 @@ const About = () => {
                   </Avatar>
                 </div>
                 <div>
-                  <h3 className="heading-md mb-3">Jason Davey</h3>
+                  <h3 className="heading-md mb-3 text-primary font-bold drop-shadow">Jason Davey</h3>
                   <p className="text-engineering-gray mb-3">VP Engineering</p>
                   <p className="text-sm text-engineering-gray">
                     Based in Decatur, GA

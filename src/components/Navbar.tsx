@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 import { Code } from "lucide-react";
 import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
@@ -107,6 +108,9 @@ const Navbar = () => {
             </a>
           </div>
         </div>
+
+        {/* Theme toggle button */}
+        <ThemeToggle />
 
         <Button variant="ghost" size="icon" className="md:hidden">
           <span className="sr-only">Toggle menu</span>

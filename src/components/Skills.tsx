@@ -9,7 +9,7 @@ const SkillsSection = () => {
   const domainSkills = ["Financial Technology", "Security & Compliance", "User Experience", "Performance Optimization", "Shipping & Logistics", "AI/ML Integration"];
 
   return (
-    <section id="skills" className="bg-white">
+    <section id="skills" className="bg-background transition-colors">
       <div className="section-container">
         <div className="text-center mb-16 animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
           <h2 className="heading-lg inline-flex items-center">

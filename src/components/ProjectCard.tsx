@@ -261,8 +261,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
           </div>
           <div className="w-full mb-4"></div>
-          <div className="bg-white/80 backdrop-blur shadow-lg border-none mb-4 p-6">
-            <div className="flex flex-col h-full justify-between text-engineering-gray">
+          <div className="mb-4 rounded-xl bg-muted p-4 shadow-lg transition-colors">
+            <div className="flex flex-col h-full justify-between">
               {isTruncated ? (
                 <>
                   <span>{truncatedDescription}</span>
@@ -307,18 +307,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             role="dialog"
           >
             <div
-              className="bg-white rounded-lg shadow-lg max-w-[900px] w-full p-8 relative"
+              className="bg-background text-foreground rounded-lg shadow-lg border border-border max-w-[900px] w-full p-8 relative transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-2 right-2 text-xl text-gray-400 hover:text-gray-700"
+                className="absolute top-2 right-2 text-xl text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setModalOpen(false)}
                 aria-label="Close"
               >
                 ×
               </button>
               <h3 className="text-2xl font-bold mb-4">{title}</h3>
-              <div className="text-engineering-gray whitespace-pre-line">
+              <div className="rounded-xl bg-muted p-4 whitespace-pre-line transition-colors">
                 {description}
               </div>
             </div>
