@@ -18,7 +18,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-engineering-dark text-white py-12">
+    <footer className="bg-background text-foreground py-12 transition-colors">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
@@ -34,7 +34,7 @@ const Footer = () => {
               className="text-gray-200 hover:text-engineering-accent transition-colors"
               aria-label="GitHub"
             >
-              <FaGithubSquare className="h-5 w-5" />
+              <FaGithubSquare className="h-5 w-5 text-foreground" />
             </a>
             <a
               href="https://www.linkedin.com/in/jasondavey/"
@@ -43,7 +43,7 @@ const Footer = () => {
               className="text-gray-200 hover:text-engineering-accent transition-colors"
               aria-label="LinkedIn"
             >
-              <FaLinkedin className="h-5 w-5" />
+              <FaLinkedin className="h-5 w-5 text-foreground" />
             </a>
             <a
               href="https://x.com/ydohdohdoh"
@@ -52,28 +52,28 @@ const Footer = () => {
               className="text-gray-200 hover:text-engineering-accent transition-colors"
               aria-label="X"
             >
-              <FaSquareXTwitter className="h-5 w-5" />
+              <FaSquareXTwitter className="h-5 w-5 text-foreground" />
             </a>
             <a
               href="mailto:jasonrdavey@gmail.com"
               className="text-gray-200 hover:text-engineering-accent transition-colors"
               aria-label="Email"
             >
-              <SiGmail className="h-5 w-5" />
+              <SiGmail className="h-5 w-5 text-foreground" />
             </a>
             <a href="/resume.pdf" download>
-              <TbFileCv className="h-5 w-5" />
+              <TbFileCv className="h-5 w-5 text-foreground" />
             </a>
           </div>
         </div>
         <StackSection />
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+        <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>© {currentYear} Jason Davey. All rights reserved.</p>
           <p className="mt-2">
             Designed & Built with React, TypeScript & Tailwind CSS
           </p>
         </div>
-        <div className="mt-4 text-xs text-gray-500 text-center">
+        <div className="mt-4 text-xs text-muted-foreground text-center">
           Last built:{" "}
           {buildTimestamp
             ? new Date(buildTimestamp).toLocaleString(undefined, {
