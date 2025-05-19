@@ -270,8 +270,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                     <button
                       className="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-engineering-accent"
                       onClick={() => setModalOpen(true)}
-                      aria-label="Show more description"
-                      title="Show more description"
+                      aria-label="Click to learn more"
+                      title="Click to learn more"
                     >
                       <FiMoreHorizontal className="w-6 h-6 text-engineering-accent" />
                     </button>
