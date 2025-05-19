@@ -125,10 +125,6 @@ const projects = [
       "Nodejs",
       "FFmpeg",
       "Bash",
-      "Shell Scripts",
-      "Media Processing",
-      "Audio Redaction",
-      "Content Moderation",
       "WebVTT",
       "JSON",
     ],
@@ -180,8 +176,9 @@ const Projects = () => (
           A selection of my recent projects. Each project presented unique
           challenges and opportunities to learn and grow.
         </p>
+        <hr className="my-10 border-t border-gray-200" />
       </div>
-      <div className="space-y-24">
+      <div className="space-y-12">
         {projects.map((project, idx) => (
           <ProjectCard
             key={idx}

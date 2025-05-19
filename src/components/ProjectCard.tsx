@@ -296,16 +296,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 Demo <FaExternalLinkAlt className="ml-2" />
               </a>
             )}
-            {showCodeButton && github && (
-              <a
-                href={github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 border border-engineering-accent text-engineering-accent rounded hover:bg-green-50 transition"
-              >
-                Code <FaExternalLinkAlt className="ml-2" />
-              </a>
-            )}
           </div>
         </div>
         {/* Modal for full description */}
