@@ -174,7 +174,7 @@ const Projects = () => (
       >
         <h2 className="heading-lg inline-flex items-center">
           <span className="text-engineering-accent mr-3">03.</span>
-          Featured Projects
+          Portfolio of Work
         </h2>
         <p className="mt-4 text-engineering-gray max-w-2xl mx-auto">
           A selection of my recent projects. Each project presented unique

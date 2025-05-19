@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Code,
-  DownloadIcon,
-  Github,
-  Linkedin,
-  Mail,
-  XIcon,
-} from "lucide-react";
+import { Code } from "lucide-react";
 import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { FaGithubSquare } from "react-icons/fa";
@@ -45,6 +38,12 @@ const Navbar = () => {
 
         <nav className="hidden md:flex items-center gap-6">
           <a
+            href="#projects"
+            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
+          >
+            <strong>Portfolio</strong>
+          </a>
+          <a
             href="#about"
             className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
           >
@@ -56,12 +55,7 @@ const Navbar = () => {
           >
             Skills
           </a>
-          <a
-            href="#projects"
-            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
-          >
-            Projects
-          </a>
+
           <a
             href="#experience"
             className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
