@@ -24,47 +24,43 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 text-white bg-gray-900/80 border-b border-gray-700 backdrop-blur-lg shadow-md"
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         <a href="#" className="flex items-center gap-2">
-          <Code className="h-6 w-6 text-engineering-accent" />
-          <span className="font-bold text-lg">jasondavey.io</span>
+          <Code className="h-6 w-6 text-white" />
+          <span className="font-bold text-lg text-white">jasondavey.io</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-6">
           <a
             href="#projects"
-            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
+            className="relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
           >
             <strong>Portfolio</strong>
           </a>
           <a
             href="#about"
-            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
+            className="relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
           >
             About
           </a>
           <a
             href="#skills"
-            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
+            className="relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
           >
             Skills
           </a>
 
           <a
             href="#experience"
-            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
+            className="relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
           >
             Experience
           </a>
           <a
             href="#contact"
-            className="text-sm font-medium hover:text-engineering-accent hover:bg-engineering-accent/10 transition-colors rounded px-2 py-1"
+            className="relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
           >
             Contact
           </a>
@@ -76,38 +72,38 @@ const Navbar = () => {
               href="https://github.com/jasondavey/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-engineering-accent transition-colors"
+              className="text-white hover:text-gray-200 transition-colors"
               aria-label="GitHub"
             >
-              <FaGithubSquare className="h-5 w-5" color="black" />
+              <FaGithubSquare className="h-5 w-5 text-white hover:text-gray-300" />
             </a>
             <a
               href="https://www.linkedin.com/in/jasondavey/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-engineering-accent transition-colors"
+              className="text-white hover:text-gray-200 transition-colors"
               aria-label="LinkedIn"
             >
-              <FaLinkedin className="h-5 w-5" color="blue" />
+              <FaLinkedin className="h-5 w-5 text-white hover:text-blue-300" />
             </a>
             <a
               href="https://x.com/ydohdohdoh"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-engineering-accent transition-colors"
+              className="text-white hover:text-gray-200 transition-colors"
               aria-label="X"
             >
-              <FaSquareXTwitter className="h-5 w-5" color="black" />
+              <FaSquareXTwitter className="h-5 w-5 text-white hover:text-gray-300" />
             </a>
             <a
               href="mailto:jasonrdavey@gmail.com"
-              className="text-gray-600 hover:text-engineering-accent transition-colors"
+              className="text-white hover:text-gray-200 transition-colors"
               aria-label="Email"
             >
-              <SiGmail className="h-5 w-5" color="red" />
+              <SiGmail className="h-5 w-5 text-white hover:text-red-300" />
             </a>
             <a href="/resume.pdf" download>
-              <TbFileCv className="h-7 w-7" />
+              <TbFileCv className="h-7 w-7 text-white hover:text-gray-300" />
             </a>
           </div>
         </div>
