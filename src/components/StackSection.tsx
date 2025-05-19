@@ -39,9 +39,9 @@ const StackSection = () => {
     <section id="stack" className="py-4 border-b">
       <div className="section-container text-center py-1">
         <p className="text-engineering-gray mb-2 max-w-2xl mx-auto">
-          This website <strong>{hostName}</strong> is built with a modern stack
-          for speed, scalability, and great developer experience. The favicon
-          was generated using{" "}
+          <strong>{hostName}</strong> is built with a modern stack for speed,
+          scalability, and great developer experience. The favicon was generated
+          using{" "}
           <a
             href="https://favicon.io/"
             target="_blank"
