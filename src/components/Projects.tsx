@@ -187,7 +187,6 @@ const Projects: React.FC = () => (
         style={{ animationDelay: "0.2s" }}
       >
         <h2 className="heading-lg inline-flex items-center">
-          <span className="text-engineering-accent mr-3">03.</span>
           Portfolio of Work
         </h2>
         <p className="mt-4 text-engineering-gray max-w-2xl mx-auto">

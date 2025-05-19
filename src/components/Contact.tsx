@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -17,7 +16,9 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -34,47 +35,60 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    emailjs.send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-      },
-      PUBLIC_KEY
-    ).then((result) => {
-        setIsSubmitting(false);
-        toast({
-          title: "Message sent!",
-          description: "Thank you for your message. I'll get back to you soon.",
-        });
-        setFormData({ name: "", email: "", message: "" });
-      }, (error) => {
-        setIsSubmitting(false);
-        toast({
-          title: "Error",
-          description: "There was a problem sending your message. Please try again later.",
-          variant: "destructive"
-        });
-      });
+    emailjs
+      .send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          setIsSubmitting(false);
+          toast({
+            title: "Message sent!",
+            description:
+              "Thank you for your message. I'll get back to you soon.",
+          });
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          setIsSubmitting(false);
+          toast({
+            title: "Error",
+            description:
+              "There was a problem sending your message. Please try again later.",
+            variant: "destructive",
+          });
+        }
+      );
   };
 
   return (
-    <section id="contact" className="bg-white">
+    <section id="contact" className="bg-background transition-colors">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
+          <div
+            className="text-center mb-16 animate-fade-in opacity-0"
+            style={{ animationDelay: "0.2s" }}
+          >
             <h2 className="heading-lg inline-flex items-center">
-              <span className="text-engineering-accent mr-3">05.</span>
               Get In Touch
             </h2>
-            <p className="mt-4 text-engineering-gray max-w-2xl mx-auto">
-              Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+              Whether you have a question or just want to say hi, I'll try my
+              best to get back to you!
             </p>
           </div>
 
-          <Card className="border-none shadow-xl animate-fade-in opacity-0" style={{ animationDelay: '0.4s' }}>
+          <Card
+            className="border-none shadow-xl animate-fade-in opacity-0 bg-background transition-colors"
+            style={{ animationDelay: "0.4s" }}
+          >
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -129,8 +143,8 @@ const Contact = () => {
                     required
                   />
                 </div>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full bg-engineering-accent hover:bg-engineering-accent/90"
                   disabled={isSubmitting}
                 >
