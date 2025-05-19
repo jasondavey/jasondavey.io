@@ -21,15 +21,13 @@ const ProjectCard: React.FC<Project> = ({
   resultsImpact,
   archImage,
 }) => {
-  // idx starts at 1 in Projects.tsx
   const isEven = index % 2 === 0;
-  const [modalOpen, setModalOpen] = useState(false);
-  const [archModalOpen, setArchModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<"architecture" | "results">(
-    "architecture"
-  );
 
-  // Helper to count and render up to a max number of words, preserving paragraphs
+  const [archModalOpen, setArchModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<
+    "description" | "architecture" | "results"
+  >("description");
+
   function renderTruncatedDescription(
     node: React.ReactNode,
     maxWords: number,
@@ -51,7 +49,7 @@ const ProjectCard: React.FC<Project> = ({
       return node.toString() + " ";
     }
     if (Array.isArray(node)) {
-      return node.map((child, idx) =>
+      return node.map((child) =>
         renderTruncatedDescription(child, maxWords, wordCount)
       );
     }
@@ -65,7 +63,6 @@ const ProjectCard: React.FC<Project> = ({
     return null;
   }
 
-  // Helper to count total words in the description
   function countWords(node: React.ReactNode): number {
     if (typeof node === "string") return node.trim().split(/\s+/).length;
     if (typeof node === "number") return 1;
@@ -75,15 +72,20 @@ const ProjectCard: React.FC<Project> = ({
     return 0;
   }
 
-  const totalWords = countWords(description);
-  const isTruncated = totalWords > 25;
-  const truncatedDescription = renderTruncatedDescription(description, 25);
+  const techInfos = technologies
+    .map((tech) => ({ tech, info: techIconMap[tech] }))
+    .filter(({ info }) => !!info);
+
+  const groups: Record<string, typeof techInfos> = {};
+  techInfos.forEach(({ tech, info }) => {
+    const category = info.category;
+    if (!groups[category]) groups[category] = [];
+    groups[category].push({ tech, info });
+  });
 
   return (
     <>
-      {/* Tech icons and related links below title, spanning both columns */}
       <div className="w-full mb-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        {/* Related links (GitHub, Demo) */}
         <div className="flex gap-2 mt-2 lg:mt-0">
           {demo && showDemoButton && (
             <a
@@ -112,7 +114,6 @@ const ProjectCard: React.FC<Project> = ({
         } items-start gap-8 animate-fade-in opacity-0`}
         style={{ animationDelay: `${0.3 + index * 0.1}s` }}
       >
-        {/* IMAGE SECTION */}
         {image && (
           <div className="w-full lg:w-1/2 flex-shrink-0">
             <img
@@ -123,7 +124,6 @@ const ProjectCard: React.FC<Project> = ({
           </div>
         )}
 
-        {/* CONTENT SECTION */}
         <div className="w-full lg:w-1/2">
           <div className="text-engineering-accent font-mono text-sm mb-2">
             Featured Project
@@ -152,7 +152,7 @@ const ProjectCard: React.FC<Project> = ({
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.084-.729.084-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.809 1.304 3.495.997.107-.775.418-1.305.762-1.605-2.665-.303-5.466-1.334-5.466-5.933 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.984-.399 3.003-.404 1.018.005 2.046.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.654 1.653.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.804 5.625-5.475 5.921.43.371.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 21.796 24 17.299 24 12c0-6.627-5.373-12-12-12z" />
+                    <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387..." />
                   </svg>
                   GitHub
                 </a>
@@ -177,248 +177,163 @@ const ProjectCard: React.FC<Project> = ({
               )}
             </div>
           </div>
-          {/* Tech icon group below title, spanning full row */}
-          <div className="flex-1">
-            {/* Technology Stack Section with border */}
-            <div className="w-full mb-2 p-4 rounded-xl border border-gray-200 bg-gray-50">
-              <h4 className="text-lg font-semibold tracking-wide text-gray-800 mb-4 border-b border-gray-200 pb-1 uppercase">
-                Technology Stack
-              </h4>
-              {(() => {
-                const techInfos = technologies
-                  .map((tech) => ({ tech, info: techIconMap[tech] }))
-                  .filter(({ info }) => !!info);
-                const groups: Record<
-                  string,
-                  { tech: string; info: (typeof techInfos)[0]["info"] }[]
-                > = {};
-                techInfos.forEach(({ tech, info }) => {
-                  const category = info.category;
-                  if (!groups[category]) groups[category] = [];
-                  groups[category].push({ tech, info });
-                });
-                return (
-                  <div className="flex flex-wrap gap-8 w-full">
-                    {Object.entries(groups).map(([category, items]) => (
-                      <div key={category} className="mb-2">
-                        <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
-                          {category}
-                        </div>
-                        <div className="flex flex-wrap gap-2 w-full justify-center">
-                          {items.map(({ tech, info }) => (
-                            <a
-                              key={tech}
-                              href={info.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-2xl hover:scale-110 transition-transform"
-                              title={info.icon.props.title}
-                            >
-                              {info.icon}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
+
+          <div className="w-full mb-2 p-4 rounded-xl border border-gray-200 bg-gray-50">
+            <h4 className="text-lg font-semibold tracking-wide text-gray-800 mb-4 border-b border-gray-200 pb-1 uppercase">
+              Technology Stack
+            </h4>
+            <div className="flex flex-wrap gap-8 w-full">
+              {Object.entries(groups).map(([category, items]) => (
+                <div key={category} className="mb-2">
+                  <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
+                    {category}
+                  </div>
+                  <div className="flex flex-wrap gap-2 w-full justify-center">
+                    {items.map(({ tech, info }) => (
+                      <a
+                        key={tech}
+                        href={info.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-2xl hover:scale-110 transition-transform"
+                        title={info.icon.props.title}
+                      >
+                        {info.icon}
+                      </a>
                     ))}
-                    {/* Render unknown techs */}
-                    {technologies.filter((tech) => !techIconMap[tech]).length >
-                      0 && (
-                      <div className="mb-2">
-                        <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
-                          Other
-                        </div>
-                        <div className="flex flex-wrap gap-2 w-full justify-center">
-                          {technologies
-                            .filter((tech) => !techIconMap[tech])
-                            .map((tech) => (
-                              <span
-                                key={tech}
-                                className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
-                );
-              })()}
-            </div>
-          </div>
-          <div className="w-full mb-4"></div>
-          <div className="mb-4 rounded-xl bg-muted p-4 shadow-lg transition-colors">
-            <div className="flex flex-col h-full justify-between">
-              {isTruncated ? (
-                <>
-                  <span>{truncatedDescription}</span>
-                  <div className="flex justify-end mt-2">
-                    <button
-                      className="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-engineering-accent"
-                      onClick={() => setModalOpen(true)}
-                      aria-label="Click to learn more"
-                      title="Click to learn more"
-                    >
-                      <FiMoreHorizontal className="w-6 h-6 text-engineering-accent" />
-                    </button>
+                </div>
+              ))}
+
+              {technologies.filter((tech) => !techIconMap[tech]).length > 0 && (
+                <div className="mb-2">
+                  <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
+                    Other
                   </div>
-                </>
-              ) : (
-                description
+                  <div className="flex flex-wrap gap-2 w-full justify-center">
+                    {technologies
+                      .filter((tech) => !techIconMap[tech])
+                      .map((tech) => (
+                        <span
+                          key={tech}
+                          className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                  </div>
+                </div>
               )}
             </div>
           </div>
-          {/* Tabbed interface for Key Architecture and Results & Impact */}
-          {(keyArchitecture || resultsImpact) && (
-            <div className="mb-6">
-              <div className="flex gap-2 mb-4">
-                <button
-                  className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                    activeTab === "architecture"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:bg-accent"
-                  }`}
-                  onClick={() => setActiveTab("architecture")}
-                  aria-selected={activeTab === "architecture"}
-                  aria-controls="architecture-panel"
-                >
-                  Key Architecture
-                </button>
-                <button
-                  className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                    activeTab === "results"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:bg-accent"
-                  }`}
-                  onClick={() => setActiveTab("results")}
-                  aria-selected={activeTab === "results"}
-                  aria-controls="results-panel"
-                >
-                  Results & Impact
-                </button>
-              </div>
-              <div>
-                {activeTab === "architecture" && (
-                  <div id="architecture-panel">
-                    {archImage && (
-                      <div className="relative mb-4">
-                        <img
-                          src={archImage}
-                          alt="Architecture diagram"
-                          className="w-full max-h-48 object-cover rounded-lg cursor-pointer hover:opacity-80 transition"
-                          onClick={() => setArchModalOpen(true)}
-                        />
-                        <button
-                          className="absolute bottom-2 right-2 bg-background/80 rounded-full p-2 shadow"
-                          onClick={() => setArchModalOpen(true)}
-                          aria-label="Zoom image"
-                        >
-                          <svg
-                            className="w-5 h-5 text-primary"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M21 21l-4.35-4.35M10.5 18A7.5 7.5 0 1018 10.5 7.5 7.5 0 0010.5 18z"></path>
-                          </svg>
-                        </button>
-                      </div>
-                    )}
-                    {keyArchitecture && (
-                      <p className="text-foreground whitespace-pre-line">
-                        {keyArchitecture}
-                      </p>
-                    )}
-                  </div>
-                )}
-                {activeTab === "results" && (
-                  <div id="results-panel">
-                    {resultsImpact && (
-                      <p className="text-foreground whitespace-pre-line">
-                        {resultsImpact}
-                      </p>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-          {/* Modal for architecture image */}
-          {archModalOpen && archImage && (
-            <div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
-              onClick={() => setArchModalOpen(false)}
-              aria-modal="true"
-              role="dialog"
-            >
-              <div
-                className="bg-background text-foreground rounded-xl shadow-xl border border-border max-w-3xl w-full p-6 relative transition-colors"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  className="absolute top-2 right-2 text-xl text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => setArchModalOpen(false)}
-                  aria-label="Close"
-                >
-                  ×
-                </button>
-                <img
-                  src={archImage}
-                  alt="Architecture Full"
-                  className="w-full rounded-lg mb-4"
-                />
-                {keyArchitecture && (
-                  <div className="text-foreground whitespace-pre-line">
-                    {keyArchitecture}
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
 
-          {details}
-          <div className="flex gap-4 mt-4">
-            {showDemoButton && demo && (
-              <a
-                href={demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 bg-engineering-accent text-white rounded hover:bg-green-600 transition"
+          <div className="flex gap-2 mb-4">
+            <button
+              className={`px-4 py-2 rounded-full font-medium transition-colors ${
+                activeTab === "description"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-muted-foreground hover:bg-accent"
+              }`}
+              onClick={() => setActiveTab("description")}
+              aria-selected={activeTab === "description"}
+              role="tab"
+            >
+              Description
+            </button>
+            {keyArchitecture && (
+              <button
+                className={`px-4 py-2 rounded-full font-medium transition-colors ${
+                  activeTab === "architecture"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                }`}
+                onClick={() => setActiveTab("architecture")}
+                aria-selected={activeTab === "architecture"}
+                role="tab"
               >
-                Demo <FaExternalLinkAlt className="ml-2" />
-              </a>
+                Key Architecture
+              </button>
+            )}
+            {resultsImpact && (
+              <button
+                className={`px-4 py-2 rounded-full font-medium transition-colors ${
+                  activeTab === "results"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                }`}
+                onClick={() => setActiveTab("results")}
+                aria-selected={activeTab === "results"}
+                role="tab"
+              >
+                Results & Impact
+              </button>
+            )}
+          </div>
+
+          <div
+            className="rounded-xl bg-background p-4 transition-colors min-h-[120px] max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-engineering-accent/60 scrollbar-track-transparent"
+            role="tabpanel"
+          >
+            {activeTab === "description" && (
+              <div className="whitespace-pre-line text-foreground">
+                {description}
+              </div>
+            )}
+            {activeTab === "architecture" && keyArchitecture && (
+              <div className="whitespace-pre-line text-foreground">
+                {keyArchitecture}
+                {details}
+                <div className="flex gap-4 mt-4">
+                  {showDemoButton && demo && (
+                    <a
+                      href={demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 bg-engineering-accent text-white rounded hover:bg-green-600 transition"
+                    >
+                      Demo <FaExternalLinkAlt className="ml-2" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
+            {activeTab === "results" && resultsImpact && (
+              <div className="whitespace-pre-line text-foreground">
+                {resultsImpact}
+              </div>
             )}
           </div>
         </div>
-        {/* Modal for full description */}
-        {modalOpen && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-            onClick={() => setModalOpen(false)}
-            aria-modal="true"
-            role="dialog"
-          >
-            <div
-              className="bg-background text-foreground rounded-lg shadow-lg border border-border max-w-[900px] w-full p-8 relative transition-colors"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="absolute top-2 right-2 text-xl text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setModalOpen(false)}
-                aria-label="Close"
-              >
-                ×
-              </button>
-              <h3 className="text-2xl font-bold mb-4">{title}</h3>
-              <div className="rounded-xl bg-muted p-4 whitespace-pre-line transition-colors">
-                {description}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
+
+      {archModalOpen && archImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+          onClick={() => setArchModalOpen(false)}
+          aria-modal="true"
+          role="dialog"
+        >
+          <div
+            className="bg-background text-foreground rounded-xl shadow-xl border border-border max-w-3xl w-full p-6 relative transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2 right-2 text-xl text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setArchModalOpen(false)}
+              aria-label="Close"
+            >
+              ×
+            </button>
+            <img
+              src={archImage}
+              alt="Architecture Full"
+              className="w-full rounded-lg mb-4"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 };
+
 export default ProjectCard;
