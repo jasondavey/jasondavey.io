@@ -60,6 +60,7 @@ const ProjectCard: React.FC<Project> = ({
   resultsImpact,
   archImage,
   businessView,
+  businessTerms,
 }) => {
   const isEven = index % 2 === 0;
 
@@ -67,41 +68,6 @@ const ProjectCard: React.FC<Project> = ({
   const [activeTab, setActiveTab] = useState<
     "business" | "architecture" | "results"
   >(businessView ? "business" : "architecture");
-
-  function renderTruncatedDescription(
-    node: React.ReactNode,
-    maxWords: number,
-    wordCount = { count: 0 }
-  ): React.ReactNode {
-    if (typeof node === "string") {
-      const words = node.split(/\s+/);
-      if (wordCount.count >= maxWords) return null;
-      const remaining = maxWords - wordCount.count;
-      if (words.length > remaining) {
-        wordCount.count = maxWords;
-        return words.slice(0, remaining).join(" ") + "... ";
-      } else {
-        wordCount.count += words.length;
-        return node + " ";
-      }
-    }
-    if (typeof node === "number") {
-      return node.toString() + " ";
-    }
-    if (Array.isArray(node)) {
-      return node.map((child) =>
-        renderTruncatedDescription(child, maxWords, wordCount)
-      );
-    }
-    if (React.isValidElement(node)) {
-      return React.cloneElement(
-        node,
-        node.props,
-        renderTruncatedDescription(node.props.children, maxWords, wordCount)
-      );
-    }
-    return null;
-  }
 
   const techInfos = technologies
     .map((tech) => ({ tech, info: techIconMap[tech] }))
@@ -163,7 +129,6 @@ const ProjectCard: React.FC<Project> = ({
           </div>
           <div className="flex items-center justify-between mb-2 w-full">
             <div className="flex items-center gap-2 min-w-0">
-              {/* Company logo as clickable link */}
               <a
                 href={companyUrl || "https://www.jasondavey.io"}
                 target="_blank"
@@ -177,7 +142,21 @@ const ProjectCard: React.FC<Project> = ({
                   style={{ minWidth: 32, minHeight: 32 }}
                 />
               </a>
-              <h3 className="text-2xl font-bold m-0 p-0 truncate">{title}</h3>
+              <div className="flex flex-col">
+                <h3 className="text-2xl font-bold m-0 p-0 truncate">{title}</h3>
+                {businessTerms && businessTerms.length > 0 && (
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-muted-foreground">
+                    {businessTerms.map((term, i) => (
+                      <span key={i} className="inline-flex items-center">
+                        {term}
+                        {i < businessTerms.length - 1 && (
+                          <span className="mx-2 text-xs">&bull;</span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
             <div className="flex gap-2 ml-4">
               {github && showCodeButton && (

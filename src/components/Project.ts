@@ -1,5 +1,9 @@
 export interface Project {
   /**
+   * Optional business summary terms to display as bullet points under the project title.
+   */
+  businessTerms?: string[];
+  /**
    * Optional business view content for the Business View tab.
    */
   businessView?: React.ReactNode;

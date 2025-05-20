@@ -46,6 +46,7 @@ const Projects: React.FC = () => (
             resultsImpact={project.resultsImpact}
             archImage={project.archImage}
             businessView={project.businessView}
+            businessTerms={project.businessTerms}
           />
         ))}
       </div>
