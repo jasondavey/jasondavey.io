@@ -102,15 +102,6 @@ const ProjectCard: React.FC<Project> = ({
     return null;
   }
 
-  function countWords(node: React.ReactNode): number {
-    if (typeof node === "string") return node.trim().split(/\s+/).length;
-    if (typeof node === "number") return 1;
-    if (Array.isArray(node))
-      return node.reduce((sum, child) => sum + countWords(child), 0);
-    if (React.isValidElement(node)) return countWords(node.props.children);
-    return 0;
-  }
-
   const techInfos = technologies
     .map((tech) => ({ tech, info: techIconMap[tech] }))
     .filter(({ info }) => !!info);

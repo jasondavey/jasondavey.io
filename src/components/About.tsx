@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { User, MoreHorizontal } from "lucide-react";
+import { User } from "lucide-react";
 import WorldCitiesLine from "@/components/WorldCitiesLine";
 
 const About = () => {
@@ -72,8 +72,10 @@ const About = () => {
         </div>
       </div>
       {/* World cities line section */}
-      <div className="mt-12 w-full">
-        <h3 className="text-center text-lg font-semibold mb-4 text-engineering-accent">Where I have Worked In the World</h3>
+      <div className="mt-4 w-full">
+        <h3 className="text-center text-lg font-semibold mb-2 text-engineering-accent">
+          Where I have Worked In the World
+        </h3>
         <div className="w-full flex justify-center">
           {/* Responsive, dark-mode aware SVG as React component */}
           <WorldCitiesLine className="w-full max-w-3xl h-auto" />
