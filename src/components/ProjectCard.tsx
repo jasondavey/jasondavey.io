@@ -1,8 +1,46 @@
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { FiMoreHorizontal } from "react-icons/fi";
 
 import React, { useState } from "react";
 import { Project } from "./Project";
+
+const getIndustryFromDescription = (
+  title: string,
+  description: React.ReactNode
+): string => {
+  // Heuristic: match keywords in title/description
+  const str = `${title} ${
+    typeof description === "string" ? description : ""
+  }`.toLowerCase();
+  if (
+    str.includes("financ") ||
+    str.includes("lending") ||
+    str.includes("score")
+  )
+    return "Fintech";
+  if (str.includes("video") || str.includes("caption") || str.includes("media"))
+    return "Media";
+  if (str.includes("health")) return "Healthcare";
+  if (str.includes("ai") || str.includes("machine learning")) return "AI/ML";
+  if (str.includes("education") || str.includes("learning")) return "EdTech";
+  if (str.includes("logistics") || str.includes("shipping")) return "Logistics";
+  return "General";
+};
+
+const IndustryBadge: React.FC<{
+  title: string;
+  description: React.ReactNode;
+}> = ({ title, description }) => {
+  const industry = getIndustryFromDescription(title, description);
+  return (
+    <span
+      className="inline-block bg-blue-200 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-full border border-blue-300 uppercase tracking-widest"
+      title="Industry"
+      style={{ letterSpacing: "0.05em" }}
+    >
+      {industry}
+    </span>
+  );
+};
 
 const ProjectCard: React.FC<Project> = ({
   title,
@@ -125,8 +163,10 @@ const ProjectCard: React.FC<Project> = ({
         )}
 
         <div className="w-full lg:w-1/2">
-          <div className="text-engineering-accent font-mono text-sm mb-2">
-            Featured Project
+          <div className="flex items-center gap-3 text-engineering-accent font-mono text-sm mb-2">
+            <span>Featured Project</span>
+            {/* Industry badge */}
+            <IndustryBadge title={title} description={description} />
           </div>
           <div className="flex items-center justify-between mb-2 w-full">
             <div className="flex items-center gap-2 min-w-0">

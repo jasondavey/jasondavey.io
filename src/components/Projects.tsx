@@ -12,14 +12,15 @@ const projects: Project[] = [
         <p className="mb-2">
           VeraScore is a multi-tenant{" "}
           <strong>business to business to consumer</strong> (B2B2C) platform
-          designed to empower partners—such as fintechs, lenders, or financial
-          coaches—to launch their own branded version of the product.
+          designed to empower partners — financial institutions to launch their
+          own branded version of the platform.
         </p>
         <p className="mb-2">
-          Each partner is provisioned with a set of customized React single-page
-          applications (SPAs) including Members (end-user experience), Lenders
-          (financial services interface), and Tardis (admin console), each
-          deployed under a unique subdomain (e.g., partner-y.myverascore.com).
+          Each partner is provisioned with a set of applications including a
+          customer facing onboarding and dashboard (end-user experience), a
+          Lenders (aggregated member interface), and an Administrator
+          application. Each deployed under a unique subdomain (e.g.,
+          foobank.myverascore.com).
         </p>
         <p className="mb-2">
           Partner-specific data configurations are managed centrally in a Client
@@ -38,8 +39,7 @@ const projects: Project[] = [
         </p>
         <p className="mb-2">
           Data privacy and isolation are a top priority, with personally
-          identifiable information (PII) stored in Auth0 and financial data
-          siloed per tenant in Fauna databases.
+          identifiable information (PII) and financial data siloed per tenant.
         </p>
       </>
     ),
@@ -91,7 +91,7 @@ Integrations: Plaid, Equifax, Twilio, Mailgun, Datadog
 Broader, fairer lending decisions
 Improved onboarding with SMS and address verification
 `,
-    archImage: "/verascore_architecture.svg",
+    archImage: "verascore_architecture.png",
   },
   {
     title: "Video Profanity & Captioning Pipeline",
