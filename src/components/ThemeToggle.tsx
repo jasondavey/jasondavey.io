@@ -4,10 +4,13 @@ import { Sun, Moon } from "lucide-react";
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
-      if (document.documentElement.classList.contains('dark')) return 'dark';
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-      return 'dark';
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'light' || storedTheme === 'dark') {
+        return storedTheme;
+      }
+      // Fallback to system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return prefersDark ? 'dark' : 'light';
     }
     return 'dark';
   });
@@ -20,6 +23,7 @@ export default function ThemeToggle() {
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
     }
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
