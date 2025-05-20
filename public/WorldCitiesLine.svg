@@ -1,0 +1,31 @@
+<svg width="600" height="100" viewBox="0 0 600 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Horizontal line -->
+  <line x1="50" y1="50" x2="550" y2="50" stroke="#222" stroke-width="2" class="city-line" />
+
+  <!-- San Francisco (approx 122°W) -->
+  <circle cx="70" cy="50" r="7" fill="#0074D9" />
+  <text x="70" y="75" font-size="14" text-anchor="middle" class="city-label">San Francisco</text>
+
+  <!-- Atlanta (approx 84°W) -->
+  <circle cx="170" cy="50" r="7" fill="#FF851B" />
+  <text x="170" y="75" font-size="14" text-anchor="middle" class="city-label">Atlanta</text>
+
+  <!-- London (approx 0°) -->
+  <circle cx="340" cy="50" r="7" fill="#2ECC40" />
+  <text x="340" y="75" font-size="14" text-anchor="middle" class="city-label">London</text>
+
+  <!-- Singapore (approx 104°E) -->
+  <circle cx="500" cy="50" r="7" fill="#B10DC9" />
+  <text x="500" y="75" font-size="14" text-anchor="middle" class="city-label">Singapore</text>
+  <script type="application/ecmascript"><![CDATA[
+    (function() {
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var labelColor = dark ? '#e5e7eb' : '#222';
+      var lineColor = dark ? '#e5e7eb' : '#222';
+      var labels = document.querySelectorAll('.city-label');
+      var lines = document.querySelectorAll('.city-line');
+      labels.forEach(function(el) { el.setAttribute('fill', labelColor); });
+      lines.forEach(function(el) { el.setAttribute('stroke', lineColor); });
+    })();
+  ]]></script>
+</svg>
