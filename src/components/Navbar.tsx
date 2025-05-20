@@ -9,6 +9,7 @@ import { TbFileCv } from "react-icons/tb";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +25,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 text-white bg-gray-900/80 border-b border-gray-700 backdrop-blur-lg shadow-md"
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 text-white bg-gray-900/80 border-b border-gray-700 backdrop-blur-lg shadow-md">
       <div className="container flex items-center justify-between h-16 md:h-20">
         <a href="#" className="flex items-center gap-2">
           <Code className="h-6 w-6 text-white" />
@@ -112,7 +111,14 @@ const Navbar = () => {
         {/* Theme toggle button */}
         <ThemeToggle />
 
-        <Button variant="ghost" size="icon" className="md:hidden">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+        >
           <span className="sr-only">Toggle menu</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -131,6 +137,84 @@ const Navbar = () => {
             <line x1="4" y1="18" x2="20" y2="18" />
           </svg>
         </Button>
+
+        {/* Mobile menu overlay */}
+        {menuOpen && (
+          <div
+            id="mobile-menu"
+            className="fixed inset-0 z-[60] bg-gray-900/95 backdrop-blur-md flex flex-col items-center justify-start pt-24 space-y-8 md:hidden animate-fade-in"
+          >
+            <nav className="flex flex-col items-center gap-6 w-full">
+              <a
+                href="#projects"
+                className="text-lg font-medium text-white hover:text-blue-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                <strong>Portfolio</strong>
+              </a>
+              <a
+                href="#about"
+                className="text-lg font-medium text-white hover:text-blue-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                About
+              </a>
+              <a
+                href="#skills"
+                className="text-lg font-medium text-white hover:text-blue-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                Skills
+              </a>
+              <a
+                href="#experience"
+                className="text-lg font-medium text-white hover:text-blue-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                Experience
+              </a>
+              <a
+                href="#contact"
+                className="text-lg font-medium text-white hover:text-blue-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contact
+              </a>
+            </nav>
+            <div className="flex items-center gap-4 mt-6">
+              <a
+                href="https://github.com/jasondavey/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <FaGithubSquare className="h-6 w-6 text-white hover:text-gray-300" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jasondavey/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className="h-6 w-6 text-white hover:text-blue-300" />
+              </a>
+              <a
+                href="https://x.com/ydohdohdoh"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
+              >
+                <FaSquareXTwitter className="h-6 w-6 text-white hover:text-gray-300" />
+              </a>
+              <a href="mailto:jasonrdavey@gmail.com" aria-label="Email">
+                <SiGmail className="h-6 w-6 text-white hover:text-red-300" />
+              </a>
+              <a href="/resume.pdf" download>
+                <TbFileCv className="h-7 w-7 text-white hover:text-gray-300" />
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
