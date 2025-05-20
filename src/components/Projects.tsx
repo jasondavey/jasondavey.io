@@ -7,6 +7,7 @@ import { Project } from "./Project";
 const projects: Project[] = [
   {
     title: "Financial Health Scoring Platform",
+    companyUrl: "https://www.myverascore.com/", 
     description: (
       <>
         <p className="mb-2">
@@ -95,6 +96,7 @@ Improved onboarding with SMS and address verification
   },
   {
     title: "Video Profanity & Captioning Pipeline",
+    companyUrl: "https://www.jasondavey.io", 
     description: (
       <>
         <p className="mb-2">
@@ -211,6 +213,7 @@ const Projects: React.FC = () => (
             showDemoButton={project.showDemoButton}
             showCodeButton={project.showCodeButton}
             companyIcon={project.companyIcon || "/jdLogo.png"}
+            companyUrl={project.companyUrl}
             keyArchitecture={project.keyArchitecture}
             resultsImpact={project.resultsImpact}
             archImage={project.archImage}

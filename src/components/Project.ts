@@ -1,4 +1,5 @@
 export interface Project {
+  companyUrl?: string;
   index: number;
   title: string;
   description: React.ReactNode; // or string or Element

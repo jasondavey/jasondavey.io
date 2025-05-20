@@ -55,6 +55,7 @@ const ProjectCard: React.FC<Project> = ({
   showDemoButton = true,
   showCodeButton = true,
   companyIcon,
+  companyUrl,
   keyArchitecture,
   resultsImpact,
   archImage,
@@ -170,12 +171,20 @@ const ProjectCard: React.FC<Project> = ({
           </div>
           <div className="flex items-center justify-between mb-2 w-full">
             <div className="flex items-center gap-2 min-w-0">
-              <img
-                src={companyIcon || "/jdLogo.png"}
-                alt="Company Logo"
-                className="w-8 h-8 rounded-full object-cover flex-shrink-0"
-                style={{ minWidth: 32, minHeight: 32 }}
-              />
+              {/* Company logo as clickable link */}
+              <a
+                href={companyUrl || "https://www.jasondavey.io"}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Company Website"
+              >
+                <img
+                  src={companyIcon || "/jdLogo.png"}
+                  alt="Company Logo"
+                  className="w-8 h-8 rounded-full object-cover flex-shrink-0 hover:ring-2 hover:ring-blue-400 transition"
+                  style={{ minWidth: 32, minHeight: 32 }}
+                />
+              </a>
               <h3 className="text-2xl font-bold m-0 p-0 truncate">{title}</h3>
             </div>
             <div className="flex gap-2 ml-4">
