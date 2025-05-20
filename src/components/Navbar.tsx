@@ -6,23 +6,11 @@ import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { FaGithubSquare } from "react-icons/fa";
 import { TbFileCv } from "react-icons/tb";
+import { FaCoffee } from "react-icons/fa";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 text-white bg-gray-900/80 border-b border-gray-700 backdrop-blur-lg shadow-md">
@@ -64,6 +52,16 @@ const Navbar = () => {
           >
             Contact
           </a>
+          <a
+            href="https://www.buymeacoffee.com/jasondavey"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-yellow-400 hover:text-yellow-300 transition-colors"
+            aria-label="Buy me a coffee"
+            title="Chat?"
+          >
+            <FaCoffee className="h-5 w-5" />
+          </a>
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -86,6 +84,7 @@ const Navbar = () => {
             >
               <FaLinkedin className="h-5 w-5 text-white hover:text-blue-300" />
             </a>
+
             <a
               href="https://x.com/ydohdohdoh"
               target="_blank"
@@ -197,6 +196,16 @@ const Navbar = () => {
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="h-6 w-6 text-white hover:text-blue-300" />
+              </a>
+              <a
+                href="https://www.buymeacoffee.com/jasondavey"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Buy me a coffee"
+                title="Buy me a coffee"
+                className="text-yellow-400 hover:text-yellow-300 transition-colors"
+              >
+                <FaCoffee className="h-6 w-6" />
               </a>
               <a
                 href="https://x.com/ydohdohdoh"
