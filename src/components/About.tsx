@@ -11,10 +11,7 @@ const About = () => {
             className="lg:w-1/2 animate-fade-in opacity-0"
             style={{ animationDelay: "0.3s" }}
           >
-            <h2 className="heading-lg mb-6 flex items-center">
-              <span className="text-primary mr-3">01.</span>
-              About Me
-            </h2>
+            <h2 className="heading-lg mb-6 flex items-center">About Me</h2>
             <div className="space-y-4 text-engineering-gray">
               <p>
                 I'm passionate about guiding engineering teams to deliver
@@ -56,7 +53,9 @@ const About = () => {
                   </Avatar>
                 </div>
                 <div>
-                  <h3 className="heading-md mb-3 text-primary font-bold drop-shadow">Jason Davey</h3>
+                  <h3 className="heading-md mb-3 text-primary font-bold drop-shadow">
+                    Jason Davey
+                  </h3>
                   <p className="text-engineering-gray mb-3">VP Engineering</p>
                   <p className="text-sm text-engineering-gray">
                     Based in Decatur, GA
