@@ -1,4 +1,8 @@
 export interface Project {
+  /**
+   * Optional business view content for the Business View tab.
+   */
+  businessView?: React.ReactNode;
   companyUrl?: string;
   index: number;
   title: string;

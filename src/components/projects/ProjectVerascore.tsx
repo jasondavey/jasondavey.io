@@ -3,6 +3,33 @@ import { VerascoreTechMap } from "@/constants/verascore";
 import { Technology } from "../../constants/TechnologyEnum";
 
 const ProjectVerascore: Project = {
+  businessView: (
+    <>
+      <p className="mb-2">
+        <strong>Problem:</strong> Many consumers and small businesses are
+        excluded from fair access to credit due to traditional credit scoring
+        models that fail to consider broader financial behaviors and alternative
+        data sources. This perpetuates inequities in lending and limits
+        opportunities for financial growth.
+      </p>
+      <p className="mb-2">
+        <strong>Purpose:</strong> VeraScore aims to democratize financial health
+        assessment by leveraging alternative data, advanced analytics, and a
+        multi-tenant cloud platform. The goal is to empower lenders with more
+        holistic, equitable, and data-driven decision-making tools, while
+        providing end-users with actionable insights to improve their financial
+        well-being.
+      </p>
+      <p className="mb-2">
+        <strong>Business Solution:</strong> By offering a B2B2C SaaS platform,
+        VeraScore enables financial institutions to launch branded, compliant,
+        and secure financial health scoring solutions. The platform supports
+        rapid onboarding, robust partner management, and seamless integration
+        with leading data providers, delivering measurable impact for both
+        lenders and consumers.
+      </p>
+    </>
+  ),
   title: "Financial Health Scoring Platform",
   companyUrl: "https://www.myverascore.com/",
   description: (

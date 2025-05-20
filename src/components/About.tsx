@@ -15,10 +15,10 @@ const About = () => {
             <h2 className="heading-lg mb-6 flex items-center">About Me</h2>
             <div className="space-y-4 text-engineering-gray">
               <p>
-                I'm passionate about guiding engineering teams to deliver
-                business value early and often. I'm deeply involved from
-                conception to release, fostering success through hands-on
-                technical and project leadership.
+                I'm highly personable and passionate about guiding engineering
+                teams to deliver business value early and often. I'm deeply
+                involved from conception to release, fostering success through
+                hands-on technical and project leadership.
               </p>
               <p>
                 I believe in employing community best practices and techniques

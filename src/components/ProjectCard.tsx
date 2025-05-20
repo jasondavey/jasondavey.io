@@ -59,13 +59,14 @@ const ProjectCard: React.FC<Project> = ({
   keyArchitecture,
   resultsImpact,
   archImage,
+  businessView,
 }) => {
   const isEven = index % 2 === 0;
 
   const [archModalOpen, setArchModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<
-    "description" | "architecture" | "results"
-  >("description");
+    "business" | "architecture" | "results"
+  >(businessView ? "business" : "architecture");
 
   function renderTruncatedDescription(
     node: React.ReactNode,
@@ -268,32 +269,32 @@ const ProjectCard: React.FC<Project> = ({
           </div>
 
           <div className="flex gap-2 mb-4">
-            <button
-              className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                activeTab === "description"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-accent"
-              }`}
-              onClick={() => setActiveTab("description")}
-              aria-selected={activeTab === "description"}
-              role="tab"
-            >
-              Description
-            </button>
-            {keyArchitecture && (
+            {businessView && (
               <button
                 className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                  activeTab === "architecture"
+                  activeTab === "business"
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground hover:bg-accent"
                 }`}
-                onClick={() => setActiveTab("architecture")}
-                aria-selected={activeTab === "architecture"}
+                onClick={() => setActiveTab("business")}
+                aria-selected={activeTab === "business"}
                 role="tab"
               >
-                Key Architecture
+                Business View
               </button>
             )}
+            <button
+              className={`px-4 py-2 rounded-full font-medium transition-colors ${
+                activeTab === "architecture"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-muted-foreground hover:bg-accent"
+              }`}
+              onClick={() => setActiveTab("architecture")}
+              aria-selected={activeTab === "architecture"}
+              role="tab"
+            >
+              Architecture
+            </button>
             {resultsImpact && (
               <button
                 className={`px-4 py-2 rounded-full font-medium transition-colors ${
@@ -314,14 +315,14 @@ const ProjectCard: React.FC<Project> = ({
             className="rounded-xl bg-background p-4 transition-colors min-h-[120px] max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-engineering-accent/60 scrollbar-track-transparent"
             role="tabpanel"
           >
-            {activeTab === "description" && (
+            {activeTab === "business" && businessView && (
               <div className="whitespace-pre-line text-foreground">
-                {description}
+                {businessView}
               </div>
             )}
-            {activeTab === "architecture" && keyArchitecture && (
+            {activeTab === "architecture" && (
               <div className="whitespace-pre-line text-foreground">
-                {keyArchitecture}
+                {description}
                 {details}
                 <div className="flex gap-4 mt-4">
                   {showDemoButton && demo && (
