@@ -89,22 +89,7 @@ const ProjectVerascore: Project = {
   github: "https://github.com/myverascore",
   demo: "https://www.myverascore.com/how-it-works",
   featured: true,
-  details: (
-    <>
-      <h3 className="font-semibold text-lg mb-1">Key Architecture</h3>
-      <ul className="list-disc ml-6 text-gray-700 mb-2">
-        <li>Three React SPAs (Members, Lenders, Tardis)</li>
-        <li>Centralized Auth (Auth0, RBAC, OAuth2)</li>
-        <li>FaunaDB for tenant-isolated data; S3 for file storage</li>
-        <li>Integrations: Plaid, Equifax, Twilio, Mailgun, Datadog</li>
-      </ul>
-      <h3 className="font-semibold text-lg mb-1">Results & Impact</h3>
-      <ul className="list-disc ml-6 text-gray-700">
-        <li>Broader, fairer lending decisions</li>
-        <li>Improved onboarding with SMS and address verification</li>
-      </ul>
-    </>
-  ),
+  details: <></>,
   companyIcon: "/verascore.png",
   showDemoButton: false,
   showCodeButton: false,
@@ -116,10 +101,100 @@ Centralized Auth (Auth0, RBAC, OAuth2)
 FaunaDB for tenant-isolated data; S3 for file storage
 Integrations: Plaid, Equifax, Twilio, Mailgun, Datadog
 `,
-  resultsImpact: `
-Broader, fairer lending decisions
-Improved onboarding with SMS and address verification
-`,
+  resultsImpact: (
+    <div className="space-y-8">
+      {/* Partners Section */}
+      <div>
+        <h4 className="font-semibold mb-2 text-foreground">
+          For Partners (Financial Institutions, Fintechs, Credit Unions)
+        </h4>
+        <ul className="list-disc ml-6 text-foreground space-y-3 mb-4">
+          <li>
+            <strong>Launch Inclusive Financial Products Quickly:</strong>{" "}
+            Partners can offer branded financial tools that promote equitable
+            access, leveraging VeraScore’s infrastructure to serve markets often
+            overlooked by traditional credit systems.
+          </li>
+          <li>
+            <strong>Data-Driven, Responsible Lending:</strong> Through
+            integrations with alternative data providers like Plaid and Equifax,
+            institutions can make more holistic and accurate credit decisions —
+            not solely based on traditional FICO scores — improving both risk
+            management and fairness.
+          </li>
+          <li>
+            <strong>Expand Market Reach:</strong> By lowering the barrier to
+            entry for creditworthy individuals with limited traditional credit
+            history, partners can tap into previously underserved segments,
+            opening up new revenue channels while contributing to financial
+            equity.
+          </li>
+          <li>
+            <strong>Stay Compliant and Secure at Scale:</strong> Advanced
+            multi-tenant isolation and regulatory-grade data handling ensure
+            partners can scale outreach while maintaining rigorous privacy and
+            compliance standards.
+          </li>
+        </ul>
+      </div>
+      <hr className="my-4 border-t border-gray-200" />
+      {/* End Users Section */}
+      <div>
+        <h4 className="font-semibold mb-2 text-foreground">
+          For End Users (Consumers of Partner Services)
+        </h4>
+        <ul className="list-disc ml-6 text-foreground space-y-3 mb-4">
+          <li>
+            <strong>Access to Fair Credit Opportunities:</strong> Individuals
+            with limited credit history but strong financial behaviors (e.g.,
+            consistent cash flow, bill payments) can be fairly evaluated, giving
+            them a real chance to access credit, build financial stability, and
+            thrive.
+          </li>
+          <li>
+            <strong>Dignified Digital Experience:</strong> By interacting with a
+            trusted, branded interface—often their existing financial
+            provider—users feel respected and empowered rather than excluded or
+            misjudged by legacy systems.
+          </li>
+          <li>
+            <strong>Transparent, Secure Engagement:</strong> Through the use of
+            OAuth2, role-based access control (RBAC), and industry-standard
+            encryption, users can confidently share personal and financial
+            information in exchange for meaningful financial opportunities.
+          </li>
+        </ul>
+      </div>
+      <hr className="my-4 border-t border-gray-200" />
+      {/* Lenders & Admins Section */}
+      <div>
+        <h4 className="font-semibold mb-2 text-foreground">
+          For Lenders and Administrators (Internal Users of Partner
+          Organizations)
+        </h4>
+        <ul className="list-disc ml-6 text-foreground space-y-3 mb-4">
+          <li>
+            <strong>Equity-Aligned Underwriting Tools:</strong> The lender
+            interface aggregates user data in a way that supports nuanced and
+            responsible decision-making, enabling staff to see the full
+            financial picture—not just credit scores.
+          </li>
+          <li>
+            <strong>Configurable Lending Policies:</strong> Administrators can
+            adjust lending logic and risk thresholds within a centralized
+            registry, allowing for tailored credit products aimed at specific
+            communities or borrower profiles.
+          </li>
+          <li>
+            <strong>Improved Efficiency with Impact:</strong> Staff are equipped
+            with tools that not only streamline operations but also directly
+            contribute to fairer lending outcomes and better borrower-lender
+            relationships.
+          </li>
+        </ul>
+      </div>
+    </div>
+  ),
   archImage: "verascore_architecture.png",
 };
 

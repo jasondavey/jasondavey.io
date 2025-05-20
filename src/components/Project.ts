@@ -21,6 +21,6 @@ export interface Project {
     { category: string; icon: JSX.Element; url: string }
   >;
   keyArchitecture?: string;
-  resultsImpact?: string;
+  resultsImpact?: React.ReactNode;
   archImage?: string;
 }
