@@ -15,7 +15,8 @@ const getIndustryFromDescription = (
   if (
     str.includes("financ") ||
     str.includes("lending") ||
-    str.includes("score")
+    str.includes("score") ||
+    str.includes("wealth")
   )
     return "Fintech";
   if (str.includes("video") || str.includes("caption") || str.includes("media"))
@@ -146,18 +147,18 @@ const ProjectCard: React.FC<Project> = ({
               <div className="flex flex-col">
                 <h3 className="text-2xl font-bold m-0 p-0 truncate">{title}</h3>
                 {businessTerms && businessTerms.length > 0 && (
-  <div className="flex flex-wrap gap-2 mt-2 mb-2">
-    {businessTerms.map((term, i) => (
-      <Badge
-        key={i}
-        variant="secondary"
-        className="bg-primary/10 text-primary font-semibold text-base border border-primary/20 px-3 py-1 rounded-full"
-      >
-        {term}
-      </Badge>
-    ))}
-  </div>
-)}
+                  <div className="flex flex-wrap gap-2 mt-2 mb-2">
+                    {businessTerms.map((term, i) => (
+                      <Badge
+                        key={i}
+                        variant="secondary"
+                        className="bg-primary/10 text-primary font-semibold text-base border border-primary/20 px-3 py-1 rounded-full"
+                      >
+                        {term}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
             <div className="flex gap-2 ml-4">
