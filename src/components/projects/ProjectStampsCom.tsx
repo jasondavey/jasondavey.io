@@ -82,10 +82,6 @@ const ProjectStampsCom: Project = {
       <h3 className="font-semibold text-lg mb-1">Key Technical Achievements</h3>
       <ul className="list-disc ml-6 text-700 mb-2">
         <li>
-          Engineered a patented system for optimizing international shipping
-          logistics
-        </li>
-        <li>
           Built cloud-native architecture for DYMO Stamps Online® platform
         </li>
         <li>Implemented CI/CD pipelines for improved release reliability</li>
@@ -105,16 +101,12 @@ const ProjectStampsCom: Project = {
   index: 5, // Adjust as needed based on where you want this to appear
   keyArchitecture: `
 Microservices architecture with distributed transaction coordination
-Cloud-native infrastructure on AWS with auto-scaling capabilities
-CI/CD pipelines with automated testing and deployment
-Infrastructure as Code using Terraform
 Secure, high-performance APIs handling time-sensitive postal transactions
 High-availability system design with active monitoring
 `,
   resultsImpact: `
-Successfully launched patented GlobalPost system optimizing international shipping
+Successfully launched GlobalPost system optimizing international shipping
 Released DYMO Stamps Online® to critical acclaim from PC Mag reviewers
-Elevated release reliability through automated deployment pipelines
 Accelerated engineering velocity with DevOps practices and infrastructure automation
 Delivered intuitive UX with focus on performance and service quality for compliant postal transactions
 `,
