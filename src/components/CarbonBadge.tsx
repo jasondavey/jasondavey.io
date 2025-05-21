@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CarbonInfoModal from './CarbonInfoModal';
 
-// Simple carbon badge component that doesn't rely on external scripts
+// Carbon badge component that opens a modal with detailed information
 const CarbonBadge: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const bgColor = darkMode ? '#0E0E10' : '#1A3A38';
   const hoverColor = darkMode ? '#1B1B1D' : '#2F5753';
   const linkColor = '#24BE74'; // Consistent green color for link
@@ -9,10 +11,12 @@ const CarbonBadge: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => 
 
   return (
     <div className="mt-4 flex justify-center">
-      <a 
-        href="https://websitecarbon.com" 
-        target="_blank" 
-        rel="noopener noreferrer"
+      {/* Show modal when open */}
+      <CarbonInfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      
+      {/* Badge that triggers the modal */}
+      <button
+        onClick={() => setIsModalOpen(true)}
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -57,7 +61,7 @@ const CarbonBadge: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => 
             <path d="M213.3 134.5v118.8H128L298.7 377V258.2H384"></path>
           </svg>
         </span>
-      </a>
+      </button>
     </div>
   );
 };
