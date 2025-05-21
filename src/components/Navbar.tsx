@@ -267,6 +267,7 @@ const Navbar = () => {
               >
                 <FaSquareXTwitter className="h-6 w-6 text-white hover:text-gray-300" />
               </a>
+
               <a
                 href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
                 aria-label="Email"

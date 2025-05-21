@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, User, MessageSquare } from "lucide-react";
+import { Mail, User, MessageSquare, Phone } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
@@ -83,10 +83,24 @@ const Contact = () => {
               Whether you have a question or just want to say hi, I'll try my
               best to get back to you!
             </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center mt-4 gap-2 sm:gap-6 text-foreground">
+              <div className="flex items-center gap-2">
+                <Phone className="w-5 h-5 text-engineering-accent" />
+                <a href={`tel:${import.meta.env.VITE_PHONE_NUMBER}`} className="hover:text-engineering-accent transition-colors">
+                  {import.meta.env.VITE_PHONE_NUMBER}
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-5 h-5 text-engineering-accent" />
+                <a href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`} className="hover:text-engineering-accent transition-colors">
+                  {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
+                </a>
+              </div>
+            </div>
           </div>
 
           <Card
-            className="border-none shadow-xl animate-fade-in opacity-0 bg-background transition-colors"
+            className="border-none shadow-xl animate-fade-in opacity-0 bg-white dark:bg-gray-50 transition-colors"
             style={{ animationDelay: "0.4s" }}
           >
             <CardContent className="p-8">
@@ -95,7 +109,7 @@ const Contact = () => {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <User className="w-4 h-4 text-engineering-accent" />
-                      <label htmlFor="name" className="text-sm font-medium">
+                      <label htmlFor="name" className="text-sm font-medium dark:text-gray-800">
                         Your Name
                       </label>
                     </div>
@@ -106,12 +120,13 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      className="dark:text-gray-800 dark:bg-white dark:border-gray-300"
                     />
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-engineering-accent" />
-                      <label htmlFor="email" className="text-sm font-medium">
+                      <label htmlFor="email" className="text-sm font-medium dark:text-gray-800">
                         Your Email
                       </label>
                     </div>
@@ -123,13 +138,14 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      className="dark:text-gray-800 dark:bg-white dark:border-gray-300"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <MessageSquare className="w-4 h-4 text-engineering-accent" />
-                    <label htmlFor="message" className="text-sm font-medium">
+                    <label htmlFor="message" className="text-sm font-medium dark:text-gray-800">
                       Your Message
                     </label>
                   </div>
@@ -141,6 +157,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    className="dark:text-gray-800 dark:bg-white dark:border-gray-300"
                   />
                 </div>
                 <Button
