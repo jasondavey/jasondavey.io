@@ -167,16 +167,31 @@ const ProjectCard: React.FC<Project> = ({
               Technology Stack
             </h4>
             <div className="flex flex-wrap gap-1.5">
-              {technologies.map((tech) => (
-                <Badge
-                  key={tech}
-                  variant="secondary"
-                  className="text-xs bg-engineering-light text-engineering-accent border border-engineering-light/50"
-                  title={tech}
-                >
-                  {tech}
-                </Badge>
-              ))}
+              {technologies.map((tech) => {
+                const techInfo = techIconMap[tech];
+                const TechBadge = (
+                  <Badge
+                    key={tech}
+                    variant="secondary"
+                    className="text-xs bg-engineering-light text-engineering-accent border border-engineering-light/50 hover:bg-engineering-light/80 transition-colors"
+                    title={tech}
+                  >
+                    {tech}
+                  </Badge>
+                );
+                
+                return techInfo?.url ? (
+                  <a 
+                    key={tech}
+                    href={techInfo.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    title={`Learn more about ${tech}`}
+                  >
+                    {TechBadge}
+                  </a>
+                ) : TechBadge;
+              })}
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import { Project } from "../Project";
 import { Technology } from "../../constants/TechnologyEnum";
+import { FreedomAdvisorsTechMap } from "@/constants/freedom";
 
 const ProjectEqisCapital: Project = {
   businessTerms: ["TAMP", "Portfolio Management", "Private Label"],
@@ -85,7 +86,7 @@ const ProjectEqisCapital: Project = {
   ),
   showDemoButton: false,
   showCodeButton: false,
-  techIconMap: {}, // Add a tech icon map if available
+  techIconMap: FreedomAdvisorsTechMap,
   // Updated to use the official Freedom Advisors favicon as a logo
   companyIcon: "/freedomadvisors-favicon.webp",
   demo: "",
