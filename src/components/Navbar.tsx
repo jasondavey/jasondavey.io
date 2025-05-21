@@ -29,7 +29,7 @@ const Navbar = () => {
             },
             {
               href: "#about",
-              label: "About",
+              label: "Who Am I",
               className:
                 "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
             },

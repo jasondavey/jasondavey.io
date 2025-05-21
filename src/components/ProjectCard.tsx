@@ -250,63 +250,55 @@ const ProjectCard: React.FC<Project> = ({
             </div>
           </div>
 
-          <div className="flex gap-2 mb-4">
-            {businessView && (
+          {/* Tabs in a full-width row with equal distribution */}
+          <div className="w-full grid grid-cols-1 mb-6 rounded-full overflow-hidden border border-border">
+            <div className={`w-full grid ${businessView && resultsImpact ? 'grid-cols-3' : businessView || resultsImpact ? 'grid-cols-2' : 'grid-cols-1'}`}>
+              {businessView && (
+                <button
+                  className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "business" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                  onClick={() => setActiveTab("business")}
+                  aria-selected={activeTab === "business"}
+                  role="tab"
+                >
+                  Business View
+                </button>
+              )}
               <button
-                className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                  activeTab === "business"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-accent"
-                }`}
-                onClick={() => setActiveTab("business")}
-                aria-selected={activeTab === "business"}
+                className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "architecture" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                onClick={() => setActiveTab("architecture")}
+                aria-selected={activeTab === "architecture"}
                 role="tab"
               >
-                Business View
+                Architecture
               </button>
-            )}
-            <button
-              className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                activeTab === "architecture"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-accent"
-              }`}
-              onClick={() => setActiveTab("architecture")}
-              aria-selected={activeTab === "architecture"}
-              role="tab"
-            >
-              Architecture
-            </button>
-            {resultsImpact && (
-              <button
-                className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                  activeTab === "results"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-accent"
-                }`}
-                onClick={() => setActiveTab("results")}
-                aria-selected={activeTab === "results"}
-                role="tab"
-              >
-                Results & Impact
-              </button>
-            )}
+              {resultsImpact && (
+                <button
+                  className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "results" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                  onClick={() => setActiveTab("results")}
+                  aria-selected={activeTab === "results"}
+                  role="tab"
+                >
+                  Results & Impact
+                </button>
+              )}
+            </div>
           </div>
 
+          {/* Tab content in a wider, more readable container */}
           <div
-            className="rounded-xl bg-background p-4 transition-colors min-h-[120px] max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-engineering-accent/60 scrollbar-track-transparent"
+            className="w-full rounded-xl bg-background p-6 border border-border transition-colors min-h-[150px] max-h-[350px] overflow-y-auto scrollbar-thin scrollbar-thumb-engineering-accent/60 scrollbar-track-transparent"
             role="tabpanel"
           >
             {activeTab === "business" && businessView && (
-              <div className="whitespace-pre-line text-foreground">
+              <div className="whitespace-pre-line text-foreground leading-relaxed">
                 {businessView}
               </div>
             )}
             {activeTab === "architecture" && (
-              <div className="whitespace-pre-line text-foreground">
+              <div className="whitespace-pre-line text-foreground leading-relaxed">
                 {description}
                 {details}
-                <div className="flex gap-4 mt-4">
+                <div className="flex gap-4 mt-6">
                   {showDemoButton && demo && (
                     <a
                       href={demo}
@@ -321,7 +313,7 @@ const ProjectCard: React.FC<Project> = ({
               </div>
             )}
             {activeTab === "results" && resultsImpact && (
-              <div className="whitespace-pre-line text-foreground">
+              <div className="whitespace-pre-line text-foreground leading-relaxed">
                 {resultsImpact}
               </div>
             )}

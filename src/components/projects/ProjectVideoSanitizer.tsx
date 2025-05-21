@@ -120,8 +120,7 @@ FFmpeg for precise audio redaction and subtitle overlay
 Custom profanity filter with time-aligned beep overlays
 Structured S3 directories for traceable asset management
 `,
-  resultsImpact: `
-Automated, scalable moderation for video platforms
+  resultsImpact: `Automated, scalable moderation for video platforms
 Eliminates manual editing, enabling rapid turnaround for large libraries
 Extensible: supports custom filters, cues, and AI enhancement
 `,

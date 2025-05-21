@@ -12,13 +12,14 @@ const About = () => {
             className="lg:w-1/2 animate-fade-in opacity-0"
             style={{ animationDelay: "0.3s" }}
           >
-            <h2 className="heading-lg mb-6 flex items-center">About Me</h2>
+            <h2 className="heading-lg mb-6 flex items-center">Who Am I?</h2>
             <div className="space-y-4 text-engineering-gray">
               <p>
-                I'm highly personable and passionate about guiding engineering
-                teams to deliver business value early and often. I'm deeply
-                involved from conception to release, fostering success through
-                hands-on technical and project leadership.
+                British born, American raised. I consider myself a personable
+                individual, passionate about guiding engineering teams to
+                deliver business value early and often. I'm involved from
+                conception to release, fostering success through hands-on
+                technical and project leadership.
               </p>
               <p>
                 I believe in employing community best practices and techniques
@@ -29,7 +30,11 @@ const About = () => {
               <p>
                 With extensive experience in full-stack development, cloud
                 architecture, and team leadership, I focus on building systems
-                that are fast, trustworthy, and human-centered.
+                that are thoughtful, trustworthy, and human-centered.
+              </p>
+              <p>
+                You'll also find that I have an excellent work ethic, respectful
+                of myself and others, and easy to get along with.
               </p>
             </div>
           </div>
