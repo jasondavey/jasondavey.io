@@ -40,7 +40,7 @@ const Navbar = () => {
                 "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
             },
             {
-              href: "#skills",
+              href: "#technical-skills",
               label: "Skills",
               className:
                 "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
@@ -192,7 +192,7 @@ const Navbar = () => {
                     "text-lg font-medium text-white hover:text-blue-400",
                 },
                 {
-                  href: "#skills",
+                  href: "#technical-skills",
                   label: "Skills",
                   className:
                     "text-lg font-medium text-white hover:text-blue-400",
