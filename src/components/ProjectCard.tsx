@@ -92,14 +92,10 @@ const ProjectCard: React.FC<Project> = ({
       {/* Project Header with Title and External Links */}
       <div className="mb-6">
         <div className="flex items-center gap-2 text-engineering-accent font-mono text-sm mb-2">
-          {/* Company Name and Icon */}
+          {/* Company Icon and Name */}
           {(companyName || companyIcon) && (
             <div className="flex items-center gap-2">
-              {companyName && (
-                <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-semibold">
-                  {companyName}
-                </span>
-              )}
+              {/* Company Icon first */}
               {companyIcon && (
                 companyUrl ? (
                   <a
@@ -121,6 +117,12 @@ const ProjectCard: React.FC<Project> = ({
                     className="h-5 rounded-sm" 
                   />
                 )
+              )}
+              {/* Company Name second */}
+              {companyName && (
+                <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-semibold">
+                  {companyName}
+                </span>
               )}
             </div>
           )}
