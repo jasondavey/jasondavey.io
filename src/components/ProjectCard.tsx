@@ -2,6 +2,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 import React, { useState } from "react";
 import { Project } from "./Project";
+import { Badge } from "@/components/ui/badge";
 
 const getIndustryFromDescription = (
   title: string,
@@ -145,17 +146,18 @@ const ProjectCard: React.FC<Project> = ({
               <div className="flex flex-col">
                 <h3 className="text-2xl font-bold m-0 p-0 truncate">{title}</h3>
                 {businessTerms && businessTerms.length > 0 && (
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-muted-foreground">
-                    {businessTerms.map((term, i) => (
-                      <span key={i} className="inline-flex items-center">
-                        {term}
-                        {i < businessTerms.length - 1 && (
-                          <span className="mx-2 text-xs">&bull;</span>
-                        )}
-                      </span>
-                    ))}
-                  </div>
-                )}
+  <div className="flex flex-wrap gap-2 mt-2 mb-2">
+    {businessTerms.map((term, i) => (
+      <Badge
+        key={i}
+        variant="secondary"
+        className="bg-primary/10 text-primary font-semibold text-base border border-primary/20 px-3 py-1 rounded-full"
+      >
+        {term}
+      </Badge>
+    ))}
+  </div>
+)}
               </div>
             </div>
             <div className="flex gap-2 ml-4">
