@@ -3,6 +3,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import React, { useState } from "react";
 import { Project } from "./Project";
 import { Badge } from "@/components/ui/badge";
+import YouTubeEmbed from "./YouTubeEmbed";
 
 const getIndustryFromDescription = (
   title: string,
@@ -48,6 +49,7 @@ const ProjectCard: React.FC<Project> = ({
   title,
   description,
   image,
+  videoUrl,
   technologies,
   github,
   demo,
@@ -146,16 +148,20 @@ const ProjectCard: React.FC<Project> = ({
         </div>
       </div>
 
-      {/* Main Content with Image and Details */}
+      {/* Main Content with Image/Video and Details */}
       <div className={`w-full flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} items-start gap-8`}>
-        {/* Project Image */}
-        {image && (
+        {/* Project Image or Video */}
+        {(image || videoUrl) && (
           <div className="w-full lg:w-1/2 flex-shrink-0">
-            <img
-              src={image}
-              alt={title}
-              className="rounded-lg w-full object-cover h-48 lg:h-[280px] border border-border/50"
-            />
+            {videoUrl ? (
+              <YouTubeEmbed videoUrl={videoUrl} className="rounded-lg border border-border/50 h-48 lg:h-[280px]" />
+            ) : image && (
+              <img
+                src={image}
+                alt={title}
+                className="rounded-lg w-full object-cover h-48 lg:h-[280px] border border-border/50"
+              />
+            )}
           </div>
         )}
 

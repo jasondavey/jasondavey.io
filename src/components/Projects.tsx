@@ -3,11 +3,13 @@ import ProjectVerascore from "@/components/projects/ProjectVerascore";
 import ProjectVideoSanitizer from "@/components/projects/ProjectVideoSanitizer";
 import { Project } from "./Project";
 import ProjectEqisCapital from "./projects/ProjectFreedomAdvisors";
+import ProjectStampsCom from "./projects/ProjectStampsCom";
 
 const projects: Project[] = [
   ProjectVerascore,
   ProjectVideoSanitizer,
   ProjectEqisCapital,
+  ProjectStampsCom,
   // ...other projects
 ];
 
@@ -34,6 +36,7 @@ const Projects: React.FC = () => (
             title={project.title}
             description={project.description}
             image={project.image}
+            videoUrl={project.videoUrl}
             technologies={project.technologies}
             github={project.github}
             demo={project.demo}

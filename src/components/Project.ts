@@ -12,6 +12,10 @@ export interface Project {
   title: string;
   description: React.ReactNode; // or string or Element
   image?: string;
+  /**
+   * Optional YouTube video URL to display instead of an image
+   */
+  videoUrl?: string;
   technologies: string[];
   github?: string;
   demo?: string;
