@@ -47,6 +47,7 @@ const Projects: React.FC = () => (
             showCodeButton={project.showCodeButton}
             companyIcon={project.companyIcon || "/jdLogo.png"}
             companyUrl={project.companyUrl}
+            companyName={project.companyName}
             keyArchitecture={project.keyArchitecture}
             resultsImpact={project.resultsImpact}
             archImage={project.archImage}

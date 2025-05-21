@@ -8,6 +8,7 @@ export interface Project {
    */
   businessView?: React.ReactNode;
   companyUrl?: string;
+  companyName?: string;
   index: number;
   title: string;
   description: React.ReactNode; // or string or Element

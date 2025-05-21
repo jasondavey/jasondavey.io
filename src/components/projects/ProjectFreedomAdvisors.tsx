@@ -89,6 +89,7 @@ const ProjectEqisCapital: Project = {
   techIconMap: FreedomAdvisorsTechMap,
   // Updated to use the official Freedom Advisors favicon as a logo
   companyIcon: "/freedomadvisors-favicon.webp",
+  companyName: "Freedom Advisors",
   demo: "",
   index: 3,
   keyArchitecture: `

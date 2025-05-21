@@ -59,6 +59,7 @@ const ProjectCard: React.FC<Project> = ({
   showCodeButton = true,
   companyIcon,
   companyUrl,
+  companyName,
   keyArchitecture,
   resultsImpact,
   archImage,
@@ -91,27 +92,40 @@ const ProjectCard: React.FC<Project> = ({
       {/* Project Header with Title and External Links */}
       <div className="mb-6">
         <div className="flex items-center gap-2 text-engineering-accent font-mono text-sm mb-2">
-          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-            Featured Project
-          </span>
-          <IndustryBadge title={title} description={description} />
-
-          {/* Company Icon */}
-          {companyIcon && (
-            <a
-              href={companyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Company Website"
-              className="ml-auto"
-            >
-              <img
-                src={companyIcon}
-                alt="Company"
-                className="w-6 h-6 rounded-sm"
-              />
-            </a>
+          {/* Company Name and Icon */}
+          {(companyName || companyIcon) && (
+            <div className="flex items-center gap-2">
+              {companyName && (
+                <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-semibold">
+                  {companyName}
+                </span>
+              )}
+              {companyIcon && (
+                companyUrl ? (
+                  <a
+                    href={companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Visit Company Website"
+                  >
+                    <img 
+                      src={companyIcon} 
+                      alt={companyName || "Company Logo"} 
+                      className="h-5 rounded-sm" 
+                    />
+                  </a>
+                ) : (
+                  <img 
+                    src={companyIcon} 
+                    alt={companyName || "Company Logo"} 
+                    className="h-5 rounded-sm" 
+                  />
+                )
+              )}
+            </div>
           )}
+          <IndustryBadge title={title} description={description} />
+          <div className="ml-auto"></div>
         </div>
 
         <div className="flex items-center justify-between">

@@ -92,6 +92,7 @@ const ProjectVerascore: Project = {
   featured: true,
   details: <></>,
   companyIcon: "/verascore.png",
+  companyName: "VeraScore",
   showDemoButton: false,
   showCodeButton: false,
   techIconMap: VerascoreTechMap,

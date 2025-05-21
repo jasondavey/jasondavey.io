@@ -111,6 +111,7 @@ const ProjectVideoSanitizer: Project = {
   showCodeButton: true,
   techIconMap: VideoSanitizerTechMap,
   companyIcon: "/jdLogo.png",
+  companyName: "Personal Project",
   demo: "",
   index: 2,
   keyArchitecture: `

@@ -30,7 +30,6 @@ const ProjectStampsCom: Project = {
     </>
   ),
   title: "Global Shipping & Mailing Platforms",
-  companyUrl: "https://www.stamps.com/",
   description: (
     <>
       <p className="mb-2">
@@ -97,6 +96,8 @@ const ProjectStampsCom: Project = {
   showCodeButton: false,
   techIconMap: StampsComTechMap,
   companyIcon: "./stamps.png",
+  companyName: "Stamps.com",
+  companyUrl: "https://www.stamps.com",
   demo: "",
   index: 5, // Adjust as needed based on where you want this to appear
   keyArchitecture: `
