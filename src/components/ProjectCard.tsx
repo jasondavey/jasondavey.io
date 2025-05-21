@@ -23,7 +23,6 @@ const getIndustryFromDescription = (
   if (str.includes("video") || str.includes("caption") || str.includes("media"))
     return "Media";
   if (str.includes("health")) return "Healthcare";
-  if (str.includes("ai") || str.includes("machine learning")) return "AI/ML";
   if (str.includes("education") || str.includes("learning")) return "EdTech";
   if (str.includes("logistics") || str.includes("shipping")) return "Logistics";
   return "General";
@@ -85,13 +84,18 @@ const ProjectCard: React.FC<Project> = ({
   });
 
   return (
-    <div className="my-16 first:mt-8 animate-fade-in opacity-0" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
+    <div
+      className="my-16 first:mt-8 animate-fade-in opacity-0"
+      style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+    >
       {/* Project Header with Title and External Links */}
       <div className="mb-6">
         <div className="flex items-center gap-2 text-engineering-accent font-mono text-sm mb-2">
-          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured Project</span>
+          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+            Featured Project
+          </span>
           <IndustryBadge title={title} description={description} />
-          
+
           {/* Company Icon */}
           {companyIcon && (
             <a
@@ -109,10 +113,10 @@ const ProjectCard: React.FC<Project> = ({
             </a>
           )}
         </div>
-        
+
         <div className="flex items-center justify-between">
           <h3 className="text-2xl font-bold text-foreground">{title}</h3>
-          
+
           <div className="flex items-center gap-3">
             {/* GitHub Link */}
             {github && showCodeButton && (
@@ -123,12 +127,16 @@ const ProjectCard: React.FC<Project> = ({
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 title="View Code"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
                 </svg>
               </a>
             )}
-            
+
             {/* Demo Link */}
             {demo && showDemoButton && (
               <a
@@ -138,7 +146,11 @@ const ProjectCard: React.FC<Project> = ({
                 className="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded hover:bg-blue-200 dark:hover:bg-blue-800/40 transition"
                 title="View Demo"
               >
-                <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-4 h-4 mr-1"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M8 5v14l11-7z" />
                 </svg>
                 Demo
@@ -149,18 +161,27 @@ const ProjectCard: React.FC<Project> = ({
       </div>
 
       {/* Main Content with Image/Video and Details */}
-      <div className={`w-full flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} items-start gap-8`}>
+      <div
+        className={`w-full flex flex-col ${
+          isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+        } items-start gap-8`}
+      >
         {/* Project Image or Video */}
         {(image || videoUrl) && (
           <div className="w-full lg:w-1/2 flex-shrink-0">
             {videoUrl ? (
-              <YouTubeEmbed videoUrl={videoUrl} className="rounded-lg border border-border/50 h-48 lg:h-[280px]" />
-            ) : image && (
-              <img
-                src={image}
-                alt={title}
-                className="rounded-lg w-full object-cover h-48 lg:h-[280px] border border-border/50"
+              <YouTubeEmbed
+                videoUrl={videoUrl}
+                className="rounded-lg border border-border/50 h-48 lg:h-[280px]"
               />
+            ) : (
+              image && (
+                <img
+                  src={image}
+                  alt={title}
+                  className="rounded-lg w-full object-cover h-48 lg:h-[280px] border border-border/50"
+                />
+              )
             )}
           </div>
         )}
@@ -185,18 +206,20 @@ const ProjectCard: React.FC<Project> = ({
                     {tech}
                   </Badge>
                 );
-                
+
                 return techInfo?.url ? (
-                  <a 
+                  <a
                     key={tech}
-                    href={techInfo.url} 
-                    target="_blank" 
+                    href={techInfo.url}
+                    target="_blank"
                     rel="noopener noreferrer"
                     title={`Learn more about ${tech}`}
                   >
                     {TechBadge}
                   </a>
-                ) : TechBadge;
+                ) : (
+                  TechBadge
+                );
               })}
             </div>
           </div>
@@ -223,10 +246,22 @@ const ProjectCard: React.FC<Project> = ({
           {/* Tab Navigation */}
           <div className="pt-2">
             <div className="w-full grid grid-cols-1 rounded-full overflow-hidden border border-border">
-              <div className={`w-full grid ${businessView && resultsImpact ? 'grid-cols-3' : businessView || resultsImpact ? 'grid-cols-2' : 'grid-cols-1'}`}>
+              <div
+                className={`w-full grid ${
+                  businessView && resultsImpact
+                    ? "grid-cols-3"
+                    : businessView || resultsImpact
+                    ? "grid-cols-2"
+                    : "grid-cols-1"
+                }`}
+              >
                 {businessView && (
                   <button
-                    className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "business" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                    className={`py-3 font-medium transition-colors flex items-center justify-center ${
+                      activeTab === "business"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-accent"
+                    }`}
                     onClick={() => setActiveTab("business")}
                     aria-selected={activeTab === "business"}
                     role="tab"
@@ -235,7 +270,11 @@ const ProjectCard: React.FC<Project> = ({
                   </button>
                 )}
                 <button
-                  className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "architecture" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                  className={`py-3 font-medium transition-colors flex items-center justify-center ${
+                    activeTab === "architecture"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground hover:bg-accent"
+                  }`}
                   onClick={() => setActiveTab("architecture")}
                   aria-selected={activeTab === "architecture"}
                   role="tab"
@@ -244,7 +283,11 @@ const ProjectCard: React.FC<Project> = ({
                 </button>
                 {resultsImpact && (
                   <button
-                    className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "results" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                    className={`py-3 font-medium transition-colors flex items-center justify-center ${
+                      activeTab === "results"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-accent"
+                    }`}
                     onClick={() => setActiveTab("results")}
                     aria-selected={activeTab === "results"}
                     role="tab"
@@ -254,9 +297,9 @@ const ProjectCard: React.FC<Project> = ({
                 )}
               </div>
             </div>
-            
+
             {/* Tab Content */}
-            <div 
+            <div
               className="w-full mt-4 rounded-xl bg-background p-6 border border-border transition-colors min-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-engineering-accent/60 scrollbar-track-transparent"
               role="tabpanel"
             >
@@ -269,7 +312,7 @@ const ProjectCard: React.FC<Project> = ({
                 <div className="whitespace-pre-line text-foreground leading-relaxed">
                   {description}
                   {details && <div className="mt-4">{details}</div>}
-                  
+
                   {/* Show demo button inside Architecture tab */}
                   {showDemoButton && demo && (
                     <div className="flex gap-4 mt-6">
