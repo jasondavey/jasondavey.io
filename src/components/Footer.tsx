@@ -1,10 +1,33 @@
 // Dynamically import BUILD_TIMESTAMP with fallback
 import { useEffect, useState } from "react";
 import StackSection from "./StackSection";
+import CarbonBadge from "./CarbonBadge";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [buildTimestamp, setBuildTimestamp] = useState<string | null>(null);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+
+  // Detect theme changes
+  useEffect(() => {
+    // Set initial theme
+    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    setTheme(currentTheme);
+
+    // Watch for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          const newTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+          setTheme(newTheme);
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     import("../build-info")
@@ -22,6 +45,9 @@ const Footer = () => {
           <p className="mt-2">
             Designed & Built with React, TypeScript & Tailwind CSS
           </p>
+          <div className="flex justify-center">
+            <CarbonBadge darkMode={theme === 'dark'} />
+          </div>
         </div>
         <div className="mt-4 text-xs text-muted-foreground text-center">
           Last built:{" "}
