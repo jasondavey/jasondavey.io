@@ -83,257 +83,211 @@ const ProjectCard: React.FC<Project> = ({
   });
 
   return (
-    <>
-      <div className="w-full mb-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div className="flex gap-2 mt-2 lg:mt-0">
-          {demo && showDemoButton && (
+    <div className="my-16 first:mt-8 animate-fade-in opacity-0" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
+      {/* Project Header with Title and External Links */}
+      <div className="mb-6">
+        <div className="flex items-center gap-2 text-engineering-accent font-mono text-sm mb-2">
+          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary">Featured Project</span>
+          <IndustryBadge title={title} description={description} />
+          
+          {/* Company Icon */}
+          {companyIcon && (
             <a
-              href={demo}
+              href={companyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition"
-              title="View Demo"
+              title="Company Website"
+              className="ml-auto"
             >
-              <svg
-                className="w-4 h-4 mr-1"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Demo
+              <img
+                src={companyIcon}
+                alt="Company"
+                className="w-6 h-6 rounded-sm"
+              />
             </a>
           )}
         </div>
+        
+        <div className="flex items-center justify-between">
+          <h3 className="text-2xl font-bold text-foreground">{title}</h3>
+          
+          <div className="flex items-center gap-3">
+            {/* GitHub Link */}
+            {github && showCodeButton && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                title="View Code"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                </svg>
+              </a>
+            )}
+            
+            {/* Demo Link */}
+            {demo && showDemoButton && (
+              <a
+                href={demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded hover:bg-blue-200 dark:hover:bg-blue-800/40 transition"
+                title="View Demo"
+              >
+                <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                Demo
+              </a>
+            )}
+          </div>
+        </div>
       </div>
 
-      <div
-        className={`w-full flex flex-col ${
-          isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-        } items-start gap-8 animate-fade-in opacity-0`}
-        style={{ animationDelay: `${0.3 + index * 0.1}s` }}
-      >
+      {/* Main Content with Image and Details */}
+      <div className={`w-full flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"} items-start gap-8`}>
+        {/* Project Image */}
         {image && (
           <div className="w-full lg:w-1/2 flex-shrink-0">
             <img
               src={image}
               alt={title}
-              className="rounded-lg w-full mb-4 object-cover h-48 lg:h-80"
+              className="rounded-lg w-full object-cover h-48 lg:h-[280px] border border-border/50"
             />
           </div>
         )}
 
-        <div className="w-full lg:w-1/2">
-          <div className="flex items-center gap-3 text-engineering-accent font-mono text-sm mb-2">
-            <span>Featured Project</span>
-            {/* Industry badge */}
-            <IndustryBadge title={title} description={description} />
+        {/* Project Details */}
+        <div className="w-full lg:w-1/2 space-y-6">
+          {/* Technologies */}
+          <div>
+            <h4 className="text-xs uppercase tracking-wide text-muted-foreground mb-3 font-semibold">
+              Technology Stack
+            </h4>
+            <div className="flex flex-wrap gap-1.5">
+              {technologies.map((tech) => (
+                <Badge
+                  key={tech}
+                  variant="secondary"
+                  className="text-xs bg-engineering-light text-engineering-accent border border-engineering-light/50"
+                  title={tech}
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </div>
           </div>
-          <div className="flex items-center justify-between mb-2 w-full">
-            <div className="flex items-center gap-2 min-w-0">
-              <a
-                href={companyUrl || "https://www.jasondavey.io"}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Company Website"
-              >
-                <img
-                  src={companyIcon || "/jdLogo.png"}
-                  alt="Company Logo"
-                  className="w-8 h-8 rounded-full object-cover flex-shrink-0 hover:ring-2 hover:ring-blue-400 transition"
-                  style={{ minWidth: 32, minHeight: 32 }}
-                />
-              </a>
-              <div className="flex flex-col">
-                <h3 className="text-2xl font-bold m-0 p-0 truncate">{title}</h3>
-                {businessTerms && businessTerms.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-2 mb-2">
-                    {businessTerms.map((term, i) => (
-                      <Badge
-                        key={i}
-                        variant="secondary"
-                        className="bg-primary/10 text-primary font-semibold text-base border border-primary/20 px-3 py-1 rounded-full"
-                      >
-                        {term}
-                      </Badge>
-                    ))}
-                  </div>
+
+          {/* Business Terms (if available) */}
+          {businessTerms && businessTerms.length > 0 && (
+            <div>
+              <h4 className="text-xs uppercase tracking-wide text-muted-foreground mb-3 font-semibold">
+                Business Terms
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {businessTerms.map((term) => (
+                  <span
+                    key={term}
+                    className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded text-xs"
+                  >
+                    {term}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Tab Navigation */}
+          <div className="pt-2">
+            <div className="w-full grid grid-cols-1 rounded-full overflow-hidden border border-border">
+              <div className={`w-full grid ${businessView && resultsImpact ? 'grid-cols-3' : businessView || resultsImpact ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                {businessView && (
+                  <button
+                    className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "business" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                    onClick={() => setActiveTab("business")}
+                    aria-selected={activeTab === "business"}
+                    role="tab"
+                  >
+                    Business View
+                  </button>
+                )}
+                <button
+                  className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "architecture" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                  onClick={() => setActiveTab("architecture")}
+                  aria-selected={activeTab === "architecture"}
+                  role="tab"
+                >
+                  Architecture
+                </button>
+                {resultsImpact && (
+                  <button
+                    className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "results" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
+                    onClick={() => setActiveTab("results")}
+                    aria-selected={activeTab === "results"}
+                    role="tab"
+                  >
+                    Results & Impact
+                  </button>
                 )}
               </div>
             </div>
-            <div className="flex gap-2 ml-4">
-              {github && showCodeButton && (
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-3 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition"
-                  title="View on GitHub"
-                >
-                  <svg
-                    className="w-4 h-4 mr-1"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387..." />
-                  </svg>
-                  GitHub
-                </a>
+            
+            {/* Tab Content */}
+            <div 
+              className="w-full mt-4 rounded-xl bg-background p-6 border border-border transition-colors min-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-engineering-accent/60 scrollbar-track-transparent"
+              role="tabpanel"
+            >
+              {activeTab === "business" && businessView && (
+                <div className="whitespace-pre-line text-foreground leading-relaxed">
+                  {businessView}
+                </div>
               )}
-              {demo && showDemoButton && (
-                <a
-                  href={demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition"
-                  title="View Demo"
-                >
-                  <svg
-                    className="w-4 h-4 mr-1"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  Demo
-                </a>
-              )}
-            </div>
-          </div>
-
-          <div className="w-full mb-2 p-4 rounded-xl border border-gray-200 bg-gray-50">
-            <h4 className="text-lg font-semibold tracking-wide text-gray-800 mb-4 border-b border-gray-200 pb-1 uppercase">
-              Technology Stack
-            </h4>
-            <div className="flex flex-wrap gap-8 w-full">
-              {Object.entries(groups).map(([category, items]) => (
-                <div key={category} className="mb-2">
-                  <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
-                    {category}
-                  </div>
-                  <div className="flex flex-wrap gap-2 w-full justify-center">
-                    {items.map(({ tech, info }) => (
+              {activeTab === "architecture" && (
+                <div className="whitespace-pre-line text-foreground leading-relaxed">
+                  {description}
+                  {details && <div className="mt-4">{details}</div>}
+                  
+                  {/* Show demo button inside Architecture tab */}
+                  {showDemoButton && demo && (
+                    <div className="flex gap-4 mt-6">
                       <a
-                        key={tech}
-                        href={info.url}
+                        href={demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-2xl hover:scale-110 transition-transform"
-                        title={info.icon.props.title}
+                        className="inline-flex items-center px-4 py-2 bg-engineering-accent text-white rounded hover:bg-green-600 transition"
                       >
-                        {info.icon}
+                        Demo <FaExternalLinkAlt className="ml-2" />
                       </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
-
-              {technologies.filter((tech) => !techIconMap[tech]).length > 0 && (
-                <div className="mb-2">
-                  <div className="text-xs font-semibold text-engineering-accent mb-1 uppercase tracking-widest text-center w-full">
-                    Other
-                  </div>
-                  <div className="flex flex-wrap gap-2 w-full justify-center">
-                    {technologies
-                      .filter((tech) => !techIconMap[tech])
-                      .map((tech) => (
-                        <span
-                          key={tech}
-                          className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Tabs in a full-width row with equal distribution */}
-          <div className="w-full grid grid-cols-1 mb-6 rounded-full overflow-hidden border border-border">
-            <div className={`w-full grid ${businessView && resultsImpact ? 'grid-cols-3' : businessView || resultsImpact ? 'grid-cols-2' : 'grid-cols-1'}`}>
-              {businessView && (
-                <button
-                  className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "business" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
-                  onClick={() => setActiveTab("business")}
-                  aria-selected={activeTab === "business"}
-                  role="tab"
-                >
-                  Business View
-                </button>
-              )}
-              <button
-                className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "architecture" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
-                onClick={() => setActiveTab("architecture")}
-                aria-selected={activeTab === "architecture"}
-                role="tab"
-              >
-                Architecture
-              </button>
-              {resultsImpact && (
-                <button
-                  className={`py-3 font-medium transition-colors flex items-center justify-center ${activeTab === "results" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-accent"}`}
-                  onClick={() => setActiveTab("results")}
-                  aria-selected={activeTab === "results"}
-                  role="tab"
-                >
-                  Results & Impact
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Tab content in a wider, more readable container */}
-          <div
-            className="w-full rounded-xl bg-background p-6 border border-border transition-colors min-h-[150px] max-h-[350px] overflow-y-auto scrollbar-thin scrollbar-thumb-engineering-accent/60 scrollbar-track-transparent"
-            role="tabpanel"
-          >
-            {activeTab === "business" && businessView && (
-              <div className="whitespace-pre-line text-foreground leading-relaxed">
-                {businessView}
-              </div>
-            )}
-            {activeTab === "architecture" && (
-              <div className="whitespace-pre-line text-foreground leading-relaxed">
-                {description}
-                {details}
-                <div className="flex gap-4 mt-6">
-                  {showDemoButton && demo && (
-                    <a
-                      href={demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-engineering-accent text-white rounded hover:bg-green-600 transition"
-                    >
-                      Demo <FaExternalLinkAlt className="ml-2" />
-                    </a>
+                    </div>
                   )}
                 </div>
-              </div>
-            )}
-            {activeTab === "results" && resultsImpact && (
-              <div className="whitespace-pre-line text-foreground leading-relaxed">
-                {resultsImpact}
-              </div>
-            )}
+              )}
+              {activeTab === "results" && resultsImpact && (
+                <div className="whitespace-pre-line text-foreground leading-relaxed">
+                  {resultsImpact}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Architecture Image Modal */}
       {archModalOpen && archImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
           onClick={() => setArchModalOpen(false)}
           aria-modal="true"
           role="dialog"
         >
           <div
-            className="bg-background text-foreground rounded-xl shadow-xl border border-border max-w-3xl w-full p-6 relative transition-colors"
+            className="bg-background text-foreground rounded-xl shadow-xl border border-border max-w-4xl w-full p-6 relative transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-2 right-2 text-xl text-muted-foreground hover:text-foreground transition-colors"
+              className="absolute top-3 right-3 text-xl text-muted-foreground hover:text-foreground transition-colors bg-background/80 w-8 h-8 rounded-full flex items-center justify-center"
               onClick={() => setArchModalOpen(false)}
               aria-label="Close"
             >
@@ -341,13 +295,13 @@ const ProjectCard: React.FC<Project> = ({
             </button>
             <img
               src={archImage}
-              alt="Architecture Full"
-              className="w-full rounded-lg mb-4"
+              alt="Architecture Diagram"
+              className="w-full rounded-lg"
             />
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
