@@ -33,7 +33,10 @@ const SkillsSection = () => {
 
   return (
     <section id="skills" className="bg-background transition-colors py-16">
-      <div className="section-container">
+      {/* Leadership Section - Placed first */}
+      <LeadershipSection />
+      
+      <div className="section-container mt-16">
         <div
           className="text-center mb-12 animate-fade-in opacity-0"
           style={{ animationDelay: "0.2s" }}
@@ -43,11 +46,10 @@ const SkillsSection = () => {
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
             Throughout my career, I've developed a diverse skillset spanning
-            leadership, technical architecture, and domain expertise across
+            architecture, implementation, and domain expertise across
             multiple industries.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Architecture & Design */}
           <div className="bg-background border border-border rounded-xl overflow-hidden shadow-sm transition-all hover:shadow-md animate-fade-in opacity-0" style={{ animationDelay: "0.3s" }}>
@@ -125,7 +127,6 @@ const SkillsSection = () => {
           </div>
         </div>
       </div>
-      <LeadershipSection />
     </section>
   );
 };
