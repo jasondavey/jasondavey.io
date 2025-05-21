@@ -9,7 +9,6 @@ import { TbFileCv } from "react-icons/tb";
 import { FaCoffee } from "react-icons/fa";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -31,6 +30,12 @@ const Navbar = () => {
             {
               href: "#about",
               label: "About",
+              className:
+                "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
+            },
+            {
+              href: "#leadership",
+              label: "Leadership",
               className:
                 "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
             },
@@ -177,6 +182,12 @@ const Navbar = () => {
                 {
                   href: "#about",
                   label: "About",
+                  className:
+                    "text-lg font-medium text-white hover:text-blue-400",
+                },
+                {
+                  href: "#leadership",
+                  label: "Leadership",
                   className:
                     "text-lg font-medium text-white hover:text-blue-400",
                 },

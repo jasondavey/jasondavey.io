@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code, Settings, Server } from "lucide-react";
+import LeadershipSection from "./Leadership";
 
 const SkillsSection = () => {
   const leadershipSkills = [
@@ -70,6 +71,7 @@ const SkillsSection = () => {
           />
         </div>
       </div>
+      <LeadershipSection />
     </section>
   );
 };
