@@ -18,4 +18,11 @@ export enum Technology {
   Bash = "Bash",
   WebVTT = "WebVTT",
   JSON = "JSON",
+  AWS = "AWS",
+  PostgreSQL = "PostgreSQL",
+  GraphQL = "GraphQL",
+  Redshift = "Redshift",
+  Docker = "Docker",
+  Terraform = "Terraform",
+  Python = "Python",
 }

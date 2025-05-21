@@ -2,10 +2,12 @@ import ProjectCard from "@/components/ProjectCard";
 import ProjectVerascore from "@/components/projects/ProjectVerascore";
 import ProjectVideoSanitizer from "@/components/projects/ProjectVideoSanitizer";
 import { Project } from "./Project";
+import ProjectEqisCapital from "./projects/ProjectEqisCapital";
 
 const projects: Project[] = [
   ProjectVerascore,
   ProjectVideoSanitizer,
+  ProjectEqisCapital,
   // ...other projects
 ];
 
