@@ -2,16 +2,7 @@ import { Project } from "../Project";
 import { Technology } from "../../constants/TechnologyEnum";
 
 const ProjectEqisCapital: Project = {
-  businessTerms: [
-    "TAMP",
-    "WealthTech",
-    "RIA Platform",
-    "Portfolio Management",
-    "Private Label",
-    "Operational Support",
-    "Model Marketplace",
-    "Reporting",
-  ],
+  businessTerms: ["TAMP", "Portfolio Management", "Private Label"],
   businessView: (
     <>
       <p className="mb-2">
@@ -35,12 +26,12 @@ const ProjectEqisCapital: Project = {
       </p>
     </>
   ),
-  title: "EqisCapital Wealth Management Platform",
+  title: "Freedom Advisors Wealth Management",
   companyUrl: "https://freedomadvisors.com/platform/",
   description: (
     <>
       <p className="mb-2">
-        EqisCapital is a next-generation TAMP offering RIAs and advisors a
+        Freedom Advisors is a next-generation TAMP offering RIAs and advisors a
         comprehensive, cloud-based platform to power their practices. Accessible
         from any device and fully private-labeled, it unifies all aspects of
         portfolio management, trading, reporting, and client service.
@@ -66,24 +57,23 @@ const ProjectEqisCapital: Project = {
       </p>
     </>
   ),
-  image: "./eqiscapital_dashboard.png",
+  // Updated to a generic WealthTech/cloud platform illustration
+  image: "/wealthtech_project.webp",
   technologies: [
     Technology.React,
     Technology.TypeScript,
+    Technology.DotNet,
+    Technology.CSharp,
     Technology.AWS,
     Technology.Nodejs,
-    Technology.PostgreSQL,
-    Technology.GraphQL,
-    Technology.Redshift,
-    Technology.Docker,
-    Technology.Terraform,
-    Technology.Python,
+    Technology.SQLServer,
+    Technology.Microservices,
   ],
   featured: true,
   details: (
     <>
       <h3 className="font-semibold text-lg mb-1">Key Architecture</h3>
-      <ul className="list-disc ml-6 text-gray-700 mb-2">
+      <ul className="list-disc ml-6 text-700 mb-2">
         <li>Cloud-native, multi-tenant SaaS architecture</li>
         <li>Advisor and client portals with role-based access</li>
         <li>Automated trading, rebalancing, and drift alerts</li>
@@ -91,24 +81,13 @@ const ProjectEqisCapital: Project = {
         <li>Integrated model marketplace with due diligence</li>
         <li>Secure custodial and third-party data integrations</li>
       </ul>
-      <h3 className="font-semibold text-lg mb-1">Results & Impact</h3>
-      <ul className="list-disc ml-6 text-gray-700">
-        <li>Enabled advisors to scale practices and build equity value</li>
-        <li>
-          Reduced operational burden through automation and expert support
-        </li>
-        <li>
-          Delivered flexible, branded platforms for differentiated client
-          service
-        </li>
-        <li>Supported billions in AUA and thousands of advisors nationwide</li>
-      </ul>
     </>
   ),
   showDemoButton: false,
   showCodeButton: false,
   techIconMap: {}, // Add a tech icon map if available
-  companyIcon: "/eqiscapital.png",
+  // Updated to use the official Freedom Advisors favicon as a logo
+  companyIcon: "/freedomadvisors-favicon.webp",
   demo: "",
   index: 3,
   keyArchitecture: `
@@ -118,10 +97,10 @@ Automated trading, rebalancing, drift alerts
 Integrated model marketplace, secure data pipelines
 `,
   resultsImpact: `
-Advisors scale and build equity
-Operational burden reduced
-Flexible, branded client experience
-Billions in AUA, national reach
+Enabled advisors to scale practices and build equity value
+Reduced operational burden through automation and expert support
+Delivered flexible, branded platforms for differentiated client service
+Supported billions in AUA and thousands of advisors nationwide
 `,
   archImage: "eqiscapital_architecture.png",
 };

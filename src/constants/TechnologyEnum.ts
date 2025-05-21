@@ -25,4 +25,8 @@ export enum Technology {
   Docker = "Docker",
   Terraform = "Terraform",
   Python = "Python",
+  SQLServer = "SQLServer",
+  CSharp = "CSharp",
+  DotNet = "DotNet",
+  Microservices = "Microservices",
 }
