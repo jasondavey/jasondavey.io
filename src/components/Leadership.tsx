@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Rocket, Users, Globe, Settings, Target } from "lucide-react";
 
 const LeadershipSection = () => (
   <section id="leadership" className="bg-background transition-colors py-16">
@@ -21,7 +22,7 @@ const LeadershipSection = () => (
           <div className="p-6">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mr-3">
-                <span className="text-xl">🚀</span>
+                <Rocket className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-bold">Strategic Technical Leadership</h3>
             </div>
@@ -48,7 +49,7 @@ const LeadershipSection = () => (
           <div className="p-6">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mr-3">
-                <span className="text-xl">🤝</span>
+                <Users className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-bold">Team Building & Culture</h3>
             </div>
@@ -75,7 +76,7 @@ const LeadershipSection = () => (
           <div className="p-6">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400 mr-3">
-                <span className="text-xl">🌐</span>
+                <Globe className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-bold">Cross-Functional Collaboration</h3>
             </div>
@@ -102,7 +103,7 @@ const LeadershipSection = () => (
           <div className="p-6">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 mr-3">
-                <span className="text-xl">⚙️</span>
+                <Settings className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-bold">Operational Excellence</h3>
             </div>
@@ -129,7 +130,7 @@ const LeadershipSection = () => (
           <div className="p-6">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mr-3">
-                <span className="text-xl">🎯</span>
+                <Target className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-bold">Outcome-Driven Mindset</h3>
             </div>
