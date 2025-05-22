@@ -4,12 +4,14 @@ import ProjectVideoSanitizer from "@/components/projects/ProjectVideoSanitizer";
 import { Project } from "./Project";
 import ProjectEqisCapital from "./projects/ProjectFreedomAdvisors";
 import ProjectStampsCom from "./projects/ProjectStampsCom";
+import ProjectSoccerTourism from "./projects/ProjectSoccerTourism";
 
 const projects: Project[] = [
   ProjectVerascore,
   ProjectVideoSanitizer,
   ProjectEqisCapital,
   ProjectStampsCom,
+  ProjectSoccerTourism,
   // ...other projects
 ];
 

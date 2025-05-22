@@ -25,6 +25,7 @@ const getIndustryFromDescription = (
   if (str.includes("health")) return "Healthcare";
   if (str.includes("education") || str.includes("learning")) return "EdTech";
   if (str.includes("logistics") || str.includes("shipping")) return "Logistics";
+  if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
   return "General";
 };
 
@@ -96,28 +97,27 @@ const ProjectCard: React.FC<Project> = ({
           {(companyName || companyIcon) && (
             <div className="flex items-center gap-2">
               {/* Company Icon first */}
-              {companyIcon && (
-                companyUrl ? (
+              {companyIcon &&
+                (companyUrl ? (
                   <a
                     href={companyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Visit Company Website"
                   >
-                    <img 
-                      src={companyIcon} 
-                      alt={companyName || "Company Logo"} 
-                      className="h-5 rounded-sm" 
+                    <img
+                      src={companyIcon}
+                      alt={companyName || "Company Logo"}
+                      className="h-5 rounded-sm"
                     />
                   </a>
                 ) : (
-                  <img 
-                    src={companyIcon} 
-                    alt={companyName || "Company Logo"} 
-                    className="h-5 rounded-sm" 
+                  <img
+                    src={companyIcon}
+                    alt={companyName || "Company Logo"}
+                    className="h-5 rounded-sm"
                   />
-                )
-              )}
+                ))}
               {/* Company Name second */}
               {companyName && (
                 <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-semibold">
