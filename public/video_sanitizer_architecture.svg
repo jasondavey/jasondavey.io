@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Video Profanity &amp; Captioning Pipeline</text>
+  
+  <!-- AWS Cloud Border -->
+  <rect x="100" y="80" width="650" height="480" rx="10" ry="10" fill="#f1faff" stroke="#3b82f6" stroke-width="2" />
+  <text x="390" y="110" font-family="Arial" font-size="18" text-anchor="middle" fill="#3b82f6">AWS Cloud Infrastructure</text>
+  
+  <!-- Client Side -->
+  <rect x="20" y="200" width="120" height="240" rx="5" ry="5" fill="#f0f9ff" stroke="#0369a1" stroke-width="2" />
+  <text x="80" y="230" font-family="Arial" font-size="14" text-anchor="middle" fill="#0369a1">User/Client</text>
+  
+  <!-- Upload Box -->
+  <rect x="40" y="260" width="80" height="40" rx="5" ry="5" fill="#ffffff" stroke="#0369a1" stroke-width="1" />
+  <text x="80" y="284" font-family="Arial" font-size="12" text-anchor="middle">Upload Video</text>
+  
+  <!-- Download Box -->
+  <rect x="40" y="360" width="80" height="40" rx="5" ry="5" fill="#ffffff" stroke="#0369a1" stroke-width="1" />
+  <text x="80" y="384" font-family="Arial" font-size="12" text-anchor="middle">Download Video</text>
+  
+  <!-- Arrow from Upload to AWS -->
+  <line x1="120" y1="280" x2="160" y2="280" stroke="#666" stroke-width="1.5" />
+  <polygon points="160,280 155,275 155,285" fill="#666" />
+  
+  <!-- Arrow from AWS to Download -->
+  <line x1="160" y1="380" x2="120" y2="380" stroke="#666" stroke-width="1.5" />
+  <polygon points="120,380 125,375 125,385" fill="#666" />
+  
+  <!-- Lambda Functions -->
+  <!-- Ingest Lambda -->
+  <rect x="180" y="180" width="100" height="60" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="230" y="210" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Ingest</text>
+  <text x="230" y="230" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Lambda</text>
+  
+  <!-- Transcribe Lambda -->
+  <rect x="320" y="180" width="100" height="60" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="370" y="210" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Transcribe</text>
+  <text x="370" y="230" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Lambda</text>
+  
+  <!-- Profanity Detection Lambda -->
+  <rect x="460" y="180" width="100" height="60" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="510" y="210" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Profanity</text>
+  <text x="510" y="230" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Detection</text>
+  
+  <!-- S3 Storage Tier 1 -->
+  <rect x="180" y="280" width="380" height="100" rx="5" ry="5" fill="#ecfdf5" stroke="#059669" stroke-width="2" />
+  <text x="370" y="300" font-family="Arial" font-size="14" text-anchor="middle" fill="#059669">Amazon S3 - Input Processing</text>
+  
+  <!-- S3 Buckets in Storage Tier 1 -->
+  <rect x="200" y="320" width="100" height="40" rx="2" ry="2" fill="#ffffff" stroke="#059669" stroke-width="1" />
+  <text x="250" y="345" font-family="Arial" font-size="11" text-anchor="middle">Original Video</text>
+  
+  <rect x="320" y="320" width="100" height="40" rx="2" ry="2" fill="#ffffff" stroke="#059669" stroke-width="1" />
+  <text x="370" y="345" font-family="Arial" font-size="11" text-anchor="middle">Transcript JSON</text>
+  
+  <rect x="440" y="320" width="100" height="40" rx="2" ry="2" fill="#ffffff" stroke="#059669" stroke-width="1" />
+  <text x="490" y="345" font-family="Arial" font-size="11" text-anchor="middle">Profanity Data</text>
+  
+  <!-- Audio Processing Lambda -->
+  <rect x="180" y="420" width="100" height="60" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="230" y="450" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Audio</text>
+  <text x="230" y="470" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Processing</text>
+  
+  <!-- FFmpeg Processing Box -->
+  <rect x="320" y="420" width="100" height="60" rx="5" ry="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+  <text x="370" y="450" font-family="Arial" font-size="12" text-anchor="middle" fill="#1e40af">FFmpeg</text>
+  <text x="370" y="470" font-family="Arial" font-size="12" text-anchor="middle" fill="#1e40af">Processing</text>
+  
+  <!-- Output Generation Lambda -->
+  <rect x="460" y="420" width="100" height="60" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="510" y="450" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Output</text>
+  <text x="510" y="470" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Generation</text>
+  
+  <!-- S3 Storage Tier 2 -->
+  <rect x="320" y="520" width="380" height="100" rx="5" ry="5" fill="#ecfdf5" stroke="#059669" stroke-width="2" />
+  <text x="510" y="540" font-family="Arial" font-size="14" text-anchor="middle" fill="#059669">Amazon S3 - Output Assets</text>
+  
+  <!-- S3 Buckets in Storage Tier 2 -->
+  <rect x="340" y="560" width="100" height="40" rx="2" ry="2" fill="#ffffff" stroke="#059669" stroke-width="1" />
+  <text x="390" y="585" font-family="Arial" font-size="11" text-anchor="middle">Sanitized Audio</text>
+  
+  <rect x="460" y="560" width="100" height="40" rx="2" ry="2" fill="#ffffff" stroke="#059669" stroke-width="1" />
+  <text x="510" y="585" font-family="Arial" font-size="11" text-anchor="middle">WebVTT Subtitles</text>
+  
+  <rect x="580" y="560" width="100" height="40" rx="2" ry="2" fill="#ffffff" stroke="#059669" stroke-width="1" />
+  <text x="630" y="575" font-family="Arial" font-size="10" text-anchor="middle">Final Sanitized</text>
+  <text x="630" y="590" font-family="Arial" font-size="10" text-anchor="middle">Video with Subs</text>
+  
+  <!-- Connection Arrows -->
+  <!-- Top row connections -->
+  <line x1="280" y1="210" x2="320" y2="210" stroke="#666" stroke-width="1.5" />
+  <polygon points="320,210 315,205 315,215" fill="#666" />
+  
+  <line x1="420" y1="210" x2="460" y2="210" stroke="#666" stroke-width="1.5" />
+  <polygon points="460,210 455,205 455,215" fill="#666" />
+  
+  <!-- Vertical connections to S3 -->
+  <line x1="230" y1="240" x2="230" y2="280" stroke="#666" stroke-width="1.5" />
+  <polygon points="230,280 225,275 235,275" fill="#666" />
+  
+  <line x1="370" y1="240" x2="370" y2="280" stroke="#666" stroke-width="1.5" />
+  <polygon points="370,280 365,275 375,275" fill="#666" />
+  
+  <line x1="510" y1="240" x2="510" y2="280" stroke="#666" stroke-width="1.5" />
+  <polygon points="510,280 505,275 515,275" fill="#666" />
+  
+  <!-- S3 to bottom Lambda connections -->
+  <line x1="230" y1="380" x2="230" y2="420" stroke="#666" stroke-width="1.5" />
+  <polygon points="230,420 225,415 235,415" fill="#666" />
+  
+  <!-- Bottom row connections -->
+  <line x1="280" y1="450" x2="320" y2="450" stroke="#666" stroke-width="1.5" />
+  <polygon points="320,450 315,445 315,455" fill="#666" />
+  
+  <line x1="420" y1="450" x2="460" y2="450" stroke="#666" stroke-width="1.5" />
+  <polygon points="460,450 455,445 455,455" fill="#666" />
+  
+  <!-- Output to Final S3 -->
+  <line x1="510" y1="480" x2="510" y2="520" stroke="#666" stroke-width="1.5" />
+  <polygon points="510,520 505,515 515,515" fill="#666" />
+  
+  <!-- AWS Logo -->
+  <text x="130" y="110" font-family="Arial" font-size="16" text-anchor="middle" fill="#232f3e">AWS</text>
+</svg>
