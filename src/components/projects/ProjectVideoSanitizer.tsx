@@ -125,7 +125,7 @@ Structured S3 directories for traceable asset management
 Eliminates manual editing, enabling rapid turnaround for large libraries
 Extensible: supports custom filters, cues, and AI enhancement
 `,
-  archImage: "video_sanitizer_architecture.png",
+  archImage: "./video_sanitizer_architecture.png",
 };
 
 export default ProjectVideoSanitizer;

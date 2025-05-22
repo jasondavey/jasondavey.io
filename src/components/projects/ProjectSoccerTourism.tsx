@@ -181,7 +181,7 @@ Preserved cultural authenticity by preventing overtourism with real-time monitor
 Provided soccer enthusiasts with seamless, personalized travel experiences based on their preferences and constraints
 Generated sustainable economic growth for local communities while maintaining their cultural essence
 `,
-  archImage: "soccer_tourism_architecture.png", // Placeholder for architecture diagram
+  archImage: "./soccer_tourism.png", // Architecture diagram
 };
 
 export default ProjectSoccerTourism;

@@ -111,7 +111,7 @@ Released DYMO Stamps Online® to critical acclaim from PC Mag reviewers
 Accelerated engineering velocity with DevOps practices and infrastructure automation
 Delivered intuitive UX with focus on performance and service quality for compliant postal transactions
 `,
-  archImage: "stamps_architecture.png", // If you have an architecture diagram
+  archImage: "./stamps_architecture.png", // Architecture diagram
 };
 
 export default ProjectStampsCom;
