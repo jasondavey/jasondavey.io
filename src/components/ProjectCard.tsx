@@ -65,6 +65,7 @@ const ProjectCard: React.FC<Project> = ({
   archImage,
   businessView,
   businessTerms,
+  externalLinks,
 }) => {
   const isEven = index % 2 === 0;
 
@@ -192,13 +193,10 @@ const ProjectCard: React.FC<Project> = ({
                 className="w-full h-auto rounded-lg shadow-md object-cover"
               />
             )}
-            
+
             {/* Video (if exists) */}
             {videoUrl && (
-              <VideoEmbed
-                videoUrl={videoUrl}
-                className="w-full shadow-md"
-              />
+              <VideoEmbed videoUrl={videoUrl} className="w-full shadow-md" />
             )}
           </div>
         )}

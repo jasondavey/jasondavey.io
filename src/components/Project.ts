@@ -32,4 +32,8 @@ export interface Project {
   keyArchitecture?: string;
   resultsImpact?: React.ReactNode;
   archImage?: string;
+  externalLinks?: {
+    url: string;
+    label: string;
+  }[];
 }
