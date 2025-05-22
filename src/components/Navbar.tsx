@@ -169,9 +169,20 @@ const Navbar = () => {
         {menuOpen && (
           <div
             id="mobile-menu"
-            className="fixed inset-0 z-[60] bg-gray-900/95 backdrop-blur-md flex flex-col items-center justify-start pt-24 space-y-8 md:hidden animate-fade-in"
+            className="fixed inset-0 z-[60] bg-gray-900 flex flex-col items-center justify-start pt-16 space-y-6 md:hidden animate-fade-in overflow-y-auto"
           >
-            <nav className="flex flex-col items-center w-full">
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 text-white p-2 rounded-full hover:bg-gray-800"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <nav className="flex flex-col items-center w-full px-6">
               {[
                 {
                   href: "#projects",
@@ -210,21 +221,11 @@ const Navbar = () => {
                     "text-lg font-medium text-white hover:text-blue-400",
                 },
               ].map((item, idx, arr) => (
-                <div key={item.href} className="flex items-center w-full">
-                  {idx !== 0 &&
-                    idx !== arr.length &&
-                    idx !== arr.length - 1 && (
-                      <span
-                        className="mx-2 text-gray-500 select-none"
-                        style={{ fontWeight: 200 }}
-                        aria-hidden="true"
-                      >
-                        |
-                      </span>
-                    )}
+                <div key={item.href} className="flex items-center justify-center w-full my-3">
+  
                   <a
                     href={item.href}
-                    className={item.className + " flex-1 text-center"}
+                    className={item.className + " flex-1 text-center py-2 px-4 rounded-md hover:bg-gray-800"}
                     onClick={() => setMenuOpen(false)}
                   >
                     {item.label}
@@ -232,7 +233,7 @@ const Navbar = () => {
                 </div>
               ))}
             </nav>
-            <div className="flex items-center gap-4 mt-6">
+            <div className="flex items-center gap-6 mt-8 bg-gray-800 p-4 rounded-xl">
               <a
                 href="https://github.com/jasondavey/"
                 target="_blank"
