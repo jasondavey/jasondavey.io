@@ -61,7 +61,6 @@ const ProjectCard: React.FC<Project> = ({
   companyIcon,
   companyUrl,
   companyName,
-  keyArchitecture,
   resultsImpact,
   archImage,
   businessView,
@@ -327,11 +326,14 @@ const ProjectCard: React.FC<Project> = ({
               {activeTab === "architecture" && (
                 <div className="whitespace-pre-line text-foreground leading-relaxed">
                   {archImage && (
-                    <div className="mb-4 cursor-pointer" onClick={() => setArchModalOpen(true)}>
-                      <img 
-                        src={archImage} 
-                        alt="Architecture Diagram" 
-                        className="w-1/2 rounded-lg border border-border hover:opacity-90 transition-opacity" 
+                    <div
+                      className="mb-4 cursor-pointer"
+                      onClick={() => setArchModalOpen(true)}
+                    >
+                      <img
+                        src={archImage}
+                        alt="Architecture Diagram"
+                        className="w-1/2 rounded-lg border border-border hover:opacity-90 transition-opacity"
                         title="Click to view full architecture diagram"
                       />
                     </div>

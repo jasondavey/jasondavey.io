@@ -197,7 +197,7 @@ Integrations: Plaid, Equifax, Twilio, Mailgun, Datadog
       </div>
     </div>
   ),
-  archImage: "./verascore_architecture.png",
+  archImage: "/verascore_architecture.svg",
 };
 
 export default ProjectVerascore;

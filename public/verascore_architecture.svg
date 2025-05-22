@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="680" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="680" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">VeraScore Multi-Tenant Financial Platform</text>
+  
+  <!-- Tenant Isolation Border -->
+  <rect x="50" y="80" width="700" height="560" rx="10" ry="10" fill="#f1faff" stroke="#3b82f6" stroke-width="2" />
+  <text x="400" y="110" font-family="Arial" font-size="18" text-anchor="middle" fill="#3b82f6">Multi-Tenant B2B2C Infrastructure</text>
+  
+  <!-- Partner 1 Tenant Box -->
+  <rect x="80" y="140" width="180" height="100" rx="5" ry="5" fill="#f0f9ff" stroke="#0369a1" stroke-width="2" />
+  <text x="170" y="165" font-family="Arial" font-size="14" text-anchor="middle" fill="#0369a1">Partner Tenant A</text>
+  <text x="170" y="185" font-family="Arial" font-size="12" text-anchor="middle" fill="#0369a1">(e.g., foobank.myverascore.com)</text>
+  
+  <!-- Partner 2 Tenant Box -->
+  <rect x="310" y="140" width="180" height="100" rx="5" ry="5" fill="#f0f9ff" stroke="#0369a1" stroke-width="2" />
+  <text x="400" y="165" font-family="Arial" font-size="14" text-anchor="middle" fill="#0369a1">Partner Tenant B</text>
+  <text x="400" y="185" font-family="Arial" font-size="12" text-anchor="middle" fill="#0369a1">(e.g., barbank.myverascore.com)</text>
+  
+  <!-- Partner 3 Tenant Box -->
+  <rect x="540" y="140" width="180" height="100" rx="5" ry="5" fill="#f0f9ff" stroke="#0369a1" stroke-width="2" />
+  <text x="630" y="165" font-family="Arial" font-size="14" text-anchor="middle" fill="#0369a1">Partner Tenant C</text>
+  <text x="630" y="185" font-family="Arial" font-size="12" text-anchor="middle" fill="#0369a1">(e.g., bazcu.myverascore.com)</text>
+  
+  <!-- Frontend Applications Layer -->
+  <rect x="80" y="280" width="640" height="100" rx="5" ry="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+  <text x="400" y="305" font-family="Arial" font-size="16" text-anchor="middle" fill="#1e40af">Frontend Applications</text>
+  
+  <!-- Member SPA -->
+  <rect x="100" y="320" width="180" height="40" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="190" y="345" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Member SPA (End Users)</text>
+  
+  <!-- Lender SPA -->
+  <rect x="310" y="320" width="180" height="40" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="400" y="345" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Lender SPA (Financial Staff)</text>
+  
+  <!-- Tardis SPA -->
+  <rect x="520" y="320" width="180" height="40" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="610" y="345" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Tardis SPA (Admin Portal)</text>
+  
+  <!-- Backend Services Layer -->
+  <rect x="80" y="400" width="640" height="120" rx="5" ry="5" fill="#ecfdf5" stroke="#059669" stroke-width="2" />
+  <text x="400" y="425" font-family="Arial" font-size="16" text-anchor="middle" fill="#059669">Backend Services</text>
+  
+  <!-- SPA API -->
+  <rect x="100" y="450" width="280" height="50" rx="5" ry="5" fill="#ffffff" stroke="#059669" stroke-width="1" />
+  <text x="240" y="475" font-family="Arial" font-size="14" text-anchor="middle">SPA API</text>
+  <text x="240" y="490" font-family="Arial" font-size="10" text-anchor="middle">(Onboarding, 2FA, Profile Management)</text>
+  
+  <!-- Integrations API -->
+  <rect x="420" y="450" width="280" height="50" rx="5" ry="5" fill="#ffffff" stroke="#059669" stroke-width="1" />
+  <text x="560" y="475" font-family="Arial" font-size="14" text-anchor="middle">Integrations API</text>
+  <text x="560" y="490" font-family="Arial" font-size="10" text-anchor="middle">(External Service Coordination)</text>
+  
+  <!-- Security & Auth Layer -->
+  <rect x="80" y="540" width="640" height="40" rx="5" ry="5" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2" />
+  <text x="400" y="565" font-family="Arial" font-size="14" text-anchor="middle" fill="#5b21b6">Auth0 Authentication (OAuth2, RBAC, Token Lifecycle)</text>
+  
+  <!-- Data Storage Layer -->
+  <rect x="80" y="600" width="640" height="80" rx="5" ry="5" fill="#fff1f2" stroke="#be123c" stroke-width="2" />
+  <text x="400" y="625" font-family="Arial" font-size="16" text-anchor="middle" fill="#9f1239">Data Storage</text>
+  
+  <!-- FaunaDB -->
+  <rect x="100" y="635" width="280" height="30" rx="5" ry="5" fill="#ffffff" stroke="#be123c" stroke-width="1" />
+  <text x="240" y="655" font-family="Arial" font-size="12" text-anchor="middle">FaunaDB (Tenant-Isolated Databases)</text>
+  
+  <!-- S3 -->
+  <rect x="420" y="635" width="280" height="30" rx="5" ry="5" fill="#ffffff" stroke="#be123c" stroke-width="1" />
+  <text x="560" y="655" font-family="Arial" font-size="12" text-anchor="middle">S3 (Document &amp; File Storage)</text>
+  
+  <!-- Client Registry -->
+  <rect x="320" y="230" width="160" height="30" rx="5" ry="5" fill="#fef3c7" stroke="#d97706" stroke-width="2" />
+  <text x="400" y="250" font-family="Arial" font-size="12" text-anchor="middle" fill="#92400e">Client Registry</text>
+  
+  <!-- External Integrations -->
+  <rect x="80" y="130" width="140" height="220" rx="5" ry="5" fill="none" stroke="#9ca3af" stroke-width="1" stroke-dasharray="5,5" transform="translate(580, 350)" />
+  <text x="650" y="500" font-family="Arial" font-size="12" text-anchor="middle" fill="#4b5563" transform="rotate(-90, 650, 500)">External Integrations</text>
+  
+  <!-- Integration Services -->
+  <rect x="620" y="400" width="80" height="20" rx="3" ry="3" fill="#ffffff" stroke="#9ca3af" stroke-width="1" />
+  <text x="660" y="414" font-family="Arial" font-size="9" text-anchor="middle">Plaid</text>
+  
+  <rect x="620" y="425" width="80" height="20" rx="3" ry="3" fill="#ffffff" stroke="#9ca3af" stroke-width="1" />
+  <text x="660" y="439" font-family="Arial" font-size="9" text-anchor="middle">Equifax</text>
+  
+  <rect x="620" y="450" width="80" height="20" rx="3" ry="3" fill="#ffffff" stroke="#9ca3af" stroke-width="1" />
+  <text x="660" y="464" font-family="Arial" font-size="9" text-anchor="middle">Twilio</text>
+  
+  <rect x="620" y="475" width="80" height="20" rx="3" ry="3" fill="#ffffff" stroke="#9ca3af" stroke-width="1" />
+  <text x="660" y="489" font-family="Arial" font-size="9" text-anchor="middle">Mailgun</text>
+  
+  <rect x="620" y="500" width="80" height="20" rx="3" ry="3" fill="#ffffff" stroke="#9ca3af" stroke-width="1" />
+  <text x="660" y="514" font-family="Arial" font-size="9" text-anchor="middle">Datadog</text>
+  
+  <!-- Connection Arrows -->
+  <!-- Partners to SPA -->
+  <line x1="170" y1="240" x2="170" y2="320" stroke="#666" stroke-width="1.5" />
+  <polygon points="170,320 165,315 175,315" fill="#666" />
+  
+  <line x1="400" y1="240" x2="400" y2="320" stroke="#666" stroke-width="1.5" />
+  <polygon points="400,320 395,315 405,315" fill="#666" />
+  
+  <line x1="630" y1="240" x2="630" y2="320" stroke="#666" stroke-width="1.5" />
+  <polygon points="630,320 625,315 635,315" fill="#666" />
+  
+  <!-- Client Registry to Partners -->
+  <line x1="400" y1="230" x2="400" y2="200" stroke="#666" stroke-width="1.5" />
+  <line x1="400" y1="200" x2="170" y2="200" stroke="#666" stroke-width="1.5" />
+  <polygon points="170,200 175,195 175,205" fill="#666" />
+  
+  <line x1="400" y1="200" x2="630" y2="200" stroke="#666" stroke-width="1.5" />
+  <polygon points="630,200 625,195 625,205" fill="#666" />
+  
+  <!-- SPAs to Backend -->
+  <line x1="190" y1="360" x2="190" y2="450" stroke="#666" stroke-width="1.5" />
+  <polygon points="190,450 185,445 195,445" fill="#666" />
+  
+  <line x1="400" y1="360" x2="400" y2="450" stroke="#666" stroke-width="1.5" />
+  <polygon points="400,450 395,445 405,445" fill="#666" />
+  
+  <line x1="610" y1="360" x2="610" y2="450" stroke="#666" stroke-width="1.5" />
+  <polygon points="610,450 605,445 615,445" fill="#666" />
+  
+  <!-- Backend to Auth -->
+  <line x1="240" y1="500" x2="240" y2="540" stroke="#666" stroke-width="1.5" />
+  <polygon points="240,540 235,535 245,535" fill="#666" />
+  
+  <line x1="560" y1="500" x2="560" y2="540" stroke="#666" stroke-width="1.5" />
+  <polygon points="560,540 555,535 565,535" fill="#666" />
+  
+  <!-- Auth to Data -->
+  <line x1="240" y1="580" x2="240" y2="635" stroke="#666" stroke-width="1.5" />
+  <polygon points="240,635 235,630 245,630" fill="#666" />
+  
+  <line x1="560" y1="580" x2="560" y2="635" stroke="#666" stroke-width="1.5" />
+  <polygon points="560,635 555,630 565,630" fill="#666" />
+  
+  <!-- Integration API to External Services -->
+  <line x1="560" y1="450" x2="620" y2="410" stroke="#666" stroke-width="1" />
+  <polygon points="620,410 612,412 617,417" fill="#666" />
+  
+  <line x1="560" y1="475" x2="620" y2="475" stroke="#666" stroke-width="1" />
+  <polygon points="620,475 615,470 615,480" fill="#666" />
+  
+  <line x1="560" y1="475" x2="620" y2="435" stroke="#666" stroke-width="1" />
+  <polygon points="620,435 612,440 615,445" fill="#666" />
+  
+  <line x1="560" y1="475" x2="620" y2="510" stroke="#666" stroke-width="1" />
+  <polygon points="620,510 612,507 615,502" fill="#666" />
+</svg>
