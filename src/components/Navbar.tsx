@@ -10,277 +10,231 @@ import { FaCoffee } from "react-icons/fa";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll events to update navbar styling
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 80;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+  
+  // Prevent body scrolling when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  // Navigation links
+  const navLinks = [
+    { href: "#projects", label: "Portfolio" },
+    { href: "#about", label: "Who Am I" },
+    { href: "#leadership", label: "Leadership" },
+    { href: "#technical-skills", label: "Skills" },
+    { href: "#experience", label: "Experience" },
+    { href: "#contact", label: "Contact" },
+  ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 text-white bg-gray-900/80 border-b border-gray-700 backdrop-blur-lg shadow-md">
-      <div className="container flex items-center justify-between h-16 md:h-20">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 text-white ${
+        scrolled 
+          ? 'bg-gray-900/95 border-b border-gray-700 backdrop-blur-lg shadow-md' 
+          : 'bg-gray-900/40 backdrop-blur-sm py-2'
+      }`}
+    >
+      <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
+        {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <Code className="h-6 w-6 text-white" />
           <span className="font-bold text-lg text-white">jasondavey.io</span>
         </a>
 
-        <nav className="hidden md:flex items-center">
-          {[
-            {
-              href: "#projects",
-              label: "Portfolio",
-              className:
-                "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
-            },
-            {
-              href: "#about",
-              label: "Who Am I",
-              className:
-                "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
-            },
-            {
-              href: "#leadership",
-              label: "Leadership",
-              className:
-                "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
-            },
-            {
-              href: "#technical-skills",
-              label: "Skills",
-              className:
-                "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
-            },
-            {
-              href: "#experience",
-              label: "Experience",
-              className:
-                "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
-            },
-            {
-              href: "#contact",
-              label: "Contact",
-              className:
-                "relative text-sm font-medium px-3 py-1 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full",
-            },
-            {
-              href: "https://www.buymeacoffee.com/jasondavey",
-              label: <FaCoffee className="h-5 w-5" />,
-              className:
-                "text-yellow-400 hover:text-yellow-300 transition-colors",
-              extraProps: {
-                target: "_blank",
-                rel: "noopener noreferrer",
-                "aria-label": "Buy me a coffee",
-                title: "Chat?",
-              },
-            },
-          ].map((item, idx, arr) => (
-            <>
-              {idx !== 0 && idx !== arr.length && idx !== arr.length - 1 && (
-                <span
-                  className="mx-2 text-gray-500 select-none"
-                  style={{ alignSelf: "center", fontWeight: 200 }}
-                  aria-hidden="true"
-                >
-                  |
-                </span>
-              )}
-              <a
-                key={item.href}
-                href={item.href}
-                className={item.className}
-                {...(item.extraProps || {})}
-              >
-                {item.label}
-              </a>
-            </>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="relative text-sm font-medium px-3 py-2 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
+            >
+              {link.label}
+            </a>
           ))}
+          <a
+            href="https://www.buymeacoffee.com/jasondavey"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buy me a coffee"
+            title="Chat?"
+            className="text-yellow-400 hover:text-yellow-300 transition-colors ml-2"
+          >
+            <FaCoffee className="h-5 w-5" />
+          </a>
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
-          <div className="flex items-center gap-3 mr-2">
-            <a
-              href="https://github.com/jasondavey/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-gray-200 transition-colors"
-              aria-label="GitHub"
-            >
-              <FaGithubSquare className="h-5 w-5 text-white hover:text-gray-300" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jasondavey/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-gray-200 transition-colors"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin className="h-5 w-5 text-white hover:text-blue-300" />
-            </a>
-
-            <a
-              href="https://x.com/ydohdohdoh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-gray-200 transition-colors"
-              aria-label="X"
-            >
-              <FaSquareXTwitter className="h-5 w-5 text-white hover:text-gray-300" />
-            </a>
-            <a
-              href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
-              className="text-white hover:text-gray-200 transition-colors"
-              aria-label="Email"
-            >
-              <SiGmail className="h-5 w-5 text-white hover:text-red-300" />
-            </a>
-            <a href="/resume.pdf" download>
-              <TbFileCv className="h-7 w-7 text-white hover:text-gray-300" />
-            </a>
+        {/* Desktop Social Links */}
+        <div className="hidden md:flex items-center gap-3">
+          <a href="https://github.com/jasondavey/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <FaGithubSquare className="h-5 w-5 text-white hover:text-gray-300 transition-colors" />
+          </a>
+          <a href="https://www.linkedin.com/in/jasondavey/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <FaLinkedin className="h-5 w-5 text-white hover:text-blue-300 transition-colors" />
+          </a>
+          <a href="https://x.com/ydohdohdoh" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <FaSquareXTwitter className="h-5 w-5 text-white hover:text-gray-300 transition-colors" />
+          </a>
+          <a href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`} aria-label="Email">
+            <SiGmail className="h-5 w-5 text-white hover:text-red-300 transition-colors" />
+          </a>
+          <a href="/resume.pdf" download>
+            <TbFileCv className="h-6 w-6 text-white hover:text-gray-300 transition-colors" />
+          </a>
+          
+          {/* Theme toggle */}
+          <div className="ml-2">
+            <ThemeToggle />
           </div>
         </div>
 
-        {/* Theme toggle button */}
-        <ThemeToggle />
-
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-        >
-          <span className="sr-only">Toggle menu</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6"
+        {/* Mobile Menu Button */}
+        <div className="flex items-center md:hidden">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="ml-1"
+            onClick={toggleMenu}
+            aria-expanded={menuOpen}
+            aria-label="Toggle menu"
           >
-            <line x1="4" y1="6" x2="20" y2="6" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="18" x2="20" y2="18" />
-          </svg>
-        </Button>
-
-        {/* Mobile menu overlay */}
-        {menuOpen && (
-          <div
-            id="mobile-menu"
-            className="fixed inset-0 z-[60] bg-gray-900 flex flex-col items-center justify-start pt-16 space-y-6 md:hidden animate-fade-in overflow-y-auto"
-          >
-            {/* Close button */}
-            <button
-              className="absolute top-4 right-4 text-white p-2 rounded-full hover:bg-gray-800"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-            <nav className="flex flex-col items-center w-full px-6">
-              {[
-                {
-                  href: "#projects",
-                  label: <strong>Portfolio</strong>,
-                  className:
-                    "text-lg font-medium text-white hover:text-blue-400",
-                },
-                {
-                  href: "#about",
-                  label: "About",
-                  className:
-                    "text-lg font-medium text-white hover:text-blue-400",
-                },
-                {
-                  href: "#leadership",
-                  label: "Leadership",
-                  className:
-                    "text-lg font-medium text-white hover:text-blue-400",
-                },
-                {
-                  href: "#technical-skills",
-                  label: "Skills",
-                  className:
-                    "text-lg font-medium text-white hover:text-blue-400",
-                },
-                {
-                  href: "#experience",
-                  label: "Experience",
-                  className:
-                    "text-lg font-medium text-white hover:text-blue-400",
-                },
-                {
-                  href: "#contact",
-                  label: "Contact",
-                  className:
-                    "text-lg font-medium text-white hover:text-blue-400",
-                },
-              ].map((item, idx, arr) => (
-                <div key={item.href} className="flex items-center justify-center w-full my-3">
-  
-                  <a
-                    href={item.href}
-                    className={item.className + " flex-1 text-center py-2 px-4 rounded-md hover:bg-gray-800"}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                </div>
-              ))}
-            </nav>
-            <div className="flex items-center gap-6 mt-8 bg-gray-800 p-4 rounded-xl">
-              <a
-                href="https://github.com/jasondavey/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <FaGithubSquare className="h-6 w-6 text-white hover:text-gray-300" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/jasondavey/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin className="h-6 w-6 text-white hover:text-blue-300" />
-              </a>
-              <a
-                href="https://www.buymeacoffee.com/jasondavey"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Buy me a coffee"
-                title="Buy me a coffee"
-                className="text-yellow-400 hover:text-yellow-300 transition-colors"
-              >
-                <FaCoffee className="h-6 w-6" />
-              </a>
-              <a
-                href="https://x.com/ydohdohdoh"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X"
-              >
-                <FaSquareXTwitter className="h-6 w-6 text-white hover:text-gray-300" />
-              </a>
+              {menuOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              ) : (
+                <>
+                  <line x1="4" y1="6" x2="20" y2="6" />
+                  <line x1="4" y1="12" x2="20" y2="12" />
+                  <line x1="4" y1="18" x2="20" y2="18" />
+                </>
+              )}
+            </svg>
+          </Button>
+        </div>
+      </div>
 
-              <a
-                href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
-                aria-label="Email"
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`fixed inset-0 z-[60] transition-all duration-300 md:hidden ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+      >
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
+        
+        {/* Slide-in Menu Panel */}
+        <div 
+          className={`absolute right-0 top-0 bottom-0 w-[280px] bg-gray-900 shadow-xl flex flex-col overflow-y-auto transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+          {/* Mobile Menu Content */}
+          <div className="p-6 flex flex-col h-full">
+            <div className="flex justify-between items-center mb-8">
+              <a href="#" className="flex items-center gap-2" onClick={closeMenu}>
+                <Code className="h-6 w-6 text-white" />
+                <span className="font-bold text-lg text-white">jasondavey.io</span>
+              </a>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={closeMenu}
+                aria-label="Close menu"
+                className="text-white hover:bg-gray-800 rounded-full p-2"
               >
-                <SiGmail className="h-6 w-6 text-white hover:text-red-300" />
-              </a>
-              <a href="/resume.pdf" download>
-                <TbFileCv className="h-7 w-7 text-white hover:text-gray-300" />
-              </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </Button>
+            </div>
+            
+            {/* Mobile Navigation Links */}
+            <nav className="flex-1">
+              <ul className="space-y-4">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <a 
+                      href={link.href} 
+                      className="block py-3 px-4 text-lg font-medium text-white hover:bg-gray-800 rounded-md transition-colors"
+                      onClick={closeMenu}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            
+            {/* Mobile Social Links */}
+            <div className="mt-auto pt-6 border-t border-gray-800">
+              <div className="flex justify-center items-center gap-6 py-4">
+                <a href="https://github.com/jasondavey/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <FaGithubSquare className="h-6 w-6 text-white hover:text-gray-300" />
+                </a>
+                <a href="https://www.linkedin.com/in/jasondavey/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <FaLinkedin className="h-6 w-6 text-white hover:text-blue-300" />
+                </a>
+                <a href="https://www.buymeacoffee.com/jasondavey" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee" className="text-yellow-400 hover:text-yellow-300">
+                  <FaCoffee className="h-6 w-6" />
+                </a>
+                <a href="https://x.com/ydohdohdoh" target="_blank" rel="noopener noreferrer" aria-label="X">
+                  <FaSquareXTwitter className="h-6 w-6 text-white hover:text-gray-300" />
+                </a>
+                <a href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`} aria-label="Email">
+                  <SiGmail className="h-6 w-6 text-white hover:text-red-300" />
+                </a>
+              </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
