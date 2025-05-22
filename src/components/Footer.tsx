@@ -6,19 +6,23 @@ import CarbonBadge from "./CarbonBadge";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [buildTimestamp, setBuildTimestamp] = useState<string | null>(null);
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   // Detect theme changes
   useEffect(() => {
     // Set initial theme
-    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const currentTheme = document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
     setTheme(currentTheme);
 
     // Watch for theme changes
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          const newTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        if (mutation.attributeName === "class") {
+          const newTheme = document.documentElement.classList.contains("dark")
+            ? "dark"
+            : "light";
           setTheme(newTheme);
         }
       });
@@ -46,7 +50,7 @@ const Footer = () => {
             Designed & Built with React, TypeScript & Tailwind CSS
           </p>
           <div className="flex justify-center">
-            <CarbonBadge darkMode={theme === 'dark'} />
+            <CarbonBadge darkMode={theme === "dark"} />
           </div>
         </div>
         <div className="mt-4 text-xs text-muted-foreground text-center">
@@ -56,7 +60,7 @@ const Footer = () => {
                 year: "numeric",
                 month: "short",
                 day: "numeric",
-                hour: "2-digit",
+                hour: "numeric",
                 minute: "2-digit",
               })
             : "N/A"}
