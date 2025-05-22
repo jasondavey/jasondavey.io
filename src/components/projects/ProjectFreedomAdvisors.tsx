@@ -104,7 +104,7 @@ Reduced operational burden through automation and expert support
 Delivered flexible, branded platforms for differentiated client service
 Supported billions in AUA and thousands of advisors nationwide
 `,
-  archImage: "eqiscapital_architecture.png",
+  archImage: "/freedom_advisors_architecture.svg",
 };
 
 export default ProjectEqisCapital;
