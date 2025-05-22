@@ -184,9 +184,12 @@ const Contact = () => {
               Whether you have a question or just want to say hi, I'll try my
               best to get back to you!
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center mt-4 gap-2 sm:gap-6 text-foreground">
-              <div className="flex items-center gap-2">
-                <Phone className="w-5 h-5 text-engineering-accent" />
+            <div className="flex flex-col sm:flex-row items-center justify-center mt-4 gap-4 sm:gap-6 text-foreground">
+              <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
+                <div className="flex items-center gap-2 mb-1 sm:mb-0">
+                  <Phone className="w-5 h-5 text-engineering-accent flex-shrink-0" />
+                  <span className="font-medium text-foreground mr-2">Phone:</span>
+                </div>
                 <button
                   onClick={() => {
                     // Open phone app with the number
@@ -196,14 +199,17 @@ const Contact = () => {
                       window.location.href = `tel:${import.meta.env.VITE_PHONE_NUMBER}`;
                     }, 100);
                   }}
-                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer text-left"
+                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer text-left w-full sm:w-auto text-sm sm:text-base font-medium"
                   aria-label="Call phone number"
                 >
                   {import.meta.env.VITE_PHONE_NUMBER}
                 </button>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-5 h-5 text-engineering-accent" />
+              <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
+                <div className="flex items-center gap-2 mb-1 sm:mb-0">
+                  <Mail className="w-5 h-5 text-engineering-accent flex-shrink-0" />
+                  <span className="font-medium text-foreground mr-2">Email:</span>
+                </div>
                 <button
                   onClick={() => {
                     // Open email app with the address
@@ -213,7 +219,7 @@ const Contact = () => {
                       window.location.href = `mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`;
                     }, 100);
                   }}
-                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer text-left"
+                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer text-left w-full sm:w-auto text-sm sm:text-base font-medium break-all"
                   aria-label="Send email"
                 >
                   {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
