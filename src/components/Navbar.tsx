@@ -27,16 +27,38 @@ const Navbar = () => {
     };
   }, [scrolled]);
   
-  // Prevent body scrolling when menu is open
+  // Prevent body scrolling when menu is open and set viewport height for iOS
   useEffect(() => {
+    // Fix for iOS viewport height issue
+    const setVh = () => {
+      // First we get the viewport height and we multiply it by 1% to get a value for a vh unit
+      const vh = window.innerHeight * 0.01;
+      // Then we set the value in the --vh custom property to the root of the document
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    // Call the function to set --vh on mount
+    setVh();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', setVh);
+
+    // Handle body scrolling
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
     } else {
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     }
     
     return () => {
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      window.removeEventListener('resize', setVh);
     };
   }, [menuOpen]);
 
@@ -163,20 +185,23 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       <div 
         className={`fixed inset-0 z-[60] transition-all duration-300 md:hidden ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+        style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
       >
         {/* Backdrop */}
         <div 
-          className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm"
           onClick={closeMenu}
           aria-hidden="true"
+          style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
         />
         
         {/* Slide-in Menu Panel */}
         <div 
-          className={`absolute right-0 top-0 bottom-0 w-[280px] bg-gray-900 shadow-xl flex flex-col overflow-y-auto transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`fixed right-0 top-0 bottom-0 w-[280px] bg-gray-900 shadow-xl flex flex-col overflow-y-auto transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          style={{ height: 'calc(var(--vh, 1vh) * 100)', maxHeight: 'calc(var(--vh, 1vh) * 100)' }}
         >
           {/* Mobile Menu Content */}
-          <div className="p-6 flex flex-col h-full">
+          <div className="p-6 flex flex-col h-full" style={{ minHeight: 'calc(var(--vh, 1vh) * 100 - 48px)' }}>
             <div className="flex justify-between items-center mb-8">
               <a href="#" className="flex items-center gap-2" onClick={closeMenu}>
                 <Code className="h-6 w-6 text-white" />
