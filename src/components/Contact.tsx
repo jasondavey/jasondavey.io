@@ -187,35 +187,37 @@ const Contact = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center mt-4 gap-2 sm:gap-6 text-foreground">
               <div className="flex items-center gap-2">
                 <Phone className="w-5 h-5 text-engineering-accent" />
-                <a
-                  href={`tel:${import.meta.env.VITE_PHONE_NUMBER}`}
-                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-2 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer"
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Call phone number"
-                  onClick={(e) => {
-                    e.currentTarget.blur();
-                    window.location.href = `tel:${import.meta.env.VITE_PHONE_NUMBER}`;
+                <button
+                  onClick={() => {
+                    // Open phone app with the number
+                    window.open(`tel:${import.meta.env.VITE_PHONE_NUMBER}`, '_system');
+                    // Fallback for older browsers
+                    setTimeout(() => {
+                      window.location.href = `tel:${import.meta.env.VITE_PHONE_NUMBER}`;
+                    }, 100);
                   }}
+                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer text-left"
+                  aria-label="Call phone number"
                 >
                   {import.meta.env.VITE_PHONE_NUMBER}
-                </a>
+                </button>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-engineering-accent" />
-                <a
-                  href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
-                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-2 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer"
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Send email"
-                  onClick={(e) => {
-                    e.currentTarget.blur();
-                    window.location.href = `mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`;
+                <button
+                  onClick={() => {
+                    // Open email app with the address
+                    window.open(`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`, '_system');
+                    // Fallback for older browsers
+                    setTimeout(() => {
+                      window.location.href = `mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`;
+                    }, 100);
                   }}
+                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer text-left"
+                  aria-label="Send email"
                 >
                   {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
-                </a>
+                </button>
               </div>
             </div>
           </div>
