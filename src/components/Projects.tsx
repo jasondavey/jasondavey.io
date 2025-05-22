@@ -1,10 +1,11 @@
 import ProjectCard from "@/components/ProjectCard";
 import ProjectVerascore from "@/components/projects/ProjectVerascore";
 import ProjectVideoSanitizer from "@/components/projects/ProjectVideoSanitizer";
-import { Project } from "./Project";
 import ProjectEqisCapital from "./projects/ProjectFreedomAdvisors";
 import ProjectStampsCom from "./projects/ProjectStampsCom";
 import ProjectSoccerTourism from "./projects/ProjectSoccerTourism";
+import ProjectDymoStamps from "./projects/ProjectDymoStamps";
+import { Project } from "./Project";
 
 const projects: Project[] = [
   ProjectVerascore,
@@ -12,6 +13,7 @@ const projects: Project[] = [
   ProjectEqisCapital,
   ProjectStampsCom,
   ProjectSoccerTourism,
+  ProjectDymoStamps,
   // ...other projects
 ];
 
