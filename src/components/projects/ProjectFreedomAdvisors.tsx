@@ -92,12 +92,6 @@ const ProjectEqisCapital: Project = {
   companyName: "Freedom Advisors",
   demo: "",
   index: 3,
-  keyArchitecture: `
-Cloud-native SaaS, multi-tenant
-Advisor/client portals, RBAC
-Automated trading, rebalancing, drift alerts
-Integrated model marketplace, secure data pipelines
-`,
   resultsImpact: `
 Enabled advisors to scale practices and build equity value
 Reduced operational burden through automation and expert support

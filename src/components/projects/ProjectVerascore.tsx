@@ -97,12 +97,7 @@ const ProjectVerascore: Project = {
   showCodeButton: false,
   techIconMap: VerascoreTechMap,
   index: 1,
-  keyArchitecture: `
-Three React SPAs (Members, Lenders, Tardis)
-Centralized Auth (Auth0, RBAC, OAuth2)
-FaunaDB for tenant-isolated data; S3 for file storage
-Integrations: Plaid, Equifax, Twilio, Mailgun, Datadog
-`,
+
   resultsImpact: (
     <div className="space-y-8">
       {/* Partners Section */}

@@ -1,5 +1,4 @@
 import { Project } from "../Project";
-import { Technology } from "../../constants/TechnologyEnum";
 import { SoccerTourismTechMap } from "@/constants/soccer";
 
 const ProjectSoccerTourism: Project = {
@@ -68,6 +67,69 @@ const ProjectSoccerTourism: Project = {
         system, implemented the orchestration layer, and developed the community
         empowerment features that form the core of the platform's unique value
         proposition.
+      </p>
+      <p className="mb-2">
+        <strong>Cloud-Native Architecture:</strong> - Multi-agent AI
+        orchestration system coordinating specialized agents for ticket
+        acquisition, flight booking, hotel reservations, and experience planning
+        - Event-driven architecture with Amazon EventBridge orchestrating
+        workflows (e.g., book hotel only if match tickets are secured) -
+        Microservices design with AWS Lambda and containerized services for
+        scalability and resilience
+      </p>
+      <p className="mb-2">
+        <strong>Data & Storage</strong>: - Amazon DynamoDB for user profiles,
+        preferences, bookings, and itineraries - Amazon Aurora Serverless for
+        relational data like community leader records and trip metadata - Amazon
+        S3 for documents, media, and analytics logs - Amazon Neptune with Vector
+        DB for conversational memory, tracking preferences and past interactions
+      </p>
+      <p className="mb-2">
+        <strong>AI/ML Services</strong>: - Amazon Bedrock for personalized
+        recommendation models - Amazon Personalize for generating dynamic travel
+        recommendations - Amazon Kendra for interactive chat capabilities
+        supported by Bedrock and Personalize
+      </p>
+      <p className="mb-2">
+        <strong>Payment & Transaction Processing</strong>: - Amazon API Gateway
+        + Lambda as payment broker and handler - Third-party payment
+        integrations (Stripe, Adyen) - AWS Secrets Manager for securing API keys
+        and credentials - Amazon CloudTrail + AWS Config for auditing and
+        compliance
+      </p>
+      <p className="mb-2">
+        <strong>Community Platform</strong>: - AWS Step Functions for managing
+        certification and training workflows - Amazon Cognito for identity
+        management and role-based access control
+      </p>
+      <p className="mb-2">
+        <strong>Community Platform</strong>: - AWS Step Functions for managing
+        certification and training workflows - Amazon Cognito for identity
+        management and role-based access control - DynamoDB for certification
+        status and renewal tracking
+      </p>
+      <p className="mb-2">
+        <strong>Real-Time Monitoring & Rerouting</strong>: - Amazon Kinesis Data
+        Streams for ingesting and processing venue crowd telemetry - Amazon
+        Location Service for geolocation-based rerouting and experience
+        suggestions - Amazon SageMaker for predictive models in crowd control
+        and dynamic rerouting
+      </p>
+      <p className="mb-2">
+        <strong>Trip Portal & Notifications</strong>: - AWS AppSync + DynamoDB
+        for real-time synchronization of trip status updates and group chats -
+        Amazon SNS/Pinpoint for alerts and updates via SMS/email - Amazon Chime
+        SDK for in-app messaging and support
+      </p>
+      <p className="mb-2">
+        <strong>Trip Portal & Notifications</strong>: - AWS AppSync + DynamoDB
+        for real-time synchronization of trip status updates and group chats -
+        Amazon SNS/Pinpoint for alerts and updates via SMS/email - Amazon Chime
+        SDK for in-app messaging and support Real-time tourist load monitoring
+        and dynamic rerouting to prevent cultural dilution Secure payment
+        orchestration system connecting multiple travel service providers
+        Community opportunity management platform enabling local leaders to
+        create and showcase authentic experiences
       </p>
     </>
   ),
