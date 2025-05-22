@@ -74,6 +74,7 @@ const ProjectVerascore: Project = {
     </>
   ),
   image: "./verascore_dashboard.png",
+  videoUrl: "https://vimeo.com/591198947",
   technologies: [
     Technology.React,
     Technology.Ionic,
