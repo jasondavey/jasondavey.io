@@ -189,7 +189,14 @@ const Contact = () => {
                 <Phone className="w-5 h-5 text-engineering-accent" />
                 <a
                   href={`tel:${import.meta.env.VITE_PHONE_NUMBER}`}
-                  className="hover:text-engineering-accent transition-colors"
+                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-2 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer"
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Call phone number"
+                  onClick={(e) => {
+                    e.currentTarget.blur();
+                    window.location.href = `tel:${import.meta.env.VITE_PHONE_NUMBER}`;
+                  }}
                 >
                   {import.meta.env.VITE_PHONE_NUMBER}
                 </a>
@@ -198,7 +205,14 @@ const Contact = () => {
                 <Mail className="w-5 h-5 text-engineering-accent" />
                 <a
                   href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
-                  className="hover:text-engineering-accent transition-colors"
+                  className="hover:text-engineering-accent transition-colors inline-flex items-center px-2 py-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer"
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Send email"
+                  onClick={(e) => {
+                    e.currentTarget.blur();
+                    window.location.href = `mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`;
+                  }}
                 >
                   {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
                 </a>
