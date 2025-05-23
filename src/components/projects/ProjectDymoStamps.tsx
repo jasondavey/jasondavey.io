@@ -77,7 +77,7 @@ const ProjectDymoStamps: Project = {
     </>
   ),
   image: "",
-  videoUrl: "",
+  videoUrl: "https://www.youtube.com/watch?v=ZmZoSsFlU_o",
   technologies: [
     Technology.TypeScript,
     Technology.AWS,

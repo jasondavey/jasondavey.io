@@ -64,7 +64,7 @@ const ProjectStampsCom: Project = {
     </>
   ),
   image: "",
-  videoUrl: "https://www.youtube.com/watch?v=ZmZoSsFlU_o",
+  videoUrl: "https://www.youtube.com/watch?v=ainv0oVYDMs",
   technologies: [
     Technology.React,
     Technology.AWS,
