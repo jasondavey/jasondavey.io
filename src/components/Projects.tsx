@@ -6,6 +6,7 @@ import ProjectStampsCom from "./projects/ProjectStampsCom";
 import ProjectSoccerTourism from "./projects/ProjectSoccerTourism";
 import ProjectDymoStamps from "./projects/ProjectDymoStamps";
 import ProjectIntelliPad from "./projects/ProjectIntelliPad";
+import IndustrySummary from "./IndustrySummary";
 import { Project } from "./Project";
 
 const projects: Project[] = [
@@ -32,6 +33,9 @@ const Projects: React.FC = () => (
           challenges and opportunities to learn and grow.
         </p>
         <hr className="my-10 border-t border-gray-200" />
+        
+        {/* Industry Summary Visual */}
+        <IndustrySummary projects={projects} />
       </div>
       <div className="space-y-12">
         {projects.map((project, idx) => (
