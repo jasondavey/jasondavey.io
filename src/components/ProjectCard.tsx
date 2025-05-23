@@ -27,6 +27,9 @@ const getIndustryFromDescription = (
   if (str.includes("logistics") || str.includes("shipping")) return "Logistics";
   if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
   if (str.includes("stamps")) return "Mailing";
+  if (str.includes("legal") || str.includes("law firm") || str.includes("attorney") || 
+      str.includes("intellipad") || str.includes("crm") && str.includes("firm"))
+    return "Legal";
   return "General";
 };
 
