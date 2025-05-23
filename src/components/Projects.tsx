@@ -5,6 +5,7 @@ import ProjectEqisCapital from "./projects/ProjectFreedomAdvisors";
 import ProjectStampsCom from "./projects/ProjectStampsCom";
 import ProjectSoccerTourism from "./projects/ProjectSoccerTourism";
 import ProjectDymoStamps from "./projects/ProjectDymoStamps";
+import ProjectIntelliPad from "./projects/ProjectIntelliPad";
 import { Project } from "./Project";
 
 const projects: Project[] = [
@@ -14,7 +15,7 @@ const projects: Project[] = [
   ProjectDymoStamps,
   ProjectStampsCom,
   ProjectSoccerTourism,
-
+  ProjectIntelliPad,
   // ...other projects
 ];
 

@@ -1,6 +1,6 @@
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Project } from "./Project";
 import { Badge } from "@/components/ui/badge";
 import VideoEmbed from "./VideoEmbed";
@@ -60,6 +60,7 @@ const ProjectCard: React.FC<Project> = ({
   showDemoButton = true,
   showCodeButton = true,
   companyIcon,
+  darkModeCompanyIcon,
   companyUrl,
   companyName,
   resultsImpact,
@@ -69,11 +70,35 @@ const ProjectCard: React.FC<Project> = ({
   externalLinks,
 }) => {
   const isEven = index % 2 === 0;
-
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [archModalOpen, setArchModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<
     "business" | "architecture" | "results"
   >(businessView ? "business" : "architecture");
+
+  // Detect theme changes
+  useEffect(() => {
+    // Set initial theme
+    const currentTheme = document.documentElement.classList.contains("dark");
+    setIsDarkMode(currentTheme);
+
+    // Watch for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          const newTheme = document.documentElement.classList.contains("dark");
+          setIsDarkMode(newTheme);
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Determine which logo to use based on theme
+  const logoToUse = isDarkMode && darkModeCompanyIcon ? darkModeCompanyIcon : companyIcon;
 
   const techInfos = technologies
     .map((tech) => ({ tech, info: techIconMap[tech] }))
@@ -107,14 +132,14 @@ const ProjectCard: React.FC<Project> = ({
                     title="Visit Company Website"
                   >
                     <img
-                      src={companyIcon}
+                      src={logoToUse}
                       alt={companyName || "Company Logo"}
                       className="h-5 rounded-sm"
                     />
                   </a>
                 ) : (
                   <img
-                    src={companyIcon}
+                    src={logoToUse}
                     alt={companyName || "Company Logo"}
                     className="h-5 rounded-sm"
                   />

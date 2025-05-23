@@ -38,12 +38,11 @@ const Hero = () => {
                 "Hello...",
                 "Ask me what I mean by...",
                 '"I bend over backwards to be lazy."',
-                'I believe "it\'s done" means value has been realized by the consumer.',
-                "I believe success comes from having a passion in what you do.",
-                "I like to deliver business value early and often.",
-                `Get in touch at ${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`,
-                "Or call or text at",
-                "(415) 693-8290",
+                '"it\'s done" means value has been realized by the consumer.',
+                "Success comes from having a passion in what you do.",
+                "I deliver business value early and often.",
+                `Email ${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`,
+                `Call or text ${import.meta.env.VITE_PHONE_NUMBER}`,
                 "Explore this site, get to know my work, and let's build something great!",
               ]}
             />

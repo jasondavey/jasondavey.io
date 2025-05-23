@@ -23,6 +23,7 @@ export interface Project {
   featured?: boolean;
   details?: React.ReactNode;
   companyIcon?: string;
+  darkModeCompanyIcon?: string;
   showDemoButton?: boolean;
   showCodeButton?: boolean;
   techIconMap: Record<
