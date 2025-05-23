@@ -38,9 +38,9 @@ const getIndustryFromProject = (project: Project): string => {
     return "Media";
   if (str.includes("health")) return "Healthcare";
   if (str.includes("education") || str.includes("learning")) return "EdTech";
-  if (str.includes("logistics") || str.includes("shipping")) return "Mailing";
+  if (str.includes("logistics") || str.includes("shipping")) return "Postage";
   if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
-  if (str.includes("stamps")) return "Mailing";
+  if (str.includes("stamps")) return "Postage";
   if (
     str.includes("legal") ||
     str.includes("law firm") ||
