@@ -12,10 +12,10 @@ const ProjectSoccerTourism: Project = {
   ],
   businessView: (
     <>
-      <img 
-        src="/splash/soccer_tourism_splash.webp" 
-        alt="NY Times Soccer Tourism Article" 
-        className="w-full rounded-lg border border-gray-200 shadow-md mb-6" 
+      <img
+        src="/splash/soccer_tourism_business_splash.webp"
+        alt="NY Times Soccer Tourism Article"
+        className="w-full rounded-lg border border-gray-200 shadow-md mb-6"
       />
       <p className="mb-2">
         <strong>Problem:</strong> Soccer tourists struggle with complex trip
@@ -139,7 +139,7 @@ const ProjectSoccerTourism: Project = {
       </p>
     </>
   ),
-  image: "/architecture/soccer_tourism_architecture.png", // Architecture diagram as main image
+  image: "/splash/soccer_tourism_splash.jpg",
   videoUrl: "",
   technologies: [
     "AWS",
@@ -201,8 +201,7 @@ const ProjectSoccerTourism: Project = {
   companyName: "JasonDavey.io",
   companyUrl: "https://jasondavey.io",
   demo: "",
-  // Remove the businessSplashImage property since we're embedding it directly in the businessView
-  index: 6, // Adjust as needed based on where you want this to appear
+  index: 6,
   keyArchitecture: `
 Cloud-Native Architecture:
 - Multi-agent AI orchestration system coordinating specialized agents for ticket acquisition, flight booking, hotel reservations, and experience planning
