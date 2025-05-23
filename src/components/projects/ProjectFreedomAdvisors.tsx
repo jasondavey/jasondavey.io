@@ -91,6 +91,8 @@ const ProjectEqisCapital: Project = {
   companyIcon: "/freedomadvisors-favicon.webp",
   companyName: "Freedom Advisors",
   demo: "",
+  startYear: 2017,
+  endYear: 2022,
   index: 3,
   resultsImpact: `
 Enabled advisors to scale practices and build equity value

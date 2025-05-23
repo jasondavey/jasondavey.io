@@ -52,36 +52,11 @@ const getIndustryFromProject = (project: Project): string => {
   return "General";
 };
 
-// Add year values to projects that don't have them yet
-allProjects.forEach((project) => {
-  // Set start and end years based on your provided values
-  if (project === ProjectVerascore) {
-    project.startYear = 2022;
-    project.endYear = 2025;
-  } else if (project === ProjectVideoSanitizer) {
-    project.startYear = 2025;
-    project.endYear = 2025;
-  } else if (project === ProjectEqisCapital) {
-    project.startYear = 2017;
-    project.endYear = 2022;
-  } else if (project === ProjectSoccerTourism) {
-    project.startYear = 2025;
-    project.endYear = 2025; // You mentioned 20265 but I assume it was a typo for 2025
-  } else if (project === ProjectDymoStamps) {
-    project.startYear = 2010;
-    project.endYear = 2017;
-  } else if (project === ProjectIntelliPad) {
-    project.startYear = 2001;
-    project.endYear = 2006;
-  } else if (project === ProjectStampsCom) {
-    project.startYear = 2010;
-    project.endYear = 2017;
-  }
-});
-
 // Sort projects by endYear in descending order (newest first)
+// For projects without an endYear (ongoing projects), use current year for sorting
+const currentYear = new Date().getFullYear();
 const projects: Project[] = [...allProjects].sort(
-  (a, b) => b.endYear - a.endYear
+  (a, b) => (b.endYear || currentYear) - (a.endYear || currentYear)
 );
 
 const Projects: React.FC = () => (

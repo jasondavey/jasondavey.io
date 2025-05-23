@@ -113,6 +113,8 @@ const ProjectVideoSanitizer: Project = {
   companyIcon: "/jdLogo.png",
   companyName: "JasonDavey.io",
   demo: "",
+  startYear: 2025,
+  endYear: 2025,
   index: 2,
   keyArchitecture: `
 Serverless AWS Lambda pipeline (ingest, transcribe, process, output)
