@@ -21,12 +21,12 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [scrolled]);
-  
+
   // Prevent body scrolling when menu is open and set viewport height for iOS
   useEffect(() => {
     // Fix for iOS viewport height issue
@@ -34,31 +34,31 @@ const Navbar = () => {
       // First we get the viewport height and we multiply it by 1% to get a value for a vh unit
       const vh = window.innerHeight * 0.01;
       // Then we set the value in the --vh custom property to the root of the document
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
     };
 
     // Call the function to set --vh on mount
     setVh();
 
     // Add event listener for window resize
-    window.addEventListener('resize', setVh);
+    window.addEventListener("resize", setVh);
 
     // Handle body scrolling
     if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
     } else {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
     }
-    
+
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      window.removeEventListener('resize', setVh);
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      window.removeEventListener("resize", setVh);
     };
   }, [menuOpen]);
 
@@ -81,11 +81,11 @@ const Navbar = () => {
   ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 text-white ${
-        scrolled 
-          ? 'bg-gray-900/95 border-b border-gray-700 backdrop-blur-lg shadow-md' 
-          : 'bg-gray-900/40 backdrop-blur-sm py-2'
+        scrolled
+          ? "bg-gray-900/95 border-b border-gray-700 backdrop-blur-lg shadow-md"
+          : "bg-gray-900/40 backdrop-blur-sm py-2"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
@@ -120,22 +120,40 @@ const Navbar = () => {
 
         {/* Desktop Social Links */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="https://github.com/jasondavey/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <a
+            href="https://github.com/jasondavey/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
             <FaGithubSquare className="h-5 w-5 text-white hover:text-gray-300 transition-colors" />
           </a>
-          <a href="https://www.linkedin.com/in/jasondavey/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a
+            href="https://www.linkedin.com/in/jasondavey/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
             <FaLinkedin className="h-5 w-5 text-white hover:text-blue-300 transition-colors" />
           </a>
-          <a href="https://x.com/ydohdohdoh" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <a
+            href="https://x.com/ydohdohdoh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X"
+          >
             <FaSquareXTwitter className="h-5 w-5 text-white hover:text-gray-300 transition-colors" />
           </a>
-          <a href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`} aria-label="Email">
+          <a
+            href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
+            aria-label="Email"
+          >
             <SiGmail className="h-5 w-5 text-white hover:text-red-300 transition-colors" />
           </a>
-          <a href="/resume.pdf" download>
+          <a href="/jasonrdavey.pdf" download>
             <TbFileCv className="h-6 w-6 text-white hover:text-gray-300 transition-colors" />
           </a>
-          
+
           {/* Theme toggle */}
           <div className="ml-2">
             <ThemeToggle />
@@ -183,29 +201,47 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 z-[60] transition-all duration-300 md:hidden ${menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
-        style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
+      <div
+        className={`fixed inset-0 z-[60] transition-all duration-300 md:hidden ${
+          menuOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible pointer-events-none"
+        }`}
+        style={{ height: "calc(var(--vh, 1vh) * 100)" }}
       >
         {/* Backdrop */}
-        <div 
+        <div
           className="fixed inset-0 bg-black/70 backdrop-blur-sm"
           onClick={closeMenu}
           aria-hidden="true"
-          style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
+          style={{ height: "calc(var(--vh, 1vh) * 100)" }}
         />
-        
+
         {/* Slide-in Menu Panel */}
-        <div 
-          className={`fixed right-0 top-0 bottom-0 w-[280px] bg-gray-900 shadow-xl flex flex-col overflow-y-auto transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-          style={{ height: 'calc(var(--vh, 1vh) * 100)', maxHeight: 'calc(var(--vh, 1vh) * 100)' }}
+        <div
+          className={`fixed right-0 top-0 bottom-0 w-[280px] bg-gray-900 shadow-xl flex flex-col overflow-y-auto transform transition-transform duration-300 ease-in-out ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          style={{
+            height: "calc(var(--vh, 1vh) * 100)",
+            maxHeight: "calc(var(--vh, 1vh) * 100)",
+          }}
         >
           {/* Mobile Menu Content */}
-          <div className="p-6 flex flex-col h-full" style={{ minHeight: 'calc(var(--vh, 1vh) * 100 - 48px)' }}>
+          <div
+            className="p-6 flex flex-col h-full"
+            style={{ minHeight: "calc(var(--vh, 1vh) * 100 - 48px)" }}
+          >
             <div className="flex justify-between items-center mb-8">
-              <a href="#" className="flex items-center gap-2" onClick={closeMenu}>
+              <a
+                href="#"
+                className="flex items-center gap-2"
+                onClick={closeMenu}
+              >
                 <Code className="h-6 w-6 text-white" />
-                <span className="font-bold text-lg text-white">jasondavey.io</span>
+                <span className="font-bold text-lg text-white">
+                  jasondavey.io
+                </span>
               </a>
               <Button
                 variant="ghost"
@@ -214,20 +250,30 @@ const Navbar = () => {
                 aria-label="Close menu"
                 className="text-white hover:bg-gray-800 rounded-full p-2"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </Button>
             </div>
-            
+
             {/* Mobile Navigation Links */}
             <nav className="flex-1">
               <ul className="space-y-4">
                 {navLinks.map((link) => (
                   <li key={link.href}>
-                    <a 
-                      href={link.href} 
+                    <a
+                      href={link.href}
                       className="block py-3 px-4 text-lg font-medium text-white hover:bg-gray-800 rounded-md transition-colors"
                       onClick={closeMenu}
                     >
@@ -237,23 +283,47 @@ const Navbar = () => {
                 ))}
               </ul>
             </nav>
-            
+
             {/* Mobile Social Links */}
             <div className="mt-auto pt-6 border-t border-gray-800">
               <div className="flex justify-center items-center gap-6 py-4">
-                <a href="https://github.com/jasondavey/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <a
+                  href="https://github.com/jasondavey/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
                   <FaGithubSquare className="h-6 w-6 text-white hover:text-gray-300" />
                 </a>
-                <a href="https://www.linkedin.com/in/jasondavey/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a
+                  href="https://www.linkedin.com/in/jasondavey/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
                   <FaLinkedin className="h-6 w-6 text-white hover:text-blue-300" />
                 </a>
-                <a href="https://www.buymeacoffee.com/jasondavey" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee" className="text-yellow-400 hover:text-yellow-300">
+                <a
+                  href="https://www.buymeacoffee.com/jasondavey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Buy me a coffee"
+                  className="text-yellow-400 hover:text-yellow-300"
+                >
                   <FaCoffee className="h-6 w-6" />
                 </a>
-                <a href="https://x.com/ydohdohdoh" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <a
+                  href="https://x.com/ydohdohdoh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X"
+                >
                   <FaSquareXTwitter className="h-6 w-6 text-white hover:text-gray-300" />
                 </a>
-                <a href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`} aria-label="Email">
+                <a
+                  href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
+                  aria-label="Email"
+                >
                   <SiGmail className="h-6 w-6 text-white hover:text-red-300" />
                 </a>
               </div>
