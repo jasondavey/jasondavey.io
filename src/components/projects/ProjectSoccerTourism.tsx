@@ -12,11 +12,17 @@ const ProjectSoccerTourism: Project = {
   ],
   businessView: (
     <>
-      <img
-        src="/splash/soccer_tourism_business_splash.webp"
-        alt="NY Times Soccer Tourism Article"
-        className="w-full rounded-lg border border-gray-200 shadow-md mb-6"
-      />
+      <a
+        href="https://www.nytimes.com/athletic/4315721/2023/03/18/wrexham-us-arsenal-barca-leeds/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="/splash/soccer_tourism_business_splash.webp"
+          alt="NY Times Soccer Tourism Article"
+          className="w-full rounded-lg border border-gray-200 shadow-md mb-6"
+        />
+      </a>
       <p className="mb-2">
         <strong>Problem:</strong> Soccer tourists struggle with complex trip
         planning involving match tickets, flights, accommodations, and local
