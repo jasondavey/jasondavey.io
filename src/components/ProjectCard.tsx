@@ -24,11 +24,16 @@ const getIndustryFromDescription = (
     return "Media";
   if (str.includes("health")) return "Healthcare";
   if (str.includes("education") || str.includes("learning")) return "EdTech";
-  if (str.includes("logistics") || str.includes("shipping")) return "Mailing";
+  if (str.includes("logistics") || str.includes("shipping")) return "Postage";
   if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
-  if (str.includes("stamps")) return "Mailing";
-  if (str.includes("legal") || str.includes("law firm") || str.includes("attorney") || 
-      str.includes("intellipad") || str.includes("crm") && str.includes("firm"))
+  if (str.includes("stamps")) return "Postage";
+  if (
+    str.includes("legal") ||
+    str.includes("law firm") ||
+    str.includes("attorney") ||
+    str.includes("intellipad") ||
+    (str.includes("crm") && str.includes("firm"))
+  )
     return "Legal";
   return "General";
 };
@@ -103,11 +108,13 @@ const ProjectCard: React.FC<Project> = ({
   }, []);
 
   // Determine which logo to use based on theme
-  const logoToUse = isDarkMode && darkModeCompanyIcon ? darkModeCompanyIcon : companyIcon;
-  
+  const logoToUse =
+    isDarkMode && darkModeCompanyIcon ? darkModeCompanyIcon : companyIcon;
+
   // Determine if we should apply special styling for dark mode
   // Only apply to Versys logo
-  const shouldInvertLogo = isDarkMode && logoToUse && logoToUse.includes('versys_logo');
+  const shouldInvertLogo =
+    isDarkMode && logoToUse && logoToUse.includes("versys_logo");
 
   const techInfos = technologies
     .map((tech) => ({ tech, info: techIconMap[tech] }))
@@ -143,14 +150,22 @@ const ProjectCard: React.FC<Project> = ({
                     <img
                       src={logoToUse}
                       alt={companyName || "Company Logo"}
-                      className={`h-5 rounded-sm ${shouldInvertLogo ? 'invert brightness-200 contrast-200' : ''}`}
+                      className={`h-5 rounded-sm ${
+                        shouldInvertLogo
+                          ? "invert brightness-200 contrast-200"
+                          : ""
+                      }`}
                     />
                   </a>
                 ) : (
                   <img
                     src={logoToUse}
                     alt={companyName || "Company Logo"}
-                    className={`h-5 rounded-sm ${shouldInvertLogo ? 'invert brightness-200 contrast-200' : ''}`}
+                    className={`h-5 rounded-sm ${
+                      shouldInvertLogo
+                        ? "invert brightness-200 contrast-200"
+                        : ""
+                    }`}
                   />
                 ))}
               {/* Company Name second */}
@@ -159,12 +174,14 @@ const ProjectCard: React.FC<Project> = ({
                   {companyName}
                 </span>
               )}
-              
+
               {/* Project Year Range */}
               <span className="ml-auto font-mono text-xs bg-background/80 px-2 py-0.5 rounded border border-border">
-                {!endYear ? `${startYear}–Present` : 
-                 startYear !== endYear ? `${startYear}–${endYear}` : 
-                 `${endYear}`}
+                {!endYear
+                  ? `${startYear}–Present`
+                  : startYear !== endYear
+                  ? `${startYear}–${endYear}`
+                  : `${endYear}`}
               </span>
             </div>
           )}
