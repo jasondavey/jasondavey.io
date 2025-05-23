@@ -27,7 +27,7 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
       return "Media";
     if (str.includes("health")) return "Healthcare";
     if (str.includes("education") || str.includes("learning")) return "EdTech";
-    if (str.includes("logistics") || str.includes("shipping")) return "Logistics";
+    if (str.includes("logistics") || str.includes("shipping")) return "Mailing";
     if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
     if (str.includes("stamps")) return "Mailing";
     if (str.includes("legal") || str.includes("law firm") || str.includes("attorney") || 
@@ -56,7 +56,6 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
       'Media': 'bg-purple-100 text-purple-800 border-purple-200 hover:bg-purple-200',
       'Healthcare': 'bg-red-100 text-red-800 border-red-200 hover:bg-red-200',
       'EdTech': 'bg-yellow-100 text-yellow-800 border-yellow-200 hover:bg-yellow-200',
-      'Logistics': 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200',
       'Tourism': 'bg-blue-100 text-blue-800 border-blue-200 hover:bg-blue-200',
       'Mailing': 'bg-orange-100 text-orange-800 border-orange-200 hover:bg-orange-200',
       'Legal': 'bg-indigo-100 text-indigo-800 border-indigo-200 hover:bg-indigo-200',
@@ -68,6 +67,7 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
 
   return (
     <div className="mb-10 animate-fade-in opacity-0" style={{ animationDelay: "0.15s" }}>
+      <h3 className="text-lg font-semibold text-center mb-4">Industry Experience</h3>
       <div className="flex flex-wrap justify-center gap-2 md:gap-3">
         {uniqueIndustries.map((industry) => (
           <div key={industry} className="text-center">

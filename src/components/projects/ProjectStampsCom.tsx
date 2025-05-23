@@ -3,6 +3,8 @@ import { Technology } from "../../constants/TechnologyEnum";
 import { StampsComTechMap } from "@/constants/stamps";
 
 const ProjectStampsCom: Project = {
+  startYear: 2010,
+  endYear: 2017,
   businessTerms: [
     "Shipping & Logistics",
     "Postal Solutions",

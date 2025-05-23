@@ -172,7 +172,9 @@ const ProjectDymoStamps: Project = {
   companyName: "Stamps.com",
   companyUrl: "https://www.stamps.com",
   demo: "",
-  index: 3, // Adjust as needed based on where you want this to appear
+  startYear: 2010,
+  endYear: 2017,
+  index: 3, // Keeping index for backward compatibility
   keyArchitecture: `
 Secure web-based architecture with client-side validation
 Custom browser applet for reliable printer integration

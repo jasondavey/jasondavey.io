@@ -9,7 +9,7 @@ import ProjectIntelliPad from "./projects/ProjectIntelliPad";
 import IndustrySummary from "./IndustrySummary";
 import { Project } from "./Project";
 
-const projects: Project[] = [
+const allProjects: Project[] = [
   ProjectVerascore,
   ProjectVideoSanitizer,
   ProjectEqisCapital,
@@ -19,6 +19,70 @@ const projects: Project[] = [
   ProjectIntelliPad,
   // ...other projects
 ];
+
+// Function to get industry from project
+const getIndustryFromProject = (project: Project): string => {
+  const { title, description } = project;
+  const str = `${title} ${
+    typeof description === "string" ? description : ""
+  }`.toLowerCase();
+
+  if (
+    str.includes("financ") ||
+    str.includes("lending") ||
+    str.includes("score") ||
+    str.includes("wealth")
+  )
+    return "Fintech";
+  if (str.includes("video") || str.includes("caption") || str.includes("media"))
+    return "Media";
+  if (str.includes("health")) return "Healthcare";
+  if (str.includes("education") || str.includes("learning")) return "EdTech";
+  if (str.includes("logistics") || str.includes("shipping")) return "Mailing";
+  if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
+  if (str.includes("stamps")) return "Mailing";
+  if (
+    str.includes("legal") ||
+    str.includes("law firm") ||
+    str.includes("attorney") ||
+    str.includes("intellipad") ||
+    (str.includes("crm") && str.includes("firm"))
+  )
+    return "Legal";
+  return "General";
+};
+
+// Add year values to projects that don't have them yet
+allProjects.forEach((project) => {
+  // Set start and end years based on your provided values
+  if (project === ProjectVerascore) {
+    project.startYear = 2022;
+    project.endYear = 2025;
+  } else if (project === ProjectVideoSanitizer) {
+    project.startYear = 2025;
+    project.endYear = 2025;
+  } else if (project === ProjectEqisCapital) {
+    project.startYear = 2017;
+    project.endYear = 2022;
+  } else if (project === ProjectSoccerTourism) {
+    project.startYear = 2025;
+    project.endYear = 2025; // You mentioned 20265 but I assume it was a typo for 2025
+  } else if (project === ProjectDymoStamps) {
+    project.startYear = 2010;
+    project.endYear = 2017;
+  } else if (project === ProjectIntelliPad) {
+    project.startYear = 2001;
+    project.endYear = 2006;
+  } else if (project === ProjectStampsCom) {
+    project.startYear = 2010;
+    project.endYear = 2017;
+  }
+});
+
+// Sort projects by endYear in descending order (newest first)
+const projects: Project[] = [...allProjects].sort(
+  (a, b) => b.endYear - a.endYear
+);
 
 const Projects: React.FC = () => (
   <section id="projects" className="bg-background">
@@ -33,9 +97,9 @@ const Projects: React.FC = () => (
           challenges and opportunities to learn and grow.
         </p>
         <hr className="my-10 border-t border-gray-200" />
-        
+
         {/* Industry Summary Visual */}
-        <IndustrySummary projects={projects} />
+        <IndustrySummary projects={allProjects} />
       </div>
       <div className="space-y-12">
         {projects.map((project, idx) => (
@@ -50,6 +114,8 @@ const Projects: React.FC = () => (
             demo={project.demo}
             techIconMap={project.techIconMap}
             details={project.details}
+            startYear={project.startYear}
+            endYear={project.endYear}
             index={idx + 1}
             showDemoButton={project.showDemoButton}
             showCodeButton={project.showCodeButton}

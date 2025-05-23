@@ -24,7 +24,7 @@ const getIndustryFromDescription = (
     return "Media";
   if (str.includes("health")) return "Healthcare";
   if (str.includes("education") || str.includes("learning")) return "EdTech";
-  if (str.includes("logistics") || str.includes("shipping")) return "Logistics";
+  if (str.includes("logistics") || str.includes("shipping")) return "Mailing";
   if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
   if (str.includes("stamps")) return "Mailing";
   if (str.includes("legal") || str.includes("law firm") || str.includes("attorney") || 
@@ -60,6 +60,8 @@ const ProjectCard: React.FC<Project> = ({
   techIconMap,
   details,
   index,
+  startYear,
+  endYear,
   showDemoButton = true,
   showCodeButton = true,
   companyIcon,
@@ -157,6 +159,13 @@ const ProjectCard: React.FC<Project> = ({
                   {companyName}
                 </span>
               )}
+              
+              {/* Project Year Range */}
+              <span className="ml-auto font-mono text-xs bg-background/80 px-2 py-0.5 rounded border border-border">
+                {!endYear ? `${startYear}–Present` : 
+                 startYear !== endYear ? `${startYear}–${endYear}` : 
+                 `${endYear}`}
+              </span>
             </div>
           )}
           <IndustryBadge title={title} description={description} />

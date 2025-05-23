@@ -9,7 +9,9 @@ export interface Project {
   businessView?: React.ReactNode;
   companyUrl?: string;
   companyName?: string;
-  index: number;
+  startYear: number;
+  endYear?: number; // Optional - if not provided, project is current/ongoing
+  index?: number; // Optional as we're using startYear and endYear instead
   title: string;
   description: React.ReactNode; // or string or Element
   image?: string;

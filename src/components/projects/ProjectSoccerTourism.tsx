@@ -2,6 +2,7 @@ import { Project } from "../Project";
 import { SoccerTourismTechMap } from "@/constants/soccer";
 
 const ProjectSoccerTourism: Project = {
+  startYear: 2025, // Ongoing project - no endYear
   businessTerms: [
     "Soccer Tourism",
     "AI Travel Concierge",
@@ -248,12 +249,12 @@ Generated sustainable economic growth for local communities while maintaining th
   externalLinks: [
     {
       url: "https://github.com/jasondavey/soccer-tourism",
-      label: "View Project"
+      label: "View Project",
     },
     {
       url: "https://www.nytimes.com/athletic/4315721/2023/03/18/wrexham-us-arsenal-barca-leeds/",
-      label: "NY Times Article"
-    }
+      label: "NY Times Article",
+    },
   ],
 };
 
