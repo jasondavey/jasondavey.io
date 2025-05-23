@@ -99,6 +99,10 @@ const ProjectCard: React.FC<Project> = ({
 
   // Determine which logo to use based on theme
   const logoToUse = isDarkMode && darkModeCompanyIcon ? darkModeCompanyIcon : companyIcon;
+  
+  // Determine if we should apply special styling for dark mode
+  // Only apply to Versys logo
+  const shouldInvertLogo = isDarkMode && logoToUse && logoToUse.includes('versys_logo');
 
   const techInfos = technologies
     .map((tech) => ({ tech, info: techIconMap[tech] }))
@@ -134,14 +138,14 @@ const ProjectCard: React.FC<Project> = ({
                     <img
                       src={logoToUse}
                       alt={companyName || "Company Logo"}
-                      className="h-5 rounded-sm"
+                      className={`h-5 rounded-sm ${shouldInvertLogo ? 'invert brightness-200 contrast-200' : ''}`}
                     />
                   </a>
                 ) : (
                   <img
                     src={logoToUse}
                     alt={companyName || "Company Logo"}
-                    className="h-5 rounded-sm"
+                    className={`h-5 rounded-sm ${shouldInvertLogo ? 'invert brightness-200 contrast-200' : ''}`}
                   />
                 ))}
               {/* Company Name second */}

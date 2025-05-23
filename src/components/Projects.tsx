@@ -50,6 +50,7 @@ const Projects: React.FC = () => (
             showDemoButton={project.showDemoButton}
             showCodeButton={project.showCodeButton}
             companyIcon={project.companyIcon || "/jdLogo.png"}
+            darkModeCompanyIcon={project.darkModeCompanyIcon}
             companyUrl={project.companyUrl}
             companyName={project.companyName}
             keyArchitecture={project.keyArchitecture}
