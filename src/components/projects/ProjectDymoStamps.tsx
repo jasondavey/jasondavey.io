@@ -168,7 +168,7 @@ const ProjectDymoStamps: Project = {
     },
   ],
   techIconMap: {},
-  companyIcon: "./stamps.png",
+  companyIcon: "./logos/stamps.com.png",
   companyName: "Stamps.com",
   companyUrl: "https://www.stamps.com",
   demo: "",

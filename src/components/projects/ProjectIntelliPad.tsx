@@ -108,7 +108,7 @@ const ProjectIntelliPad: Project = {
     },
   ],
   techIconMap: {},
-  companyIcon: "/versys_logo.webp",
+  companyIcon: "/logos/versys_logo.webp",
   darkModeCompanyIcon: "/versys_logo_light.webp",
   companyName: "Versys",
   companyUrl: "https://intellipadcrm.com/",

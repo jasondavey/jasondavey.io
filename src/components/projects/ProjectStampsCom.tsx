@@ -97,7 +97,7 @@ const ProjectStampsCom: Project = {
   showDemoButton: false,
   showCodeButton: false,
   techIconMap: StampsComTechMap,
-  companyIcon: "./stamps.png",
+  companyIcon: "./logos/stamps.com.png",
   companyName: "Stamps.com",
   companyUrl: "https://www.stamps.com",
   demo: "",
