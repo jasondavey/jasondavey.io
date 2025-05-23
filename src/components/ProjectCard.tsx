@@ -115,7 +115,7 @@ const ProjectCard: React.FC<Project> = ({
   // Determine if we should apply special styling for dark mode
   // Only apply to Versys logo
   const shouldInvertLogo =
-    isDarkMode && logoToUse && logoToUse.includes("versys_logo");
+    isDarkMode && logoToUse && logoToUse.includes("versys.com");
 
   const techInfos = technologies
     .map((tech) => ({ tech, info: techIconMap[tech] }))
@@ -395,19 +395,21 @@ const ProjectCard: React.FC<Project> = ({
               className="w-full mt-4 rounded-xl bg-background p-6 border border-border transition-colors min-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-engineering-accent/60 scrollbar-track-transparent"
               role="tabpanel"
             >
-              {activeTab === "business" && businessView && (
+              {activeTab === "business" && (
                 <div className="whitespace-pre-line text-foreground leading-relaxed">
+                  {/* Handle business splash image */}
                   {businessSplashImage && (
                     <div className="mb-6">
                       <img
                         src={businessSplashImage}
-                        alt="Project Splash Image"
+                        alt={`${title} - Splash Image`}
                         className="w-full rounded-lg border border-border shadow-md"
                       />
                     </div>
                   )}
+                  {/* Render business view content */}
                   {businessView}
-                  
+
                   {/* Show external links */}
                   {externalLinks && externalLinks.length > 0 && (
                     <div className="flex flex-wrap gap-4 mt-6">
@@ -481,7 +483,7 @@ const ProjectCard: React.FC<Project> = ({
               {activeTab === "results" && resultsImpact && (
                 <div className="whitespace-pre-line text-foreground leading-relaxed">
                   {resultsImpact}
-                  
+
                   {/* Show external links */}
                   {externalLinks && externalLinks.length > 0 && (
                     <div className="flex flex-wrap gap-4 mt-6">

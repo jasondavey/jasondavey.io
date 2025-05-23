@@ -12,6 +12,11 @@ const ProjectSoccerTourism: Project = {
   ],
   businessView: (
     <>
+      <img 
+        src="/splash/soccer_tourism_splash.webp" 
+        alt="NY Times Soccer Tourism Article" 
+        className="w-full rounded-lg border border-gray-200 shadow-md mb-6" 
+      />
       <p className="mb-2">
         <strong>Problem:</strong> Soccer tourists struggle with complex trip
         planning involving match tickets, flights, accommodations, and local
@@ -134,7 +139,7 @@ const ProjectSoccerTourism: Project = {
       </p>
     </>
   ),
-  image: "/splash/soccer_tourism_nytimes_article.webp", // Architecture diagram as main image
+  image: "/architecture/soccer_tourism_architecture.png", // Architecture diagram as main image
   videoUrl: "",
   technologies: [
     "AWS",
@@ -196,7 +201,7 @@ const ProjectSoccerTourism: Project = {
   companyName: "JasonDavey.io",
   companyUrl: "https://jasondavey.io",
   demo: "",
-  businessSplashImage: "/splash/soccer_tourism_nytimes_article.webp",
+  // Remove the businessSplashImage property since we're embedding it directly in the businessView
   index: 6, // Adjust as needed based on where you want this to appear
   keyArchitecture: `
 Cloud-Native Architecture:
