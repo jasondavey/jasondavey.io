@@ -26,6 +26,7 @@ const getIndustryFromDescription = (
   if (str.includes("education") || str.includes("learning")) return "EdTech";
   if (str.includes("logistics") || str.includes("shipping")) return "Logistics";
   if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
+  if (str.includes("stamps")) return "Mailing";
   return "General";
 };
 
@@ -172,6 +173,23 @@ const ProjectCard: React.FC<Project> = ({
                 Demo
               </a>
             )}
+
+            {/* External Links */}
+            {externalLinks &&
+              externalLinks.length > 0 &&
+              externalLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-1 text-xs font-medium bg-engineering-light text-engineering-accent rounded hover:bg-engineering-light/80 transition"
+                  title={link.label}
+                >
+                  {link.label}
+                  <FaExternalLinkAlt className="ml-2" size={10} />
+                </a>
+              ))}
           </div>
         </div>
       </div>
@@ -341,19 +359,37 @@ const ProjectCard: React.FC<Project> = ({
                   {description}
                   {details && <div className="mt-4">{details}</div>}
 
-                  {/* Show demo button inside Architecture tab */}
-                  {showDemoButton && demo && (
-                    <div className="flex gap-4 mt-6">
-                      <a
-                        href={demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center px-4 py-2 bg-engineering-accent text-white rounded hover:bg-green-600 transition"
-                      >
-                        Demo <FaExternalLinkAlt className="ml-2" />
-                      </a>
+                  {/* Show demo button and external links inside Architecture tab */}
+                  {(showDemoButton && demo) ||
+                  (externalLinks && externalLinks.length > 0) ? (
+                    <div className="flex flex-wrap gap-4 mt-6">
+                      {showDemoButton && demo && (
+                        <a
+                          href={demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-4 py-2 bg-engineering-accent text-white rounded hover:bg-green-600 transition"
+                        >
+                          Demo <FaExternalLinkAlt className="ml-2" />
+                        </a>
+                      )}
+
+                      {externalLinks &&
+                        externalLinks.length > 0 &&
+                        externalLinks.map((link, index) => (
+                          <a
+                            key={index}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-4 py-2 bg-engineering-light text-engineering-accent rounded hover:bg-engineering-light/80 transition"
+                          >
+                            {link.label}{" "}
+                            <FaExternalLinkAlt className="ml-2" size={12} />
+                          </a>
+                        ))}
                     </div>
-                  )}
+                  ) : null}
                 </div>
               )}
               {activeTab === "results" && resultsImpact && (

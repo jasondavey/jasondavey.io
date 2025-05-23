@@ -190,6 +190,7 @@ const ProjectSoccerTourism: Project = {
     string,
     { category: string; icon: JSX.Element; url: string }
   >,
+
   companyIcon: "./jdLogo.png",
   companyName: "JasonDavey.io",
   companyUrl: "https://jasondavey.io",
@@ -243,7 +244,17 @@ Preserved cultural authenticity by preventing overtourism with real-time monitor
 Provided soccer enthusiasts with seamless, personalized travel experiences based on their preferences and constraints
 Generated sustainable economic growth for local communities while maintaining their cultural essence
 `,
-  archImage: "./soccer_tourism.png", // Architecture diagram
+  archImage: "./soccer_tourism.png",
+  externalLinks: [
+    {
+      url: "https://github.com/jasondavey/soccer-tourism",
+      label: "View Project"
+    },
+    {
+      url: "https://www.nytimes.com/athletic/4315721/2023/03/18/wrexham-us-arsenal-barca-leeds/",
+      label: "NY Times Article"
+    }
+  ],
 };
 
 export default ProjectSoccerTourism;

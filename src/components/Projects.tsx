@@ -11,9 +11,10 @@ const projects: Project[] = [
   ProjectVerascore,
   ProjectVideoSanitizer,
   ProjectEqisCapital,
+  ProjectDymoStamps,
   ProjectStampsCom,
   ProjectSoccerTourism,
-  ProjectDymoStamps,
+
   // ...other projects
 ];
 
