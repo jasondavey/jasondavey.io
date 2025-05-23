@@ -77,6 +77,7 @@ const ProjectCard: React.FC<Project> = ({
   archImage,
   businessView,
   businessTerms,
+  businessSplashImage,
   externalLinks,
 }) => {
   const isEven = index % 2 === 0;
@@ -396,7 +397,34 @@ const ProjectCard: React.FC<Project> = ({
             >
               {activeTab === "business" && businessView && (
                 <div className="whitespace-pre-line text-foreground leading-relaxed">
+                  {businessSplashImage && (
+                    <div className="mb-6">
+                      <img
+                        src={businessSplashImage}
+                        alt="Project Splash Image"
+                        className="w-full rounded-lg border border-border shadow-md"
+                      />
+                    </div>
+                  )}
                   {businessView}
+                  
+                  {/* Show external links */}
+                  {externalLinks && externalLinks.length > 0 && (
+                    <div className="flex flex-wrap gap-4 mt-6">
+                      {externalLinks.map((link, index) => (
+                        <a
+                          key={index}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-4 py-2 bg-engineering-light text-engineering-accent rounded hover:bg-engineering-light/80 transition"
+                        >
+                          {link.label}{" "}
+                          <FaExternalLinkAlt className="ml-2" size={12} />
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
               {activeTab === "architecture" && (
@@ -453,6 +481,24 @@ const ProjectCard: React.FC<Project> = ({
               {activeTab === "results" && resultsImpact && (
                 <div className="whitespace-pre-line text-foreground leading-relaxed">
                   {resultsImpact}
+                  
+                  {/* Show external links */}
+                  {externalLinks && externalLinks.length > 0 && (
+                    <div className="flex flex-wrap gap-4 mt-6">
+                      {externalLinks.map((link, index) => (
+                        <a
+                          key={index}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-4 py-2 bg-engineering-light text-engineering-accent rounded hover:bg-engineering-light/80 transition"
+                        >
+                          {link.label}{" "}
+                          <FaExternalLinkAlt className="ml-2" size={12} />
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>

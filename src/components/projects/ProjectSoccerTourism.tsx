@@ -134,7 +134,7 @@ const ProjectSoccerTourism: Project = {
       </p>
     </>
   ),
-  image: "./danish-ibrahim-0xICxRQTDEY-unsplash.jpg", // Soccer stadium image showing community atmosphere
+  image: "/splash/soccer_tourism_nytimes_article.webp", // Architecture diagram as main image
   videoUrl: "",
   technologies: [
     "AWS",
@@ -192,10 +192,11 @@ const ProjectSoccerTourism: Project = {
     { category: string; icon: JSX.Element; url: string }
   >,
 
-  companyIcon: "./jdLogo.png",
+  companyIcon: "/logos/jasondavey.io.png",
   companyName: "JasonDavey.io",
   companyUrl: "https://jasondavey.io",
   demo: "",
+  businessSplashImage: "/splash/soccer_tourism_nytimes_article.webp",
   index: 6, // Adjust as needed based on where you want this to appear
   keyArchitecture: `
 Cloud-Native Architecture:
@@ -245,7 +246,7 @@ Preserved cultural authenticity by preventing overtourism with real-time monitor
 Provided soccer enthusiasts with seamless, personalized travel experiences based on their preferences and constraints
 Generated sustainable economic growth for local communities while maintaining their cultural essence
 `,
-  archImage: "./soccer_tourism.png",
+  archImage: "/architecture/soccer_tourism_architecture.png",
   externalLinks: [
     {
       url: "https://github.com/jasondavey/soccer-tourism",

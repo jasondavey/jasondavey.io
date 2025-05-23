@@ -68,7 +68,7 @@ const ProjectIntelliPad: Project = {
       </p>
     </>
   ),
-  image: "/versys_splash.webp",
+  image: "./splash/versys_splash.webp",
   videoUrl: "",
   technologies: [
     Technology.DotNet,

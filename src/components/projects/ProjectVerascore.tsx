@@ -73,7 +73,7 @@ const ProjectVerascore: Project = {
       </p>
     </>
   ),
-  image: "./verascore_dashboard.png",
+  image: "/verascore_dashboard.png",
   videoUrl: "https://vimeo.com/591198947",
   technologies: [
     Technology.React,
@@ -92,7 +92,7 @@ const ProjectVerascore: Project = {
   demo: "https://www.myverascore.com/how-it-works",
   featured: true,
   details: <></>,
-  companyIcon: "/verascore.png",
+  companyIcon: "/logos/verascore.com.png",
   companyName: "VeraScore",
   showDemoButton: false,
   showCodeButton: false,

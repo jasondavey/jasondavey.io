@@ -49,7 +49,7 @@ const About = () => {
                 <div className="relative w-48 h-48 rounded-full overflow-hidden bg-engineering-light flex items-center justify-center">
                   <Avatar className="w-full h-full">
                     <AvatarImage
-                      src="/headshot.png"
+                      src="/jasondavey-headshot.png"
                       alt="Jason Davey"
                       className="object-cover"
                     />

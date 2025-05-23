@@ -7,6 +7,10 @@ export interface Project {
    * Optional business view content for the Business View tab.
    */
   businessView?: React.ReactNode;
+  /**
+   * Optional splash image to display at the top of the business view tab.
+   */
+  businessSplashImage?: string;
   companyUrl?: string;
   companyName?: string;
   startYear: number;

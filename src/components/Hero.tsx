@@ -13,8 +13,8 @@ const Hero = () => {
         {/* Added image as background */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/lovable-uploads/8fdf2308-40d8-4dc0-b34e-3f2f1a0d2c83.png"
-            alt="Jason at whiteboard"
+            src="/jasondavey-whiteboard.png"
+            alt="Jason at whiteboard pretending to be lazy"
             className="w-full h-full object-cover opacity-20 md:opacity-25"
           />
           <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>

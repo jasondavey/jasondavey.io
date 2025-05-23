@@ -110,7 +110,7 @@ const ProjectVideoSanitizer: Project = {
   showDemoButton: false,
   showCodeButton: true,
   techIconMap: VideoSanitizerTechMap,
-  companyIcon: "/jdLogo.png",
+  companyIcon: "/logos/jasondavey.io.png",
   companyName: "JasonDavey.io",
   demo: "",
   startYear: 2025,
@@ -127,7 +127,17 @@ Structured S3 directories for traceable asset management
 Eliminates manual editing, enabling rapid turnaround for large libraries
 Extensible: supports custom filters, cues, and AI enhancement
 `,
-  archImage: "/video_sanitizer_architecture.svg",
+  archImage: "/architecture/video_sanitizer_architecture.svg",
+  externalLinks: [
+    {
+      url: "https://github.com/jasondavey/video-sanitizer",
+      label: "View Code"
+    },
+    {
+      url: "https://medium.com/@jasondavey/building-a-serverless-video-sanitizer-4f5e2a3b8c7",
+      label: "Read Case Study"
+    }
+  ]
 };
 
 export default ProjectVideoSanitizer;
