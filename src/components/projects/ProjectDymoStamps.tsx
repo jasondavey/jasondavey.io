@@ -187,7 +187,7 @@ Received positive review from PC Mag highlighting convenience and usability
 Enabled small businesses to print postage without expensive hardware
 Created user-friendly solution that met strict USPS security requirements
 `,
-  archImage: "/stamps_architecture.svg", // Architecture diagram
+  archImage: "/architecture/stamps_dso_architecture.svg", // Updated architecture diagram based on patent
 };
 
 export default ProjectDymoStamps;

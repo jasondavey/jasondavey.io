@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">DYMO Stamps Online® - Patented Architecture (US11037223B1)</text>
+  <text x="400" y="70" font-family="Arial" font-size="16" text-anchor="middle" fill="#555">Secure Web-based Postage Printing System</text>
+  
+  <!-- Main Sections -->
+  <rect x="50" y="100" width="700" height="450" rx="10" ry="10" fill="#f1faff" stroke="#3b82f6" stroke-width="2" />
+  
+  <!-- Client Side -->
+  <rect x="70" y="130" width="300" height="390" rx="5" ry="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+  <text x="220" y="155" font-family="Arial" font-size="16" text-anchor="middle" fill="#1e40af">Client Side</text>
+  
+  <!-- Server Side -->
+  <rect x="430" y="130" width="300" height="390" rx="5" ry="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+  <text x="580" y="155" font-family="Arial" font-size="16" text-anchor="middle" fill="#1e40af">Server Side</text>
+  
+  <!-- Client Components -->
+  <!-- User Interface Tier -->
+  <rect x="90" y="170" width="260" height="70" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="220" y="195" font-family="Arial" font-size="14" text-anchor="middle" fill="#7c2d12">UI Tier (12)</text>
+  <text x="220" y="215" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">User Interface with Browser-based Access</text>
+  <text x="220" y="230" font-family="Arial" font-size="10" text-anchor="middle" fill="#7c2d12">Records User and Platform Session Data</text>
+  
+  <!-- Device Engine -->
+  <rect x="90" y="260" width="260" height="70" rx="5" ry="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
+  <text x="220" y="285" font-family="Arial" font-size="14" text-anchor="middle" fill="#166534">Device Engine (14)</text>
+  <text x="220" y="305" font-family="Arial" font-size="12" text-anchor="middle" fill="#166534">Printer Integration and Device Management</text>
+  <text x="220" y="320" font-family="Arial" font-size="10" text-anchor="middle" fill="#166534">Records Permissions and Printing Activity</text>
+  
+  <!-- Client-Side Modules -->
+  <rect x="90" y="350" width="120" height="60" rx="5" ry="5" fill="#ffffff" stroke="#3b82f6" stroke-width="1" />
+  <text x="150" y="375" font-family="Arial" font-size="12" text-anchor="middle">Postage Software</text>
+  <text x="150" y="395" font-family="Arial" font-size="12" text-anchor="middle">Application Module</text>
+  
+  <rect x="230" y="350" width="120" height="60" rx="5" ry="5" fill="#ffffff" stroke="#3b82f6" stroke-width="1" />
+  <text x="290" y="375" font-family="Arial" font-size="12" text-anchor="middle">Validation Check</text>
+  <text x="290" y="395" font-family="Arial" font-size="12" text-anchor="middle">System</text>
+  
+  <!-- Printer Device -->
+  <rect x="90" y="430" width="260" height="60" rx="5" ry="5" fill="#ede9fe" stroke="#7c3aed" stroke-width="2" />
+  <text x="220" y="455" font-family="Arial" font-size="14" text-anchor="middle" fill="#5b21b6">DYMO Label Printer</text>
+  <text x="220" y="475" font-family="Arial" font-size="12" text-anchor="middle" fill="#5b21b6">Client-Side Device</text>
+  
+  <!-- Server Components -->
+  <!-- Web Server -->
+  <rect x="450" y="170" width="260" height="70" rx="5" ry="5" fill="#fff7ed" stroke="#ea580c" stroke-width="2" />
+  <text x="580" y="195" font-family="Arial" font-size="14" text-anchor="middle" fill="#7c2d12">Web Server</text>
+  <text x="580" y="215" font-family="Arial" font-size="12" text-anchor="middle" fill="#7c2d12">Credential Validation &amp; Access Control</text>
+  <text x="580" y="230" font-family="Arial" font-size="10" text-anchor="middle" fill="#7c2d12">Required for Revenue-Generating Requests</text>
+  
+  <!-- Application Tier -->
+  <rect x="450" y="260" width="260" height="70" rx="5" ry="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" />
+  <text x="580" y="285" font-family="Arial" font-size="14" text-anchor="middle" fill="#166534">Application Tier (16)</text>
+  <text x="580" y="305" font-family="Arial" font-size="12" text-anchor="middle" fill="#166534">Server-Side Logic &amp; Processing</text>
+  <text x="580" y="320" font-family="Arial" font-size="10" text-anchor="middle" fill="#166534">Records User Requests &amp; Runtime Data</text>
+  
+  <!-- Server Modules -->
+  <rect x="450" y="350" width="120" height="60" rx="5" ry="5" fill="#ffffff" stroke="#3b82f6" stroke-width="1" />
+  <text x="510" y="375" font-family="Arial" font-size="12" text-anchor="middle">Event Tracking</text>
+  <text x="510" y="395" font-family="Arial" font-size="12" text-anchor="middle">System</text>
+  
+  <rect x="590" y="350" width="120" height="60" rx="5" ry="5" fill="#ffffff" stroke="#3b82f6" stroke-width="1" />
+  <text x="650" y="375" font-family="Arial" font-size="12" text-anchor="middle">Postage</text>
+  <text x="650" y="395" font-family="Arial" font-size="12" text-anchor="middle">Generation</text>
+  
+  <!-- Database -->
+  <rect x="450" y="430" width="260" height="60" rx="5" ry="5" fill="#ede9fe" stroke="#7c3aed" stroke-width="2" />
+  <text x="580" y="455" font-family="Arial" font-size="14" text-anchor="middle" fill="#5b21b6">Database (60)</text>
+  <text x="580" y="475" font-family="Arial" font-size="12" text-anchor="middle" fill="#5b21b6">Stores Event Messages &amp; Transaction Data</text>
+  
+  <!-- External Systems -->
+  <rect x="370" y="140" width="60" height="120" rx="5" ry="5" fill="#e5e7eb" stroke="#4b5563" stroke-width="1.5" />
+  <text x="400" y="205" font-family="Arial" font-size="12" text-anchor="middle" fill="#4b5563" transform="rotate(-90, 400, 205)">User (10)</text>
+  
+  <rect x="370" y="280" width="60" height="120" rx="5" ry="5" fill="#e5e7eb" stroke="#4b5563" stroke-width="1.5" />
+  <text x="400" y="340" font-family="Arial" font-size="12" text-anchor="middle" fill="#4b5563" transform="rotate(-90, 400, 340)">USPS</text>
+  
+  <rect x="370" y="420" width="60" height="80" rx="5" ry="5" fill="#e5e7eb" stroke="#4b5563" stroke-width="1.5" />
+  <text x="400" y="460" font-family="Arial" font-size="12" text-anchor="middle" fill="#4b5563" transform="rotate(-90, 400, 460)">Admin (50)</text>
+  
+  <!-- Key Patent Elements Box -->
+  <rect x="100" y="530" width="600" height="50" rx="5" ry="5" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.5" />
+  <text x="400" y="555" font-family="Arial" font-size="14" text-anchor="middle" fill="#991b1b" font-weight="bold">
+    Patent Key Elements: Client-Side Validation and Server Verification for Revenue Transactions
+  </text>
+  
+  <!-- Connection Lines -->
+  <!-- User to UI -->
+  <line x1="370" y1="200" x2="350" y2="200" stroke="#666" stroke-width="1.5" />
+  <polygon points="350,200 355,195 355,205" fill="#666" />
+  
+  <!-- UI to Device Engine -->
+  <line x1="220" y1="240" x2="220" y2="260" stroke="#666" stroke-width="1.5" />
+  <polygon points="220,260 215,255 225,255" fill="#666" />
+  
+  <!-- Device Engine to Client Modules -->
+  <line x1="150" y1="330" x2="150" y2="350" stroke="#666" stroke-width="1.5" />
+  <polygon points="150,350 145,345 155,345" fill="#666" />
+  
+  <line x1="290" y1="330" x2="290" y2="350" stroke="#666" stroke-width="1.5" />
+  <polygon points="290,350 285,345 295,345" fill="#666" />
+  
+  <!-- Client Modules to Printer -->
+  <line x1="150" y1="410" x2="150" y2="430" stroke="#666" stroke-width="1.5" />
+  <polygon points="150,430 145,425 155,425" fill="#666" />
+  
+  <line x1="290" y1="410" x2="290" y2="430" stroke="#666" stroke-width="1.5" />
+  <polygon points="290,430 285,425 295,425" fill="#666" />
+  
+  <!-- User to Web Server -->
+  <line x1="430" y1="200" x2="450" y2="200" stroke="#666" stroke-width="1.5" />
+  <polygon points="450,200 445,195 445,205" fill="#666" />
+  
+  <!-- Web Server to Application Tier -->
+  <line x1="580" y1="240" x2="580" y2="260" stroke="#666" stroke-width="1.5" />
+  <polygon points="580,260 575,255 585,255" fill="#666" />
+  
+  <!-- Application Tier to Server Modules -->
+  <line x1="510" y1="330" x2="510" y2="350" stroke="#666" stroke-width="1.5" />
+  <polygon points="510,350 505,345 515,345" fill="#666" />
+  
+  <line x1="650" y1="330" x2="650" y2="350" stroke="#666" stroke-width="1.5" />
+  <polygon points="650,350 645,345 655,345" fill="#666" />
+  
+  <!-- Server Modules to Database -->
+  <line x1="510" y1="410" x2="510" y2="430" stroke="#666" stroke-width="1.5" />
+  <polygon points="510,430 505,425 515,425" fill="#666" />
+  
+  <line x1="650" y1="410" x2="650" y2="430" stroke="#666" stroke-width="1.5" />
+  <polygon points="650,430 645,425 655,425" fill="#666" />
+  
+  <!-- Critical Security Connection -->
+  <line x1="290" y1="380" x2="450" y2="380" stroke="#b91c1c" stroke-width="2.5" stroke-dasharray="5,5" />
+  <polygon points="450,380 445,375 445,385" fill="#b91c1c" />
+  
+  <!-- USPS Connections -->
+  <line x1="430" y1="340" x2="450" y2="340" stroke="#666" stroke-width="1.5" />
+  <polygon points="450,340 445,335 445,345" fill="#666" />
+  
+  <!-- Admin Connection -->
+  <line x1="430" y1="460" x2="450" y2="460" stroke="#666" stroke-width="1.5" />
+  <polygon points="450,460 445,455 445,465" fill="#666" />
+
+  <!-- Patent Callout -->
+  <circle cx="290" y="380" r="8" fill="#b91c1c" />
+  <text x="290" y="365" font-family="Arial" font-size="10" text-anchor="middle" fill="#b91c1c" font-weight="bold">A</text>
+  
+  <circle cx="580" y="200" r="8" fill="#b91c1c" />
+  <text x="580" y="203" font-family="Arial" font-size="10" text-anchor="middle" fill="#b91c1c" font-weight="bold">B</text>
+  
+  <!-- Legend -->
+  <rect x="100" y="500" width="20" height="10" fill="#b91c1c" />
+  <text x="125" y="510" font-family="Arial" font-size="10" fill="#000">Patented Security Validation Flow</text>
+  
+  <rect x="300" y="500" width="20" height="10" fill="#666" />
+  <text x="325" y="510" font-family="Arial" font-size="10" fill="#000">Standard Data Flow</text>
+</svg>
