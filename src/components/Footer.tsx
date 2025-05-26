@@ -54,17 +54,17 @@ const Footer = () => {
             Designed & Built with React, TypeScript & Tailwind CSS
           </p>
           <div className="flex flex-col items-center gap-4">
-            <Button 
-              variant="link" 
+            <Button
+              variant="link"
               className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
               onClick={() => setReadmeOpen(true)}
             >
               <FileText size={14} />
-              <span>View Technical Documentation</span>
+              <span>How this website was built</span>
             </Button>
             <CarbonBadge darkMode={theme === "dark"} />
           </div>
-          
+
           {/* README Modal */}
           <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
         </div>

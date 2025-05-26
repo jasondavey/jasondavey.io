@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Code } from "lucide-react";
+import { Code, Globe } from "lucide-react";
 import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { FaGithubSquare } from "react-icons/fa";
 import { TbFileCv } from "react-icons/tb";
 import { FaCoffee } from "react-icons/fa";
+import ReadmeModal from "./ReadmeModal";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [readmeOpen, setReadmeOpen] = useState(false);
 
   // Handle scroll events to update navbar styling
   useEffect(() => {
@@ -90,10 +92,20 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
-          <Code className="h-6 w-6 text-white" />
-          <span className="font-bold text-lg text-white">jasondavey.io</span>
-        </a>
+        <div className="flex items-center gap-4">
+          <a href="#" className="flex items-center gap-2">
+            <Code className="h-6 w-6 text-white" />
+            <span className="font-bold text-lg text-white">jasondavey.io</span>
+          </a>
+          <button
+            onClick={() => setReadmeOpen(true)}
+            aria-label="Technical Documentation"
+            title="Click here to find out how this website was built"
+            className="text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            <Globe className="h-5 w-5" />
+          </button>
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
@@ -233,16 +245,30 @@ const Navbar = () => {
             style={{ minHeight: "calc(var(--vh, 1vh) * 100 - 48px)" }}
           >
             <div className="flex justify-between items-center mb-8">
-              <a
-                href="#"
-                className="flex items-center gap-2"
-                onClick={closeMenu}
-              >
-                <Code className="h-6 w-6 text-white" />
-                <span className="font-bold text-lg text-white">
-                  jasondavey.io
-                </span>
-              </a>
+              <div className="flex items-center gap-4">
+                <a
+                  href="#"
+                  className="flex items-center gap-2"
+                  onClick={closeMenu}
+                >
+                  <Code className="h-6 w-6 text-white" />
+                  <span className="font-bold text-lg text-white">
+                    jasondavey.io
+                  </span>
+                </a>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setReadmeOpen(true);
+                    closeMenu();
+                  }}
+                  aria-label="Technical Documentation"
+                  title="Technical Documentation"
+                  className="text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  <Globe className="h-5 w-5" />
+                </button>
+              </div>
               <Button
                 variant="ghost"
                 size="icon"
@@ -312,6 +338,7 @@ const Navbar = () => {
                 >
                   <FaCoffee className="h-6 w-6" />
                 </a>
+
                 <a
                   href="https://x.com/ydohdohdoh"
                   target="_blank"
@@ -331,6 +358,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Technical Documentation Modal */}
+      <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
     </header>
   );
 };
