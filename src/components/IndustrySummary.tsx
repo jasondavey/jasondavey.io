@@ -10,24 +10,28 @@ import {
   FaEnvelope,
   FaGavel,
   FaLightbulb,
+  FaBuilding,
 } from "react-icons/fa";
+
 
 interface IndustrySummaryProps {
   projects: Project[];
 }
 
 const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
-  // Get all industries directly from project industry property
-  const industries = projects.map((project) => project.industry);
-
-  // Count projects per industry
-  const industryCounts: Record<string, number> = {};
-  industries.forEach((industry) => {
-    industryCounts[industry] = (industryCounts[industry] || 0) + 1;
+  // Group projects by industry
+  const projectsByIndustry: Record<string, Project[]> = {};
+  
+  projects.forEach((project) => {
+    const industry = project.industry;
+    if (!projectsByIndustry[industry]) {
+      projectsByIndustry[industry] = [];
+    }
+    projectsByIndustry[industry].push(project);
   });
 
-  // Get unique industries
-  const uniqueIndustries = Object.keys(industryCounts).sort();
+  // Get unique industries and sort alphabetically
+  const uniqueIndustries = Object.keys(projectsByIndustry).sort();
 
   const getIndustryColor = (industry: string): string => {
     const colorMap: Record<string, string> = {
@@ -68,25 +72,67 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
       <h3 className="text-lg font-semibold text-center mb-4">
         Industry Experience
       </h3>
-      <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-        {uniqueIndustries.map((industry) => (
-          <div key={industry} className="text-center">
-            <Badge
-              className={`px-4 py-2 text-sm font-medium uppercase tracking-wider ${getIndustryColor(
-                industry
-              )}`}
-              variant="outline"
-            >
-              <span className="inline-flex items-center">
-                {getIndustryIcon(industry)}
-                {industry}
-              </span>
-              <span className="ml-1.5 inline-flex items-center justify-center w-5 h-5 text-xs rounded-full bg-background/20">
-                {industryCounts[industry]}
-              </span>
-            </Badge>
-          </div>
-        ))}
+      
+      {/* Modern Table Layout */}
+      <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm max-w-4xl mx-auto">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="bg-muted/50">
+              {uniqueIndustries.map((industry) => (
+                <th key={industry} className="text-center p-3 font-medium text-muted-foreground">
+                  <Badge
+                    className={`px-4 py-2 text-sm font-medium uppercase tracking-wider ${getIndustryColor(industry)}`}
+                    variant="outline"
+                  >
+                    <span className="inline-flex items-center">
+                      {getIndustryIcon(industry)}
+                      {industry}
+                    </span>
+                    <span className="ml-1.5 inline-flex items-center justify-center w-5 h-5 text-xs rounded-full bg-background/20">
+                      {projectsByIndustry[industry].length}
+                    </span>
+                  </Badge>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {uniqueIndustries.map((industry) => (
+                <td key={industry} className="p-3 align-top">
+                  <div className="space-y-3">
+                    {projectsByIndustry[industry].map((project, index) => (
+                      <div 
+                        key={index} 
+                        className="flex items-center p-2 rounded-md hover:bg-muted transition-colors"
+                      >
+                        {project.companyIcon && (
+                          <div className="w-6 h-6 mr-2 flex-shrink-0 relative">
+                            <img 
+                              src={project.companyIcon} 
+                              alt={project.companyName || project.title}
+                              className="w-full h-full object-contain"
+                              style={{
+                                filter: document.documentElement.classList.contains('dark') && 
+                                  project.darkModeCompanyIcon ? 'invert(1)' : 'none'
+                              }}
+                            />
+                          </div>
+                        )}
+                        {!project.companyIcon && (
+                          <FaBuilding className="w-5 h-5 mr-2 text-muted-foreground" />
+                        )}
+                        <span className="text-xs font-medium">
+                          {project.companyName || project.title}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
