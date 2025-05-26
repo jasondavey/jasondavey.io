@@ -6,6 +6,7 @@ import ProjectStampsCom from "./projects/ProjectStampsCom";
 import ProjectSoccerTourism from "./projects/ProjectSoccerTourism";
 import ProjectDymoStamps from "./projects/ProjectDymoStamps";
 import ProjectIntelliPad from "./projects/ProjectIntelliPad";
+import ProjectBlackRock from "./projects/ProjectBlackRock";
 import IndustrySummary from "./IndustrySummary";
 import { Project } from "./Project";
 
@@ -17,6 +18,7 @@ const allProjects: Project[] = [
   ProjectStampsCom,
   ProjectSoccerTourism,
   ProjectIntelliPad,
+  ProjectBlackRock,
   // ...other projects
 ];
 

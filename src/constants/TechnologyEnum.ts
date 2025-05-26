@@ -29,4 +29,10 @@ export enum Technology {
   CSharp = "CSharp",
   DotNet = "DotNet",
   Microservices = "Microservices",
+  Java = "Java",
+  JavaScript = "JavaScript",
+  Spring = "Spring",
+  SQL = "SQL",
+  Selenium = "Selenium",
+  ContinuousIntegration = "Continuous Integration",
 }
