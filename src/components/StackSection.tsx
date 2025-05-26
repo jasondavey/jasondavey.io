@@ -67,30 +67,30 @@ const StackSection = () => {
       </div>
       {/* Tools Used Section */}
       <div className="section-container text-center mt-0 py-4">
-        <div className="flex flex-wrap items-center justify-center gap-8 mb-6">
-          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64">
+        <div className="flex flex-wrap items-stretch justify-center gap-8 mb-6">
+          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
             <div className="font-bold text-lg mb-2 text-engineering-accent">
               Loveable
             </div>
-            <div className="text-sm text-engineering-gray">
+            <div className="text-sm text-engineering-gray flex-grow">
               Content and code for this project were generated and orchestrated
               using Loveable's AI-driven workflow.
             </div>
           </div>
-          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64">
+          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
             <div className="font-bold text-lg mb-2 text-engineering-accent">
               Windsurf IDE
             </div>
-            <div className="text-sm text-engineering-gray">
+            <div className="text-sm text-engineering-gray flex-grow">
               Development was performed in Windsurf, an AI-powered IDE
               seamlessly integrated with ChatGPT for agentic coding.
             </div>
           </div>
-          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64">
+          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
             <div className="font-bold text-lg mb-2 text-engineering-accent">
               ChatGPT
             </div>
-            <div className="text-sm text-engineering-gray">
+            <div className="text-sm text-engineering-gray flex-grow">
               ChatGPT provided intelligent assistance, code suggestions, and
               content generation throughout the build process.
             </div>
