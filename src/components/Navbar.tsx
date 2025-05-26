@@ -108,22 +108,26 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="relative text-sm font-medium px-3 py-2 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {link.label}
-            </a>
+        <nav className="hidden md:flex items-center space-x-0">
+          {navLinks.map((link, index) => (
+            <div key={link.href} className="flex items-center">
+              <a
+                href={link.href}
+                className="relative text-sm font-medium px-3 py-2 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {link.label}
+              </a>
+              {index < navLinks.length - 1 && (
+                <span className="text-gray-500 text-opacity-50 text-sm mx-0.5">|</span>
+              )}
+            </div>
           ))}
           <a
             href="https://www.buymeacoffee.com/jasondavey"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Buy me a coffee"
-            title="Chat?"
+            title="Click here to find out how this website was built"
             className="text-yellow-400 hover:text-yellow-300 transition-colors ml-2"
           >
             <FaCoffee className="h-5 w-5" />
