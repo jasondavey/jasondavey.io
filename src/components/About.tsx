@@ -5,7 +5,7 @@ import WorldCitiesLine from "@/components/WorldCitiesLine";
 
 const About = () => {
   return (
-    <section id="about" className="bg-background transition-colors">
+    <section id="about" className="bg-background transition-colors pt-0 pb-16">
       <div className="section-container">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           <div

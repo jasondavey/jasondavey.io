@@ -60,7 +60,7 @@ const projects: Project[] = [...allProjects].sort(
 );
 
 const Projects: React.FC = () => (
-  <section id="projects" className="bg-background">
+  <section id="projects" className="bg-background transition-colors pt-0 pb-16">
     <div className="section-container">
       <div
         className="text-center mb-16 animate-fade-in opacity-0"

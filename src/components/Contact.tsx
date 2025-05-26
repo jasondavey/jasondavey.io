@@ -170,7 +170,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-background transition-colors">
+    <section id="contact" className="bg-background transition-colors pt-0 pb-16">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div

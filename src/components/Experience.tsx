@@ -70,7 +70,7 @@ const Experience = () => {
   const [activeTab, setActiveTab] = useState(experiences[0].id);
 
   return (
-    <section id="experience" className="bg-background transition-colors">
+    <section id="experience" className="bg-background transition-colors pt-0 pb-16">
       <div className="section-container">
         <div
           className="text-center mb-16 animate-fade-in opacity-0"
