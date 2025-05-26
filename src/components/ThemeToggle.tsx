@@ -8,9 +8,8 @@ export default function ThemeToggle() {
       if (storedTheme === 'light' || storedTheme === 'dark') {
         return storedTheme;
       }
-      // Fallback to system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return prefersDark ? 'dark' : 'light';
+      // Default to dark mode instead of checking system preference
+      return 'dark';
     }
     return 'dark';
   });
