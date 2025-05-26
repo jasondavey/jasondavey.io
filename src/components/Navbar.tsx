@@ -5,7 +5,7 @@ import { Code, Globe } from "lucide-react";
 import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { FaGithubSquare } from "react-icons/fa";
-import { TbFileCv } from "react-icons/tb";
+import { TbFileCv, TbCertificate } from "react-icons/tb";
 import { FaCoffee } from "react-icons/fa";
 import ReadmeModal from "./ReadmeModal";
 
@@ -166,8 +166,11 @@ const Navbar = () => {
           >
             <SiGmail className="h-5 w-5 text-white hover:text-red-300 transition-colors" />
           </a>
-          <a href="/jasonrdavey.pdf" download>
+          <a href="/jasonrdavey.pdf" download title="Download Resume">
             <TbFileCv className="h-6 w-6 text-white hover:text-gray-300 transition-colors" />
+          </a>
+          <a href="/JasonDaveyPatent.pdf" target="_blank" rel="noopener noreferrer" title="View Patent">
+            <TbCertificate className="h-6 w-6 text-white hover:text-gray-300 transition-colors" />
           </a>
 
           {/* Theme toggle */}
@@ -356,6 +359,21 @@ const Navbar = () => {
                   aria-label="Email"
                 >
                   <SiGmail className="h-6 w-6 text-white hover:text-red-300" />
+                </a>
+                <a 
+                  href="/jasonrdavey.pdf" 
+                  download 
+                  aria-label="Download Resume"
+                >
+                  <TbFileCv className="h-6 w-6 text-white hover:text-gray-300" />
+                </a>
+                <a 
+                  href="/JasonDaveyPatent.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label="View Patent"
+                >
+                  <TbCertificate className="h-6 w-6 text-white hover:text-gray-300" />
                 </a>
               </div>
             </div>
