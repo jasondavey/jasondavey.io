@@ -2,6 +2,7 @@ import { Project } from "../Project";
 import { Technology } from "../../constants/TechnologyEnum";
 
 const ProjectIntelliPad: Project = {
+  industry: "Legal",
   startYear: 2001,
   endYear: 2006,
   businessTerms: [

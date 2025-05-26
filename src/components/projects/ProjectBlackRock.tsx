@@ -36,6 +36,7 @@ const BlackRockTechMap = {
 };
 
 const ProjectBlackRock: Project = {
+  industry: "Fintech",
   startYear: 2008,
   endYear: 2010,
   businessTerms: [
@@ -43,6 +44,7 @@ const ProjectBlackRock: Project = {
     "Asset Management",
     "Enterprise Software",
     "Cost Optimization",
+    "Finance", // Added explicit finance term
   ],
   businessView: (
     <>
@@ -61,7 +63,7 @@ const ProjectBlackRock: Project = {
   description: (
     <>
       <p className="mb-2">
-        At BlackRock, I developed a comprehensive software license control system to address the challenge of managing expensive software licenses across the organization. This system automated the identification of application installations, tracked usage patterns, and automatically uninstalled applications when they exceeded predefined business thresholds for inactivity.
+        At BlackRock, a global financial services and asset management leader, I developed a comprehensive software license control system to address the challenge of managing expensive software licenses across the organization. This system automated the identification of application installations, tracked usage patterns, and automatically uninstalled applications when they exceeded predefined business thresholds for inactivity.
       </p>
       <p className="mb-2">
         The solution resulted in significant cost savings by reclaiming unused licenses and providing detailed analytics on software utilization throughout the enterprise. This data-driven approach enabled more strategic decisions about software investments and standardization.

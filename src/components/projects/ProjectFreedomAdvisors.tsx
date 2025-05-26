@@ -3,6 +3,7 @@ import { Technology } from "../../constants/TechnologyEnum";
 import { FreedomAdvisorsTechMap } from "@/constants/freedom";
 
 const ProjectEqisCapital: Project = {
+  industry: "Fintech",
   businessTerms: ["TAMP", "Portfolio Management", "Private Label"],
   businessView: (
     <>

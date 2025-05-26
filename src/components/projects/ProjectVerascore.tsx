@@ -3,6 +3,7 @@ import { VerascoreTechMap } from "@/constants/verascore";
 import { Technology } from "../../constants/TechnologyEnum";
 
 const ProjectVerascore: Project = {
+  industry: "Fintech",
   businessTerms: ["PaaS", "B2B2C", "Fair Lending", "Holistic Scoring"],
   businessView: (
     <>

@@ -17,48 +17,8 @@ interface IndustrySummaryProps {
 }
 
 const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
-  // Extract industries from projects
-  const getIndustryFromDescription = (
-    title: string,
-    description: React.ReactNode
-  ): string => {
-    // Heuristic: match keywords in title/description
-    const str = `${title} ${
-      typeof description === "string" ? description : ""
-    }`.toLowerCase();
-    if (
-      str.includes("financ") ||
-      str.includes("lending") ||
-      str.includes("score") ||
-      str.includes("wealth")
-    )
-      return "Fintech";
-    if (
-      str.includes("video") ||
-      str.includes("caption") ||
-      str.includes("media")
-    )
-      return "Media";
-    if (str.includes("health")) return "Healthcare";
-    if (str.includes("education") || str.includes("learning")) return "EdTech";
-    if (str.includes("logistics") || str.includes("shipping")) return "Postage";
-    if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
-    if (str.includes("stamps")) return "Postage";
-    if (
-      str.includes("legal") ||
-      str.includes("law firm") ||
-      str.includes("attorney") ||
-      str.includes("intellipad") ||
-      (str.includes("crm") && str.includes("firm"))
-    )
-      return "Legal";
-    return "General";
-  };
-
-  // Get all industries from projects
-  const industries = projects.map((project) =>
-    getIndustryFromDescription(project.title, project.description)
-  );
+  // Get all industries directly from project industry property
+  const industries = projects.map((project) => project.industry);
 
   // Count projects per industry
   const industryCounts: Record<string, number> = {};
@@ -76,7 +36,7 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
       Healthcare: "bg-red-100 text-red-800 border-red-200",
       EdTech: "bg-yellow-100 text-yellow-800 border-yellow-200",
       Tourism: "bg-blue-100 text-blue-800 border-blue-200",
-      Mailing: "bg-orange-100 text-orange-800 border-orange-200",
+      Shipping: "bg-orange-100 text-orange-800 border-orange-200",
       Legal: "bg-indigo-100 text-indigo-800 border-indigo-200",
       General: "bg-slate-100 text-slate-800 border-slate-200",
     };
@@ -92,7 +52,7 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
       Healthcare: <FaHeartbeat className="mr-1" />,
       EdTech: <FaGraduationCap className="mr-1" />,
       Tourism: <FaPlane className="mr-1" />,
-      Postage: <FaEnvelope className="mr-1" />,
+      Shipping: <FaEnvelope className="mr-1" />,
       Legal: <FaGavel className="mr-1" />,
       General: <FaLightbulb className="mr-1" />,
     };

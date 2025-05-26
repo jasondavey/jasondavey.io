@@ -5,44 +5,11 @@ import { Project } from "./Project";
 import { Badge } from "@/components/ui/badge";
 import VideoEmbed from "./VideoEmbed";
 
-const getIndustryFromDescription = (
-  title: string,
-  description: React.ReactNode
-): string => {
-  // Heuristic: match keywords in title/description
-  const str = `${title} ${
-    typeof description === "string" ? description : ""
-  }`.toLowerCase();
-  if (
-    str.includes("financ") ||
-    str.includes("lending") ||
-    str.includes("score") ||
-    str.includes("wealth")
-  )
-    return "Fintech";
-  if (str.includes("video") || str.includes("caption") || str.includes("media"))
-    return "Media";
-  if (str.includes("health")) return "Healthcare";
-  if (str.includes("education") || str.includes("learning")) return "EdTech";
-  if (str.includes("logistics") || str.includes("shipping")) return "Postage";
-  if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
-  if (str.includes("stamps")) return "Postage";
-  if (
-    str.includes("legal") ||
-    str.includes("law firm") ||
-    str.includes("attorney") ||
-    str.includes("intellipad") ||
-    (str.includes("crm") && str.includes("firm"))
-  )
-    return "Legal";
-  return "General";
-};
+// Industry is now directly defined in each project
 
 const IndustryBadge: React.FC<{
-  title: string;
-  description: React.ReactNode;
-}> = ({ title, description }) => {
-  const industry = getIndustryFromDescription(title, description);
+  industry: string;
+}> = ({ industry }) => {
   return (
     <span
       className="inline-block bg-blue-200 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-full border border-blue-300 uppercase tracking-widest"
@@ -79,6 +46,7 @@ const ProjectCard: React.FC<Project> = ({
   businessTerms,
   businessSplashImage,
   externalLinks,
+  industry,
 }) => {
   const isEven = index % 2 === 0;
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -186,7 +154,7 @@ const ProjectCard: React.FC<Project> = ({
               </span>
             </div>
           )}
-          <IndustryBadge title={title} description={description} />
+          <IndustryBadge industry={industry} />
           <div className="ml-auto"></div>
         </div>
 

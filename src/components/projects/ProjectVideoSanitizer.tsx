@@ -3,6 +3,7 @@ import { VideoSanitizerTechMap } from "@/constants/video";
 import { Technology } from "../../constants/TechnologyEnum";
 
 const ProjectVideoSanitizer: Project = {
+  industry: "Media",
   businessTerms: [
     "Serverless",
     "Content Moderation",

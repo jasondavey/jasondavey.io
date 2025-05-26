@@ -2,6 +2,7 @@ import { Project } from "../Project";
 import { SoccerTourismTechMap } from "@/constants/soccer";
 
 const ProjectSoccerTourism: Project = {
+  industry: "Tourism",
   startYear: 2025, // Ongoing project - no endYear
   businessTerms: [
     "Soccer Tourism",

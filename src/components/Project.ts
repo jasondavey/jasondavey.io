@@ -1,5 +1,9 @@
 export interface Project {
   /**
+   * Industry classification for the project
+   */
+  industry: string;
+  /**
    * Optional business summary terms to display as bullet points under the project title.
    */
   businessTerms?: string[];

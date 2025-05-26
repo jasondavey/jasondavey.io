@@ -22,37 +22,7 @@ const allProjects: Project[] = [
   // ...other projects
 ];
 
-// Function to get industry from project
-const getIndustryFromProject = (project: Project): string => {
-  const { title, description } = project;
-  const str = `${title} ${
-    typeof description === "string" ? description : ""
-  }`.toLowerCase();
-
-  if (
-    str.includes("financ") ||
-    str.includes("lending") ||
-    str.includes("score") ||
-    str.includes("wealth")
-  )
-    return "Fintech";
-  if (str.includes("video") || str.includes("caption") || str.includes("media"))
-    return "Media";
-  if (str.includes("health")) return "Healthcare";
-  if (str.includes("education") || str.includes("learning")) return "EdTech";
-  if (str.includes("logistics") || str.includes("shipping")) return "Postage";
-  if (str.includes("soccer") || str.includes("tourism")) return "Tourism";
-  if (str.includes("stamps")) return "Postage";
-  if (
-    str.includes("legal") ||
-    str.includes("law firm") ||
-    str.includes("attorney") ||
-    str.includes("intellipad") ||
-    (str.includes("crm") && str.includes("firm"))
-  )
-    return "Legal";
-  return "General";
-};
+// Industry classification is now handled directly on each project object
 
 // Sort projects by endYear in descending order (newest first)
 // For projects without an endYear (ongoing projects), use current year for sorting
@@ -105,6 +75,7 @@ const Projects: React.FC = () => (
             archImage={project.archImage}
             businessView={project.businessView}
             businessTerms={project.businessTerms}
+            industry={project.industry}
           />
         ))}
       </div>

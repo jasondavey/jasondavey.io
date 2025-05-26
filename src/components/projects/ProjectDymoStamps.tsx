@@ -2,6 +2,7 @@ import { Project } from "../Project";
 import { Technology } from "../../constants/TechnologyEnum";
 
 const ProjectDymoStamps: Project = {
+  industry: "Shipping",
   businessTerms: [
     "Postal Solutions",
     "Cloud-Native",
