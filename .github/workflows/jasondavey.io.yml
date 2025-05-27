@@ -1,4 +1,4 @@
-name: JasonDavey.io CI/CD Pipeline with Vercel Preview
+name: JasonDavey.io CI/CD Pipeline
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   deployments: read
 
 jobs:
-  runCypressTests:
+  runCypressTestsAgainstVercelPreview:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -21,22 +21,15 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 180
-
       - name: Print Vercel preview URL
         run: echo "Vercel URL - ${{ steps.vercelPreviewWait.outputs.url }}"
-
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: Run Cypress Against Vercel Preview
         uses: cypress-io/github-action@v6
         with:
-          record: false
-          parallel: true
-          ci-build-id: ${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}
+          record: true
+          parallel: false
           config: baseUrl=${{ steps.vercelPreviewWait.outputs.url }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
