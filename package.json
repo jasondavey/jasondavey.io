@@ -11,7 +11,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "test": "npm run build && start-server-and-test 'npm run preview -- --port 8080' http://localhost:8080 'cypress run'",
+    "test:local": "start-server-and-test 'vite --port 8080' http://localhost:8080 'cypress run'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -84,6 +86,7 @@
     "globals": "^15.9.0",
     "lovable-tagger": "^1.1.7",
     "postcss": "^8.4.47",
+    "start-server-and-test": "^2.0.12",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.0.1",
