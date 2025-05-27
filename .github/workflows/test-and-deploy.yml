@@ -1,38 +1,41 @@
-name: (Production) CI/CD Pipeline
+name: (Production) CI/CD Pipeline with Vercel Preview
 
 on:
   push:
     branches:
       - production
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  test_preview_and_deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    timeout-minutes: 20
 
-      - name: Install Vercel CLI
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Install Vercel CLI
         run: npm install --global vercel
 
-      - name: Pull Vercel [Production] Environment
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Get Vercel .env
-        run: vercel env pull .env --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v3
+      - name: 🧪 Wait for Vercel Preview Deployment
+        id: vercel
+        uses: patrickedqvist/wait-for-vercel-preview@v1
         with:
-          build: npm run build
-          start: npm run start
-          wait-on: "http://localhost:3000"
+          token: ${{ secrets.VERCEL_TOKEN }}
+          projectId: ${{ secrets.VERCEL_PROJECT_ID }}
+          commitSha: ${{ github.sha }}
+
+      - name: 🧪 Run Cypress Against Preview
+        uses: cypress-io/github-action@v6
+        with:
+          config: baseUrl=${{ steps.vercel.outputs.url }}
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_BASE_URL: ${{ steps.vercel.outputs.url }}
 
-      - name: Deploy To Vercel [Production]
-        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: 🚀 Deploy To Vercel Production (only if tests pass)
+        if: success()
+        run: |
+          curl -X POST "${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}"
