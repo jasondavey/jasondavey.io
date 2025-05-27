@@ -1,4 +1,4 @@
-name: CI/CD Pipeline with Vercel Preview (Main Only)
+name: JasonDavey.io CI/CD Pipeline with Vercel Preview
 
 on:
   push:
@@ -10,36 +10,32 @@ permissions:
   contents: read
   deployments: read
 jobs:
-  test_preview_and_deploy:
+  runCypressTests:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
-      - name: 📥 Checkout repo
-        uses: actions/checkout@v4
-
-      - name: 🛠️ Install Vercel CLI
-        run: npm install --global vercel
-
-      - name: 🧪 Wait for Vercel Preview Deployment
-        id: vercel
-        uses: patrickedqvist/wait-for-vercel-preview@main
+      - name: Capture Vercel preview URL
+        id: vercelPreviewWait
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
         with:
-          projectId: ${{ secrets.VERCEL_PROJECT_ID }}
-          commitSha: ${{ github.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 60
-
-      - name: 🧪 Run Cypress Against Vercel Preview
+          max_timeout: 180
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Run Cypress Against Vercel Preview
         uses: cypress-io/github-action@v6
         with:
-          config: baseUrl=${{ steps.vercel.outputs.url }}
           record: true
+          parallel: true
+          ci-build-id: "${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}"
+          config: baseUrl=${{ steps.vercelPreviewWait.outputs.url }}
+
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          CYPRESS_BASE_URL: ${{ steps.vercel.outputs.url }}
+          CYPRESS_BASE_URL: ${{ steps.vercelPreviewWait.outputs.url }}
 
-      - name: 🚀 Deploy to Vercel Production
+      - name: Deploy to Vercel Production
         if: success()
         run: |
           curl -X POST "${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}"
