@@ -197,7 +197,7 @@ The site uses a comprehensive CI/CD pipeline that ensures quality through automa
 
 ### Development Workflow
 
-- **Branch Strategy**: 
+- **Branch Strategy**:
   - `dev` - Development branch for new features and updates
   - `main` - Production branch that is always in a deployable state
 
