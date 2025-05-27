@@ -6,6 +6,9 @@ on:
       - main # ✅ Only runs on main commits
   workflow_dispatch: # ✅ Also allows manual runs from the GitHub UI
 
+permissions:
+  contents: read
+  deployments: read
 jobs:
   test_preview_and_deploy:
     runs-on: ubuntu-latest
