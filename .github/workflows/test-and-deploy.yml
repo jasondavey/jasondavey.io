@@ -25,49 +25,20 @@ jobs:
       - name: Generate build info
         run: node scripts/generate-build-info.cjs
 
-      - name: Build website
+      - name: Build the website
         run: npm run build
 
-      - name: Start preview server
-        run: npm run preview -- --port 8080 &
-        
-      - name: Wait for server to start
-        run: sleep 5
-        
-      - name: Debug - check what's being served
-        run: |
-          echo "Checking page content..."
-          curl -v http://localhost:8080 > page_content.html
-          echo "Page content saved to page_content.html"
-          ls -la dist/
-          echo "Page title:"
-          grep -o '<title>.*</title>' page_content.html || echo "No title found"
-          echo "Looking for root div:"
-          grep -o '<div id="root".*</div>' page_content.html || echo "No root div found"
-      
-      - name: Upload HTML content for debugging
-        uses: actions/upload-artifact@v4
-        with:
-          name: page-content
-          path: page_content.html
-          
-      # Increase wait time to ensure React hydration completes
-      - name: Wait longer for React hydration
-        run: sleep 10
-        
-      - name: Verify server is responding
-        run: curl -v http://localhost:8080 > hydrated_page.html
-      
-      - name: Upload hydrated page for debugging
-        uses: actions/upload-artifact@v4
-        with:
-          name: hydrated-page
-          path: hydrated_page.html
+      # We'll let Cypress handle starting the preview server
       
       - name: Run Cypress tests locally
         uses: cypress-io/github-action@v6
         with:
-          start: false
+          # Instead of 'start: false', we specify we're using an existing server
+          start: npm run preview -- --port 8080
+          wait-on: 'http://localhost:8080'
+          wait-on-timeout: 120
+          # Kill the server when the tests are done
+          command-prefix: 'percy exec -- npx'
           config: |
             {
               "baseUrl": "http://localhost:8080",
