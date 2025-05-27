@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main # Production branch
-      - dev  # Development branch
+      - dev # Development branch
   workflow_dispatch: # Also allows manual runs from the GitHub UI
 
 permissions:
-  contents: write  # Need write permission for auto-merge
+  contents: write # Need write permission for auto-merge
   deployments: read
 
 jobs:
@@ -22,16 +22,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 180
-      
+
       - name: Print Vercel preview URL
         run: echo "Vercel URL - ${{ steps.vercelPreviewWait.outputs.url }}"
-      
-      - name: Checkout repo
+
+      - name: Checkout jasondavey.io
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for branch comparison
-      
-      - name: Run Cypress Against Vercel Preview
+          fetch-depth: 0 # Fetch all history for branch comparison
+
+      - name: Run Cypress tests against Vercel Preview
         uses: cypress-io/github-action@v6
         with:
           record: true
@@ -39,7 +39,7 @@ jobs:
           config: baseUrl=${{ steps.vercelPreviewWait.outputs.url }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      
+
       # Deploy to production when tests pass on main branch
       - name: Deploy to Production
         if: success() && github.ref == 'refs/heads/main'
@@ -51,7 +51,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-      
+
       # Fetch all branches and perform merge
       - name: Direct merge dev to main
         if: success() && github.ref == 'refs/heads/dev'
