@@ -1,0 +1,43 @@
+name: Test and Deploy (Vite + Cypress)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_and_deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Wait for Vercel Preview Deployment
+        id: vercel
+        uses: patrickedqvist/wait-for-vercel-preview@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+
+      - name: Run Cypress tests against Vercel preview
+        uses: cypress-io/github-action@v6
+        with:
+          config: baseUrl=${{ steps.vercel.outputs.url }}
+          install: false
+        env:
+          CYPRESS_BASE_URL: ${{ steps.vercel.outputs.url }}
+
+      - name: Trigger Production Deploy on Vercel
+        if: success()
+        run: |
+          curl -X POST "${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}"
