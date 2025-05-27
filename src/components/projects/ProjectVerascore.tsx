@@ -196,7 +196,7 @@ const ProjectVerascore: Project = {
   ),
   archImage: "/architecture/verascore_architecture.svg",
   startYear: 2022,
-  endYear: 2025,
+  endYear: null,
 };
 
 export default ProjectVerascore;
