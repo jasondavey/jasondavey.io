@@ -1,10 +1,10 @@
-name: (Production) CI/CD Pipeline with Vercel Preview
+name: CI/CD Pipeline with Vercel Preview (Main Only)
 
 on:
   push:
     branches:
-      - production
-  workflow_dispatch:
+      - main # ✅ Only runs on main commits
+  workflow_dispatch: # ✅ Also allows manual runs from the GitHub UI
 
 jobs:
   test_preview_and_deploy:
@@ -26,7 +26,7 @@ jobs:
           projectId: ${{ secrets.VERCEL_PROJECT_ID }}
           commitSha: ${{ github.sha }}
 
-      - name: 🧪 Run Cypress Against Preview
+      - name: 🧪 Run Cypress Against Vercel Preview
         uses: cypress-io/github-action@v6
         with:
           config: baseUrl=${{ steps.vercel.outputs.url }}
@@ -35,7 +35,7 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_BASE_URL: ${{ steps.vercel.outputs.url }}
 
-      - name: 🚀 Deploy To Vercel Production (only if tests pass)
+      - name: 🚀 Deploy to Vercel Production
         if: success()
         run: |
           curl -X POST "${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}"
