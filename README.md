@@ -139,6 +139,29 @@ This project leverages a comprehensive set of modern web technologies to create 
 - **Autoprefixer** (`autoprefixer`) - Automatically adds vendor prefixes to CSS
 - **PostCSS** (`postcss`) - Tool for transforming CSS with JavaScript plugins
 
+## Testing
+
+### Testing Framework
+
+- **Cypress** (`cypress`) - Modern end-to-end testing framework that runs tests in a real browser
+- **Cypress Cloud** - Testing platform for recording test runs, debugging, and CI integration
+
+### Test Scope
+
+The testing suite covers critical functionality and features of the website, including:
+
+- **Navigation Links**: Ensuring all internal links correctly navigate to their target sections
+- **Responsive Layout**: Verifying the site adapts properly to different viewport sizes
+- **Contact Features**: Testing the WhatsApp call link, email form validation, and contact links
+- **Document Downloads**: Validating PDF document links like the patent document
+- **External Links**: Checking that external links have proper attributes (target, rel)
+- **Theme Toggle**: Ensuring the dark/light mode functionality works correctly
+
+### Running Tests
+
+- **Local Testing**: `npm run test:local` - Runs Cypress tests against a local development server
+- **Production Testing**: `npm run test` - Runs tests against the built version of the site
+
 ## Build Process
 
 The project utilizes Vite's optimized build system with several customized build scripts:
@@ -168,20 +191,43 @@ After building, the project generates:
 - Assets with content hashing for cache optimization
 - Build information file with timestamp for version tracking
 
-## Deployment
+## CI/CD Pipeline & Deployment
+
+The site uses a comprehensive CI/CD pipeline that ensures quality through automated testing before deployment:
+
+### Development Workflow
+
+- **Branch Strategy**: 
+  - `dev` - Development branch for new features and updates
+  - `main` - Production branch that is always in a deployable state
+
+- **Testing Pipeline**:
+  1. Changes are pushed to the `dev` branch
+  2. GitHub Actions automatically runs Cypress tests against the Vercel preview URL
+  3. If tests pass, changes are automatically merged to `main`
+  4. If tests fail, the merge is blocked until issues are fixed
+
+### Automated Testing
+
+- **Cypress Cloud Integration**: All test runs are recorded to Cypress Cloud for monitoring and debugging
+- **Vercel Preview Testing**: Tests run against actual Vercel preview deployments to ensure real-world behavior
+- **Required for Deployment**: Production deployment will only proceed if all tests pass
+
+### Production Deployment
 
 The site is deployed on [Vercel](https://vercel.com), a modern cloud platform for static sites and serverless functions:
 
-- **Continuous Deployment**: Automatically builds and deploys when changes are pushed to GitHub
-- **Preview Deployments**: Creates preview deployments for pull requests
+- **Continuous Deployment**: Automatically builds and deploys when changes are pushed to `main` branch
+- **Preview Deployments**: Creates preview deployments for pull requests and the `dev` branch
 - **Edge Network**: Global CDN for fast content delivery
 - **Integrated Analytics**: Performance monitoring via Vercel Speed Insights
 
-The deployment workflow is simple:
+### Deployment Workflow
 
-1. Push changes to the GitHub repository
-2. Vercel automatically detects the changes and triggers a new build
-3. The site is built and deployed to the global edge network
+1. Tests run against Vercel preview URL via GitHub Actions
+2. If tests pass, changes are merged to `main` branch
+3. Vercel automatically detects the changes and triggers a new production build
+4. The site is built and deployed to the global edge network
 
 ## Domain Configuration
 
