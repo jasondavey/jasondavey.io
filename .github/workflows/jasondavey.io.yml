@@ -20,7 +20,7 @@ jobs:
 
       - name: 🧪 Wait for Vercel Preview Deployment
         id: vercel
-        uses: patrickedqvist/wait-for-vercel-preview@v1
+        uses: patrickedqvist/wait-for-vercel-preview@main
         with:
           token: ${{ secrets.VERCEL_TOKEN }}
           projectId: ${{ secrets.VERCEL_PROJECT_ID }}
