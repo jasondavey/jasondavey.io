@@ -22,10 +22,9 @@ jobs:
         id: vercel
         uses: patrickedqvist/wait-for-vercel-preview@main
         with:
-          token: ${{ secrets.VERCEL_TOKEN }}
           projectId: ${{ secrets.VERCEL_PROJECT_ID }}
           commitSha: ${{ github.sha }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 60
 
       - name: 🧪 Run Cypress Against Vercel Preview
