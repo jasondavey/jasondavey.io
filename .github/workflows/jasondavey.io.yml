@@ -3,12 +3,14 @@ name: JasonDavey.io CI/CD Pipeline
 on:
   push:
     branches:
-      - main # Only runs on main commits
+      - main # Production branch
+      - dev  # Development branch
   workflow_dispatch: # Also allows manual runs from the GitHub UI
 
 permissions:
-  contents: read
+  contents: write  # Need write permission for auto-merge
   deployments: read
+  pull-requests: write  # Need permission to create PRs
 
 jobs:
   runCypressTestsAgainstVercelPreview:
@@ -21,10 +23,15 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 180
+      
       - name: Print Vercel preview URL
         run: echo "Vercel URL - ${{ steps.vercelPreviewWait.outputs.url }}"
+      
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for branch comparison
+      
       - name: Run Cypress Against Vercel Preview
         uses: cypress-io/github-action@v6
         with:
@@ -33,6 +40,39 @@ jobs:
           config: baseUrl=${{ steps.vercelPreviewWait.outputs.url }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      
+      # Deploy to production when tests pass on main branch
       - name: Deploy to Production
         if: success() && github.ref == 'refs/heads/main'
         run: curl -X POST "${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}"
+
+      # Auto-merge dev into main when tests pass on dev branch
+      - name: Setup Git Identity
+        if: success() && github.ref == 'refs/heads/dev'
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+      
+      # Create a PR to merge dev into main
+      - name: Create Pull Request
+        if: success() && github.ref == 'refs/heads/dev'
+        id: create-pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: auto-merge-dev-to-main
+          base: main
+          title: "[Automated] Merge dev to main"
+          body: |
+            This PR was automatically created by GitHub Actions after successful tests on the dev branch.
+            
+            It contains all changes from dev that passed testing and are ready for production.
+          labels: automated-pr, ready-for-review
+          draft: false
+      
+      - name: Auto-Approve PR
+        if: success() && github.ref == 'refs/heads/dev' && steps.create-pr.outputs.pull-request-number
+        uses: hmarr/auto-approve-action@v3
+        with:
+          pull-request-number: ${{ steps.create-pr.outputs.pull-request-number }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
