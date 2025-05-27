@@ -12,6 +12,7 @@ import {
   AlertCircle,
   CheckCircle,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
@@ -170,7 +171,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-background transition-colors pt-0 pb-16">
+    <section
+      id="contact"
+      className="bg-background transition-colors pt-0 pb-16"
+    >
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div
@@ -191,16 +195,34 @@ const Contact = () => {
                 aria-label="Call phone number"
               >
                 <Phone className="w-5 h-5 text-engineering-accent flex-shrink-0" />
-                <span className="font-medium">{import.meta.env.VITE_PHONE_NUMBER}</span>
+                <span className="font-medium">
+                  {import.meta.env.VITE_PHONE_NUMBER}
+                </span>
               </a>
-              
+
+              <a
+                href={`https://wa.me/${import.meta.env.VITE_PERSONAL_PHONE_NUMBER.replace(
+                  /[^0-9]/g,
+                  ""
+                )}`}
+                className="flex items-center gap-3 hover:text-engineering-accent transition-colors px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer w-full sm:w-auto justify-center"
+                aria-label="WhatsApp call"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp className="w-5 h-5 text-engineering-accent flex-shrink-0" />
+                <span className="font-medium">WhatsApp</span>
+              </a>
+
               <a
                 href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
                 className="flex items-center gap-3 hover:text-engineering-accent transition-colors px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 cursor-pointer w-full sm:w-auto justify-center"
                 aria-label="Send email"
               >
                 <Mail className="w-5 h-5 text-engineering-accent flex-shrink-0" />
-                <span className="font-medium break-all">{import.meta.env.VITE_EMAIL_ADDRESS_HELLO}</span>
+                <span className="font-medium break-all">
+                  {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
+                </span>
               </a>
             </div>
           </div>

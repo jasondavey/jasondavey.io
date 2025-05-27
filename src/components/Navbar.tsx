@@ -118,7 +118,9 @@ const Navbar = () => {
                 {link.label}
               </a>
               {index < navLinks.length - 1 && (
-                <span className="text-gray-500 text-opacity-50 text-sm mx-0.5">|</span>
+                <span className="text-gray-500 text-opacity-50 text-sm mx-0.5">
+                  |
+                </span>
               )}
             </div>
           ))}
@@ -127,7 +129,7 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Buy me a coffee"
-            title="Click here to find out how this website was built"
+            title="Cappuccino for a chat"
             className="text-yellow-400 hover:text-yellow-300 transition-colors ml-2"
           >
             <FaCoffee className="h-5 w-5" />
@@ -169,7 +171,12 @@ const Navbar = () => {
           <a href="/jasonrdavey.pdf" download title="Download Resume">
             <TbFileCv className="h-6 w-6 text-white hover:text-gray-300 transition-colors" />
           </a>
-          <a href="/JasonDaveyPatent.pdf" target="_blank" rel="noopener noreferrer" title="View Patent">
+          <a
+            href="/JasonDaveyPatent.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="View Patent"
+          >
             <TbCertificate className="h-6 w-6 text-white hover:text-gray-300 transition-colors" />
           </a>
 
@@ -360,17 +367,17 @@ const Navbar = () => {
                 >
                   <SiGmail className="h-6 w-6 text-white hover:text-red-300" />
                 </a>
-                <a 
-                  href="/jasonrdavey.pdf" 
-                  download 
+                <a
+                  href="/jasonrdavey.pdf"
+                  download
                   aria-label="Download Resume"
                 >
                   <TbFileCv className="h-6 w-6 text-white hover:text-gray-300" />
                 </a>
-                <a 
-                  href="/JasonDaveyPatent.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="/JasonDaveyPatent.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="View Patent"
                 >
                   <TbCertificate className="h-6 w-6 text-white hover:text-gray-300" />
