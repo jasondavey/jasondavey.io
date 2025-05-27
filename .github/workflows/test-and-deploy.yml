@@ -1,15 +1,20 @@
-name: (Production) CI/CD Pipeline
+name: Test and Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
-  test-and-deploy:
+  # Job to run Cypress tests in parallel with recording to Cypress Cloud
+  cypress-run:
     runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false # Continue with other containers even if one fails
+      matrix:
+        containers: [1, 2] # Run tests in parallel with 2 containers
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,8 +22,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
-          cache: "npm"
+          node-version: '20.x'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -29,58 +34,37 @@ jobs:
       - name: Build the website
         run: npm run build
 
-      - name: Start preview server in background
-        run: |
-          npm run preview -- --port 8080 &
-          echo $! > server.pid
-          # Give more time for the server to start and React to hydrate
-          sleep 20
-
-      - name: Check server is running
-        run: |
-          curl -v http://localhost:8080 > server_check.html
-          echo "Content size: $(wc -c < server_check.html) bytes"
-          echo "Checking title tag"
-          grep -o '<title>.*</title>' server_check.html || echo "No title found"
-
-      - name: Upload server check artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: server-check
-          path: server_check.html
-
-      - name: Install Cypress
+      # Run Cypress tests with recording to Cypress Cloud
+      - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          # Just install Cypress
-          runTests: false
-
-      - name: Cypress version
-        run: npx cypress --version
-
-      - name: Run Cypress tests
-        run: |
-          npx cypress run --config baseUrl=http://localhost:8080
-
+          # Start the preview server for the built site
+          start: npm run preview -- --port 8080
+          wait-on: 'http://localhost:8080'
+          wait-on-timeout: 120
+          # Enable recording to Cypress Cloud
+          record: true
+          parallel: true
+          group: 'UI Tests'
+          # Use the baseUrl from cypress.config.cjs
+        env:
+          # Pass the Cypress record key from GitHub secrets
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  # Job to deploy to Vercel if tests passed
+  deploy:
+    needs: cypress-run # Only run after tests have passed
+    runs-on: ubuntu-latest
+    if: success() && github.ref == 'refs/heads/main' # Only deploy from main branch
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
       - name: Trigger Production Deploy on Vercel
-        if: success()
         run: |
           curl -X POST "${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}"
-
-      - name: Kill preview server
-        if: always()
-        run: kill $(cat server.pid) || true
-
-      - name: Upload screenshots if tests fail
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
-      - name: Upload videos
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+        
+      - name: Deployment Status
+        run: echo "Deployment triggered successfully!"
