@@ -51,7 +51,7 @@ const Footer = () => {
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>© {currentYear} Jason Davey. All rights reserved.</p>
           <p className="mt-2">
-            Designed & Built with React, TypeScript & Tailwind CSS
+            Designed & Built with React, TypeScript, Tailwind CSS & Cypress
           </p>
           <div className="flex flex-col items-center gap-4">
             <Button

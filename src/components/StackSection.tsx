@@ -70,11 +70,11 @@ const StackSection = () => {
         <div className="flex flex-wrap items-stretch justify-center gap-8 mb-6">
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
             <div className="font-bold text-lg mb-2 text-engineering-accent">
-              Loveable
+              Lovable
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
               Content and code for this project were generated and orchestrated
-              using Loveable's AI-driven workflow.
+              using Lovable's AI-driven workflow.
             </div>
           </div>
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
@@ -93,6 +93,15 @@ const StackSection = () => {
             <div className="text-sm text-engineering-gray flex-grow">
               ChatGPT provided intelligent assistance, code suggestions, and
               content generation throughout the build process.
+            </div>
+          </div>
+          <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
+            <div className="font-bold text-lg mb-2 text-engineering-accent">
+              Cypress
+            </div>
+            <div className="text-sm text-engineering-gray flex-grow">
+              Cypress powers the automated testing pipeline, ensuring all site
+              features function correctly before deployment to production.
             </div>
           </div>
         </div>
