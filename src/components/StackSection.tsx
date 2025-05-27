@@ -1,10 +1,20 @@
-import { FaReact, FaAws, FaGithub, FaNodeJs } from "react-icons/fa";
+import { 
+  FaReact, 
+  FaAws, 
+  FaGithub, 
+  FaNodeJs, 
+  FaHeart, 
+  FaCode, 
+  FaVial,
+  FaCommentAlt
+} from "react-icons/fa";
 import {
   SiVite,
   SiTailwindcss,
   SiShadcnui,
   SiVercel,
   SiAmazonroute53,
+  SiCypress
 } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
 
@@ -69,7 +79,8 @@ const StackSection = () => {
       <div className="section-container text-center mt-0 py-4">
         <div className="flex flex-wrap items-stretch justify-center gap-8 mb-6">
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
-            <div className="font-bold text-lg mb-2 text-engineering-accent">
+            <div className="font-bold text-lg mb-2 text-engineering-accent flex items-center gap-2">
+              <FaHeart className="text-red-500" />
               Lovable
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
@@ -78,7 +89,8 @@ const StackSection = () => {
             </div>
           </div>
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
-            <div className="font-bold text-lg mb-2 text-engineering-accent">
+            <div className="font-bold text-lg mb-2 text-engineering-accent flex items-center gap-2">
+              <FaCode className="text-blue-500" />
               Windsurf IDE
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
@@ -87,7 +99,8 @@ const StackSection = () => {
             </div>
           </div>
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
-            <div className="font-bold text-lg mb-2 text-engineering-accent">
+            <div className="font-bold text-lg mb-2 text-engineering-accent flex items-center gap-2">
+              <FaCommentAlt className="text-green-500" />
               ChatGPT
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
@@ -96,7 +109,8 @@ const StackSection = () => {
             </div>
           </div>
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
-            <div className="font-bold text-lg mb-2 text-engineering-accent">
+            <div className="font-bold text-lg mb-2 text-engineering-accent flex items-center gap-2">
+              <SiCypress className="text-green-600" />
               Cypress
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
