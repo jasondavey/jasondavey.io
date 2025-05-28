@@ -13,6 +13,71 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [readmeOpen, setReadmeOpen] = useState(false);
+  
+  // Function to handle smooth scrolling with consistent speed
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    
+    // Only proceed if it's a hash link (internal page navigation)
+    if (targetId.startsWith('#')) {
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        // Close mobile menu if open
+        if (menuOpen) {
+          closeMenu();
+        }
+        
+        // Get the target position
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        // Get the current scroll position
+        const startPosition = window.scrollY;
+        // Calculate distance
+        const distance = targetPosition - startPosition;
+        
+        // Speed in pixels per millisecond (adjust as needed)
+        const speed = 0.5;
+        // Calculate duration based on distance and speed
+        const duration = Math.abs(distance / speed);
+        // Cap duration to provide minimum and maximum scroll times
+        const cappedDuration = Math.max(500, Math.min(duration, 2000));
+        
+        // Start time
+        let startTime: number | null = null;
+        
+        // Animation function
+        function animation(currentTime: number) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / cappedDuration, 1);
+          
+          // Easing function for smoother start/stop
+          const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+          
+          window.scrollTo(0, startPosition + distance * ease(progress));
+          
+          if (timeElapsed < cappedDuration) {
+            requestAnimationFrame(animation);
+          } else {
+            // Update URL hash without causing a jump
+            window.history.pushState(null, '', targetId);
+          }
+        }
+        
+        requestAnimationFrame(animation);
+      }
+    }
+  };
+
+  // No need for CSS smooth scrolling as we're using a custom implementation
+  // This useEffect can be removed or kept empty
+  useEffect(() => {
+    // We're using our custom smooth scroll implementation instead
+    
+    return () => {
+      // Clean up if needed
+    };
+  }, []);
 
   // Handle scroll events to update navbar styling
   useEffect(() => {
@@ -93,7 +158,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
         <div className="flex items-center gap-4">
-          <a href="#" className="flex items-center gap-2">
+          <a href="#" className="flex items-center gap-2" onClick={(e) => handleSmoothScroll(e, '#')}>
             <Code className="h-6 w-6 text-white" />
             <span className="font-bold text-lg text-white">jasondavey.io</span>
           </a>
@@ -114,6 +179,7 @@ const Navbar = () => {
               <a
                 href={link.href}
                 className="relative text-sm font-medium px-3 py-2 transition-colors duration-200 hover:text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full"
+                onClick={(e) => handleSmoothScroll(e, link.href)}
               >
                 {link.label}
               </a>
@@ -263,7 +329,7 @@ const Navbar = () => {
                 <a
                   href="#"
                   className="flex items-center gap-2"
-                  onClick={closeMenu}
+                  onClick={(e) => handleSmoothScroll(e, '#')}
                 >
                   <Code className="h-6 w-6 text-white" />
                   <span className="font-bold text-lg text-white">
@@ -315,7 +381,7 @@ const Navbar = () => {
                     <a
                       href={link.href}
                       className="block py-3 px-4 text-lg font-medium text-white hover:bg-gray-800 rounded-md transition-colors"
-                      onClick={closeMenu}
+                      onClick={(e) => handleSmoothScroll(e, link.href)}
                     >
                       {link.label}
                     </a>
