@@ -27,3 +27,4 @@ dist-ssr
 .vercel
 src/build-info.ts
 public/JasonDavey.docx
+cypress/videos
