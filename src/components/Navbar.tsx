@@ -13,57 +13,61 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [readmeOpen, setReadmeOpen] = useState(false);
-  
+
   // Function to handle smooth scrolling with consistent speed
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
     e.preventDefault();
-    
+
     // Only proceed if it's a hash link (internal page navigation)
-    if (targetId.startsWith('#')) {
+    if (targetId.startsWith("#")) {
       const targetElement = document.querySelector(targetId);
-      
+
       if (targetElement) {
         // Close mobile menu if open
         if (menuOpen) {
           closeMenu();
         }
-        
+
         // Get the target position
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        const targetPosition =
+          targetElement.getBoundingClientRect().top + window.scrollY;
         // Get the current scroll position
         const startPosition = window.scrollY;
         // Calculate distance
         const distance = targetPosition - startPosition;
-        
+
         // Speed in pixels per millisecond (adjust as needed)
         const speed = 0.5;
         // Calculate duration based on distance and speed
         const duration = Math.abs(distance / speed);
         // Cap duration to provide minimum and maximum scroll times
         const cappedDuration = Math.max(500, Math.min(duration, 2000));
-        
+
         // Start time
         let startTime: number | null = null;
-        
+
         // Animation function
         function animation(currentTime: number) {
           if (startTime === null) startTime = currentTime;
           const timeElapsed = currentTime - startTime;
           const progress = Math.min(timeElapsed / cappedDuration, 1);
-          
+
           // Easing function for smoother start/stop
-          const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-          
+          const ease = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+
           window.scrollTo(0, startPosition + distance * ease(progress));
-          
+
           if (timeElapsed < cappedDuration) {
             requestAnimationFrame(animation);
           } else {
             // Update URL hash without causing a jump
-            window.history.pushState(null, '', targetId);
+            window.history.pushState(null, "", targetId);
           }
         }
-        
+
         requestAnimationFrame(animation);
       }
     }
@@ -73,7 +77,7 @@ const Navbar = () => {
   // This useEffect can be removed or kept empty
   useEffect(() => {
     // We're using our custom smooth scroll implementation instead
-    
+
     return () => {
       // Clean up if needed
     };
@@ -144,7 +148,7 @@ const Navbar = () => {
     { href: "#leadership", label: "Leadership" },
     { href: "#technical-skills", label: "Skills" },
     { href: "#experience", label: "Experience" },
-    { href: "#contact", label: "Contact" },
+    { href: "#contact", label: "Inquire" },
   ];
 
   return (
@@ -158,7 +162,11 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
         <div className="flex items-center gap-4">
-          <a href="#" className="flex items-center gap-2" onClick={(e) => handleSmoothScroll(e, '#')}>
+          <a
+            href="#"
+            className="flex items-center gap-2"
+            onClick={(e) => handleSmoothScroll(e, "#")}
+          >
             <Code className="h-6 w-6 text-white" />
             <span className="font-bold text-lg text-white">jasondavey.io</span>
           </a>
@@ -329,7 +337,7 @@ const Navbar = () => {
                 <a
                   href="#"
                   className="flex items-center gap-2"
-                  onClick={(e) => handleSmoothScroll(e, '#')}
+                  onClick={(e) => handleSmoothScroll(e, "#")}
                 >
                   <Code className="h-6 w-6 text-white" />
                   <span className="font-bold text-lg text-white">
