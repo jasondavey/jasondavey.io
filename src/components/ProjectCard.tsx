@@ -1,4 +1,4 @@
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaLink } from "react-icons/fa";
 
 import React, { useState, useEffect } from "react";
 import { Project } from "./Project";
@@ -54,6 +54,18 @@ const ProjectCard: React.FC<Project> = ({
   const [activeTab, setActiveTab] = useState<
     "business" | "architecture" | "results"
   >(businessView ? "business" : "architecture");
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  // Function to copy the anchor URL to clipboard
+  const copyLinkToClipboard = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const url = `${window.location.origin}${window.location.pathname}#project-${projectId}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    });
+  };
 
   // Detect theme changes
   useEffect(() => {
@@ -96,9 +108,13 @@ const ProjectCard: React.FC<Project> = ({
     groups[category].push({ tech, info });
   });
 
+  // Create a URL-friendly ID from the project title
+  const projectId = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
   return (
     <div
-      className="my-16 first:mt-8 animate-fade-in opacity-0"
+      id={`project-${projectId}`}
+      className="my-16 first:mt-8 animate-fade-in opacity-0 scroll-mt-24"
       style={{ animationDelay: `${0.3 + index * 0.1}s` }}
     >
       {/* Project Header with Title and External Links */}
@@ -158,9 +174,26 @@ const ProjectCard: React.FC<Project> = ({
           <div className="ml-auto"></div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-foreground">{title}</h3>
-
+        <div className="flex justify-between items-start">
+          <h3 className="text-2xl font-bold text-foreground transition-colors flex items-center gap-2">
+            {title}
+            <button
+              onClick={copyLinkToClipboard}
+              className="group relative inline-flex items-center justify-center"
+              title="Copy link to this project"
+              aria-label="Copy link to this project"
+            >
+              <FaLink
+                className="text-xs text-engineering-gray/50 hover:text-engineering-accent transition-colors"
+                size={14}
+              />
+              {linkCopied && (
+                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-engineering-accent text-white text-xs rounded px-2 py-1 whitespace-nowrap">
+                  Link copied!
+                </span>
+              )}
+            </button>
+          </h3>
           <div className="flex items-center gap-3">
             {/* GitHub Link */}
             {github && showCodeButton && (
