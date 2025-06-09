@@ -51,14 +51,14 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
   // Get industry icon
   const getIndustryIcon = (industry: string): React.ReactNode => {
     const iconMap: Record<string, React.ReactNode> = {
-      Fintech: <FaChartLine className="mr-1" />,
-      Media: <FaVideo className="mr-1" />,
-      Healthcare: <FaHeartbeat className="mr-1" />,
-      EdTech: <FaGraduationCap className="mr-1" />,
-      Tourism: <FaPlane className="mr-1" />,
-      Shipping: <FaEnvelope className="mr-1" />,
-      Legal: <FaGavel className="mr-1" />,
-      General: <FaLightbulb className="mr-1" />,
+      Fintech: <FaChartLine className="mr-2" />,
+      Media: <FaVideo className="mr-2" />,
+      Healthcare: <FaHeartbeat className="mr-2" />,
+      EdTech: <FaGraduationCap className="mr-2" />,
+      Tourism: <FaPlane className="mr-2" />,
+      Shipping: <FaEnvelope className="mr-2" />,
+      Legal: <FaGavel className="mr-2" />,
+      General: <FaLightbulb className="mr-2" />,
     };
 
     return iconMap[industry] || iconMap["General"];

@@ -109,21 +109,35 @@ const projects: Project[] = [...allProjects].sort(
 );
 
 // Helper function to get the appropriate icon for each industry
+// Helper function to get the appropriate icon for each industry
 const getIndustryIcon = (industry: string) => {
   switch(industry) {
     case "Fintech":
-      return <TrendingUpIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+      return <TrendingUpIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 1 }} />;
     case "Shipping":
-      return <LocalShippingIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+      return <LocalShippingIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 1 }} />;
     case "Media":
-      return <MovieIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+      return <MovieIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 1 }} />;
     case "Legal":
-      return <GavelIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+      return <GavelIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 1 }} />;
     case "Tourism":
-      return <TravelExploreIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+      return <TravelExploreIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 1 }} />;
     default:
-      return <AllInclusiveIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+      return <AllInclusiveIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 1 }} />;
   }
+};
+
+// Helper function to get YouTube thumbnail from video URL
+const getYouTubeThumbnail = (videoUrl: string): string => {
+  if (!videoUrl) return "";
+  
+  // Extract video ID from YouTube URL
+  const regExp = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch))?\?v(?:=|\/)|(&v(?:=|\/)))([^#&?]*).*/;
+  const match = videoUrl.match(regExp);
+  const videoId = match && match[2] ? match[2] : null;
+  
+  // Return high quality thumbnail URL if ID found
+  return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "";
 };
 
 const M3Projects = () => {
@@ -406,9 +420,9 @@ const M3Projects = () => {
                     }}
                     transition={{ duration: 0.4 }}
                   >
-                    {project.image && (
+                    {(project.image || project.videoUrl) && (
                       <StyledCardMedia
-                        image={project.image}
+                        image={project.image || getYouTubeThumbnail(project.videoUrl || "")}
                         title={project.title}
                         sx={{ height: 240 }}
                       />
