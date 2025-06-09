@@ -495,7 +495,7 @@ const M3Projects = () => {
                     </Box>
                     
                     <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 2 }}>
-                      {project.technologies.slice(0, 5).map(tech => (
+                      {project.technologies.map(tech => (
                         <Chip
                           key={tech}
                           label={tech}
@@ -508,20 +508,10 @@ const M3Projects = () => {
                             color: theme.palette.primary.main,
                             fontWeight: 500,
                             border: `1px solid ${alpha(theme.palette.primary.main, 0.3)}`,
+                            mb: 0.5,
                           }}
                         />
                       ))}
-                      {project.technologies.length > 5 && (
-                        <Chip
-                          label={`+${project.technologies.length - 5}`}
-                          size="small"
-                          sx={{
-                            borderRadius: "16px",
-                            background: alpha(theme.palette.grey[500], 0.2),
-                            color: theme.palette.text.secondary,
-                          }}
-                        />
-                      )}
                     </Box>
                   </CardContent>
                   
