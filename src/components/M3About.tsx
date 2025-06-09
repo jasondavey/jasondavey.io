@@ -7,6 +7,7 @@ import {
   CardContent,
   useTheme,
 } from "@mui/material";
+import WorldCitiesLine from "./WorldCitiesLine";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useThemeContext } from "@/theme";
@@ -293,6 +294,39 @@ const M3About = () => {
           </Box>
         </motion.div>
       </ContentWrapper>
+
+      {/* International Experience Section */}
+      <Box sx={{ mt: 8, px: 2 }}>
+        <motion.div style={{ opacity, y: y2 }}>
+          <Typography
+            variant="h5"
+            component="h3"
+            sx={{
+              textAlign: 'center',
+              fontWeight: 600,
+              mb: 2,
+              color: theme.palette.primary.main
+            }}
+          >
+            International Experience
+          </Typography>
+          
+          <Box sx={{ 
+            display: 'flex', 
+            justifyContent: 'center',
+            mt: 2,
+            mb: 4
+          }}>
+            <Box sx={{ 
+              color: theme.palette.text.primary,
+              maxWidth: '900px',
+              width: '100%'
+            }}>
+              <WorldCitiesLine />
+            </Box>
+          </Box>
+        </motion.div>
+      </Box>
     </SectionContainer>
   );
 };

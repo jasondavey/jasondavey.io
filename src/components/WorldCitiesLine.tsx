@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "@mui/material";
 
 const cities = [
   { name: "San Francisco", x: 70, color: "#0074D9" },
@@ -7,7 +8,11 @@ const cities = [
   { name: "Singapore", x: 500, color: "#B10DC9" },
 ];
 
-const WorldCitiesLine: React.FC<{ className?: string }> = ({ className }) => (
+const WorldCitiesLine: React.FC<{ className?: string }> = ({ className }) => {
+  const theme = useTheme();
+  const textColor = theme.palette.mode === 'dark' ? theme.palette.text.primary : '#333';
+  
+  return (
   <svg
     viewBox="0 0 600 100"
     fill="none"
@@ -22,9 +27,8 @@ const WorldCitiesLine: React.FC<{ className?: string }> = ({ className }) => (
       y1={50}
       x2={550}
       y2={50}
-      stroke="currentColor"
+      stroke={textColor}
       strokeWidth={2}
-      className="stroke-neutral-800 dark:stroke-neutral-200"
     />
     {/* Cities */}
     {cities.map(({ name, x, color }) => (
@@ -35,13 +39,15 @@ const WorldCitiesLine: React.FC<{ className?: string }> = ({ className }) => (
           y={75}
           fontSize={14}
           textAnchor="middle"
-          className="fill-neutral-800 dark:fill-neutral-200 font-sans"
+          fill={textColor}
+          fontFamily={theme.typography.fontFamily}
         >
           {name}
         </text>
       </g>
     ))}
   </svg>
-);
+  );
+};
 
 export default WorldCitiesLine;
