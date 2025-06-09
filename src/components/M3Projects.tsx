@@ -26,7 +26,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 // Industry tab icons
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
-import PaymentsIcon from '@mui/icons-material/Payments';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import MovieIcon from '@mui/icons-material/Movie';
 import GavelIcon from '@mui/icons-material/Gavel';
@@ -107,6 +107,24 @@ const currentYear = new Date().getFullYear();
 const projects: Project[] = [...allProjects].sort(
   (a, b) => (b.endYear || currentYear) - (a.endYear || currentYear)
 );
+
+// Helper function to get the appropriate icon for each industry
+const getIndustryIcon = (industry: string) => {
+  switch(industry) {
+    case "Fintech":
+      return <TrendingUpIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+    case "Shipping":
+      return <LocalShippingIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+    case "Media":
+      return <MovieIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+    case "Legal":
+      return <GavelIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+    case "Tourism":
+      return <TravelExploreIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+    default:
+      return <AllInclusiveIcon fontSize="small" sx={{ verticalAlign: 'middle', ml: 0.5 }} />;
+  }
+};
 
 const M3Projects = () => {
   const theme = useTheme();
@@ -268,24 +286,56 @@ const M3Projects = () => {
               scrollButtons="auto"
               aria-label="Project categories"
               sx={{
+                overflow: 'auto',
+                maxWidth: '100%',
+                '& .MuiTabs-flexContainer': {
+                  justifyContent: { xs: 'flex-start', md: 'center' },
+                },
+                '& .MuiTabs-indicator': {
+                  backgroundColor: theme.palette.primary.main,
+                  height: 3,
+                  borderRadius: '3px',
+                },
                 '& .MuiTab-root': {
                   textTransform: 'none',
-                  fontWeight: 500,
+                  fontWeight: 600,
+                  minWidth: 'auto',
+                  padding: '12px 18px',
                   borderRadius: '12px',
-                  marginRight: 1,
-                  minHeight: 48,
-                  py: 1,
-                  px: 2,
-                  transition: 'all 0.2s ease',
-                  bgcolor: theme.palette.mode === 'dark' 
-                    ? alpha(theme.palette.background.paper, 0.3)
-                    : alpha(theme.palette.background.paper, 0.8),
-                },
-                '& .Mui-selected': {
-                  bgcolor: theme.palette.mode === 'dark'
-                    ? alpha(theme.palette.primary.main, 0.2)
-                    : alpha(theme.palette.primary.main, 0.1),
-                  color: theme.palette.primary.main,
+                  marginX: 1,
+                  color: theme.palette.text.secondary,
+                  transition: 'all 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 1,
+                  '& .MuiSvgIcon-root': {
+                    fontSize: '1.2rem',
+                    marginRight: '6px',
+                    opacity: 0.8,
+                    transition: 'all 0.3s ease',
+                  },
+                  '&:hover': {
+                    backgroundColor: 
+                      theme.palette.mode === 'dark' 
+                        ? alpha(theme.palette.primary.main, 0.1)
+                        : alpha(theme.palette.primary.main, 0.05),
+                    '& .MuiSvgIcon-root': {
+                      transform: 'scale(1.2)',
+                      opacity: 1,
+                    }
+                  },
+                  '&.Mui-selected': {
+                    color: theme.palette.primary.main,
+                    backgroundColor: 
+                      theme.palette.mode === 'dark' 
+                        ? alpha(theme.palette.primary.main, 0.15)
+                        : alpha(theme.palette.primary.main, 0.1),
+                    '& .MuiSvgIcon-root': {
+                      color: theme.palette.primary.main,
+                      opacity: 1,
+                    }
+                  },
                 }
               }}
             >
@@ -296,7 +346,7 @@ const M3Projects = () => {
               />
               <Tab 
                 label="Fintech" 
-                icon={<PaymentsIcon />} 
+                icon={<TrendingUpIcon />} 
                 iconPosition="start"
               />
               <Tab 
@@ -422,8 +472,8 @@ const M3Projects = () => {
                     <Divider sx={{ my: 2 }} />
                     
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-                      <Typography variant="body2">
-                        <strong>Industry:</strong> {project.industry}
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center' }}>
+                        <strong>Industry:</strong><span style={{ marginLeft: '0.5rem' }}>{project.industry}{getIndustryIcon(project.industry)}</span>
                       </Typography>
                       <Typography variant="body2">
                         {project.startYear}{project.endYear ? ` - ${project.endYear}` : ' - Present'}
