@@ -14,6 +14,7 @@ import {
   Snackbar,
   Alert,
   CircularProgress,
+  Link,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
@@ -537,11 +538,40 @@ const M3Contact = () => {
                 </Typography>
                 
                 <Box sx={{ mb: 4 }}>
-                  <ContactInfoItem
-                    icon={<MailOutlineIcon fontSize="medium" sx={{ color: theme.palette.primary.main }} />}
-                    primary="Email"
-                    secondary={import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
-                  />
+                  <Box sx={{ display: "flex", mb: 3, alignItems: "center" }}>
+                    <Box 
+                      sx={{ 
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: 48,
+                        height: 48,
+                        borderRadius: "50%",
+                        mr: 2,
+                        background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.1)}, ${alpha(theme.palette.secondary.main, 0.1)})`,
+                        boxShadow: `0 4px 8px ${alpha(theme.palette.common.black, 0.05)}`,
+                      }}
+                    >
+                      <MailOutlineIcon fontSize="medium" sx={{ color: theme.palette.primary.main }} />
+                    </Box>
+                    <Box>
+                      <Typography variant="subtitle1" fontWeight={600}>
+                        Email
+                      </Typography>
+                      <Link 
+                        href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`} 
+                        underline="hover"
+                        color="text.secondary"
+                        sx={{
+                          '&:hover': {
+                            color: 'primary.main'
+                          }
+                        }}
+                      >
+                        {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
+                      </Link>
+                    </Box>
+                  </Box>
                   
                   <ContactInfoItem
                     icon={<PhoneIcon fontSize="medium" sx={{ color: theme.palette.primary.main }} />}

@@ -14,13 +14,16 @@ import {
   Tabs,
   Tab,
   Divider,
-  Grid
+  Grid,
+  Tooltip
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import M3ProjectDetailsModal from "./M3ProjectDetailsModal";
 import { useThemeContext } from "@/theme";
 
 // Import projects
@@ -104,6 +107,10 @@ const M3Projects = () => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<number>(0);
   
+  // State for project details modal
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [detailsModalOpen, setDetailsModalOpen] = useState<boolean>(false);
+  
   // Create refs array for project items - proper React pattern
   const projectRefs = useRef<(HTMLDivElement | null)[]>(projects.map(() => null));
   
@@ -117,6 +124,17 @@ const M3Projects = () => {
   });
   
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  
+  // Open project details modal
+  const handleOpenDetails = (project: Project) => {
+    setSelectedProject(project);
+    setDetailsModalOpen(true);
+  };
+  
+  // Close project details modal
+  const handleCloseDetails = () => {
+    setDetailsModalOpen(false);
+  };
   
   // Filter projects based on selected industry tab
   const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
@@ -411,7 +429,7 @@ const M3Projects = () => {
                     </Box>
                   </CardContent>
                   
-                  <CardActions sx={{ p: 3, pt: 0, justifyContent: 'space-between' }}>
+                  <CardActions sx={{ p: 3, pt: 0, mt: 'auto', justifyContent: 'space-between' }}>
                     {project.companyUrl && (
                       <Button 
                         size="small" 
@@ -464,6 +482,25 @@ const M3Projects = () => {
                         View Code
                       </Button>
                     )}
+                    
+                    {/* View Details Button */}
+                    <Tooltip title="View Project Details">
+                      <Button 
+                        size="small" 
+                        startIcon={<VisibilityIcon />}
+                        onClick={() => handleOpenDetails(project)}
+                        variant="outlined"
+                        color="primary"
+                        sx={{
+                          textTransform: "none",
+                          fontWeight: 600,
+                          borderRadius: "20px",
+                          ml: 'auto'
+                        }}
+                      >
+                        View Details
+                      </Button>
+                    </Tooltip>
                   </CardActions>
                 </ProjectCard>
               </motion.div>
@@ -471,6 +508,15 @@ const M3Projects = () => {
           ))}
         </Box>
       </Container>
+      
+      {/* Project Details Modal */}
+      {selectedProject && (
+        <M3ProjectDetailsModal 
+          project={selectedProject}
+          open={detailsModalOpen}
+          onClose={handleCloseDetails}
+        />
+      )}
     </SectionContainer>
   );
 };

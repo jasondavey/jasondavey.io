@@ -5,11 +5,11 @@ import {
   Typography,
   Link,
   IconButton,
-  Grid,
   useTheme,
   alpha,
   Divider,
 } from "@mui/material";
+
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import { useThemeContext } from "@/theme";
@@ -106,7 +106,16 @@ const M3Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <FooterContainer component="footer">
+    <Box component="footer" sx={{
+      position: "relative",
+      backgroundColor: theme.palette.mode === "dark" 
+        ? alpha(theme.palette.grey[900], 0.9)
+        : alpha(theme.palette.grey[100], 0.9),
+      overflow: "hidden",
+      paddingTop: theme.spacing(8),
+      paddingBottom: theme.spacing(4),
+      backdropFilter: "blur(10px)",
+    }}>
       {/* Background elements */}
       <Box sx={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Box
@@ -134,9 +143,13 @@ const M3Footer = () => {
       </Box>
 
       <Container sx={{ position: "relative", zIndex: 1 }}>
-        <Grid container spacing={4}>
+        <Box sx={{ 
+          display: 'grid', 
+          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
+          gap: 4 
+        }}>
           {/* Main info column */}
-          <Grid item xs={12} md={4}>
+          <Box sx={{ gridColumn: { xs: '1', sm: '1', md: '1' } }}>
             <GlassPanel>
               <Typography
                 variant="h6"
@@ -161,60 +174,65 @@ const M3Footer = () => {
               {/* Social links */}
               <Box sx={{ display: "flex", mb: 3 }}>
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <SocialIconButton
-                    aria-label="LinkedIn"
-                    component="a"
+                  <Link
                     href="https://www.linkedin.com/in/jasondavey/"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    underline="none"
                   >
-                    <LinkedInIcon fontSize="small" />
-                  </SocialIconButton>
+                    <SocialIconButton aria-label="LinkedIn">
+                      <LinkedInIcon fontSize="small" />
+                    </SocialIconButton>
+                  </Link>
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <SocialIconButton
-                    aria-label="GitHub"
-                    component="a"
-                    href="https://github.com/jasondavey"
+                  <Link
+                    href="https://github.com/jasondavey/"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    underline="none"
                   >
-                    <GitHubIcon fontSize="small" />
-                  </SocialIconButton>
+                    <SocialIconButton aria-label="GitHub">
+                      <GitHubIcon fontSize="small" />
+                    </SocialIconButton>
+                  </Link>
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <SocialIconButton
-                    aria-label="Twitter"
-                    component="a"
+                  <Link
                     href="https://twitter.com/jasondavey"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
+                    underline="none"
                   >
-                    <FaSquareXTwitter size="1.2em" />
-                  </SocialIconButton>
+                    <SocialIconButton aria-label="Twitter">
+                      <FaSquareXTwitter size="1.2em" />
+                    </SocialIconButton>
+                  </Link>
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <SocialIconButton
-                    aria-label="Email"
-                    component="a"
+                  <Link
                     href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
+                    underline="none"
                   >
-                    <MailOutlineIcon fontSize="small" />
-                  </SocialIconButton>
+                    <SocialIconButton aria-label="Email">
+                      <MailOutlineIcon fontSize="small" />
+                    </SocialIconButton>
+                  </Link>
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <SocialIconButton
-                    aria-label="Patent Document"
-                    component="a"
+                  <Link
                     href="/JasonDaveyPatent.pdf"
                     target="_blank"
+                    underline="none"
                   >
-                    <TbCertificate size="1.2em" />
-                  </SocialIconButton>
+                    <SocialIconButton aria-label="Patent">
+                      <TbCertificate size="1.2em" />
+                    </SocialIconButton>
+                  </Link>
                 </motion.div>
               </Box>
 
@@ -224,10 +242,10 @@ const M3Footer = () => {
                 </Typography>
               </Box>
             </GlassPanel>
-          </Grid>
+          </Box>
 
           {/* Navigation column */}
-          <Grid item xs={12} sm={6} md={4}>
+          <Box sx={{ gridColumn: { xs: '1', sm: '1/2', md: '2/3' } }}>
             <GlassPanel>
               <Typography
                 variant="h6"
@@ -258,10 +276,10 @@ const M3Footer = () => {
                 ))}
               </Box>
             </GlassPanel>
-          </Grid>
+          </Box>
 
           {/* Contact column */}
-          <Grid item xs={12} sm={6} md={4}>
+          <Box sx={{ gridColumn: { xs: '1', sm: '2/3', md: '3/4' } }}>
             <GlassPanel>
               <Typography
                 variant="h6"
@@ -284,10 +302,21 @@ const M3Footer = () => {
               </Typography>
 
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
-                <Typography variant="body2" sx={{ display: "flex", alignItems: "center" }}>
+                <Link 
+                  href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`} 
+                  underline="hover"
+                  sx={{ 
+                    display: "flex", 
+                    alignItems: "center",
+                    color: 'text.primary',
+                    '&:hover': {
+                      color: 'primary.main'
+                    }
+                  }}
+                >
                   <MailOutlineIcon fontSize="small" sx={{ mr: 1, color: theme.palette.primary.main }} />
                   {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
-                </Typography>
+                </Link>
               </Box>
 
               <motion.div
@@ -313,8 +342,8 @@ const M3Footer = () => {
                 </Box>
               </motion.div>
             </GlassPanel>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         {/* Bottom copyright and attribution */}
         <Box sx={{ mt: 6, textAlign: "center" }}>
@@ -324,7 +353,7 @@ const M3Footer = () => {
           </Typography>
         </Box>
       </Container>
-    </FooterContainer>
+    </Box>
   );
 };
 

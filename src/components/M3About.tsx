@@ -254,8 +254,8 @@ const M3About = () => {
               }}
             >
               British born, American raised, I build tech with passion and
-              purpose, creating intuitive customer centric experiences and value
-              from purpose. I'm typically involved from conception to release,
+              purpose, creating intuitive customer centric experiences and
+              value. I'm typically involved from conception to release,
               fostering success through hands-on technical and project
               leadership. And with expertise spanning both engineering and
               leadership, I bring a unique perspective that blends technical

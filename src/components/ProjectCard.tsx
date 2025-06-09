@@ -431,7 +431,7 @@ const ProjectCard: React.FC<Project> = ({
                 </div>
               )}
               {activeTab === "architecture" && (
-                <div className="whitespace-pre-line text-foreground leading-relaxed">
+                <div className="whitespace-pre-line text-foreground dark:text-gray-200 leading-relaxed">
                   {archImage && (
                     <div
                       className="mb-4 cursor-pointer"
@@ -446,7 +446,7 @@ const ProjectCard: React.FC<Project> = ({
                     </div>
                   )}
                   {description}
-                  {details && <div className="mt-4">{details}</div>}
+                  {details && <div className="mt-4 dark:text-gray-200">{details}</div>}
 
                   {/* Show demo button and external links inside Architecture tab */}
                   {(showDemoButton && demo) ||
@@ -482,7 +482,7 @@ const ProjectCard: React.FC<Project> = ({
                 </div>
               )}
               {activeTab === "results" && resultsImpact && (
-                <div className="whitespace-pre-line text-foreground leading-relaxed">
+                <div className="whitespace-pre-line text-foreground dark:text-gray-200 leading-relaxed">
                   {resultsImpact}
 
                   {/* Show external links */}

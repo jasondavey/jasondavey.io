@@ -4,11 +4,11 @@ export interface Project {
    */
   industry: string;
   /**
-   * Optional business summary terms to display as bullet points under the project title.
+   * Business terminology related to the project.
    */
   businessTerms?: string[];
   /**
-   * Optional business view content for the Business View tab.
+   * Business view content that describes the business context, problem and solution.
    */
   businessView?: React.ReactNode;
   /**
@@ -35,14 +35,26 @@ export interface Project {
   companyIcon?: string;
   darkModeCompanyIcon?: string;
   showDemoButton?: boolean;
-  showCodeButton?: boolean;
-  techIconMap: Record<
+  /**
+   * Results and impact of the project, broken down by stakeholder groups.
+   */
+  resultsImpact?: React.ReactNode;
+  /**
+   * Key architectural components and decisions for the project.
+   */
+  keyArchitecture?: React.ReactNode;
+  /**
+   * Path to the architecture diagram image.
+   */
+  archImage?: string;
+  /**
+   * Technology icon mapping for custom technology display.
+   */
+  techIconMap?: Record<
     string,
     { category: string; icon: JSX.Element; url: string }
   >;
-  keyArchitecture?: string;
-  resultsImpact?: React.ReactNode;
-  archImage?: string;
+  showCodeButton?: boolean;
   externalLinks?: {
     url: string;
     label: string;
