@@ -23,6 +23,7 @@ import ArchitectureIcon from '@mui/icons-material/Architecture';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import CodeIcon from '@mui/icons-material/Code';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import { styled } from '@mui/material/styles';
 import { Project } from './Project';
 
@@ -127,6 +128,18 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
   const showBusinessTab = Boolean(project.businessView || project.businessTerms);
   const showArchitectureTab = Boolean(project.description || project.keyArchitecture);
   const showResultsTab = Boolean(project.resultsImpact);
+  const showVideoTab = Boolean(project.videoUrl);
+  
+  // Helper function to extract YouTube video ID
+  const getYouTubeEmbedUrl = (url: string): string => {
+    if (!url) return "";
+    
+    const regExp = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch))?\?v(?:=|\/)|(&v(?:=|\/)))([^#&?]*).*/;
+    const match = url.match(regExp);
+    const videoId = match && match[2] ? match[2] : "";
+    
+    return `https://www.youtube.com/embed/${videoId}`;
+  };
 
   return (
     <StyledDialog
@@ -242,15 +255,30 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
               )} 
             />
           )}
+          {showVideoTab && (
+            <StyledTab
+              label="Video Demo"
+              icon={<VideoLibraryIcon />}
+              iconPosition="start"
+              sx={{ minHeight: 'auto', py: 1.5 }}
+              {...a11yProps(
+                (showBusinessTab ? 1 : 0) + 
+                (showArchitectureTab ? 1 : 0) + 
+                (showResultsTab ? 1 : 0)
+              )}
+            />
+          )}
           <StyledTab 
-            label="Technologies" 
-            icon={<CodeIcon sx={{ fontSize: 18 }} />} 
+            label="Tech Stack" 
+            icon={<CodeIcon />}
             iconPosition="start"
+            sx={{ minHeight: 'auto', py: 1.5 }}
             {...a11yProps(
               (showBusinessTab ? 1 : 0) + 
               (showArchitectureTab ? 1 : 0) + 
-              (showResultsTab ? 1 : 0)
-            )} 
+              (showResultsTab ? 1 : 0) +
+              (showVideoTab ? 1 : 0)
+            )}
           />
         </Tabs>
       </Box>
@@ -401,13 +429,51 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
           </TabPanel>
         )}
 
+        {/* Video Demo Tab */}
+        {showVideoTab && (
+          <TabPanel 
+            value={tabValue} 
+            index={
+              (showBusinessTab ? 1 : 0) + 
+              (showArchitectureTab ? 1 : 0) + 
+              (showResultsTab ? 1 : 0)
+            }
+          >
+            <GlassContent>
+              <Box sx={{ 
+                width: '100%', 
+                position: 'relative',
+                paddingTop: '56.25%', // 16:9 aspect ratio for responsive video
+                overflow: 'hidden',
+                borderRadius: '12px',
+              }}>
+                <iframe 
+                  src={getYouTubeEmbedUrl(project.videoUrl || "")}
+                  title={`${project.title} video demo`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowFullScreen
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    border: 'none'
+                  }}
+                />
+              </Box>
+            </GlassContent>
+          </TabPanel>
+        )}
+        
         {/* Technologies Tab */}
         <TabPanel 
           value={tabValue} 
           index={
             (showBusinessTab ? 1 : 0) + 
             (showArchitectureTab ? 1 : 0) + 
-            (showResultsTab ? 1 : 0)
+            (showResultsTab ? 1 : 0) + 
+            (showVideoTab ? 1 : 0)
           }
         >
           <GlassContent>
