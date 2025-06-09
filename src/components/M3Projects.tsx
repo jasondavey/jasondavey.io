@@ -23,6 +23,14 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+
+// Industry tab icons
+import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import MovieIcon from '@mui/icons-material/Movie';
+import GavelIcon from '@mui/icons-material/Gavel';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import M3ProjectDetailsModal from "./M3ProjectDetailsModal";
 import { useThemeContext } from "@/theme";
 
@@ -281,12 +289,36 @@ const M3Projects = () => {
                 }
               }}
             >
-              <Tab label="All" />
-              <Tab label="Fintech" />
-              <Tab label="Shipping" />
-              <Tab label="Media" />
-              <Tab label="Legal" />
-              <Tab label="Tourism" />
+              <Tab 
+                label="All" 
+                icon={<AllInclusiveIcon />} 
+                iconPosition="start"
+              />
+              <Tab 
+                label="Fintech" 
+                icon={<PaymentsIcon />} 
+                iconPosition="start"
+              />
+              <Tab 
+                label="Shipping" 
+                icon={<LocalShippingIcon />} 
+                iconPosition="start"
+              />
+              <Tab 
+                label="Media" 
+                icon={<MovieIcon />} 
+                iconPosition="start"
+              />
+              <Tab 
+                label="Legal" 
+                icon={<GavelIcon />} 
+                iconPosition="start"
+              />
+              <Tab 
+                label="Tourism" 
+                icon={<TravelExploreIcon />} 
+                iconPosition="start"
+              />
             </Tabs>
           </Box>
         </Box>
