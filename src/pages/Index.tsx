@@ -1,27 +1,27 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import LeadershipSection from "@/components/Leadership";
-import SkillsSection from "@/components/Skills";
-import ProjectsSection from "@/components/Projects";
-import Experience from "@/components/Experience";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import M3Navbar from "@/components/M3Navbar";
+import M3Hero from "@/components/M3Hero";
+import M3About from "@/components/M3About";
+import M3Projects from "@/components/M3Projects";
+import M3Leadership from "@/components/M3Leadership";
+import M3Skills from "@/components/M3Skills";
+import M3Experience from "@/components/M3Experience";
+import M3Contact from "@/components/M3Contact";
+import M3Footer from "@/components/M3Footer";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen">
+      <M3Navbar />
       <SpeedInsights />
-      <Hero />
-      <About />
-      <ProjectsSection />
-      <LeadershipSection />
-      <SkillsSection />
-      <Experience />
-      <Contact />
-      <Footer />
+      <M3Hero />
+      <M3About />
+      <M3Projects />
+      <M3Leadership />
+      <M3Skills />
+      <M3Experience />
+      <M3Contact />
+      <M3Footer />
     </div>
   );
 };
