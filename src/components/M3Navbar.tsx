@@ -38,6 +38,7 @@ import ReadmeModal from "./ReadmeModal";
 import { navigationSections } from "@/utils/navigation";
 import ExternalLink from "./ExternalLink";
 import { useExternalLink } from "@/context/ExternalLinkContext";
+import { useDocumentModal } from "@/context/DocumentModalContext";
 
 // Styled components for navigation
 const NavButton = styled(Button)(({ theme }) => ({
@@ -133,6 +134,35 @@ const LinkedIconButtonWithModal = ({
   return (
     <Link
       href={href}
+      onClick={handleClick}
+      underline="none"
+    >
+      <IconButton aria-label={ariaLabel} title={title} sx={sx}>
+        {children}
+      </IconButton>
+    </Link>
+  );
+};
+
+// Helper component for document links with modal
+const DocumentIconButton = ({
+  documentUrl,
+  "aria-label": ariaLabel,
+  title,
+  documentType,
+  children,
+  sx,
+}: Omit<LinkedIconButtonProps, 'href'> & { documentUrl: string; documentType: 'resume' | 'patent' }) => {
+  const { showDocumentModal } = useDocumentModal();
+  
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    showDocumentModal(documentUrl, title || ariaLabel, documentType);
+  };
+  
+  return (
+    <Link
+      href={documentUrl}
       onClick={handleClick}
       underline="none"
     >
@@ -391,17 +421,22 @@ const M3Navbar = () => {
         >
           <EmailIcon sx={{ color: (theme) => theme.palette.error.light }} />
         </LinkedIconButton>
-        <LinkedIconButton aria-label="Resume" href="/jasonrdavey.pdf" download>
+        <DocumentIconButton
+          aria-label="Resume"
+          documentUrl="/jasonrdavey.pdf"
+          title="Jason Davey's Resume"
+          documentType="resume"
+        >
           <DescriptionIcon />
-        </LinkedIconButton>
-        <LinkedIconButton
+        </DocumentIconButton>
+        <DocumentIconButton
           aria-label="View Patent"
-          href="/JasonDaveyPatent.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
+          documentUrl="/JasonDaveyPatent.pdf"
+          title="Jason's US Patent"
+          documentType="patent"
         >
           <WorkspacePremiumIcon />
-        </LinkedIconButton>
+        </DocumentIconButton>
       </Box>
     </Box>
   );
@@ -697,14 +732,14 @@ const M3Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton
+                    <DocumentIconButton
                       aria-label="Resume"
-                      href="/jasonrdavey.pdf"
-                      download
-                      title="Download Resume"
+                      documentUrl="/jasonrdavey.pdf"
+                      title="Jason Davey's Resume"
+                      documentType="resume"
                     >
                       <DescriptionIcon fontSize="small" />
-                    </LinkedIconButton>
+                    </DocumentIconButton>
                   </Box>
 
                   <Box
@@ -713,15 +748,14 @@ const M3Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton
+                    <DocumentIconButton
                       aria-label="View Patent"
-                      href="/JasonDaveyPatent.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="View Patent"
+                      documentUrl="/JasonDaveyPatent.pdf"
+                      title="Jason's US Patent"
+                      documentType="patent"
                     >
                       <WorkspacePremiumIcon fontSize="small" />
-                    </LinkedIconButton>
+                    </DocumentIconButton>
                   </Box>
 
                   <Box
