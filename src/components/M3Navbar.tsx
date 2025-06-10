@@ -36,6 +36,8 @@ import { motion } from "framer-motion";
 import { useThemeContext, ColorModeToggle } from "@/theme";
 import ReadmeModal from "./ReadmeModal";
 import { navigationSections } from "@/utils/navigation";
+import ExternalLink from "./ExternalLink";
+import { useExternalLink } from "@/context/ExternalLinkContext";
 
 // Styled components for navigation
 const NavButton = styled(Button)(({ theme }) => ({
@@ -103,6 +105,35 @@ const LinkedIconButton = ({
       download={download}
       target={target}
       rel={rel}
+      underline="none"
+    >
+      <IconButton aria-label={ariaLabel} title={title} sx={sx}>
+        {children}
+      </IconButton>
+    </Link>
+  );
+};
+
+// Helper component for external links with modal
+const LinkedIconButtonWithModal = ({
+  href,
+  "aria-label": ariaLabel,
+  title,
+  description,
+  children,
+  sx,
+}: LinkedIconButtonProps & { description?: string }) => {
+  const { openExternalLink } = useExternalLink();
+  
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    openExternalLink(href, title || ariaLabel, description);
+  };
+  
+  return (
+    <Link
+      href={href}
+      onClick={handleClick}
       underline="none"
     >
       <IconButton aria-label={ariaLabel} title={title} sx={sx}>
@@ -322,38 +353,38 @@ const M3Navbar = () => {
           p: 3,
         }}
       >
-        <LinkedIconButton
+        <LinkedIconButtonWithModal
           aria-label="GitHub"
           href="https://github.com/jasondavey/"
-          target="_blank"
-          rel="noopener noreferrer"
+          title="GitHub Profile"
+          description="Visit Jason's GitHub profile to see his open source projects and contributions."
         >
           <GitHubIcon />
-        </LinkedIconButton>
-        <LinkedIconButton
+        </LinkedIconButtonWithModal>
+        <LinkedIconButtonWithModal
           aria-label="LinkedIn"
           href="https://www.linkedin.com/in/jasondavey/"
-          target="_blank"
-          rel="noopener noreferrer"
+          title="LinkedIn Profile"
+          description="Connect with Jason on LinkedIn to see his professional experience and background."
         >
           <LinkedInIcon sx={{ color: (theme) => theme.palette.info.main }} />
-        </LinkedIconButton>
-        <LinkedIconButton
+        </LinkedIconButtonWithModal>
+        <LinkedIconButtonWithModal
           aria-label="Buy me a coffee"
           href="https://www.buymeacoffee.com/jasondavey"
-          target="_blank"
-          rel="noopener noreferrer"
+          title="Buy Me a Coffee"
+          description="Support Jason's work or schedule a cappuccino chat."
         >
           <LocalCafeIcon sx={{ color: "#FFDD00" }} />
-        </LinkedIconButton>
-        <LinkedIconButton
+        </LinkedIconButtonWithModal>
+        <LinkedIconButtonWithModal
           aria-label="X"
           href="https://x.com/ydohdohdoh"
-          target="_blank"
-          rel="noopener noreferrer"
+          title="X/Twitter Profile"
+          description="Follow Jason on X (formerly Twitter) for updates and thoughts."
         >
           <FaSquareXTwitter />
-        </LinkedIconButton>
+        </LinkedIconButtonWithModal>
         <LinkedIconButton
           aria-label="Email"
           href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
@@ -596,14 +627,14 @@ const M3Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton
+                    <LinkedIconButtonWithModal
                       aria-label="GitHub"
                       href="https://github.com/jasondavey/"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      title="GitHub Profile"
+                      description="Visit Jason's GitHub profile to see his open source projects and contributions."
                     >
                       <GitHubIcon fontSize="small" />
-                    </LinkedIconButton>
+                    </LinkedIconButtonWithModal>
                   </Box>
 
                   <Box
@@ -612,17 +643,17 @@ const M3Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton
+                    <LinkedIconButtonWithModal
                       aria-label="LinkedIn"
                       href="https://www.linkedin.com/in/jasondavey/"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      title="LinkedIn Profile"
+                      description="Connect with Jason on LinkedIn to see his professional experience and background."
                     >
                       <LinkedInIcon
                         fontSize="small"
                         sx={{ color: (theme) => theme.palette.info.main }}
                       />
-                    </LinkedIconButton>
+                    </LinkedIconButtonWithModal>
                   </Box>
 
                   <Box
@@ -631,14 +662,14 @@ const M3Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton
+                    <LinkedIconButtonWithModal
                       aria-label="X"
                       href="https://x.com/ydohdohdoh"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      title="X/Twitter Profile"
+                      description="Follow Jason on X (formerly Twitter) for updates and thoughts."
                     >
                       <FaSquareXTwitter style={{ fontSize: "1.25rem" }} />
-                    </LinkedIconButton>
+                    </LinkedIconButtonWithModal>
                   </Box>
 
                   <Box
@@ -709,18 +740,17 @@ const M3Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton
+                    <LinkedIconButtonWithModal
                       aria-label="Buy me a coffee"
                       href="https://www.buymeacoffee.com/jasondavey"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Cappuccino for a chat"
+                      title="Buy Me a Coffee"
+                      description="Support Jason's work or schedule a cappuccino chat."
                     >
                       <LocalCafeIcon
                         fontSize="small"
                         sx={{ color: "#FFDD00" }}
                       />
-                    </LinkedIconButton>
+                    </LinkedIconButtonWithModal>
                   </Box>
 
                   <Box

@@ -17,6 +17,7 @@ import { useThemeContext } from "@/theme";
 import ReadmeModal from "./ReadmeModal";
 import CarbonBadge from "./CarbonBadge";
 import { navigationSections } from "@/utils/navigation";
+import { useExternalLink } from "@/context/ExternalLinkContext";
 
 // Social icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -110,6 +111,7 @@ const M3Footer = () => {
   const theme = useTheme();
   const { mode } = useThemeContext();
   const [readmeOpen, setReadmeOpen] = useState(false);
+  const { openExternalLink } = useExternalLink();
 
   // Navigation sections - using shared navigation from utils
 
@@ -207,8 +209,14 @@ const M3Footer = () => {
                 >
                   <Link
                     href="https://www.linkedin.com/in/jasondavey/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openExternalLink(
+                        "https://www.linkedin.com/in/jasondavey/",
+                        "LinkedIn Profile",
+                        "Connect with Jason on LinkedIn to see his professional experience and background."
+                      );
+                    }}
                     underline="none"
                   >
                     <SocialIconButton aria-label="LinkedIn">
@@ -223,8 +231,14 @@ const M3Footer = () => {
                 >
                   <Link
                     href="https://github.com/jasondavey/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openExternalLink(
+                        "https://github.com/jasondavey/",
+                        "GitHub Profile",
+                        "Visit Jason's GitHub profile to see his open source projects and contributions."
+                      );
+                    }}
                     underline="none"
                   >
                     <SocialIconButton aria-label="GitHub">
@@ -239,8 +253,14 @@ const M3Footer = () => {
                 >
                   <Link
                     href="https://twitter.com/jasondavey"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openExternalLink(
+                        "https://twitter.com/jasondavey",
+                        "Twitter Profile",
+                        "Follow Jason on Twitter for updates and thoughts."
+                      );
+                    }}
                     underline="none"
                   >
                     <SocialIconButton aria-label="Twitter">

@@ -44,6 +44,7 @@ import ProjectDymoStamps from "./projects/ProjectDymoStamps";
 import ProjectIntelliPad from "./projects/ProjectIntelliPad";
 import ProjectBlackRock from "./projects/ProjectBlackRock";
 import { Project } from "./Project";
+import { useExternalLink } from "@/context/ExternalLinkContext";
 
 // Styled components for M3 Expressive design
 const SectionContainer = styled(Box)(({ theme }) => ({
@@ -143,6 +144,7 @@ const getYouTubeThumbnail = (videoUrl: string): string => {
 const M3Projects = () => {
   const theme = useTheme();
   const { mode } = useThemeContext();
+  const { openExternalLink } = useExternalLink();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -520,9 +522,14 @@ const M3Projects = () => {
                       <Button 
                         size="small" 
                         startIcon={<LaunchIcon />}
-                        href={project.companyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openExternalLink(
+                            project.companyUrl,
+                            project.companyName || "Company Website",
+                            `Visit ${project.companyName || "company"}'s website for more information.`
+                          );
+                        }}
                         sx={{
                           textTransform: "none",
                           fontWeight: 600,
@@ -537,9 +544,14 @@ const M3Projects = () => {
                       <Button 
                         size="small" 
                         startIcon={<OpenInNewIcon />}
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openExternalLink(
+                            project.demo,
+                            "Live Demo",
+                            `View the live demo of ${project.title}.`
+                          );
+                        }}
                         variant="contained"
                         color="primary"
                         sx={{
@@ -556,9 +568,14 @@ const M3Projects = () => {
                       <Button 
                         size="small" 
                         startIcon={<GitHubIcon />}
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openExternalLink(
+                            project.github,
+                            "GitHub Repository",
+                            `View the source code for ${project.title} on GitHub.`
+                          );
+                        }}
                         sx={{
                           textTransform: "none",
                           fontWeight: 600,
