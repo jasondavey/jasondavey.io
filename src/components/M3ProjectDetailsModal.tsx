@@ -268,18 +268,6 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
               )}
             />
           )}
-          <StyledTab 
-            label="Tech Stack" 
-            icon={<CodeIcon />}
-            iconPosition="start"
-            sx={{ minHeight: 'auto', py: 1.5 }}
-            {...a11yProps(
-              (showBusinessTab ? 1 : 0) + 
-              (showArchitectureTab ? 1 : 0) + 
-              (showResultsTab ? 1 : 0) +
-              (showVideoTab ? 1 : 0)
-            )}
-          />
         </Tabs>
       </Box>
       
@@ -477,33 +465,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
           </TabPanel>
         )}
         
-        {/* Technologies Tab */}
-        <TabPanel 
-          value={tabValue} 
-          index={
-            (showBusinessTab ? 1 : 0) + 
-            (showArchitectureTab ? 1 : 0) + 
-            (showResultsTab ? 1 : 0) + 
-            (showVideoTab ? 1 : 0)
-          }
-        >
-          <GlassContent>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-              {project.technologies.map((tech, index) => (
-                <Chip
-                  key={index}
-                  label={tech}
-                  sx={{
-                    backgroundColor: alpha(theme.palette.primary.main, 0.1),
-                    color: theme.palette.primary.main,
-                    fontWeight: 500,
-                    mb: 1
-                  }}
-                />
-              ))}
-            </Box>
-          </GlassContent>
-        </TabPanel>
+
       </DialogContent>
 
       <DialogActions sx={{ px: 3, pb: 2, pt: 1 }}>
