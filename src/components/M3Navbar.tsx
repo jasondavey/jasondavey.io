@@ -39,7 +39,7 @@ import ReadmeModal from "./ReadmeModal";
 // Styled components for navigation
 const NavButton = styled(Button)(({ theme }) => ({
   position: "relative",
-  color: theme.palette.common.white,
+  color: '#ffffff', // Always white text since we ensure dark backgrounds in both modes
   fontSize: "0.875rem",
   fontWeight: 500,
   padding: theme.spacing(1, 1.5),
@@ -57,7 +57,7 @@ const NavButton = styled(Button)(({ theme }) => ({
     transition: "width 0.3s ease",
   },
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.05),
+    backgroundColor: alpha(theme.palette.common.white, 0.1), // Slightly more visible hover effect
     "&::after": {
       width: "100%",
     },
@@ -339,15 +339,20 @@ const M3Navbar = () => {
           elevation={scrollTrigger ? 4 : 0}
           sx={{
             backgroundImage: scrollTrigger 
-              ? (theme) => `linear-gradient(to right, ${alpha(theme.palette.primary.dark, 0.95)}, ${alpha(theme.palette.primary.main, 0.95)})`
+              ? (theme) => theme.palette.mode === 'dark'
+                ? `linear-gradient(to right, ${alpha(theme.palette.primary.dark, 0.95)}, ${alpha(theme.palette.primary.main, 0.95)})`
+                : `linear-gradient(to right, ${alpha(theme.palette.primary.light, 0.95)}, ${alpha(theme.palette.primary.main, 0.95)})`
               : 'none',
             backgroundColor: scrollTrigger 
               ? 'transparent'
-              : (theme) => alpha(theme.palette.primary.dark, 0.4),
+              : (theme) => theme.palette.mode === 'dark' 
+                ? alpha(theme.palette.primary.dark, 0.4)
+                : alpha(theme.palette.primary.main, 0.9),
             backdropFilter: 'blur(10px)',
             borderBottom: (theme) => scrollTrigger 
               ? `1px solid ${alpha(theme.palette.divider, 0.2)}` 
               : 'none',
+            color: (theme) => theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.white,
             transition: (theme) => theme.transitions.create(['background-color', 'box-shadow', 'backdrop-filter'], {
               duration: theme.transitions.duration.standard,
             }),
@@ -433,15 +438,21 @@ const M3Navbar = () => {
                   display: 'flex',
                   borderRadius: '28px',
                   overflow: 'hidden',
-                  backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.1),
+                  backgroundColor: (theme) => theme.palette.mode === 'dark' 
+                    ? alpha(theme.palette.background.paper, 0.1)
+                    : alpha(theme.palette.primary.dark, 0.7), // Darker background for light mode
                   backdropFilter: 'blur(10px)',
                   boxShadow: (theme) => `0px 2px 8px ${alpha(theme.palette.common.black, 0.1)}`,
                   transition: 'all 0.3s ease',
+                  color: '#ffffff', // White text for both modes
                   '&:hover': {
-                    backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.15),
+                    backgroundColor: (theme) => theme.palette.mode === 'dark'
+                      ? alpha(theme.palette.background.paper, 0.15)
+                      : alpha(theme.palette.primary.dark, 0.8),
                     boxShadow: (theme) => `0px 3px 10px ${alpha(theme.palette.common.black, 0.15)}`
                   }
                 }}>
+
                   {/* Navigation Section */}
                   <Box sx={{ display: 'flex', padding: '6px 8px' }}>
                     {navLinks.map((link, index) => (
@@ -459,8 +470,10 @@ const M3Navbar = () => {
                         {index < navLinks.length - 1 && (
                           <Typography
                             variant="body2"
-                            color="text.secondary"
-                            sx={{ mx: 0.5 }}
+                            sx={{ 
+                              mx: 0.5,
+                              color: '#ffffff' // Ensuring divider is visible in both modes
+                            }}
                           >
                             |
                           </Typography>
@@ -472,9 +485,9 @@ const M3Navbar = () => {
                 
                 {/* Social Media "Island" - Material Design 3 style */}
                 <Box sx={{ 
-                  background: (theme) => alpha(theme.palette.mode === 'dark' ? 
-                    theme.palette.primary.dark : 
-                    theme.palette.primary.main, 0.65),
+                  background: (theme) => theme.palette.mode === 'dark'
+                    ? alpha(theme.palette.primary.dark, 0.65)
+                    : alpha(theme.palette.primary.dark, 0.85), // Darker background in light mode for better contrast
                   padding: '6px 12px',
                   borderRadius: '24px',
                   marginRight: '8px',
@@ -484,14 +497,16 @@ const M3Navbar = () => {
                   gap: 1,
                   boxShadow: (theme) => `0 2px 10px ${alpha(theme.palette.common.black, 0.15)}`,
                   transition: 'all 0.3s ease',
+                  color: '#ffffff', // White text for both modes
                   '&:hover': {
-                    background: (theme) => alpha(theme.palette.mode === 'dark' ? 
-                      theme.palette.primary.dark : 
-                      theme.palette.primary.main, 0.75),
+                    background: (theme) => theme.palette.mode === 'dark'
+                      ? alpha(theme.palette.primary.dark, 0.75)
+                      : alpha(theme.palette.primary.dark, 0.95),
                     boxShadow: (theme) => `0 4px 12px ${alpha(theme.palette.common.black, 0.2)}`,
                     transform: 'translateY(-1px)'
                   }
                 }}>
+
                   <Box component={motion.div}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}

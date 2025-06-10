@@ -105,6 +105,28 @@
   }
 }
 
+/* Custom dialog styles for z-index and dark mode */
+.Dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 9999 !important;
+}
+
+.DialogOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999 !important;
+}
+
+/* Fix for dark mode content */
+[data-theme="dark"] .Dialog .prose,
+[data-theme="dark"] .DialogContent,
+[data-theme="dark"] .DialogTitle,
+[data-theme="dark"] .DialogDescription {
+  color: #e5e7eb !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
