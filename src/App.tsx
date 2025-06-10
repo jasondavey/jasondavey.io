@@ -7,7 +7,6 @@ import { M3ThemeProvider } from "./theme";
 import { CssBaseline } from "@mui/material";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import CrispChat from "./components/CrispChat";
 import { ExternalLinkProvider } from "./context/ExternalLinkContext";
 import { DocumentModalProvider } from "./context/DocumentModalContext";
 const queryClient = new QueryClient();

@@ -14,7 +14,7 @@ interface M3ThemeProviderProps {
 const M3ThemeProvider: React.FC<M3ThemeProviderProps> = ({ children }) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [mounted, setMounted] = useState(false);
-  const [mode, setMode] = useState<'light' | 'dark'>(prefersDarkMode ? 'dark' : 'light');
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
   // Create the theme based on the current mode
   const theme = React.useMemo(
