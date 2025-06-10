@@ -35,6 +35,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { useThemeContext, ColorModeToggle } from "@/theme";
 import ReadmeModal from "./ReadmeModal";
+import { navigationSections } from "@/utils/navigation";
 
 // Styled components for navigation
 const NavButton = styled(Button)(({ theme }) => ({
@@ -220,15 +221,13 @@ const M3Navbar = () => {
     setMobileOpen(false);
   };
 
-  // Navigation links
-  const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#experience", label: "Career" },
-    { href: "#projects", label: "Portfolio" },
-    { href: "#leadership", label: "Leadership" },
-    { href: "#technical-skills", label: "Skills" },
-    { href: "#contact", label: "Inquire" },
-  ];
+  // Navigation links - use shared navigation sections directly
+  const navLinks = navigationSections
+    .filter((section) => section.href !== "#") // Filter out Home section from navbar
+    .map((section) => ({
+      href: section.href,
+      label: section.name, // Use name directly as label
+    }));
 
   // Drawer content
   const drawer = (

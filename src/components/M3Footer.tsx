@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import { useThemeContext } from "@/theme";
 import ReadmeModal from "./ReadmeModal";
 import CarbonBadge from "./CarbonBadge";
+import { navigationSections } from "@/utils/navigation";
 
 // Social icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -26,9 +27,10 @@ import { TbCertificate } from "react-icons/tb";
 // Styled components for visual enhancement
 const FooterContainer = styled(Box)(({ theme }) => ({
   position: "relative",
-  backgroundColor: theme.palette.mode === "dark" 
-    ? alpha(theme.palette.grey[900], 0.9)
-    : alpha(theme.palette.grey[100], 0.9),
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? alpha(theme.palette.grey[900], 0.9)
+      : alpha(theme.palette.grey[100], 0.9),
   overflow: "hidden",
   paddingTop: theme.spacing(8),
   paddingBottom: theme.spacing(4),
@@ -36,17 +38,27 @@ const FooterContainer = styled(Box)(({ theme }) => ({
 }));
 
 const GlassPanel = styled(Box)(({ theme }) => ({
-  background: theme.palette.mode === "dark"
-    ? `linear-gradient(145deg, ${alpha(theme.palette.grey[900], 0.7)}, ${alpha(theme.palette.background.paper, 0.4)})`
-    : `linear-gradient(145deg, ${alpha(theme.palette.background.paper, 0.6)}, ${alpha(theme.palette.grey[50], 0.4)})`,
+  background:
+    theme.palette.mode === "dark"
+      ? `linear-gradient(145deg, ${alpha(
+          theme.palette.grey[900],
+          0.7
+        )}, ${alpha(theme.palette.background.paper, 0.4)})`
+      : `linear-gradient(145deg, ${alpha(
+          theme.palette.background.paper,
+          0.6
+        )}, ${alpha(theme.palette.grey[50], 0.4)})`,
   backdropFilter: "blur(8px)",
   borderRadius: Number(theme.shape.borderRadius) * 3,
-  border: `1px solid ${theme.palette.mode === "dark"
-    ? "rgba(255, 255, 255, 0.08)"
-    : "rgba(255, 255, 255, 0.8)"}`,
-  boxShadow: theme.palette.mode === "dark"
-    ? "0 8px 32px rgba(0, 0, 0, 0.2)"
-    : "0 8px 32px rgba(0, 0, 0, 0.05)",
+  border: `1px solid ${
+    theme.palette.mode === "dark"
+      ? "rgba(255, 255, 255, 0.08)"
+      : "rgba(255, 255, 255, 0.8)"
+  }`,
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? "0 8px 32px rgba(0, 0, 0, 0.2)"
+      : "0 8px 32px rgba(0, 0, 0, 0.05)",
   padding: theme.spacing(3),
   height: "100%",
   display: "flex",
@@ -55,14 +67,16 @@ const GlassPanel = styled(Box)(({ theme }) => ({
 
 const SocialIconButton = styled(IconButton)(({ theme }) => ({
   margin: theme.spacing(0.5),
-  background: theme.palette.mode === "dark" 
-    ? alpha(theme.palette.primary.dark, 0.2)
-    : alpha(theme.palette.primary.light, 0.2),
+  background:
+    theme.palette.mode === "dark"
+      ? alpha(theme.palette.primary.dark, 0.2)
+      : alpha(theme.palette.primary.light, 0.2),
   backdropFilter: "blur(5px)",
   "&:hover": {
-    background: theme.palette.mode === "dark" 
-      ? alpha(theme.palette.primary.main, 0.3)
-      : alpha(theme.palette.primary.main, 0.2),
+    background:
+      theme.palette.mode === "dark"
+        ? alpha(theme.palette.primary.main, 0.3)
+        : alpha(theme.palette.primary.main, 0.2),
   },
 }));
 
@@ -94,31 +108,26 @@ const M3Footer = () => {
   const { mode } = useThemeContext();
   const [readmeOpen, setReadmeOpen] = useState(false);
 
-  // Navigation sections
-  const sections = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Leadership", href: "#leadership" },
-    { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
-  ];
+  // Navigation sections - using shared navigation from utils
 
   // Year for copyright
   const currentYear = new Date().getFullYear();
 
   return (
-    <Box component="footer" sx={{
-      position: "relative",
-      backgroundColor: theme.palette.mode === "dark" 
-        ? alpha(theme.palette.grey[900], 0.9)
-        : alpha(theme.palette.grey[100], 0.9),
-      overflow: "hidden",
-      paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(4),
-      backdropFilter: "blur(10px)",
-    }}>
+    <Box
+      component="footer"
+      sx={{
+        position: "relative",
+        backgroundColor:
+          theme.palette.mode === "dark"
+            ? alpha(theme.palette.grey[900], 0.9)
+            : alpha(theme.palette.grey[100], 0.9),
+        overflow: "hidden",
+        paddingTop: theme.spacing(8),
+        paddingBottom: theme.spacing(4),
+        backdropFilter: "blur(10px)",
+      }}
+    >
       {/* Background elements */}
       <Box sx={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Box
@@ -129,7 +138,10 @@ const M3Footer = () => {
             width: "300px",
             height: "300px",
             borderRadius: "50%",
-            background: `radial-gradient(circle, ${alpha(theme.palette.primary.main, 0.1)} 0%, transparent 60%)`,
+            background: `radial-gradient(circle, ${alpha(
+              theme.palette.primary.main,
+              0.1
+            )} 0%, transparent 60%)`,
           }}
         />
         <Box
@@ -140,19 +152,28 @@ const M3Footer = () => {
             width: "200px",
             height: "200px",
             borderRadius: "50%",
-            background: `radial-gradient(circle, ${alpha(theme.palette.secondary.main, 0.1)} 0%, transparent 60%)`,
+            background: `radial-gradient(circle, ${alpha(
+              theme.palette.secondary.main,
+              0.1
+            )} 0%, transparent 60%)`,
           }}
         />
       </Box>
 
       <Container sx={{ position: "relative", zIndex: 1 }}>
-        <Box sx={{ 
-          display: 'grid', 
-          gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
-          gap: 4 
-        }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr",
+              md: "1fr 1fr 1fr",
+            },
+            gap: 4,
+          }}
+        >
           {/* Main info column */}
-          <Box sx={{ gridColumn: { xs: '1', sm: '1', md: '1' } }}>
+          <Box sx={{ gridColumn: { xs: "1", sm: "1", md: "1" } }}>
             <GlassPanel>
               <Typography
                 variant="h6"
@@ -170,13 +191,16 @@ const M3Footer = () => {
               </Typography>
 
               <Typography variant="body2" sx={{ mb: 3, opacity: 0.7 }}>
-                Engineering leader passionate about creating innovative solutions
-                that solve real problems while developing great teams.
+                Engineering leader passionate about creating innovative
+                solutions that solve real problems while developing great teams.
               </Typography>
 
               {/* Social links */}
               <Box sx={{ display: "flex", mb: 3 }}>
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <Link
                     href="https://www.linkedin.com/in/jasondavey/"
                     target="_blank"
@@ -189,7 +213,10 @@ const M3Footer = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <Link
                     href="https://github.com/jasondavey/"
                     target="_blank"
@@ -202,7 +229,10 @@ const M3Footer = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <Link
                     href="https://twitter.com/jasondavey"
                     target="_blank"
@@ -215,7 +245,10 @@ const M3Footer = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <Link
                     href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
                     underline="none"
@@ -226,7 +259,10 @@ const M3Footer = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <Link
                     href="/JasonDaveyPatent.pdf"
                     target="_blank"
@@ -248,7 +284,7 @@ const M3Footer = () => {
           </Box>
 
           {/* Navigation column */}
-          <Box sx={{ gridColumn: { xs: '1', sm: '1/2', md: '2/3' } }}>
+          <Box sx={{ gridColumn: { xs: "1", sm: "1/2", md: "2/3" } }}>
             <GlassPanel>
               <Typography
                 variant="h6"
@@ -266,7 +302,7 @@ const M3Footer = () => {
               </Typography>
 
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
-                {sections.map((section) => (
+                {navigationSections.map((section) => (
                   <motion.div
                     key={section.name}
                     whileHover={{ x: 5 }}
@@ -282,7 +318,7 @@ const M3Footer = () => {
           </Box>
 
           {/* Contact column */}
-          <Box sx={{ gridColumn: { xs: '1', sm: '2/3', md: '3/4' } }}>
+          <Box sx={{ gridColumn: { xs: "1", sm: "2/3", md: "3/4" } }}>
             <GlassPanel>
               <Typography
                 variant="h6"
@@ -305,19 +341,22 @@ const M3Footer = () => {
               </Typography>
 
               <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
-                <Link 
-                  href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`} 
+                <Link
+                  href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
                   underline="hover"
-                  sx={{ 
-                    display: "flex", 
+                  sx={{
+                    display: "flex",
                     alignItems: "center",
-                    color: 'text.primary',
-                    '&:hover': {
-                      color: 'primary.main'
-                    }
+                    color: "text.primary",
+                    "&:hover": {
+                      color: "primary.main",
+                    },
                   }}
                 >
-                  <MailOutlineIcon fontSize="small" sx={{ mr: 1, color: theme.palette.primary.main }} />
+                  <MailOutlineIcon
+                    fontSize="small"
+                    sx={{ mr: 1, color: theme.palette.primary.main }}
+                  />
                   {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
                 </Link>
               </Box>
@@ -332,11 +371,14 @@ const M3Footer = () => {
                     mt: 3,
                     p: 2,
                     borderRadius: Number(theme.shape.borderRadius) * 2,
-                    background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.1)}, ${alpha(
-                      theme.palette.secondary.main,
+                    background: `linear-gradient(135deg, ${alpha(
+                      theme.palette.primary.main,
                       0.1
-                    )})`,
-                    border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
+                    )}, ${alpha(theme.palette.secondary.main, 0.1)})`,
+                    border: `1px solid ${alpha(
+                      theme.palette.primary.main,
+                      0.2
+                    )}`,
                   }}
                 >
                   <Typography variant="body2" sx={{ fontStyle: "italic" }}>
@@ -351,54 +393,67 @@ const M3Footer = () => {
         {/* Bottom copyright and attribution */}
         <Box sx={{ mt: 6, textAlign: "center" }}>
           <Divider sx={{ mb: 3, opacity: 0.2 }} />
-          
-          <Box sx={{ 
-            display: 'flex', 
-            flexDirection: { xs: 'column', sm: 'row' }, 
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: { xs: 2, sm: 4 },
-            mb: 2
-          }}>
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              justifyContent: "center",
+              alignItems: "center",
+              gap: { xs: 2, sm: 4 },
+              mb: 2,
+            }}
+          >
             {/* Copyright */}
             <Typography variant="caption" sx={{ opacity: 0.7 }}>
               © {new Date().getFullYear()} Jason Davey. All rights reserved.
             </Typography>
-            
+
             {/* Website Carbon Badge */}
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <CarbonBadge darkMode={theme.palette.mode === 'dark'} />
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <CarbonBadge darkMode={theme.palette.mode === "dark"} />
             </Box>
-            
+
             {/* Last Build Time */}
             <Typography variant="caption" sx={{ opacity: 0.7 }}>
-              Last built: {new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' })}
+              Last built:{" "}
+              {new Date().toLocaleString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              })}
             </Typography>
           </Box>
-          
-          <Link 
-            href="#" 
+
+          <Link
+            href="#"
             onClick={(e) => {
               e.preventDefault();
               setReadmeOpen(true);
             }}
-            sx={{ 
-              color: 'text.secondary',
-              textDecoration: 'none',
-              '&:hover': { color: 'primary.main' },
-              fontSize: '0.75rem',
-              opacity: 0.6
+            sx={{
+              color: "text.secondary",
+              textDecoration: "none",
+              "&:hover": { color: "primary.main" },
+              fontSize: "0.75rem",
+              opacity: 0.6,
             }}
           >
             How this website was built
           </Link>
-          
-          <Typography variant="caption" sx={{ display: 'block', mt: 1.5, opacity: 0.5 }}>
-            Built with React, TypeScript, and Material UI. Designed with M3 Expressive principles.
+
+          <Typography
+            variant="caption"
+            sx={{ display: "block", mt: 1.5, opacity: 0.5 }}
+          >
+            Built with React, TypeScript, and Material UI. Designed with M3
+            Expressive principles.
           </Typography>
         </Box>
       </Container>
-      
+
       {/* ReadmeModal */}
       <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
     </Box>
