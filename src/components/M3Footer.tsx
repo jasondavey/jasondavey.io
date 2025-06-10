@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -13,6 +13,8 @@ import {
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import { useThemeContext } from "@/theme";
+import ReadmeModal from "./ReadmeModal";
+import CarbonBadge from "./CarbonBadge";
 
 // Social icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -90,6 +92,7 @@ const FooterLink = styled(Link)(({ theme }) => ({
 const M3Footer = () => {
   const theme = useTheme();
   const { mode } = useThemeContext();
+  const [readmeOpen, setReadmeOpen] = useState(false);
 
   // Navigation sections
   const sections = [
@@ -348,11 +351,56 @@ const M3Footer = () => {
         {/* Bottom copyright and attribution */}
         <Box sx={{ mt: 6, textAlign: "center" }}>
           <Divider sx={{ mb: 3, opacity: 0.2 }} />
-          <Typography variant="caption" sx={{ opacity: 0.5 }}>
+          
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: { xs: 'column', sm: 'row' }, 
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: { xs: 2, sm: 4 },
+            mb: 2
+          }}>
+            {/* Copyright */}
+            <Typography variant="caption" sx={{ opacity: 0.7 }}>
+              © {new Date().getFullYear()} Jason Davey. All rights reserved.
+            </Typography>
+            
+            {/* Website Carbon Badge */}
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <CarbonBadge darkMode={theme.palette.mode === 'dark'} />
+            </Box>
+            
+            {/* Last Build Time */}
+            <Typography variant="caption" sx={{ opacity: 0.7 }}>
+              Last built: {new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' })}
+            </Typography>
+          </Box>
+          
+          <Link 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              setReadmeOpen(true);
+            }}
+            sx={{ 
+              color: 'text.secondary',
+              textDecoration: 'none',
+              '&:hover': { color: 'primary.main' },
+              fontSize: '0.75rem',
+              opacity: 0.6
+            }}
+          >
+            How this website was built
+          </Link>
+          
+          <Typography variant="caption" sx={{ display: 'block', mt: 1.5, opacity: 0.5 }}>
             Built with React, TypeScript, and Material UI. Designed with M3 Expressive principles.
           </Typography>
         </Box>
       </Container>
+      
+      {/* ReadmeModal */}
+      <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
     </Box>
   );
 };

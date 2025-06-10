@@ -127,6 +127,15 @@
   color: #e5e7eb !important;
 }
 
+/* Dialog z-index fix to appear above navbar */
+.fixed[role="dialog"],
+[role="dialog"] .fixed,
+.Dialog,
+.DialogOverlay,
+.DialogContent {
+  z-index: 9999 !important;
+}
+
 /* Dark mode dialog content fixes */
 [data-theme="dark"] .DialogContent {
   --tw-text-opacity: 1;
