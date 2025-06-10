@@ -650,7 +650,7 @@ const M3Projects = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    {project.companyUrl && (
+                    {project.companyUrl && project.companyName !== "JasonDavey.io" && (
                       <Button
                         size="small"
                         startIcon={<LaunchIcon />}
