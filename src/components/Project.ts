@@ -59,4 +59,8 @@ export interface Project {
     url: string;
     label: string;
   }[];
+  /**
+   * Indicates if the project is a prototype
+   */
+  prototype?: boolean;
 }

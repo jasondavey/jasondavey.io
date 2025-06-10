@@ -113,6 +113,7 @@ const ProjectVideoSanitizer: Project = {
   techIconMap: VideoSanitizerTechMap,
   companyIcon: "/logos/jasondavey.io.png",
   companyName: "JasonDavey.io",
+  prototype: true,
   demo: "",
   startYear: 2025,
   endYear: 2025,

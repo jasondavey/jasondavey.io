@@ -206,6 +206,7 @@ const ProjectSoccerTourism: Project = {
 
   companyIcon: "/logos/jasondavey.io.png",
   companyName: "JasonDavey.io",
+  prototype: true,
   companyUrl: "https://jasondavey.io",
   demo: "",
   index: 6,
