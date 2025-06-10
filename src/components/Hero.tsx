@@ -38,12 +38,11 @@ const Hero = () => {
                 "Hello...",
                 "Ask me what I mean by...",
                 '"I bend over backwards to be lazy."',
-                "Think first, then make things (Jennie Baird)",
                 "Code like your future self is on vacation",
                 "Success comes from having a passion in what you do.",
                 `Email ${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`,
                 `Call or text ${import.meta.env.VITE_PHONE_NUMBER}`,
-                "Explore this site, get to know my work, and let's build something great!",
+                "Explore this site, get to know my work!",
               ]}
             />
           </p>
