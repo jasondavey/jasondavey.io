@@ -341,18 +341,19 @@ const M3Navbar = () => {
             backgroundImage: scrollTrigger 
               ? (theme) => theme.palette.mode === 'dark'
                 ? `linear-gradient(to right, ${alpha(theme.palette.primary.dark, 0.95)}, ${alpha(theme.palette.primary.main, 0.95)})`
-                : `linear-gradient(to right, ${alpha(theme.palette.primary.light, 0.95)}, ${alpha(theme.palette.primary.main, 0.95)})`
+                : `linear-gradient(to right, ${alpha(theme.palette.primary.dark, 0.90)}, ${alpha(theme.palette.primary.main, 0.90)})`
               : 'none',
             backgroundColor: scrollTrigger 
               ? 'transparent'
               : (theme) => theme.palette.mode === 'dark' 
                 ? alpha(theme.palette.primary.dark, 0.4)
-                : alpha(theme.palette.primary.main, 0.9),
+                : alpha(theme.palette.primary.dark, 0.75), // Darker version for light mode
             backdropFilter: 'blur(10px)',
             borderBottom: (theme) => scrollTrigger 
               ? `1px solid ${alpha(theme.palette.divider, 0.2)}` 
               : 'none',
-            color: (theme) => theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.white,
+            // Keep white text in both modes
+            color: '#ffffff',
             transition: (theme) => theme.transitions.create(['background-color', 'box-shadow', 'backdrop-filter'], {
               duration: theme.transitions.duration.standard,
             }),
@@ -377,18 +378,19 @@ const M3Navbar = () => {
                     <CodeIcon sx={{ fontSize: '1.5rem' }} />
                   </IconButton>
                 </motion.div>
-                <Typography 
-                  variant="h6" 
-                  component="div" 
-                  sx={{ 
-                    display: 'flex', 
+                <Box
+                  className="site-title"
+                  sx={{
+                    display: 'flex',
                     alignItems: 'center',
+                    color: '#ffffff !important', // Force white text with !important
                     fontWeight: 700,
+                    fontSize: '1.25rem',
                     letterSpacing: 0.5
                   }}
                 >
-                  <Box component="span" sx={{ mr: 0.5 }}>jasondavey.io</Box>
-                </Typography>
+                  jasondavey.io
+                </Box>
                 <motion.div 
                   whileHover={{ rotate: 20, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}

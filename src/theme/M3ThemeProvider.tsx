@@ -42,9 +42,12 @@ const M3ThemeProvider: React.FC<M3ThemeProviderProps> = ({ children }) => {
     return null;
   }
 
+  // Create a clean theme object without any development attributes
+  const cleanTheme = { ...theme };
+  
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme }}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={cleanTheme}>
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>

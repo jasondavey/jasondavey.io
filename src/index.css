@@ -127,6 +127,46 @@
   color: #e5e7eb !important;
 }
 
+/* Dark mode dialog content fixes */
+[data-theme="dark"] .DialogContent {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
+[data-theme="dark"] .DialogTitle {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+[data-theme="dark"] .DialogDescription {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+/* Navbar light mode fixes */
+.MuiAppBar-root {
+  color: #ffffff !important;
+  /* No forced background color, let it use the original gradient */
+}
+
+/* Force white text on all navbar elements */
+.MuiAppBar-root a, 
+.MuiAppBar-root button,
+.MuiAppBar-root .MuiTypography-root,
+.MuiAppBar-root svg,
+.MuiAppBar-root span,
+.MuiAppBar-root p,
+.MuiAppBar-root div,
+.MuiAppBar-root div.site-title {
+  color: #ffffff !important;
+}
+
+/* Extremely specific selector for the site title */
+div.site-title {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
