@@ -354,9 +354,9 @@ const M3Navbar = () => {
           }}
         >
           <Container maxWidth="lg">
-            <Toolbar sx={{ justifyContent: 'space-between', py: scrollTrigger ? 0.5 : 1 }}>
+            <Toolbar sx={{ py: scrollTrigger ? 0.5 : 1 }}>
               {/* Logo */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: 2 }}>
                 <motion.div 
                   whileHover={{ scale: 1.05 }} 
                   whileTap={{ scale: 0.95 }}
@@ -401,77 +401,8 @@ const M3Navbar = () => {
                 </motion.div>
               </Box>
 
-              {/* Desktop Navigation */}
-              <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-                <Box sx={{ display: 'flex' }}>
-                  {navLinks.map((link, index) => (
-                    <Box key={link.href} sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Link href={link.href}>
-                        <NavButton
-                          onClick={(e) => handleSmoothScroll(e, link.href)}
-                        >
-                          {link.label}
-                        </NavButton>
-                      </Link>
-                      {index < navLinks.length - 1 && (
-                        <Typography 
-                          variant="body2" 
-                          color="text.secondary" 
-                          sx={{ opacity: 0.5, mx: 0.5 }}
-                        >
-                          |
-                        </Typography>
-                      )}
-                    </Box>
-                  ))}
-                </Box>
-                
-                <motion.div 
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <LinkedIconButton 
-                    aria-label="Buy me a coffee"
-                    href="https://www.buymeacoffee.com/jasondavey"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Cappuccino for a chat"
-                    sx={{ ml: 1 }}
-                  >
-                    <LocalCafeIcon sx={{ color: '#FFDD00' }} />
-                  </LinkedIconButton>
-                </motion.div>
-              </Box>
-
-              {/* Desktop Social Links */}
-              <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
-                <LinkedIconButton aria-label="GitHub" href="https://github.com/jasondavey/" target="_blank" rel="noopener noreferrer">
-                  <GitHubIcon />
-                </LinkedIconButton>
-                <LinkedIconButton aria-label="LinkedIn" href="https://www.linkedin.com/in/jasondavey/" target="_blank" rel="noopener noreferrer">
-                  <LinkedInIcon sx={{ color: (theme) => theme.palette.info.main }} />
-                </LinkedIconButton>
-                <LinkedIconButton aria-label="X" href="https://x.com/ydohdohdoh" target="_blank" rel="noopener noreferrer">
-                  <FaSquareXTwitter />
-                </LinkedIconButton>
-                <LinkedIconButton aria-label="Email" href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}>
-                  <EmailIcon sx={{ color: (theme) => theme.palette.error.light }} />
-                </LinkedIconButton>
-                <LinkedIconButton aria-label="Resume" href="/jasonrdavey.pdf" download title="Download Resume">
-                  <DescriptionIcon />
-                </LinkedIconButton>
-                <LinkedIconButton aria-label="View Patent" href="/JasonDaveyPatent.pdf" target="_blank" rel="noopener noreferrer" title="View Patent">
-                  <WorkspacePremiumIcon />
-                </LinkedIconButton>
-
-                {/* Theme toggle */}
-                <Box sx={{ ml: 1 }}>
-                  <ColorModeToggle />
-                </Box>
-              </Box>
-
               {/* Mobile menu toggle */}
-              <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 1 }}>
+              <Box sx={{ display: { xs: 'flex', md: 'none' }, ml: 'auto' }}>
                 <ColorModeToggle />
                 <IconButton
                   color="inherit"
@@ -488,6 +419,196 @@ const M3Navbar = () => {
                 >
                   <MenuIcon />
                 </IconButton>
+              </Box>
+
+              {/* Material Design 3 Segmented Surface with Dynamic Island */}
+              <Box sx={{ 
+                display: { xs: 'none', md: 'flex' },
+                flex: 1,
+                justifyContent: 'flex-end',
+                alignItems: 'center',
+                gap: 2
+              }}>
+                <Box sx={{
+                  display: 'flex',
+                  borderRadius: '28px',
+                  overflow: 'hidden',
+                  backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.1),
+                  backdropFilter: 'blur(10px)',
+                  boxShadow: (theme) => `0px 2px 8px ${alpha(theme.palette.common.black, 0.1)}`,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    backgroundColor: (theme) => alpha(theme.palette.background.paper, 0.15),
+                    boxShadow: (theme) => `0px 3px 10px ${alpha(theme.palette.common.black, 0.15)}`
+                  }
+                }}>
+                  {/* Navigation Section */}
+                  <Box sx={{ display: 'flex', padding: '6px 8px' }}>
+                    {navLinks.map((link, index) => (
+                      <Box key={link.href} sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Link 
+                          href={link.href} 
+                          onClick={(e) => handleSmoothScroll(e, link.href)}
+                          underline="none"
+                          sx={{ display: 'flex' }}
+                        >
+                          <NavButton>
+                            {link.label}
+                          </NavButton>
+                        </Link>
+                        {index < navLinks.length - 1 && (
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{ mx: 0.5 }}
+                          >
+                            |
+                          </Typography>
+                        )}
+                      </Box>
+                    ))}
+                  </Box>
+                </Box>
+                
+                {/* Social Media "Island" - Material Design 3 style */}
+                <Box sx={{ 
+                  background: (theme) => alpha(theme.palette.mode === 'dark' ? 
+                    theme.palette.primary.dark : 
+                    theme.palette.primary.main, 0.65),
+                  padding: '6px 12px',
+                  borderRadius: '24px',
+                  marginRight: '8px',
+                  marginLeft: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  boxShadow: (theme) => `0 2px 10px ${alpha(theme.palette.common.black, 0.15)}`,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    background: (theme) => alpha(theme.palette.mode === 'dark' ? 
+                      theme.palette.primary.dark : 
+                      theme.palette.primary.main, 0.75),
+                    boxShadow: (theme) => `0 4px 12px ${alpha(theme.palette.common.black, 0.2)}`,
+                    transform: 'translateY(-1px)'
+                  }
+                }}>
+                  <Box component={motion.div}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <LinkedIconButton 
+                      aria-label="GitHub" 
+                      href="https://github.com/jasondavey/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <GitHubIcon fontSize="small" />
+                    </LinkedIconButton>
+                  </Box>
+                  
+                  <Box component={motion.div}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <LinkedIconButton 
+                      aria-label="LinkedIn" 
+                      href="https://www.linkedin.com/in/jasondavey/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <LinkedInIcon fontSize="small" sx={{ color: (theme) => theme.palette.info.main }} />
+                    </LinkedIconButton>
+                  </Box>
+                  
+                  <Box component={motion.div}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <LinkedIconButton 
+                      aria-label="X" 
+                      href="https://x.com/ydohdohdoh" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <FaSquareXTwitter style={{ fontSize: '1.25rem' }} />
+                    </LinkedIconButton>
+                  </Box>
+                  
+                  <Box component={motion.div}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <LinkedIconButton 
+                      aria-label="Email" 
+                      href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
+                    >
+                      <EmailIcon fontSize="small" sx={{ color: (theme) => theme.palette.error.light }} />
+                    </LinkedIconButton>
+                  </Box>
+                  
+                  <Box component={motion.div}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <LinkedIconButton 
+                      aria-label="Resume" 
+                      href="/jasonrdavey.pdf" 
+                      download 
+                      title="Download Resume"
+                    >
+                      <DescriptionIcon fontSize="small" />
+                    </LinkedIconButton>
+                  </Box>
+                  
+                  <Box component={motion.div}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <LinkedIconButton 
+                      aria-label="View Patent" 
+                      href="/JasonDaveyPatent.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      title="View Patent"
+                    >
+                      <WorkspacePremiumIcon fontSize="small" />
+                    </LinkedIconButton>
+                  </Box>
+                  
+                  <Box component="span" sx={{ height: '24px', width: '1px', bgcolor: 'divider', mx: 0.5 }} />
+                  
+                  <Box component={motion.div}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <LinkedIconButton 
+                      aria-label="Buy me a coffee" 
+                      href="https://www.buymeacoffee.com/jasondavey" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      title="Cappuccino for a chat"
+                    >
+                      <LocalCafeIcon fontSize="small" sx={{ color: '#FFDD00' }} />
+                    </LinkedIconButton>
+                  </Box>
+                  
+                  <Box 
+                    component={motion.div}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: 'inline-block' }}
+                    sx={{ ml: 0.5 }}
+                  >
+                    <ColorModeToggle />
+                  </Box>
+                </Box>
               </Box>
             </Toolbar>
           </Container>
