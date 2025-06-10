@@ -387,9 +387,9 @@ const M3Projects = () => {
           </Box>
         </Box>
         
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: 2, sm: 3, md: 4 }, width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
           {filteredProjects.map((project, index) => (
-            <Box key={project.title + index.toString()} sx={{ mb: 4 }}>
+            <Box key={project.title + index.toString()} sx={{ mb: { xs: 2, sm: 3, md: 4 }, width: '100%', maxWidth: '100%' }}>
               <motion.div
                 ref={setProjectRef(index)}
                 initial={{ opacity: 0, y: 50 }}

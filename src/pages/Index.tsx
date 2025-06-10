@@ -11,7 +11,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden">
       <M3Navbar />
       <SpeedInsights />
       <M3Hero />

@@ -321,8 +321,10 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
               )}
               {project.businessView && (
                 <Box className="business-view" sx={{ 
-                  '& p': { mb: 2 },
-                  '& strong': { fontWeight: 600 }
+                  color: theme.palette.text.primary,
+                  '& p': { mb: 2, color: theme.palette.text.primary },
+                  '& strong': { fontWeight: 600, color: theme.palette.text.primary },
+                  whiteSpace: 'pre-line'
                 }}>
                   {project.businessView}
                 </Box>
@@ -337,8 +339,10 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
             <GlassContent>
               {project.description && (
                 <Box className="project-description" sx={{ 
-                  '& p': { mb: 2 },
-                  '& strong': { fontWeight: 600 }
+                  color: theme.palette.text.primary,
+                  '& p': { mb: 2, color: theme.palette.text.primary },
+                  '& strong': { fontWeight: 600, color: theme.palette.text.primary },
+                  whiteSpace: 'pre-line'
                 }}>
                   {project.description}
                 </Box>
@@ -377,7 +381,9 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
                   </Typography>
                   <Box className="key-architecture" sx={{
                     whiteSpace: 'pre-line',
-                    '& p': { mb: 2 },
+                    color: theme.palette.text.primary,
+                    '& p': { mb: 2, color: theme.palette.text.primary },
+                    '& strong': { fontWeight: 600, color: theme.palette.text.primary },
                   }}>
                     {project.keyArchitecture}
                   </Box>
@@ -399,28 +405,33 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
             <GlassContent>
               {project.resultsImpact && (
                 <Box className="results-impact" sx={{ 
-                  '& p': { mb: 2 },
-                  '& strong': { fontWeight: 600 },
+                  color: theme.palette.text.primary,
+                  '& p': { mb: 2, color: theme.palette.text.primary },
+                  '& strong': { fontWeight: 600, color: theme.palette.text.primary },
                   '& h4': { 
                     fontSize: theme.typography.h6.fontSize,
                     fontWeight: 600,
                     mb: 1.5,
                     mt: 3,
+                    color: theme.palette.text.primary,
                     '&:first-of-type': {
                       mt: 0
                     }
                   },
                   '& ul': { 
                     pl: 3,
-                    mb: 2
+                    mb: 2,
+                    color: theme.palette.text.primary 
                   },
                   '& li': { 
-                    mb: 1.5 
+                    mb: 1.5,
+                    color: theme.palette.text.primary 
                   },
                   '& hr': {
                     my: 3,
                     borderColor: theme.palette.divider
-                  }
+                  },
+                  whiteSpace: 'pre-line'
                 }}>
                   {project.resultsImpact}
                 </Box>
