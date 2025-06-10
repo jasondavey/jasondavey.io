@@ -15,11 +15,11 @@ const About = () => {
             <h2 className="heading-lg mb-6 flex items-center">Who Am I?</h2>
             <div className="space-y-4 text-engineering-gray">
               <p>
-                British born, American raised. I consider myself a personable
-                individual, passionate about guiding engineering teams to
-                deliver business value early and often. I'm involved from
-                conception to release, fostering success through hands-on
-                technical and project leadership.
+                British born, American raised with a career spanning multiple
+                continents and industries. I'm passionate about guiding
+                engineering teams to deliver business value early and often. I'm
+                involved from conception to release, fostering success through
+                hands-on technical and project leadership.
               </p>
               <p>
                 I believe in employing community best practices and techniques

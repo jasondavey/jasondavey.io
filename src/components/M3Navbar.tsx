@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { 
+import {
   AppBar,
   Box,
   Toolbar,
@@ -18,7 +18,7 @@ import {
   Button,
   Link,
   SxProps,
-  Theme
+  Theme,
 } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -39,7 +39,7 @@ import ReadmeModal from "./ReadmeModal";
 // Styled components for navigation
 const NavButton = styled(Button)(({ theme }) => ({
   position: "relative",
-  color: '#ffffff', // Always white text since we ensure dark backgrounds in both modes
+  color: "#ffffff", // Always white text since we ensure dark backgrounds in both modes
   fontSize: "0.875rem",
   fontWeight: 500,
   padding: theme.spacing(1, 1.5),
@@ -79,29 +79,29 @@ interface LinkedIconButtonProps {
   download?: boolean | string;
   target?: string;
   rel?: string;
-  'aria-label': string;
+  "aria-label": string;
   title?: string;
   children: React.ReactNode;
   sx?: SxProps<Theme>;
 }
 
 // Helper component for wrapping IconButton with Link
-const LinkedIconButton = ({ 
-  href, 
-  download, 
-  target, 
-  rel, 
-  'aria-label': ariaLabel, 
-  title, 
-  children, 
-  sx 
+const LinkedIconButton = ({
+  href,
+  download,
+  target,
+  rel,
+  "aria-label": ariaLabel,
+  title,
+  children,
+  sx,
 }: LinkedIconButtonProps) => {
   return (
-    <Link 
-      href={href} 
-      download={download} 
-      target={target} 
-      rel={rel} 
+    <Link
+      href={href}
+      download={download}
+      target={target}
+      rel={rel}
       underline="none"
     >
       <IconButton aria-label={ariaLabel} title={title} sx={sx}>
@@ -130,7 +130,8 @@ const handleSmoothScroll = (
       }
 
       // Get the target position
-      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      const targetPosition =
+        targetElement.getBoundingClientRect().top + window.scrollY;
       // Get the current scroll position
       const startPosition = window.scrollY;
       // Calculate distance
@@ -153,7 +154,8 @@ const handleSmoothScroll = (
         const progress = Math.min(timeElapsed / cappedDuration, 1);
 
         // Easing function for smoother start/stop
-        const ease = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+        const ease = (t: number) =>
+          t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 
         window.scrollTo(0, startPosition + distance * ease(progress));
 
@@ -175,7 +177,7 @@ const M3Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [readmeOpen, setReadmeOpen] = useState(false);
   const { mode } = useThemeContext();
-  
+
   // Detect scroll for navbar styling changes
   const scrollTrigger = useScrollTrigger({
     disableHysteresis: true,
@@ -220,8 +222,8 @@ const M3Navbar = () => {
 
   // Navigation links
   const navLinks = [
+    { href: "#about", label: "About" },
     { href: "#projects", label: "Portfolio" },
-    { href: "#about", label: "Who Am I" },
     { href: "#leadership", label: "Leadership" },
     { href: "#technical-skills", label: "Skills" },
     { href: "#experience", label: "Experience" },
@@ -230,27 +232,36 @@ const M3Navbar = () => {
 
   // Drawer content
   const drawer = (
-    <Box sx={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      height: '100%', 
-      bgcolor: 'background.paper',
-      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))'
-    }}>
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        p: 2,
-        bgcolor: (theme) => alpha(theme.palette.primary.main, 0.2)
-      }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        bgcolor: "background.paper",
+        backgroundImage:
+          "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          p: 2,
+          bgcolor: (theme) => alpha(theme.palette.primary.main, 0.2),
+        }}
+      >
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <CodeIcon color="secondary" />
-          <Typography variant="subtitle1" color="common.white" fontWeight="bold">
+          <Typography
+            variant="subtitle1"
+            color="common.white"
+            fontWeight="bold"
+          >
             jasondavey.io
           </Typography>
-          <IconButton 
-            color="info" 
+          <IconButton
+            color="info"
             onClick={(e) => {
               e.stopPropagation();
               setReadmeOpen(true);
@@ -262,10 +273,10 @@ const M3Navbar = () => {
             <PublicIcon fontSize="small" />
           </IconButton>
         </Box>
-        <IconButton 
+        <IconButton
           onClick={handleDrawerClose}
           aria-label="Close menu"
-          sx={{ color: 'common.white' }}
+          sx={{ color: "common.white" }}
         >
           <CloseIcon />
         </IconButton>
@@ -277,21 +288,23 @@ const M3Navbar = () => {
             <ListItemButton
               component="a"
               href={link.href}
-              onClick={(e) => handleSmoothScroll(e, link.href, handleDrawerClose)}
+              onClick={(e) =>
+                handleSmoothScroll(e, link.href, handleDrawerClose)
+              }
               sx={{
-                py: 1.5, 
+                py: 1.5,
                 px: 2,
-                transition: 'background-color 0.3s',
-                '&:hover': {
-                  bgcolor: 'action.hover',
-                }
+                transition: "background-color 0.3s",
+                "&:hover": {
+                  bgcolor: "action.hover",
+                },
               }}
             >
-              <ListItemText 
+              <ListItemText
                 primary={link.label}
-                primaryTypographyProps={{ 
-                  variant: 'body1',
-                  fontWeight: 500
+                primaryTypographyProps={{
+                  variant: "body1",
+                  fontWeight: 500,
                 }}
               />
             </ListItemButton>
@@ -299,32 +312,64 @@ const M3Navbar = () => {
         ))}
       </List>
 
-      <Divider sx={{ bgcolor: (theme) => alpha(theme.palette.common.white, 0.2) }} />
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        gap: 2, 
-        p: 3 
-      }}>
-        <LinkedIconButton aria-label="GitHub" href="https://github.com/jasondavey/" target="_blank" rel="noopener noreferrer">
+      <Divider
+        sx={{ bgcolor: (theme) => alpha(theme.palette.common.white, 0.2) }}
+      />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 2,
+          p: 3,
+        }}
+      >
+        <LinkedIconButton
+          aria-label="GitHub"
+          href="https://github.com/jasondavey/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <GitHubIcon />
         </LinkedIconButton>
-        <LinkedIconButton aria-label="LinkedIn" href="https://www.linkedin.com/in/jasondavey/" target="_blank" rel="noopener noreferrer">
+        <LinkedIconButton
+          aria-label="LinkedIn"
+          href="https://www.linkedin.com/in/jasondavey/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <LinkedInIcon sx={{ color: (theme) => theme.palette.info.main }} />
         </LinkedIconButton>
-        <LinkedIconButton aria-label="Buy me a coffee" href="https://www.buymeacoffee.com/jasondavey" target="_blank" rel="noopener noreferrer">
-          <LocalCafeIcon sx={{ color: '#FFDD00' }} />
+        <LinkedIconButton
+          aria-label="Buy me a coffee"
+          href="https://www.buymeacoffee.com/jasondavey"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LocalCafeIcon sx={{ color: "#FFDD00" }} />
         </LinkedIconButton>
-        <LinkedIconButton aria-label="X" href="https://x.com/ydohdohdoh" target="_blank" rel="noopener noreferrer">
+        <LinkedIconButton
+          aria-label="X"
+          href="https://x.com/ydohdohdoh"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaSquareXTwitter />
         </LinkedIconButton>
-        <LinkedIconButton aria-label="Email" href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}>
+        <LinkedIconButton
+          aria-label="Email"
+          href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
+        >
           <EmailIcon sx={{ color: (theme) => theme.palette.error.light }} />
         </LinkedIconButton>
         <LinkedIconButton aria-label="Resume" href="/jasonrdavey.pdf" download>
           <DescriptionIcon />
         </LinkedIconButton>
-        <LinkedIconButton aria-label="View Patent" href="/JasonDaveyPatent.pdf" target="_blank" rel="noopener noreferrer">
+        <LinkedIconButton
+          aria-label="View Patent"
+          href="/JasonDaveyPatent.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <WorkspacePremiumIcon />
         </LinkedIconButton>
       </Box>
@@ -334,37 +379,56 @@ const M3Navbar = () => {
   return (
     <>
       <Fade in={true}>
-        <AppBar 
+        <AppBar
           position="fixed"
           elevation={scrollTrigger ? 4 : 0}
           sx={{
-            backgroundImage: scrollTrigger 
-              ? (theme) => theme.palette.mode === 'dark'
-                ? `linear-gradient(to right, ${alpha(theme.palette.primary.dark, 0.95)}, ${alpha(theme.palette.primary.main, 0.95)})`
-                : `linear-gradient(to right, ${alpha(theme.palette.primary.dark, 0.90)}, ${alpha(theme.palette.primary.main, 0.90)})`
-              : 'none',
-            backgroundColor: scrollTrigger 
-              ? 'transparent'
-              : (theme) => theme.palette.mode === 'dark' 
-                ? alpha(theme.palette.primary.dark, 0.4)
-                : alpha(theme.palette.primary.dark, 0.75), // Darker version for light mode
-            backdropFilter: 'blur(10px)',
-            borderBottom: (theme) => scrollTrigger 
-              ? `1px solid ${alpha(theme.palette.divider, 0.2)}` 
-              : 'none',
+            width: { xs: "100%", md: "calc(100% - 64px)" }, // Full width on mobile, inset on desktop
+            mx: { xs: 0, md: "32px" }, // Add margin on sides for desktop
+            mt: { xs: 0, md: "12px" }, // Add some top margin
+            borderRadius: { xs: 0, md: "16px" }, // Rounded edges on desktop
+            backgroundImage: scrollTrigger
+              ? (theme) =>
+                  theme.palette.mode === "dark"
+                    ? `linear-gradient(to right, ${alpha(
+                        theme.palette.primary.dark,
+                        0.95
+                      )}, ${alpha(theme.palette.primary.main, 0.95)})`
+                    : `linear-gradient(to right, ${alpha(
+                        theme.palette.primary.dark,
+                        0.9
+                      )}, ${alpha(theme.palette.primary.main, 0.9)})`
+              : "none",
+            backgroundColor: scrollTrigger
+              ? "transparent"
+              : (theme) =>
+                  theme.palette.mode === "dark"
+                    ? alpha(theme.palette.primary.dark, 0.4)
+                    : alpha(theme.palette.primary.dark, 0.75), // Darker version for light mode
+            backdropFilter: "blur(10px)",
+            borderBottom: (theme) =>
+              scrollTrigger
+                ? `1px solid ${alpha(theme.palette.divider, 0.2)}`
+                : "none",
             // Keep white text in both modes
-            color: '#ffffff',
-            transition: (theme) => theme.transitions.create(['background-color', 'box-shadow', 'backdrop-filter'], {
-              duration: theme.transitions.duration.standard,
-            }),
+            color: "#ffffff",
+            transition: (theme) =>
+              theme.transitions.create(
+                ["background-color", "box-shadow", "backdrop-filter"],
+                {
+                  duration: theme.transitions.duration.standard,
+                }
+              ),
           }}
         >
           <Container maxWidth="lg">
             <Toolbar sx={{ py: scrollTrigger ? 0.5 : 1 }}>
               {/* Logo */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: 2 }}>
-                <motion.div 
-                  whileHover={{ scale: 1.05 }} 
+              <Box
+                sx={{ display: "flex", alignItems: "center", gap: 1, mr: 2 }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <IconButton
@@ -375,23 +439,23 @@ const M3Navbar = () => {
                     sx={{ p: 0.5 }}
                     aria-label="Home"
                   >
-                    <CodeIcon sx={{ fontSize: '1.5rem' }} />
+                    <CodeIcon sx={{ fontSize: "1.5rem" }} />
                   </IconButton>
                 </motion.div>
                 <Box
                   className="site-title"
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: '#ffffff !important', // Force white text with !important
+                    display: "flex",
+                    alignItems: "center",
+                    color: "#ffffff !important", // Force white text with !important
                     fontWeight: 700,
-                    fontSize: '1.25rem',
-                    letterSpacing: 0.5
+                    fontSize: "1.25rem",
+                    letterSpacing: 0.5,
                   }}
                 >
                   jasondavey.io
                 </Box>
-                <motion.div 
+                <motion.div
                   whileHover={{ rotate: 20, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -409,19 +473,21 @@ const M3Navbar = () => {
               </Box>
 
               {/* Mobile menu toggle */}
-              <Box sx={{ display: { xs: 'flex', md: 'none' }, ml: 'auto' }}>
+              <Box sx={{ display: { xs: "flex", md: "none" }, ml: "auto" }}>
                 <ColorModeToggle />
                 <IconButton
                   color="inherit"
                   aria-label="open menu"
                   edge="end"
                   onClick={handleDrawerToggle}
-                  sx={{ 
-                    ml: 0.5, 
-                    bgcolor: (theme) => alpha(theme.palette.background.paper, 0.1),
-                    '&:hover': {
-                      bgcolor: (theme) => alpha(theme.palette.background.paper, 0.2),
-                    }
+                  sx={{
+                    ml: 0.5,
+                    bgcolor: (theme) =>
+                      alpha(theme.palette.background.paper, 0.1),
+                    "&:hover": {
+                      bgcolor: (theme) =>
+                        alpha(theme.palette.background.paper, 0.2),
+                    },
                   }}
                 >
                   <MenuIcon />
@@ -429,52 +495,63 @@ const M3Navbar = () => {
               </Box>
 
               {/* Material Design 3 Segmented Surface with Dynamic Island */}
-              <Box sx={{ 
-                display: { xs: 'none', md: 'flex' },
-                flex: 1,
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                gap: 2
-              }}>
-                <Box sx={{
-                  display: 'flex',
-                  borderRadius: '28px',
-                  overflow: 'hidden',
-                  backgroundColor: (theme) => theme.palette.mode === 'dark' 
-                    ? alpha(theme.palette.background.paper, 0.1)
-                    : alpha(theme.palette.primary.dark, 0.7), // Darker background for light mode
-                  backdropFilter: 'blur(10px)',
-                  boxShadow: (theme) => `0px 2px 8px ${alpha(theme.palette.common.black, 0.1)}`,
-                  transition: 'all 0.3s ease',
-                  color: '#ffffff', // White text for both modes
-                  '&:hover': {
-                    backgroundColor: (theme) => theme.palette.mode === 'dark'
-                      ? alpha(theme.palette.background.paper, 0.15)
-                      : alpha(theme.palette.primary.dark, 0.8),
-                    boxShadow: (theme) => `0px 3px 10px ${alpha(theme.palette.common.black, 0.15)}`
-                  }
-                }}>
-
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  flex: 1,
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  gap: 2,
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    borderRadius: "28px",
+                    overflow: "hidden",
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === "dark"
+                        ? alpha(theme.palette.background.paper, 0.1)
+                        : alpha(theme.palette.primary.dark, 0.7), // Darker background for light mode
+                    backdropFilter: "blur(10px)",
+                    boxShadow: (theme) =>
+                      `0px 2px 8px ${alpha(theme.palette.common.black, 0.1)}`,
+                    transition: "all 0.3s ease",
+                    color: "#ffffff", // White text for both modes
+                    "&:hover": {
+                      backgroundColor: (theme) =>
+                        theme.palette.mode === "dark"
+                          ? alpha(theme.palette.background.paper, 0.15)
+                          : alpha(theme.palette.primary.dark, 0.8),
+                      boxShadow: (theme) =>
+                        `0px 3px 10px ${alpha(
+                          theme.palette.common.black,
+                          0.15
+                        )}`,
+                    },
+                  }}
+                >
                   {/* Navigation Section */}
-                  <Box sx={{ display: 'flex', padding: '6px 8px' }}>
+                  <Box sx={{ display: "flex", padding: "6px 8px" }}>
                     {navLinks.map((link, index) => (
-                      <Box key={link.href} sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Link 
-                          href={link.href} 
+                      <Box
+                        key={link.href}
+                        sx={{ display: "flex", alignItems: "center" }}
+                      >
+                        <Link
+                          href={link.href}
                           onClick={(e) => handleSmoothScroll(e, link.href)}
                           underline="none"
-                          sx={{ display: 'flex' }}
+                          sx={{ display: "flex" }}
                         >
-                          <NavButton>
-                            {link.label}
-                          </NavButton>
+                          <NavButton>{link.label}</NavButton>
                         </Link>
                         {index < navLinks.length - 1 && (
                           <Typography
                             variant="body2"
-                            sx={{ 
+                            sx={{
                               mx: 0.5,
-                              color: '#ffffff' // Ensuring divider is visible in both modes
+                              color: "#ffffff", // Ensuring divider is visible in both modes
                             }}
                           >
                             |
@@ -484,143 +561,174 @@ const M3Navbar = () => {
                     ))}
                   </Box>
                 </Box>
-                
-                {/* Social Media "Island" - Material Design 3 style */}
-                <Box sx={{ 
-                  background: (theme) => theme.palette.mode === 'dark'
-                    ? alpha(theme.palette.primary.dark, 0.65)
-                    : alpha(theme.palette.primary.dark, 0.85), // Darker background in light mode for better contrast
-                  padding: '6px 12px',
-                  borderRadius: '24px',
-                  marginRight: '8px',
-                  marginLeft: '8px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  boxShadow: (theme) => `0 2px 10px ${alpha(theme.palette.common.black, 0.15)}`,
-                  transition: 'all 0.3s ease',
-                  color: '#ffffff', // White text for both modes
-                  '&:hover': {
-                    background: (theme) => theme.palette.mode === 'dark'
-                      ? alpha(theme.palette.primary.dark, 0.75)
-                      : alpha(theme.palette.primary.dark, 0.95),
-                    boxShadow: (theme) => `0 4px 12px ${alpha(theme.palette.common.black, 0.2)}`,
-                    transform: 'translateY(-1px)'
-                  }
-                }}>
 
-                  <Box component={motion.div}
+                {/* Social Media "Island" - Material Design 3 style */}
+                <Box
+                  sx={{
+                    background: (theme) =>
+                      theme.palette.mode === "dark"
+                        ? alpha(theme.palette.primary.dark, 0.65)
+                        : alpha(theme.palette.primary.dark, 0.85), // Darker background in light mode for better contrast
+                    padding: "6px 12px",
+                    borderRadius: "24px",
+                    marginRight: "8px",
+                    marginLeft: "8px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                    boxShadow: (theme) =>
+                      `0 2px 10px ${alpha(theme.palette.common.black, 0.15)}`,
+                    transition: "all 0.3s ease",
+                    color: "#ffffff", // White text for both modes
+                    "&:hover": {
+                      background: (theme) =>
+                        theme.palette.mode === "dark"
+                          ? alpha(theme.palette.primary.dark, 0.75)
+                          : alpha(theme.palette.primary.dark, 0.95),
+                      boxShadow: (theme) =>
+                        `0 4px 12px ${alpha(theme.palette.common.black, 0.2)}`,
+                      transform: "translateY(-1px)",
+                    },
+                  }}
+                >
+                  <Box
+                    component={motion.div}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ display: 'inline-block' }}
+                    style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton 
-                      aria-label="GitHub" 
-                      href="https://github.com/jasondavey/" 
-                      target="_blank" 
+                    <LinkedIconButton
+                      aria-label="GitHub"
+                      href="https://github.com/jasondavey/"
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
                       <GitHubIcon fontSize="small" />
                     </LinkedIconButton>
                   </Box>
-                  
-                  <Box component={motion.div}
+
+                  <Box
+                    component={motion.div}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ display: 'inline-block' }}
+                    style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton 
-                      aria-label="LinkedIn" 
-                      href="https://www.linkedin.com/in/jasondavey/" 
-                      target="_blank" 
+                    <LinkedIconButton
+                      aria-label="LinkedIn"
+                      href="https://www.linkedin.com/in/jasondavey/"
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <LinkedInIcon fontSize="small" sx={{ color: (theme) => theme.palette.info.main }} />
+                      <LinkedInIcon
+                        fontSize="small"
+                        sx={{ color: (theme) => theme.palette.info.main }}
+                      />
                     </LinkedIconButton>
                   </Box>
-                  
-                  <Box component={motion.div}
+
+                  <Box
+                    component={motion.div}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ display: 'inline-block' }}
+                    style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton 
-                      aria-label="X" 
-                      href="https://x.com/ydohdohdoh" 
-                      target="_blank" 
+                    <LinkedIconButton
+                      aria-label="X"
+                      href="https://x.com/ydohdohdoh"
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FaSquareXTwitter style={{ fontSize: '1.25rem' }} />
+                      <FaSquareXTwitter style={{ fontSize: "1.25rem" }} />
                     </LinkedIconButton>
                   </Box>
-                  
-                  <Box component={motion.div}
+
+                  <Box
+                    component={motion.div}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ display: 'inline-block' }}
+                    style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton 
-                      aria-label="Email" 
-                      href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
+                    <LinkedIconButton
+                      aria-label="Email"
+                      href={`mailto:${
+                        import.meta.env.VITE_EMAIL_ADDRESS_HELLO
+                      }`}
                     >
-                      <EmailIcon fontSize="small" sx={{ color: (theme) => theme.palette.error.light }} />
+                      <EmailIcon
+                        fontSize="small"
+                        sx={{ color: (theme) => theme.palette.error.light }}
+                      />
                     </LinkedIconButton>
                   </Box>
-                  
-                  <Box component={motion.div}
+
+                  <Box
+                    component={motion.div}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ display: 'inline-block' }}
+                    style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton 
-                      aria-label="Resume" 
-                      href="/jasonrdavey.pdf" 
-                      download 
+                    <LinkedIconButton
+                      aria-label="Resume"
+                      href="/jasonrdavey.pdf"
+                      download
                       title="Download Resume"
                     >
                       <DescriptionIcon fontSize="small" />
                     </LinkedIconButton>
                   </Box>
-                  
-                  <Box component={motion.div}
+
+                  <Box
+                    component={motion.div}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ display: 'inline-block' }}
+                    style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton 
-                      aria-label="View Patent" 
-                      href="/JasonDaveyPatent.pdf" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <LinkedIconButton
+                      aria-label="View Patent"
+                      href="/JasonDaveyPatent.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       title="View Patent"
                     >
                       <WorkspacePremiumIcon fontSize="small" />
                     </LinkedIconButton>
                   </Box>
-                  
-                  <Box component="span" sx={{ height: '24px', width: '1px', bgcolor: 'divider', mx: 0.5 }} />
-                  
-                  <Box component={motion.div}
+
+                  <Box
+                    component="span"
+                    sx={{
+                      height: "24px",
+                      width: "1px",
+                      bgcolor: "divider",
+                      mx: 0.5,
+                    }}
+                  />
+
+                  <Box
+                    component={motion.div}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ display: 'inline-block' }}
+                    style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButton 
-                      aria-label="Buy me a coffee" 
-                      href="https://www.buymeacoffee.com/jasondavey" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <LinkedIconButton
+                      aria-label="Buy me a coffee"
+                      href="https://www.buymeacoffee.com/jasondavey"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       title="Cappuccino for a chat"
                     >
-                      <LocalCafeIcon fontSize="small" sx={{ color: '#FFDD00' }} />
+                      <LocalCafeIcon
+                        fontSize="small"
+                        sx={{ color: "#FFDD00" }}
+                      />
                     </LinkedIconButton>
                   </Box>
-                  
-                  <Box 
+
+                  <Box
                     component={motion.div}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ display: 'inline-block' }}
+                    style={{ display: "inline-block" }}
                     sx={{ ml: 0.5 }}
                   >
                     <ColorModeToggle />
@@ -631,7 +739,7 @@ const M3Navbar = () => {
           </Container>
         </AppBar>
       </Fade>
-      
+
       {/* Mobile drawer */}
       <Drawer
         variant="temporary"
@@ -642,13 +750,14 @@ const M3Navbar = () => {
           keepMounted: true, // Better mobile performance
         }}
         sx={{
-          display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { 
-            boxSizing: 'border-box', 
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
             width: 280,
-            bgcolor: (theme) => theme.palette.mode === 'dark' 
-              ? theme.palette.background.paper
-              : theme.palette.primary.dark,
+            bgcolor: (theme) =>
+              theme.palette.mode === "dark"
+                ? theme.palette.background.paper
+                : theme.palette.primary.dark,
           },
         }}
       >
