@@ -16,7 +16,6 @@ import { motion } from "framer-motion";
 import { useThemeContext } from "@/theme";
 import ReadmeModal from "./ReadmeModal";
 import CarbonBadge from "./CarbonBadge";
-import LocationModal from "./LocationModal";
 import { navigationSections } from "@/utils/navigation";
 
 // Social icons
@@ -111,32 +110,6 @@ const M3Footer = () => {
   const theme = useTheme();
   const { mode } = useThemeContext();
   const [readmeOpen, setReadmeOpen] = useState(false);
-  const [locationModalOpen, setLocationModalOpen] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState<{
-    name: string;
-    embed: string;
-  }>({ name: "", embed: "" });
-  
-  // Location data
-  const locations = {
-    sanFrancisco: {
-      name: "San Francisco, CA, USA",
-      embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555098464!2d-122.50764017948547!3d37.75781499002628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus",
-    },
-    losAngeles: {
-      name: "Los Angeles, CA, USA",
-      embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27405770525!2d-118.69192047471653!3d34.02016130390376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus",
-    },
-    atlanta: {
-      name: "Atlanta, GA, USA",
-      embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212270.7411321579!2d-84.56068455!3d33.767351299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5045d6993098d%3A0x66fede2f990b630b!2sAtlanta%2C%20GA!5e0!3m2!1sen!2sus",
-    }
-  };
-  
-  const openLocationModal = (location: typeof selectedLocation) => {
-    setSelectedLocation(location);
-    setLocationModalOpen(true);
-  };
 
   // Navigation sections - using shared navigation from utils
 
@@ -197,9 +170,10 @@ const M3Footer = () => {
             gridTemplateColumns: {
               xs: "1fr",
               sm: "1fr 1fr",
-              md: "1fr 1fr 1fr",
+              md: "1fr 1fr",
             },
             gap: 4,
+            mb: 6,
           }}
         >
           {/* Main info column */}
@@ -314,7 +288,7 @@ const M3Footer = () => {
           </Box>
 
           {/* Navigation column */}
-          <Box sx={{ gridColumn: { xs: "1", sm: "1/2", md: "2/3" } }}>
+          <Box sx={{ gridColumn: { xs: "1", sm: "2/3", md: "2/3" } }}>
             <GlassPanel>
               <Typography
                 variant="h6"
@@ -344,145 +318,7 @@ const M3Footer = () => {
                   </motion.div>
                 ))}
               </Box>
-            </GlassPanel>
-          </Box>
-
-          {/* Contact column */}
-          <Box sx={{ gridColumn: { xs: "1", sm: "2/3", md: "3/4" } }}>
-            <GlassPanel>
-              <Typography
-                variant="h6"
-                component="h4"
-                sx={{
-                  fontWeight: 700,
-                  mb: 3,
-                  background: `linear-gradient(90deg, ${theme.palette.text.primary}, ${theme.palette.primary.main})`,
-                  backgroundClip: "text",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Get In Touch
-              </Typography>
-
-              <Typography variant="body2" paragraph>
-                I'm always open to discussing new projects, creative ideas, or
-                opportunities to be part of your vision.
-              </Typography>
-
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
-                {/* Email */}
-                <Link
-                  href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
-                  underline="hover"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    color: "text.primary",
-                    "&:hover": {
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  <MailOutlineIcon
-                    fontSize="small"
-                    sx={{ mr: 1, color: theme.palette.primary.main }}
-                  />
-                  {import.meta.env.VITE_EMAIL_ADDRESS_HELLO}
-                </Link>
-
-                {/* Phone */}
-                <Link
-                  href={`tel:${import.meta.env.VITE_PHONE_NUMBER}`}
-                  underline="hover"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    color: "text.primary",
-                    "&:hover": {
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  <PhoneIcon
-                    fontSize="small"
-                    sx={{ mr: 1, color: theme.palette.primary.main }}
-                  />
-                  {import.meta.env.VITE_PHONE_NUMBER}
-                </Link>
-
-                {/* Locations */}
-                <Typography variant="body2" sx={{ mt: 1, fontWeight: 500 }}>
-                  Locations:
-                </Typography>
-
-                {/* San Francisco */}
-                <Button
-                  onClick={() => openLocationModal(locations.sanFrancisco)}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    textTransform: "none",
-                    color: "text.primary",
-                    padding: 0,
-                    "&:hover": {
-                      backgroundColor: "transparent",
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  <LocationOnIcon
-                    fontSize="small"
-                    sx={{ mr: 1, color: theme.palette.primary.main }}
-                  />
-                  San Francisco, CA, USA
-                </Button>
-
-                {/* Los Angeles */}
-                <Button
-                  onClick={() => openLocationModal(locations.losAngeles)}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    textTransform: "none",
-                    color: "text.primary",
-                    padding: 0,
-                    "&:hover": {
-                      backgroundColor: "transparent",
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  <LocationOnIcon
-                    fontSize="small"
-                    sx={{ mr: 1, color: theme.palette.primary.main }}
-                  />
-                  Los Angeles, CA, USA
-                </Button>
-                
-                {/* Atlanta */}
-                <Button
-                  onClick={() => openLocationModal(locations.atlanta)}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    textTransform: "none",
-                    color: "text.primary",
-                    padding: 0,
-                    "&:hover": {
-                      backgroundColor: "transparent",
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  <LocationOnIcon
-                    fontSize="small"
-                    sx={{ mr: 1, color: theme.palette.primary.main }}
-                  />
-                  Atlanta, GA, USA
-                </Button>
-              </Box>
-
+              
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -578,13 +414,6 @@ const M3Footer = () => {
 
       {/* Technical Documentation Modal */}
       <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
-      
-      {/* Location Modal */}
-      <LocationModal
-        isOpen={locationModalOpen}
-        onClose={() => setLocationModalOpen(false)}
-        location={selectedLocation}
-      />
     </Box>
   );
 };
