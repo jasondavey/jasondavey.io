@@ -50,7 +50,7 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[550px] md:max-w-[600px] overflow-hidden">
+      <DialogContent className="sm:max-w-[550px] md:max-w-[600px] overflow-hidden border-opacity-70 shadow-lg bg-background">
         <DialogHeader>
           <DialogTitle className="flex items-center text-xl gap-2">
             <PublicIcon color="primary" />
@@ -63,13 +63,13 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
             sx={{ 
               p: 4, 
               borderRadius: 2,
-              bgcolor: alpha(theme.palette.background.paper, mode === 'dark' ? 0.4 : 0.8),
-              border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+              bgcolor: mode === 'dark' ? alpha(theme.palette.background.paper, 0.8) : alpha(theme.palette.background.paper, 0.8),
+              border: `1px solid ${alpha(theme.palette.divider, mode === 'dark' ? 0.3 : 0.1)}`,
               mb: 4,
               display: 'flex',
               flexDirection: 'column',
               gap: 2,
-              boxShadow: theme.shadows[3]
+              boxShadow: mode === 'dark' ? `0 4px 12px ${alpha(theme.palette.common.black, 0.5)}` : theme.shadows[3]
             }}
           >
             <Typography 
@@ -103,8 +103,8 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
                 py: 1,
                 px: 2,
                 borderRadius: 1,
-                bgcolor: alpha(theme.palette.background.default, mode === 'dark' ? 0.4 : 0.6),
-                border: `1px solid ${alpha(theme.palette.divider, 0.05)}`
+                bgcolor: mode === 'dark' ? alpha(theme.palette.background.default, 0.7) : alpha(theme.palette.background.default, 0.6),
+                border: `1px solid ${alpha(theme.palette.divider, mode === 'dark' ? 0.2 : 0.05)}`
               }}
             >
               <PublicIcon sx={{ 
@@ -116,7 +116,8 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
                 variant="body2" 
                 sx={{ 
                   fontWeight: 500,
-                  color: 'text.primary'
+                  color: mode === 'dark' ? 'text.primary' : 'text.primary',
+                  opacity: mode === 'dark' ? 0.9 : 1
                 }}
               >
                 {domain}
@@ -126,11 +127,11 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
 
           <Box 
             sx={{ 
-              bgcolor: alpha(theme.palette.info.main, mode === 'dark' ? 0.08 : 0.04),
+              bgcolor: mode === 'dark' ? alpha(theme.palette.background.paper, 0.5) : alpha(theme.palette.info.main, 0.04),
               p: 3, 
               borderRadius: 2, 
               mb: 2,
-              border: `1px solid ${alpha(theme.palette.info.main, mode === 'dark' ? 0.15 : 0.1)}`,
+              border: `1px solid ${alpha(mode === 'dark' ? theme.palette.primary.main : theme.palette.info.main, mode === 'dark' ? 0.3 : 0.1)}`,
               boxShadow: theme.shadows[1]
             }}
           >
@@ -142,7 +143,7 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
                   p: 0.5,
                   borderRadius: '50%',
                   mr: 1,
-                  bgcolor: alpha(theme.palette.info.main, mode === 'dark' ? 0.15 : 0.08)
+                  bgcolor: mode === 'dark' ? alpha(theme.palette.primary.main, 0.2) : alpha(theme.palette.info.main, 0.08)
                 }}
               >
                 <PublicIcon fontSize="small" color="primary" />
@@ -151,7 +152,7 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
                 variant="body2" 
                 sx={{ 
                   fontWeight: 600,
-                  color: 'info.main'
+                  color: mode === 'dark' ? 'primary.light' : 'info.main'
                 }}
               >
                 Security Notice
@@ -160,8 +161,9 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
             <Typography 
               variant="body2" 
               sx={{ 
-                color: 'text.secondary',
-                lineHeight: 1.6
+                color: mode === 'dark' ? 'text.primary' : 'text.secondary',
+                lineHeight: 1.6,
+                fontWeight: mode === 'dark' ? 400 : 400
               }}
             >
               You're about to leave Jason Davey's portfolio website and visit an external site. 
@@ -172,15 +174,14 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
 
         <DialogFooter>
           <Button 
-            variant="outline" 
             onClick={onClose} 
-            className="mr-2"
+            className="mr-2 bg-primary/20 hover:bg-primary/30 text-primary border border-primary/30"
           >
             Cancel
           </Button>
           <Button 
             onClick={handleVisit} 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
           >
             <OpenInNewIcon className="mr-2 h-4 w-4" /> Continue to {domain}
           </Button>
