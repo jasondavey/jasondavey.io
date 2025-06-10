@@ -452,38 +452,26 @@ const M3Navbar = () => {
             mx: { xs: 0, md: "32px" }, // Add margin on sides for desktop
             mt: { xs: 0, md: "12px" }, // Add some top margin
             borderRadius: { xs: 0, md: "16px" }, // Rounded edges on desktop
-            backgroundImage: scrollTrigger
-              ? (theme) =>
+            backgroundColor: (theme) =>
                   theme.palette.mode === "dark"
-                    ? `linear-gradient(to right, ${alpha(
-                        theme.palette.primary.dark,
-                        0.95
-                      )}, ${alpha(theme.palette.primary.main, 0.95)})`
-                    : `linear-gradient(to right, ${alpha(
-                        theme.palette.primary.dark,
-                        0.9
-                      )}, ${alpha(theme.palette.primary.main, 0.9)})`
-              : "none",
-            backgroundColor: scrollTrigger
-              ? "transparent"
-              : (theme) =>
-                  theme.palette.mode === "dark"
-                    ? alpha(theme.palette.primary.dark, 0.4)
-                    : alpha(theme.palette.primary.dark, 0.75), // Darker version for light mode
-            backdropFilter: "blur(10px)",
-            borderBottom: (theme) =>
-              scrollTrigger
-                ? `1px solid ${alpha(theme.palette.divider, 0.2)}`
-                : "none",
+                    ? alpha(theme.palette.primary.dark, scrollTrigger ? 0.25 : 0.35)
+                    : alpha(theme.palette.primary.dark, scrollTrigger ? 0.4 : 0.65), // More transparent when scrolling
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)", // For Safari support
+            borderBottom: (theme) => 
+              `1px solid ${alpha(theme.palette.divider, scrollTrigger ? 0.15 : 0)}`,
             // Keep white text in both modes
             color: "#ffffff",
             transition: (theme) =>
               theme.transitions.create(
-                ["background-color", "box-shadow", "backdrop-filter"],
+                ["background-color", "box-shadow", "backdrop-filter", "border-bottom"],
                 {
                   duration: theme.transitions.duration.standard,
                 }
               ),
+            boxShadow: scrollTrigger 
+              ? (theme) => `0 4px 30px ${alpha(theme.palette.common.black, 0.1)}` 
+              : 'none',
           }}
         >
           <Container maxWidth="lg">
