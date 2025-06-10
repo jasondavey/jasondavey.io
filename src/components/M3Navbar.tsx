@@ -223,10 +223,10 @@ const M3Navbar = () => {
   // Navigation links
   const navLinks = [
     { href: "#about", label: "About" },
+    { href: "#experience", label: "Career" },
     { href: "#projects", label: "Portfolio" },
     { href: "#leadership", label: "Leadership" },
     { href: "#technical-skills", label: "Skills" },
-    { href: "#experience", label: "Experience" },
     { href: "#contact", label: "Inquire" },
   ];
 
