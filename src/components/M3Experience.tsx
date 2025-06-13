@@ -7,6 +7,7 @@ import {
   useTheme,
   alpha,
 } from "@mui/material";
+import M3CareerHighlights from "./M3CareerHighlights";
 import {
   Timeline,
   TimelineItem,
@@ -284,6 +285,27 @@ const M3Experience: React.FC = () => {
               component="h2"
               sx={{
                 fontWeight: 800,
+                mb: 2,
+                background: `linear-gradient(90deg, ${theme.palette.text.primary}, ${theme.palette.primary.main})`,
+                backgroundClip: "text",
+                textFillColor: "transparent",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Career
+            </Typography>
+
+            {/* Career Highlights Section */}
+            <Box sx={{ mb: 8, px: { xs: 2, md: 0 } }}>
+              <M3CareerHighlights />
+            </Box>
+
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{
+                fontWeight: 800,
                 mb: 4,
                 fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
                 background: `linear-gradient(90deg, ${theme.palette.text.primary}, ${theme.palette.primary.main})`,
@@ -292,7 +314,7 @@ const M3Experience: React.FC = () => {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Career
+              Roles
             </Typography>
 
             <Typography
