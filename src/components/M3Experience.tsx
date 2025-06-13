@@ -131,6 +131,7 @@ const experiences = [
       "Spearheaded the launch of DYMO Stamps Online®, a cloud-native solution praised by PC Mag for its intuitive user experience",
       "Automated deployment pipelines and infrastructure provisioning, elevating release reliability and engineering velocity",
       "Championed best practices in CI/CD and DevOps to enhance delivery consistency and operational resilience",
+      "Mentored teams of student engineers from Worcester Polytechnic University (WPI), who won best project two years running",
     ],
     technologies: [
       "C#",

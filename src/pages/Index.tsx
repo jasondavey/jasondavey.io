@@ -18,10 +18,10 @@ const Index = () => {
         <SpeedInsights />
         <M3Hero />
         <M3About />
+        <M3Experience />
         <M3Projects />
         <M3Leadership />
         <M3Skills />
-        <M3Experience />
         <M3Contact />
         <M3Footer />
       </div>
