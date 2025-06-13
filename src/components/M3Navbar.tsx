@@ -31,7 +31,7 @@ import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 import EmailIcon from "@mui/icons-material/Email";
 import DescriptionIcon from "@mui/icons-material/Description";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
-import { FaSquareXTwitter } from "react-icons/fa6";
+
 import { motion } from "framer-motion";
 import { useThemeContext, ColorModeToggle } from "@/theme";
 import ReadmeModal from "./ReadmeModal";
@@ -407,14 +407,7 @@ const M3Navbar = () => {
         >
           <LocalCafeIcon sx={{ color: "#FFDD00" }} />
         </LinkedIconButtonWithModal>
-        <LinkedIconButtonWithModal
-          aria-label="X"
-          href="https://x.com/ydohdohdoh"
-          title="X/Twitter Profile"
-          description="Follow Jason on X (formerly Twitter) for updates and thoughts."
-        >
-          <FaSquareXTwitter />
-        </LinkedIconButtonWithModal>
+
         <LinkedIconButton
           aria-label="Email"
           href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
@@ -685,14 +678,7 @@ const M3Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     style={{ display: "inline-block" }}
                   >
-                    <LinkedIconButtonWithModal
-                      aria-label="X"
-                      href="https://x.com/ydohdohdoh"
-                      title="X/Twitter Profile"
-                      description="Follow Jason on X (formerly Twitter) for updates and thoughts."
-                    >
-                      <FaSquareXTwitter style={{ fontSize: "1.25rem" }} />
-                    </LinkedIconButtonWithModal>
+
                   </Box>
 
                   <Box

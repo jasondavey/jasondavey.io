@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Code, Globe } from "lucide-react";
-import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { FaGithubSquare } from "react-icons/fa";
 import { TbFileCv, TbCertificate } from "react-icons/tb";
@@ -228,14 +228,7 @@ const Navbar = () => {
           >
             <FaLinkedin className="h-5 w-5 text-white hover:text-blue-300 transition-colors" />
           </a>
-          <a
-            href="https://x.com/ydohdohdoh"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="X"
-          >
-            <FaSquareXTwitter className="h-5 w-5 text-white hover:text-gray-300 transition-colors" />
-          </a>
+
           <a
             href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
             aria-label="Email"
@@ -427,14 +420,7 @@ const Navbar = () => {
                   <FaCoffee className="h-6 w-6" />
                 </a>
 
-                <a
-                  href="https://x.com/ydohdohdoh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="X"
-                >
-                  <FaSquareXTwitter className="h-6 w-6 text-white hover:text-gray-300" />
-                </a>
+
                 <a
                   href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
                   aria-label="Email"

@@ -22,7 +22,7 @@ import { useExternalLink } from "@/context/ExternalLinkContext";
 // Social icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { FaSquareXTwitter } from "react-icons/fa6";
+
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -247,27 +247,7 @@ const M3Footer = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Link
-                    href="https://twitter.com/jasondavey"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openExternalLink(
-                        "https://twitter.com/jasondavey",
-                        "Twitter Profile",
-                        "Follow Jason on Twitter for updates and thoughts."
-                      );
-                    }}
-                    underline="none"
-                  >
-                    <SocialIconButton aria-label="Twitter">
-                      <FaSquareXTwitter size="1.2em" />
-                    </SocialIconButton>
-                  </Link>
-                </motion.div>
+
 
                 <motion.div
                   whileHover={{ scale: 1.1 }}
