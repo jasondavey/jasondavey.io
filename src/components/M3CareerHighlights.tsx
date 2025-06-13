@@ -17,6 +17,8 @@ import SchoolIcon from "@mui/icons-material/School";
 import StarIcon from "@mui/icons-material/Star";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import BadgeIcon from "@mui/icons-material/Badge";
+import LinkIcon from "@mui/icons-material/Link";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 // Styled components
 // No longer need a full section container since this is nested
@@ -74,14 +76,16 @@ const highlightItems = [
     icon: <BadgeIcon fontSize="large" />,
     company: "Stamps.com",
     link: "/JasonDaveyPatent.pdf",
+    reference: "https://patents.google.com/patent/US11037223B1/en?oq=11037223",
   },
   {
     id: 2,
     title: "Mentorship & Student Excellence",
     description:
-      "Mentored teams of student engineers from Worcester Polytechnic University (WPI), who won best project two years running.",
+      "Mentored teams of student engineers from Worcester Polytechnic University (WPI), who under my advisement, won best Major Qualifying Project two years running.",
     icon: <SchoolIcon fontSize="large" />,
     company: "Stamps.com",
+    reference: "https://digital.wpi.edu/pdfviewer/x633f265j",
   },
   {
     id: 3,
@@ -90,6 +94,7 @@ const highlightItems = [
       "Led the launch of DYMO Stamps Online®, a cloud-native solution praised by PC Mag for its intuitive user experience.",
     icon: <NewspaperIcon fontSize="large" />,
     company: "Stamps.com",
+    reference: "https://www.pcmag.com/archive/dymo-stamps-online-303933",
   },
   {
     id: 4,
@@ -103,9 +108,10 @@ const highlightItems = [
     id: 5,
     title: "Flagship Platform Launch",
     description:
-      "Architected and led development of VeraScore's flagship financial scoring platform from prototype to production in under six months.",
+      "Architected and led development of VeraScore's flagship financial scoring platform to MVP in six months.",
     icon: <EmojiEventsIcon fontSize="large" />,
     company: "VeraScore",
+    reference: "https://lnkd.in/gmTRAUEx",
   },
   {
     id: 6,
@@ -153,13 +159,13 @@ const M3CareerHighlights: React.FC = () => {
 
       <Box
         sx={{
-          display: 'grid',
+          display: "grid",
           gridTemplateColumns: {
-            xs: '1fr',
-            md: 'repeat(2, 1fr)',
-            lg: 'repeat(3, 1fr)'
+            xs: "1fr",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
           },
-          gap: 4
+          gap: 4,
         }}
       >
         {highlightItems.map((item, index) => (
@@ -171,9 +177,7 @@ const M3CareerHighlights: React.FC = () => {
               viewport={{ once: true }}
             >
               <HighlightCard>
-                <IconWrapper>
-                  {item.icon}
-                </IconWrapper>
+                <IconWrapper>{item.icon}</IconWrapper>
                 <Typography
                   variant="h5"
                   component="h3"
@@ -184,7 +188,7 @@ const M3CareerHighlights: React.FC = () => {
                 <Typography
                   variant="body2"
                   sx={{
-                    mb: 2,
+                    mb: item.reference ? 1 : 2,
                     color:
                       theme.palette.mode === "dark"
                         ? theme.palette.grey[300]
@@ -194,6 +198,55 @@ const M3CareerHighlights: React.FC = () => {
                 >
                   {item.description}
                 </Typography>
+
+                {item.reference && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      mb: 2,
+                      fontSize: "0.85rem",
+                    }}
+                  >
+                    <LinkIcon
+                      fontSize="small"
+                      sx={{
+                        mr: 0.5,
+                        color: theme.palette.primary.main,
+                        fontSize: "0.9rem",
+                      }}
+                    />
+                    <a
+                      href={item.reference}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: theme.palette.primary.main,
+                        textDecoration: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        fontWeight: 500,
+                        transition: "color 0.2s ease",
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.color =
+                          theme.palette.secondary.main;
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.color =
+                          theme.palette.primary.main;
+                      }}
+                    >
+                      Reference
+                      <OpenInNewIcon
+                        sx={{
+                          ml: 0.5,
+                          fontSize: "0.9rem",
+                        }}
+                      />
+                    </a>
+                  </Box>
+                )}
                 <Tooltip title={`Achievement at ${item.company}`}>
                   <Typography
                     variant="caption"
