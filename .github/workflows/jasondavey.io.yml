@@ -12,7 +12,36 @@ permissions:
   deployments: read
 
 jobs:
+  staticChecks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout jasondavey.io
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npx tsc --noEmit -p tsconfig.app.json
+
+      - name: Unit tests
+        run: npm run test:unit:run
+
+      - name: Build
+        run: npm run build
+
   runCypressTestsAgainstVercelPreview:
+    needs: staticChecks
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

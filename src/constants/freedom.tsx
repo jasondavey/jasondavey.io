@@ -1,9 +1,10 @@
+import type { ReactElement } from "react";
 import { SiTypescript, SiDotnet, SiReact } from "react-icons/si";
-import { FaNodeJs, FaCode, FaLayerGroup, FaDatabase, FaAws, FaServer } from "react-icons/fa";
+import { FaNodeJs, FaCode, FaLayerGroup, FaDatabase, FaAws } from "react-icons/fa";
 
 export const FreedomAdvisorsTechMap: Record<
   string,
-  { icon: JSX.Element; url: string; category: string }
+  { icon: ReactElement; url: string; category: string }
 > = {
   TypeScript: {
     icon: <SiTypescript className="text-blue-600" title="TypeScript" />,

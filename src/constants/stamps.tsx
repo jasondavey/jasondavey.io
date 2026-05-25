@@ -1,9 +1,10 @@
+import type { ReactElement } from "react";
 import { SiTypescript, SiDotnet, SiReact, SiPostgresql, SiTerraform, SiDocker } from "react-icons/si";
 import { FaNodeJs, FaCode, FaLayerGroup, FaServer } from "react-icons/fa";
 
 export const StampsComTechMap: Record<
   string,
-  { icon: JSX.Element; url: string; category: string }
+  { icon: ReactElement; url: string; category: string }
 > = {
   TypeScript: {
     icon: <SiTypescript className="text-blue-600" title="TypeScript" />,

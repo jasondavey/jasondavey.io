@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useThemeContext } from "@/theme";
 
 // Styled components for enhanced visual design
 const SectionContainer = styled(Box)(({ theme }) => ({
@@ -186,7 +185,6 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
 };
 
 const M3Skills = () => {
-  const { mode } = useThemeContext();
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -327,7 +325,7 @@ const M3Skills = () => {
         {/* Skills grid */}
         <Grid container spacing={4}>
           {skillCategories.map((category, index) => (
-            <Grid item xs={12} md={6} key={category.id}>
+            <Grid size={{ xs: 12, md: 6 }} key={category.id}>
               <SkillCategory category={category} index={index} />
             </Grid>
           ))}

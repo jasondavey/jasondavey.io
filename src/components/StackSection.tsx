@@ -1,11 +1,8 @@
-import { 
-  FaReact, 
-  FaAws, 
-  FaGithub, 
-  FaNodeJs, 
-  FaHeart, 
-  FaCode, 
-  FaVial,
+import {
+  FaReact,
+  FaAws,
+  FaHeart,
+  FaCode,
   FaCommentAlt
 } from "react-icons/fa";
 import {
@@ -13,7 +10,6 @@ import {
   SiTailwindcss,
   SiShadcnui,
   SiVercel,
-  SiAmazonroute53,
   SiCypress
 } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
@@ -30,7 +26,7 @@ const stack = [
   { name: "Vercel", icon: <SiVercel /> },
   {
     name: "AWS Route53",
-    icon: <SiAmazonroute53 className="text-orange-500" />,
+    icon: <FaAws className="text-orange-500" />,
   },
 ];
 

@@ -14,11 +14,10 @@ import {
   Tabs,
   Tab,
   Divider,
-  Grid,
   Tooltip,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
@@ -32,7 +31,6 @@ import MovieIcon from "@mui/icons-material/Movie";
 import GavelIcon from "@mui/icons-material/Gavel";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import M3ProjectDetailsModal from "./M3ProjectDetailsModal";
-import { useThemeContext } from "@/theme";
 
 // Import projects
 import ProjectVerascore from "./projects/ProjectVerascore";
@@ -179,7 +177,6 @@ const getYouTubeThumbnail = (videoUrl: string): string => {
 
 const M3Projects = () => {
   const theme = useTheme();
-  const { mode } = useThemeContext();
   const { openExternalLink } = useExternalLink();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
@@ -657,7 +654,7 @@ const M3Projects = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           openExternalLink(
-                            project.companyUrl,
+                            project.companyUrl!,
                             project.companyName || "Company Website",
                             `Visit ${
                               project.companyName || "company"
@@ -681,7 +678,7 @@ const M3Projects = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           openExternalLink(
-                            project.demo,
+                            project.demo!,
                             "Live Demo",
                             `View the live demo of ${project.title}.`
                           );
@@ -705,7 +702,7 @@ const M3Projects = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           openExternalLink(
-                            project.github,
+                            project.github!,
                             "GitHub Repository",
                             `View the source code for ${project.title} on GitHub.`
                           );

@@ -14,7 +14,7 @@ const TypingQuotes: React.FC<TypingQuotesProps> = ({
   const [displayed, setDisplayed] = useState(quotes[0] || "");
   const [currentQuote, setCurrentQuote] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const [showIntroBlink, setShowIntroBlink] = useState(false);
+  const [, setShowIntroBlink] = useState(false);
 
   // If there is more than one quote, start typing after a pause on the first quote
   useEffect(() => {
@@ -34,9 +34,11 @@ const TypingQuotes: React.FC<TypingQuotesProps> = ({
   // Typing effect for quotes[1] and onward
   useEffect(() => {
     if (currentQuote === 0 || currentQuote >= quotes.length) return;
-    if (charIndex < quotes[currentQuote].length) {
+    const quote = quotes[currentQuote];
+    if (!quote) return;
+    if (charIndex < quote.length) {
       const timeout = setTimeout(() => {
-        setDisplayed((prev) => prev + quotes[currentQuote][charIndex]);
+        setDisplayed((prev) => prev + (quote[charIndex] ?? ""));
         setCharIndex((prev) => prev + 1);
       }, typingSpeed);
       return () => clearTimeout(timeout);

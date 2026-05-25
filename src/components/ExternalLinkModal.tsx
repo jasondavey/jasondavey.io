@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useThemeContext } from "@/theme";
-import { Box, Typography, CircularProgress, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import PublicIcon from "@mui/icons-material/Public";

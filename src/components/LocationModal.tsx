@@ -1,6 +1,5 @@
 import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { motion } from "framer-motion";
 import { Box } from "@mui/material";
 
 interface LocationModalProps {

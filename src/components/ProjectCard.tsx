@@ -48,7 +48,8 @@ const ProjectCard: React.FC<Project> = ({
   externalLinks,
   industry,
 }) => {
-  const isEven = index % 2 === 0;
+  const safeIndex = index ?? 0;
+  const isEven = safeIndex % 2 === 0;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [archModalOpen, setArchModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<
@@ -98,8 +99,8 @@ const ProjectCard: React.FC<Project> = ({
     isDarkMode && logoToUse && logoToUse.includes("versys.com");
 
   const techInfos = technologies
-    .map((tech) => ({ tech, info: techIconMap[tech] }))
-    .filter(({ info }) => !!info);
+    .map((tech) => ({ tech, info: techIconMap?.[tech] }))
+    .filter((entry): entry is { tech: string; info: NonNullable<typeof entry.info> } => !!entry.info);
 
   const groups: Record<string, typeof techInfos> = {};
   techInfos.forEach(({ tech, info }) => {
@@ -115,7 +116,7 @@ const ProjectCard: React.FC<Project> = ({
     <div
       id={`project-${projectId}`}
       className="my-16 first:mt-8 animate-fade-in opacity-0 scroll-mt-24"
-      style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+      style={{ animationDelay: `${0.3 + safeIndex * 0.1}s` }}
     >
       {/* Project Header with Title and External Links */}
       <div className="mb-6">
@@ -288,7 +289,7 @@ const ProjectCard: React.FC<Project> = ({
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {technologies.map((tech) => {
-                const techInfo = techIconMap[tech];
+                const techInfo = techIconMap?.[tech];
                 const TechBadge = (
                   <Badge
                     key={tech}

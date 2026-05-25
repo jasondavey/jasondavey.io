@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 import {
   Dialog,
   DialogTitle,
@@ -9,11 +10,10 @@ import {
   Box,
   Typography,
   CircularProgress,
-  Paper,
   useTheme
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useThemeContext } from "@/theme";
 
 // Configure marked options for better formatting
@@ -186,7 +186,7 @@ const M3ReadmeModal = ({ open, onOpenChange }: M3ReadmeModalProps) => {
                   },
                 }}
                 dangerouslySetInnerHTML={{ 
-                  __html: enhanceMarkdown(marked.parse(readmeContent) as string, isDarkMode)
+                  __html: enhanceMarkdown(DOMPurify.sanitize(marked.parse(readmeContent) as string), isDarkMode)
                 }}
               />
             </StyledDialogContent>

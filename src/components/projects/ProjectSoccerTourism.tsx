@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { Project } from "../Project";
 import { SoccerTourismTechMap } from "@/constants/soccer";
 
@@ -201,7 +202,7 @@ const ProjectSoccerTourism: Project = {
   showCodeButton: false,
   techIconMap: SoccerTourismTechMap as unknown as Record<
     string,
-    { category: string; icon: JSX.Element; url: string }
+    { category: string; icon: ReactElement; url: string }
   >,
 
   companyIcon: "/logos/jasondavey.io.png",

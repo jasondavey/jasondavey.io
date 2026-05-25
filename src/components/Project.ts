@@ -1,3 +1,5 @@
+import type { ReactElement } from "react";
+
 export interface Project {
   /**
    * Industry classification for the project
@@ -52,7 +54,7 @@ export interface Project {
    */
   techIconMap?: Record<
     string,
-    { category: string; icon: JSX.Element; url: string }
+    { category: string; icon: ReactElement; url: string }
   >;
   showCodeButton?: boolean;
   externalLinks?: {

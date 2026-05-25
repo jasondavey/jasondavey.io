@@ -16,10 +16,8 @@ import {
   CircularProgress,
   Link,
 } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useThemeContext } from "@/theme";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import EmailOutlineIcon from "@mui/icons-material/EmailOutlined";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
@@ -136,7 +134,6 @@ const ContactInfoItem = ({
 
 const M3Contact = () => {
   const theme = useTheme();
-  const { mode } = useThemeContext();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -144,11 +141,12 @@ const M3Contact = () => {
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const backgroundY2 = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
 
   // EmailJS credentials from environment variables
-  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const SERVICE_ID: string | undefined = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID: string | undefined = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const PUBLIC_KEY: string | undefined = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
   // Form state
   const [formData, setFormData] = useState<{
@@ -310,6 +308,15 @@ const M3Contact = () => {
       return;
     }
 
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      setSnackbarMessage(
+        "Contact form is not configured. Please email me directly."
+      );
+      setSnackbarSeverity("error");
+      setOpenSnackbar(true);
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -385,7 +392,7 @@ const M3Contact = () => {
               theme.palette.secondary.main,
               0.08
             )} 0%, transparent 70%)`,
-            y: useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]),
+            y: backgroundY2,
           }}
         />
       </Box>

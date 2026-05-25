@@ -1,18 +1,15 @@
 import React, { useRef } from "react";
-import { 
-  Box, 
-  Typography, 
-  Container, 
-  Grid, 
+import {
+  Box,
+  Typography,
+  Container,
   Card,
   CardContent,
-  Avatar,
   useTheme,
   alpha
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useThemeContext } from "@/theme";
 import PeopleIcon from '@mui/icons-material/People';
 import { TbTargetArrow } from "react-icons/tb";
 import { FaChartLine } from "react-icons/fa";
@@ -117,7 +114,6 @@ const PhilosophyCard: React.FC<PhilosophyCardProps> = ({ icon, title, descriptio
 
 
 const M3Leadership = () => {
-  const { mode } = useThemeContext();
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({

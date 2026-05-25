@@ -1,14 +1,15 @@
-import { SiAmazon, SiTypescript, SiFfmpeg, SiNodedotjs } from "react-icons/si";
-import { FaCloud, FaTerminal } from "react-icons/fa";
+import type { ReactElement } from "react";
+import { SiTypescript, SiFfmpeg, SiNodedotjs } from "react-icons/si";
+import { FaAws, FaTerminal } from "react-icons/fa";
 import { TbFileSmile } from "react-icons/tb";
 import { BiSolidVolumeMute } from "react-icons/bi";
 import { MdAudiotrack } from "react-icons/md";
 import { RiFunctionLine } from "react-icons/ri";
 import { AwsS3Icon } from "./AwsS3Icon";
 
-export const VideoSanitizerTechMap: Record<string, { icon: JSX.Element; url: string; category: string }> = {
+export const VideoSanitizerTechMap: Record<string, { icon: ReactElement; url: string; category: string }> = {
   "AWS Lambda": {
-    icon: <SiAmazon className="text-yellow-500" title="AWS Lambda" />,
+    icon: <FaAws className="text-yellow-500" title="AWS Lambda" />,
     url: "https://aws.amazon.com/lambda/",
     category: "Cloud",
   },
@@ -18,7 +19,7 @@ export const VideoSanitizerTechMap: Record<string, { icon: JSX.Element; url: str
     category: "Cloud Storage",
   },
   "Amazon Transcribe": {
-    icon: <SiAmazon className="text-green-500" title="Amazon Transcribe" />,
+    icon: <FaAws className="text-green-500" title="Amazon Transcribe" />,
     url: "https://aws.amazon.com/transcribe/",
     category: "Speech Processing",
   },

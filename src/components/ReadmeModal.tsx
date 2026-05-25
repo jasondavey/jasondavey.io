@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 import {
   Dialog,
   DialogContent,
@@ -94,7 +95,7 @@ const ReadmeModal = ({ open, onOpenChange }: ReadmeModalProps) => {
                 prose-a:text-blue-600 dark:prose-a:text-blue-400
                 prose-hr:my-5 md:prose-base dark:prose-invert max-w-none pb-4 transition-colors duration-300"
               dangerouslySetInnerHTML={{ 
-                __html: enhanceMarkdown(marked.parse(readmeContent) as string)
+                __html: enhanceMarkdown(DOMPurify.sanitize(marked.parse(readmeContent) as string))
               }}
             />
           </ScrollArea>

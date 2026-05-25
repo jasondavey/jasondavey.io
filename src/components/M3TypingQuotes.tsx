@@ -19,7 +19,7 @@ const M3TypingQuotes: React.FC<M3TypingQuotesProps> = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
   const { mode } = useThemeContext();
-  const typingTimer = useRef<NodeJS.Timeout | null>(null);
+  const typingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Clean up function to clear timeout on unmount
