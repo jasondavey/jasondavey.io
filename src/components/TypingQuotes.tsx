@@ -1,70 +1,89 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Box } from "@mui/material";
+import { motion } from "framer-motion";
+import { useThemeContext } from "@/theme";
 
 interface TypingQuotesProps {
   quotes: string[];
-  typingSpeed?: number; // ms per character
-  pauseDuration?: number; // ms to pause after a quote
+  speed?: number;
+  pauseDuration?: number;
 }
 
 const TypingQuotes: React.FC<TypingQuotesProps> = ({
   quotes,
-  typingSpeed = 40,
+  speed = 40,
   pauseDuration = 2000,
 }) => {
-  const [displayed, setDisplayed] = useState(quotes[0] || "");
-  const [currentQuote, setCurrentQuote] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [, setShowIntroBlink] = useState(false);
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
+  const { mode } = useThemeContext();
+  const typingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // If there is more than one quote, start typing after a pause on the first quote
   useEffect(() => {
-    if (quotes.length <= 1) return;
-    if (currentQuote === 0) {
-      // Wait for pauseDuration on first quote, then start typing second
-      const pause = setTimeout(() => {
-        setCurrentQuote(1);
-        setDisplayed("");
-        setCharIndex(0);
-        setShowIntroBlink(false);
+    // Clean up function to clear timeout on unmount
+    return () => {
+      if (typingTimer.current) clearTimeout(typingTimer.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typingTimer.current) clearTimeout(typingTimer.current);
+
+    if (isWaiting) {
+      typingTimer.current = setTimeout(() => {
+        setIsWaiting(false);
+        setIsDeleting(true);
       }, pauseDuration);
-      return () => clearTimeout(pause);
+      return;
     }
-  }, [currentQuote, quotes, pauseDuration]);
 
-  // Typing effect for quotes[1] and onward
-  useEffect(() => {
-    if (currentQuote === 0 || currentQuote >= quotes.length) return;
-    const quote = quotes[currentQuote];
-    if (!quote) return;
-    if (charIndex < quote.length) {
-      const timeout = setTimeout(() => {
-        setDisplayed((prev) => prev + (quote[charIndex] ?? ""));
-        setCharIndex((prev) => prev + 1);
-      }, typingSpeed);
-      return () => clearTimeout(timeout);
+    if (isDeleting) {
+      // Deleting text logic
+      if (displayedText === "") {
+        setIsDeleting(false);
+        setCurrentQuoteIndex((prev) => (prev + 1) % quotes.length);
+      } else {
+        typingTimer.current = setTimeout(() => {
+          setDisplayedText(displayedText.slice(0, -1));
+        }, speed / 2); // Faster deletion
+      }
     } else {
-      // Pause, then either advance or loop
-      const pause = setTimeout(() => {
-        if (currentQuote < quotes.length - 1) {
-          setCurrentQuote((prev) => prev + 1);
-          setDisplayed("");
-          setCharIndex(0);
-        } else {
-          // Loop: go back to first quote (instantly shown, no typing)
-          setCurrentQuote(0);
-          setDisplayed(quotes[0] || "");
-          setCharIndex(0);
-        }
-      }, pauseDuration);
-      return () => clearTimeout(pause);
+      // Typing text logic
+      const currentQuote = quotes[currentQuoteIndex];
+      if (displayedText.length < currentQuote.length) {
+        typingTimer.current = setTimeout(() => {
+          setDisplayedText(currentQuote.slice(0, displayedText.length + 1));
+        }, speed);
+      } else {
+        setIsWaiting(true);
+      }
     }
-  }, [charIndex, currentQuote, quotes, typingSpeed, pauseDuration]);
+  }, [displayedText, currentQuoteIndex, isDeleting, isWaiting, quotes, speed, pauseDuration]);
+
+  const cursorColor = mode === "dark" ? "#1DE9B6" : "#009688";
 
   return (
-    <span>
-      {displayed}
-      <span className="blinking-cursor">|</span>
-    </span>
+    <Box sx={{ position: "relative", display: "inline" }}>
+      {displayedText}
+      <motion.span
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{
+          duration: 0.8,
+          repeat: Infinity,
+          repeatType: "loop",
+        }}
+        style={{
+          display: "inline-block",
+          width: "0.7ch",
+          height: "1.2em",
+          marginLeft: "2px",
+          backgroundColor: cursorColor,
+          verticalAlign: "text-bottom",
+        }}
+      />
+    </Box>
   );
 };
 

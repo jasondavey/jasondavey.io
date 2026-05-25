@@ -122,7 +122,7 @@ interface ProjectDetailsModalProps {
   onClose: () => void;
 }
 
-const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, open, onClose }) => {
+const ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, open, onClose }) => {
   const theme = useTheme();
   const [tabValue, setTabValue] = React.useState(0);
 
@@ -538,4 +538,4 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
   );
 };
 
-export default M3ProjectDetailsModal;
+export default ProjectDetailsModal;

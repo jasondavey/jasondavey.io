@@ -114,7 +114,7 @@ const highlightItems = [
   },
 ];
 
-const M3CareerHighlights: React.FC = () => {
+const CareerHighlights: React.FC = () => {
   const theme = useTheme();
 
   return (
@@ -262,4 +262,4 @@ const M3CareerHighlights: React.FC = () => {
   );
 };
 
-export default M3CareerHighlights;
+export default CareerHighlights;

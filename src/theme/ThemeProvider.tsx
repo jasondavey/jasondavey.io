@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { lightThemeOptions, darkThemeOptions } from "./m3Theme";
-import { ThemeContext } from "./useM3Theme";
+import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material/styles";
+import { lightThemeOptions, darkThemeOptions } from "./theme";
+import { ThemeContext } from "./useTheme";
 
-interface M3ThemeProviderProps {
+interface ThemeProviderProps {
   children: React.ReactNode;
 }
 
 // Main theme provider component
-const M3ThemeProvider: React.FC<M3ThemeProviderProps> = ({ children }) => {
+const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [mounted, setMounted] = useState(false);
   const [mode, setMode] = useState<"light" | "dark">("dark");
 
@@ -43,9 +43,9 @@ const M3ThemeProvider: React.FC<M3ThemeProviderProps> = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme }}>
-      <ThemeProvider theme={cleanTheme}>{children}</ThemeProvider>
+      <MuiThemeProvider theme={cleanTheme}>{children}</MuiThemeProvider>
     </ThemeContext.Provider>
   );
 };
 
-export default M3ThemeProvider;
+export default ThemeProvider;

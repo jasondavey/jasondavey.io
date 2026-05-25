@@ -89,7 +89,7 @@ const FooterLink = styled(Link)(({ theme }) => ({
   },
 }));
 
-const M3Footer = () => {
+const Footer = () => {
   const theme = useTheme();
   const [readmeOpen, setReadmeOpen] = useState(false);
   const { openExternalLink } = useExternalLink();
@@ -374,4 +374,4 @@ const M3Footer = () => {
   );
 };
 
-export default M3Footer;
+export default Footer;

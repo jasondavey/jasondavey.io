@@ -123,7 +123,7 @@ const Feature: React.FC<FeatureProps> = ({ icon, title, description, delay }) =>
   );
 };
 
-const M3About = () => {
+const About = () => {
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -309,4 +309,4 @@ const M3About = () => {
   );
 };
 
-export default M3About;
+export default About;

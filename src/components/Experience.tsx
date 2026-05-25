@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Box, Typography, Container, Paper, useTheme, alpha } from "@mui/material";
-import M3CareerHighlights from "./M3CareerHighlights";
+import CareerHighlights from "./CareerHighlights";
 import {
   Timeline,
   TimelineItem,
@@ -141,7 +141,7 @@ const experiences = [
   },
 ];
 
-const M3Experience: React.FC = () => {
+const Experience: React.FC = () => {
   const theme = useTheme();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -280,7 +280,7 @@ const M3Experience: React.FC = () => {
 
             {/* Career Highlights Section */}
             <Box sx={{ mb: 8, px: { xs: 2, md: 0 } }}>
-              <M3CareerHighlights />
+              <CareerHighlights />
             </Box>
 
             <Typography
@@ -496,4 +496,4 @@ const M3Experience: React.FC = () => {
   );
 };
 
-export default M3Experience;
+export default Experience;

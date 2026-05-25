@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useThemeContext } from "@/theme";
-import M3TypingQuotes from "./M3TypingQuotes";
+import TypingQuotes from "./TypingQuotes";
 
 // Create dimensional layered elements with M3 styling
 const BackgroundLayer = styled(Box)(() => ({
@@ -62,7 +62,7 @@ const ScrollButton = styled(motion.div)(({ theme }) => ({
   border: `2px solid ${theme.palette.background.paper}`,
 }));
 
-const M3Hero = () => {
+const Hero = () => {
   const theme = useTheme();
   const { mode } = useThemeContext();
   const isDark = mode === "dark";
@@ -261,7 +261,7 @@ const M3Hero = () => {
                 },
               }}
             >
-              <M3TypingQuotes quotes={quotes} speed={40} />
+              <TypingQuotes quotes={quotes} speed={40} />
             </Typography>
           </Box>
         </motion.div>
@@ -289,4 +289,4 @@ const M3Hero = () => {
   );
 };
 
-export default M3Hero;
+export default Hero;

@@ -1,4 +1,4 @@
 // Export theme components and hooks
-export { default as M3ThemeProvider } from "./M3ThemeProvider";
+export { default as ThemeProvider } from "./ThemeProvider";
 export { default as ColorModeToggle } from "./ColorModeToggle";
-export { useThemeContext } from "./useM3Theme";
+export { useThemeContext } from "./useTheme";

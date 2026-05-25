@@ -211,7 +211,7 @@ const handleSmoothScroll = (
 };
 
 // Navbar component with M3 styling
-const M3Navbar = () => {
+const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [readmeOpen, setReadmeOpen] = useState(false);
 
@@ -749,4 +749,4 @@ const M3Navbar = () => {
   );
 };
 
-export default M3Navbar;
+export default Navbar;

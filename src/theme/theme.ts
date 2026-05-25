@@ -218,9 +218,9 @@ const darkThemeOptions: ThemeOptions = {
 };
 
 // Create the theme with M3 Expressive design principles
-const m3Theme = createTheme(lightThemeOptions);
+const theme = createTheme(lightThemeOptions);
 
-export default m3Theme;
+export default theme;
 
 // Export both light and dark theme options for potential theme switching
 export { lightThemeOptions, darkThemeOptions };

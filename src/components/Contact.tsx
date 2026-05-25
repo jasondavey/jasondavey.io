@@ -122,7 +122,7 @@ const ContactInfoItem = ({ icon, primary, secondary }: ContactInfoItemProps) => 
   );
 };
 
-const M3Contact = () => {
+const Contact = () => {
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -807,4 +807,4 @@ const M3Contact = () => {
   );
 };
 
-export default M3Contact;
+export default Contact;

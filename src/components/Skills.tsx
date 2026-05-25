@@ -182,7 +182,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
   );
 };
 
-const M3Skills = () => {
+const Skills = () => {
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -333,4 +333,4 @@ const M3Skills = () => {
   );
 };
 
-export default M3Skills;
+export default Skills;

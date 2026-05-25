@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { M3ThemeProvider } from "./theme";
+import { ThemeProvider } from "./theme";
 import { CssBaseline } from "@mui/material";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <M3ThemeProvider>
+    <ThemeProvider>
       <CssBaseline />
       <ExternalLinkProvider>
         <DocumentModalProvider>
@@ -30,7 +30,7 @@ const App = () => (
           </TooltipProvider>
         </DocumentModalProvider>
       </ExternalLinkProvider>
-    </M3ThemeProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
