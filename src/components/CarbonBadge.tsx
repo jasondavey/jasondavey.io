@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import CarbonInfoModal from "./CarbonInfoModal";
+import React, { useState, Suspense, lazy } from "react";
+const CarbonInfoModal = lazy(() => import("./CarbonInfoModal"));
 
 // Carbon badge component that opens a modal with detailed information
 const CarbonBadge: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => {
@@ -12,7 +12,11 @@ const CarbonBadge: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => 
   return (
     <div className="mt-4 flex justify-center">
       {/* Show modal when open */}
-      <CarbonInfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {isModalOpen && (
+        <Suspense fallback={null}>
+          <CarbonInfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </Suspense>
+      )}
 
       {/* Badge that triggers the modal */}
       <button

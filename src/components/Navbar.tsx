@@ -32,8 +32,9 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 
 import { motion } from "framer-motion";
+import { Suspense, lazy } from "react";
 import { ColorModeToggle } from "@/theme";
-import ReadmeModal from "./ReadmeModal";
+const ReadmeModal = lazy(() => import("./ReadmeModal"));
 import { navigationSections } from "@/utils/navigation";
 import { useExternalLink } from "@/context/ExternalLinkContext";
 import { useDocumentModal } from "@/context/DocumentModalContext";
@@ -744,7 +745,11 @@ const Navbar = () => {
       </Drawer>
 
       {/* Technical Documentation Modal */}
-      <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
+      {readmeOpen && (
+        <Suspense fallback={null}>
+          <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
+        </Suspense>
+      )}
     </>
   );
 };

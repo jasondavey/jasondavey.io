@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import ExternalLinkModal from "@/components/ExternalLinkModal";
+import React, { createContext, useContext, useState, ReactNode, Suspense, lazy } from "react";
+
+const ExternalLinkModal = lazy(() => import("@/components/ExternalLinkModal"));
 
 interface ExternalLinkContextType {
   openExternalLink: (url: string, title: string, description?: string) => void;
@@ -31,13 +32,17 @@ export const ExternalLinkProvider: React.FC<ExternalLinkProviderProps> = ({ chil
   return (
     <ExternalLinkContext.Provider value={{ openExternalLink }}>
       {children}
-      <ExternalLinkModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        url={linkData.url}
-        title={linkData.title}
-        description={linkData.description}
-      />
+      {isModalOpen && (
+        <Suspense fallback={null}>
+          <ExternalLinkModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            url={linkData.url}
+            title={linkData.title}
+            description={linkData.description}
+          />
+        </Suspense>
+      )}
     </ExternalLinkContext.Provider>
   );
 };

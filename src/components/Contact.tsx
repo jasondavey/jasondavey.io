@@ -25,7 +25,8 @@ import SendIcon from "@mui/icons-material/Send";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailOutlineIcon from "@mui/icons-material/MailOutlined";
-import LocationModal from "./LocationModal";
+import { Suspense, lazy } from "react";
+const LocationModal = lazy(() => import("./LocationModal"));
 
 // Styled components
 const SectionContainer = styled(Box)(({ theme }) => ({
@@ -775,11 +776,15 @@ const Contact = () => {
       </Container>
 
       {/* Location Modal */}
-      <LocationModal
-        isOpen={locationModalOpen}
-        onClose={() => setLocationModalOpen(false)}
-        location={selectedLocation}
-      />
+      {locationModalOpen && (
+        <Suspense fallback={null}>
+          <LocationModal
+            isOpen={locationModalOpen}
+            onClose={() => setLocationModalOpen(false)}
+            location={selectedLocation}
+          />
+        </Suspense>
+      )}
 
       {/* Snackbar for feedback */}
       <Snackbar

@@ -30,7 +30,8 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import MovieIcon from "@mui/icons-material/Movie";
 import GavelIcon from "@mui/icons-material/Gavel";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
-import ProjectDetailsModal from "./ProjectDetailsModal";
+import { Suspense, lazy } from "react";
+const ProjectDetailsModal = lazy(() => import("./ProjectDetailsModal"));
 
 // Import projects
 import ProjectVerascore from "./projects/ProjectVerascore";
@@ -669,11 +670,13 @@ const Projects = () => {
 
       {/* Project Details Modal */}
       {selectedProject && (
-        <ProjectDetailsModal
-          project={selectedProject}
-          open={detailsModalOpen}
-          onClose={handleCloseDetails}
-        />
+        <Suspense fallback={null}>
+          <ProjectDetailsModal
+            project={selectedProject}
+            open={detailsModalOpen}
+            onClose={handleCloseDetails}
+          />
+        </Suspense>
       )}
     </SectionContainer>
   );
