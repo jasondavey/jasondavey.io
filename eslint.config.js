@@ -27,5 +27,11 @@ export default tseslint.config(
       "react-hooks/set-state-in-effect": "off",
       "react-hooks/purity": "off",
     },
+  },
+  {
+    files: ["src/test/**", "src/**/*.{test,spec}.{ts,tsx}"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
   }
 );

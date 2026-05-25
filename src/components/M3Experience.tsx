@@ -72,16 +72,61 @@ const CustomTimelineDot = styled(TimelineDot)(({ theme }) => ({
 const experiences = [
   {
     id: 1,
+    role: "Staff Software Engineer",
+    company: "PlayOn Sports",
+    duration: "September 2025 - Present",
+    description:
+      "At PlayOn Sports I work on the national platform for high school sports streaming, ticketing, and media that powers NFHS Network and MaxPreps. My focus is connecting consumer subscription growth across both products, hardening the subscribe and purchase paths, and modernizing the platform so the team can ship with confidence.",
+    achievements: [
+      "Helped design and lead the MaxPreps subscription integration, connecting PlayOn's high school sports ecosystem with consumer subscription growth across NFHS Network and MaxPreps",
+      "Delivered subscription lifecycle improvements across transactional emails, membership and purchase receipts, and brand-aware dunning and cancellation flows",
+      "Improved release confidence by diagnosing and resolving flaky Playwright end-to-end tests on subscribe and purchase paths",
+      "Led platform modernization across TypeScript/Axios upgrades, EKS ramp-up, Nuxt upgrade validation, and CI credential rotation",
+    ],
+    technologies: [
+      "TypeScript",
+      "Nuxt",
+      "Vue",
+      "Node.js",
+      "AWS",
+      "EKS",
+      "Playwright",
+    ],
+  },
+  {
+    id: 2,
+    role: "VP Engineering",
+    company: "Nularity AI",
+    duration: "April 2025 - August 2025",
+    description:
+      "Co-founded the engineering function at a stealth-mode platform that extracts decision-grade insights from enterprise data. Set the technical direction, built the first systems, and stood up a deploy pipeline that let the team ship daily within two months.",
+    achievements: [
+      "Co-founded the engineering org and delivered a demo-ready MVP on AWS in two months",
+      "Designed a multi-model LLM gateway spanning Claude 3, GPT-4 Turbo, and Gemini 2.5",
+      "Designed the frontend and built the IaC/CDK stack (Vite + React, DynamoDB, Cognito, CloudFront, CI/CD pipelines) enabling daily production deploys by week eight",
+    ],
+    technologies: [
+      "TypeScript",
+      "React",
+      "Vite",
+      "AWS CDK",
+      "DynamoDB",
+      "Cognito",
+      "CloudFront",
+    ],
+  },
+  {
+    id: 3,
     role: "VP Engineering",
     company: "VeraScore",
-    duration: "June 2022 - Present",
+    duration: "June 2022 - April 2025",
     description:
-      "As Vice President of Engineering at VeraScore, I lead cross-functional engineering efforts to deliver an inclusive, data-forward financial health platform designed to empower underserved communities with access to fair credit. My role combines high-level technical strategy, team leadership, and cross-disciplinary collaboration to build systems that are fast, trustworthy, and deeply human-centered.",
+      "As Vice President of Engineering at VeraScore, I led cross-functional engineering efforts to deliver an inclusive, data-forward financial health platform designed to empower underserved communities with access to fair credit. My role combined high-level technical strategy, team leadership, and cross-disciplinary collaboration to build systems that are fast, trustworthy, and deeply human-centered.",
     achievements: [
       "Architected and led development of VeraScore's flagship financial scoring platform from prototype to production in under six months",
       "Directed the end-to-end design and implementation of VeraScore's flagship platform, balancing rapid iteration with long-term architectural resilience",
       "Architected a modern JAMStack-based platform with a CI/CD pipeline and cost-efficient cloud infrastructure to support scalable deployment",
-      "Currently developing an early-stage system leveraging Model Context Protocol (MCP) and AI assistants to provide customized insights",
+      "Developed an early-stage system leveraging Model Context Protocol (MCP) and AI assistants to provide customized insights",
       "Cultivated a high-trust engineering culture rooted in curiosity, ownership, and continuous learning",
     ],
     technologies: [
@@ -95,7 +140,7 @@ const experiences = [
     ],
   },
   {
-    id: 2,
+    id: 4,
     role: "VP Engineering",
     company: "EQIS Capital",
     duration: "August 2017 - November 2022",
@@ -119,7 +164,7 @@ const experiences = [
     ],
   },
   {
-    id: 3,
+    id: 5,
     role: "Principal Engineer",
     company: "Stamps.com",
     duration: "June 2010 - August 2017",
