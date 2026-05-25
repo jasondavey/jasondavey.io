@@ -15,7 +15,9 @@
     "test": "npm run build && start-server-and-test 'npm run preview -- --port 8080' http://localhost:8080 'cypress run'",
     "test:local": "start-server-and-test 'vite --port 8080' http://localhost:8080 'cypress run'",
     "test:unit": "vitest",
-    "test:unit:run": "vitest run"
+    "test:unit:run": "vitest run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -97,6 +99,7 @@
     "globals": "^17.6.0",
     "jsdom": "^29.1.1",
     "postcss": "^8.4.47",
+    "prettier": "^3.8.3",
     "start-server-and-test": "^3.0.5",
     "tailwindcss": "^3.4.11",
     "typescript": "^6.0.3",
