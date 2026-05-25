@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 import {
   Dialog,
   DialogTitle,
@@ -185,7 +186,7 @@ const M3ReadmeModal = ({ open, onOpenChange }: M3ReadmeModalProps) => {
                   },
                 }}
                 dangerouslySetInnerHTML={{ 
-                  __html: enhanceMarkdown(marked.parse(readmeContent) as string, isDarkMode)
+                  __html: enhanceMarkdown(DOMPurify.sanitize(marked.parse(readmeContent) as string), isDarkMode)
                 }}
               />
             </StyledDialogContent>

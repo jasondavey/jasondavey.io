@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaExternalLinkAlt, FaTimes } from "react-icons/fa";
 
 interface ExternalLinkModalProps {
@@ -16,17 +16,22 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  useEffect(() => {
+    if (!isModalOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isModalOpen]);
+
   const openModal = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsModalOpen(true);
-    // Prevent body scrolling when modal is open
-    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    // Restore body scrolling
-    document.body.style.overflow = "auto";
   };
 
   return (

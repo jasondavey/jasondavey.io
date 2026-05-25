@@ -34,9 +34,11 @@ const TypingQuotes: React.FC<TypingQuotesProps> = ({
   // Typing effect for quotes[1] and onward
   useEffect(() => {
     if (currentQuote === 0 || currentQuote >= quotes.length) return;
-    if (charIndex < quotes[currentQuote].length) {
+    const quote = quotes[currentQuote];
+    if (!quote) return;
+    if (charIndex < quote.length) {
       const timeout = setTimeout(() => {
-        setDisplayed((prev) => prev + quotes[currentQuote][charIndex]);
+        setDisplayed((prev) => prev + (quote[charIndex] ?? ""));
         setCharIndex((prev) => prev + 1);
       }, typingSpeed);
       return () => clearTimeout(timeout);
