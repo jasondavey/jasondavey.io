@@ -1,13 +1,13 @@
-import React, { useRef, useEffect } from "react";
-import { Box, Typography, Button, Container, useTheme } from "@mui/material";
+import { useRef } from "react";
+import { Box, Typography, Container, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useThemeContext } from "@/theme";
 import M3TypingQuotes from "./M3TypingQuotes";
 
 // Create dimensional layered elements with M3 styling
-const BackgroundLayer = styled(Box)(({ theme }) => ({
+const BackgroundLayer = styled(Box)(() => ({
   position: "absolute",
   inset: 0,
   overflow: "hidden",
@@ -67,7 +67,6 @@ const M3Hero = () => {
   const isDark = mode === "dark";
   
   const ref = useRef(null);
-  const inView = useInView(ref);
   const { scrollYProgress } = useScroll();
   const scrollYSpring = useSpring(scrollYProgress, { stiffness: 300, damping: 40 });
   

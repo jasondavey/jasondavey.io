@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Container,
   Typography,
   Link,
   IconButton,
-  Button,
   useTheme,
   alpha,
   Divider,
@@ -13,7 +12,6 @@ import {
 
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
-import { useThemeContext } from "@/theme";
 import ReadmeModal from "./ReadmeModal";
 import CarbonBadge from "./CarbonBadge";
 import { navigationSections } from "@/utils/navigation";
@@ -24,23 +22,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import PhoneIcon from "@mui/icons-material/Phone";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { TbCertificate } from "react-icons/tb";
 
 // Styled components for visual enhancement
-const FooterContainer = styled(Box)(({ theme }) => ({
-  position: "relative",
-  backgroundColor:
-    theme.palette.mode === "dark"
-      ? alpha(theme.palette.grey[900], 0.9)
-      : alpha(theme.palette.grey[100], 0.9),
-  overflow: "hidden",
-  paddingTop: theme.spacing(8),
-  paddingBottom: theme.spacing(4),
-  backdropFilter: "blur(10px)",
-}));
-
 const GlassPanel = styled(Box)(({ theme }) => ({
   background:
     theme.palette.mode === "dark"
@@ -109,7 +93,6 @@ const FooterLink = styled(Link)(({ theme }) => ({
 
 const M3Footer = () => {
   const theme = useTheme();
-  const { mode } = useThemeContext();
   const [readmeOpen, setReadmeOpen] = useState(false);
   const { openExternalLink } = useExternalLink();
 

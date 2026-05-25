@@ -9,11 +9,10 @@ import {
   Box,
   Typography,
   CircularProgress,
-  Paper,
   useTheme
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useThemeContext } from "@/theme";
 
 // Configure marked options for better formatting

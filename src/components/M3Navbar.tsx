@@ -13,7 +13,6 @@ import {
   Container,
   Divider,
   useScrollTrigger,
-  Slide,
   Fade,
   Button,
   Link,
@@ -33,10 +32,9 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 
 import { motion } from "framer-motion";
-import { useThemeContext, ColorModeToggle } from "@/theme";
+import { ColorModeToggle } from "@/theme";
 import ReadmeModal from "./ReadmeModal";
 import { navigationSections } from "@/utils/navigation";
-import ExternalLink from "./ExternalLink";
 import { useExternalLink } from "@/context/ExternalLinkContext";
 import { useDocumentModal } from "@/context/DocumentModalContext";
 
@@ -65,15 +63,6 @@ const NavButton = styled(Button)(({ theme }) => ({
     "&::after": {
       width: "100%",
     },
-  },
-}));
-
-const SocialIconButton = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.common.white,
-  padding: theme.spacing(1),
-  transition: "transform 0.3s ease, color 0.3s ease",
-  "&:hover": {
-    transform: "scale(1.15)",
   },
 }));
 
@@ -238,7 +227,6 @@ const handleSmoothScroll = (
 const M3Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [readmeOpen, setReadmeOpen] = useState(false);
-  const { mode } = useThemeContext();
 
   // Detect scroll for navbar styling changes
   const scrollTrigger = useScrollTrigger({

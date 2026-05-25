@@ -16,10 +16,8 @@ import {
   CircularProgress,
   Link,
 } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useThemeContext } from "@/theme";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import EmailOutlineIcon from "@mui/icons-material/EmailOutlined";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
@@ -136,7 +134,6 @@ const ContactInfoItem = ({
 
 const M3Contact = () => {
   const theme = useTheme();
-  const { mode } = useThemeContext();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,

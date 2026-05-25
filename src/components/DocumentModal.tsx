@@ -7,7 +7,6 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useThemeContext } from "@/theme";
 import { Box, Typography, useTheme } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import DownloadIcon from "@mui/icons-material/Download";
@@ -29,7 +28,6 @@ const DocumentModal: React.FC<DocumentModalProps> = ({
   title,
   documentType,
 }) => {
-  const { mode } = useThemeContext();
   const theme = useTheme();
 
   const handleDownload = () => {

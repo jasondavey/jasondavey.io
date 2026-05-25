@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   Typography,
@@ -19,7 +19,6 @@ import {
 } from "@mui/lab";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useThemeContext } from "@/theme";
 
 // Styled components
 const SectionContainer = styled(Box)(({ theme }) => ({
@@ -57,7 +56,7 @@ const GlassCard = styled(Paper)(({ theme }) => ({
       : "0 10px 30px rgba(0, 0, 0, 0.1)",
 }));
 
-const CustomTimelineItem = styled(TimelineItem)(({ theme }) => ({
+const CustomTimelineItem = styled(TimelineItem)(() => ({
   "&:before": {
     display: "none",
   },
@@ -148,7 +147,6 @@ const experiences = [
 
 const M3Experience: React.FC = () => {
   const theme = useTheme();
-  const { mode } = useThemeContext();
   const ref = useRef<HTMLDivElement>(null);
 
   // Create refs for each experience item outside of the map function

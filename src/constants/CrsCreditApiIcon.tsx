@@ -1,4 +1,10 @@
-export const CrsCreditApiIcon = ({ title, ...props }) => (
+import type { SVGProps } from "react";
+
+interface CrsCreditApiIconProps extends SVGProps<SVGSVGElement> {
+  title?: string;
+}
+
+export const CrsCreditApiIcon = ({ title, ...props }: CrsCreditApiIconProps) => (
   <svg
     width="24"
     height="24"

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useMediaQuery } from '@mui/material';
 import { lightThemeOptions, darkThemeOptions } from './m3Theme';
 import { ThemeContext } from './useM3Theme';
 
@@ -12,7 +11,6 @@ interface M3ThemeProviderProps {
 
 // Main theme provider component
 const M3ThemeProvider: React.FC<M3ThemeProviderProps> = ({ children }) => {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [mounted, setMounted] = useState(false);
   const [mode, setMode] = useState<'light' | 'dark'>('dark');
 

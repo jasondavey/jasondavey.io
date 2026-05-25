@@ -1,5 +1,5 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
-import { deepPurple, purple, blue, teal } from '@mui/material/colors';
+import { purple, blue, teal } from '@mui/material/colors';
 
 // Create theme options based on M3 Expressive principles
 const lightThemeOptions: ThemeOptions = {

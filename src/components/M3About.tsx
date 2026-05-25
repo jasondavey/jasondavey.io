@@ -10,7 +10,6 @@ import {
 import WorldCitiesLine from "./WorldCitiesLine";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useThemeContext } from "@/theme";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import SpeedIcon from "@mui/icons-material/Speed";
@@ -38,7 +37,7 @@ const BackdropGradient = styled(Box)(({ theme }) => ({
   zIndex: 0,
 }));
 
-const ContentWrapper = styled(Container)(({ theme }) => ({
+const ContentWrapper = styled(Container)(() => ({
   position: "relative",
   zIndex: 1,
 }));
@@ -145,7 +144,6 @@ const Feature: React.FC<FeatureProps> = ({
 };
 
 const M3About = () => {
-  const { mode } = useThemeContext();
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({

@@ -1,11 +1,8 @@
-import { 
-  FaReact, 
-  FaAws, 
-  FaGithub, 
-  FaNodeJs, 
-  FaHeart, 
-  FaCode, 
-  FaVial,
+import {
+  FaReact,
+  FaAws,
+  FaHeart,
+  FaCode,
   FaCommentAlt
 } from "react-icons/fa";
 import {
