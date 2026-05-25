@@ -14,18 +14,18 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
 
 // Simpler approach to detect page readiness
-Cypress.Commands.add('waitForPageLoad', () => {
-  cy.log('Waiting for page to fully load...');
-  
+Cypress.Commands.add("waitForPageLoad", () => {
+  cy.log("Waiting for page to fully load...");
+
   // Wait for document ready state
-  cy.document().should('have.property', 'readyState').and('equal', 'complete');
-  
+  cy.document().should("have.property", "readyState").and("equal", "complete");
+
   // Wait for body to exist
-  cy.get('body').should('exist');
-  
+  cy.get("body").should("exist");
+
   // Optional - wait a bit more for any React hydration
   cy.wait(1000);
 });
@@ -36,12 +36,12 @@ beforeEach(() => {
   try {
     cy.waitForPageLoad();
   } catch (e) {
-    cy.log('Error waiting for page load:', e.message);
+    cy.log("Error waiting for page load:", e.message);
   }
 });
 
 // This ensures errors in your application's code don't fail the test
-Cypress.on('uncaught:exception', (err, runnable) => {
+Cypress.on("uncaught:exception", (err, runnable) => {
   // returning false here prevents Cypress from failing the test
   return false;
 });

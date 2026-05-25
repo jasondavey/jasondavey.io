@@ -8,23 +8,20 @@ const ProjectEqisCapital: Project = {
   businessView: (
     <>
       <p className="mb-2">
-        <strong>Problem:</strong> Registered Investment Advisors (RIAs) and
-        financial advisors face fragmented technology, time-consuming
-        operations, and limited flexibility when managing client portfolios and
-        scaling their practices.
+        <strong>Problem:</strong> Registered Investment Advisors (RIAs) and financial advisors face
+        fragmented technology, time-consuming operations, and limited flexibility when managing
+        client portfolios and scaling their practices.
       </p>
       <p className="mb-2">
-        <strong>Purpose:</strong> EqisCapital (now part of Freedom Advisors)
-        delivers a unified, private-labeled turnkey asset management platform
-        (TAMP) that empowers advisors to operate efficiently, deliver superior
-        results for clients, and build equity in their businesses.
+        <strong>Purpose:</strong> EqisCapital (now part of Freedom Advisors) delivers a unified,
+        private-labeled turnkey asset management platform (TAMP) that empowers advisors to operate
+        efficiently, deliver superior results for clients, and build equity in their businesses.
       </p>
       <p className="mb-2">
-        <strong>Business Solution:</strong> The platform consolidates portfolio
-        management, trading, reporting, account opening, and model marketplace
-        access into a seamless, flexible system. Advisors can focus on client
-        relationships and growth, while operational complexity is handled by
-        expert support staff and robust automation.
+        <strong>Business Solution:</strong> The platform consolidates portfolio management, trading,
+        reporting, account opening, and model marketplace access into a seamless, flexible system.
+        Advisors can focus on client relationships and growth, while operational complexity is
+        handled by expert support staff and robust automation.
       </p>
     </>
   ),
@@ -33,29 +30,27 @@ const ProjectEqisCapital: Project = {
   description: (
     <>
       <p className="mb-2">
-        Freedom Advisors is a next-generation TAMP offering RIAs and advisors a
-        comprehensive, cloud-based platform to power their practices. Accessible
-        from any device and fully private-labeled, it unifies all aspects of
-        portfolio management, trading, reporting, and client service.
+        Freedom Advisors is a next-generation TAMP offering RIAs and advisors a comprehensive,
+        cloud-based platform to power their practices. Accessible from any device and fully
+        private-labeled, it unifies all aspects of portfolio management, trading, reporting, and
+        client service.
       </p>
       <p className="mb-2">
-        Key features include robust client and household-level reporting,
-        real-time portfolio performance, transaction history, and document
-        management. Advisors benefit from a marketplace of over 100 model
-        providers and 600+ curated investment models, with deep due diligence
-        handled by the platform.
+        Key features include robust client and household-level reporting, real-time portfolio
+        performance, transaction history, and document management. Advisors benefit from a
+        marketplace of over 100 model providers and 600+ curated investment models, with deep due
+        diligence handled by the platform.
       </p>
       <p className="mb-2">
-        High-touch operational support covers portfolio construction, systematic
-        trading, rebalancing, drift tracking, account opening, and custodian
-        management. The platform's flexible architecture enables advisors to
-        scale efficiently, deliver results, and focus on building lasting client
-        relationships and equity value.
+        High-touch operational support covers portfolio construction, systematic trading,
+        rebalancing, drift tracking, account opening, and custodian management. The platform's
+        flexible architecture enables advisors to scale efficiently, deliver results, and focus on
+        building lasting client relationships and equity value.
       </p>
       <p className="mb-2">
-        <strong>Role:</strong> As VP Engineering, led the design and delivery of
-        scalable cloud infrastructure, advisor and client portals, secure data
-        integrations, and automated workflows powering the EqisCapital platform.
+        <strong>Role:</strong> As VP Engineering, led the design and delivery of scalable cloud
+        infrastructure, advisor and client portals, secure data integrations, and automated
+        workflows powering the EqisCapital platform.
       </p>
     </>
   ),

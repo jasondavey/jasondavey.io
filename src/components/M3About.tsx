@@ -1,12 +1,5 @@
 import React, { useRef } from "react";
-import {
-  Box,
-  Typography,
-  Container,
-  Card,
-  CardContent,
-  useTheme,
-} from "@mui/material";
+import { Box, Typography, Container, Card, CardContent, useTheme } from "@mui/material";
 import WorldCitiesLine from "./WorldCitiesLine";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
@@ -19,10 +12,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   padding: theme.spacing(20, 0),
   overflow: "hidden",
-  backgroundColor:
-    theme.palette.mode === "dark"
-      ? theme.palette.background.default
-      : "#f8f9fa",
+  backgroundColor: theme.palette.mode === "dark" ? theme.palette.background.default : "#f8f9fa",
 }));
 
 const BackdropGradient = styled(Box)(({ theme }) => ({
@@ -56,9 +46,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
       : "0 8px 32px rgba(0, 0, 0, 0.05)",
   backdropFilter: "blur(10px)",
   border: `1px solid ${
-    theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.05)"
-      : "rgba(255, 255, 255, 0.8)"
+    theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.8)"
   }`,
   "&:hover": {
     transform: "translateY(-8px)",
@@ -77,12 +65,7 @@ interface FeatureProps {
   delay: number;
 }
 
-const Feature: React.FC<FeatureProps> = ({
-  icon,
-  title,
-  description,
-  delay,
-}) => {
+const Feature: React.FC<FeatureProps> = ({ icon, title, description, delay }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-100px 0px" });
   const theme = useTheme();
@@ -96,10 +79,7 @@ const Feature: React.FC<FeatureProps> = ({
     >
       <StyledCard>
         <CardContent sx={{ p: 4 }}>
-          <motion.div
-            whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div whileHover={{ rotate: [0, -10, 10, -10, 0] }} transition={{ duration: 0.5 }}>
             <Box
               sx={{
                 display: "flex",
@@ -160,9 +140,7 @@ const M3About = () => {
       <BackdropGradient />
 
       {/* Floating elements in background */}
-      <Box
-        sx={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0 }}
-      >
+      <Box sx={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0 }}>
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
@@ -252,13 +230,11 @@ const M3About = () => {
                 mb: 6,
               }}
             >
-              British born, American raised, I build tech with passion and
-              purpose, creating intuitive customer centric experiences and
-              value. I'm typically involved from conception to release,
-              fostering success through hands-on technical and project
-              leadership. And with expertise spanning both engineering and
-              leadership, I bring a unique perspective that blends technical
-              excellence with strategic vision.
+              British born, American raised, I build tech with passion and purpose, creating
+              intuitive customer centric experiences and value. I'm typically involved from
+              conception to release, fostering success through hands-on technical and project
+              leadership. And with expertise spanning both engineering and leadership, I bring a
+              unique perspective that blends technical excellence with strategic vision.
             </Typography>
           </Box>
         </motion.div>
@@ -300,26 +276,30 @@ const M3About = () => {
             variant="h5"
             component="h3"
             sx={{
-              textAlign: 'center',
+              textAlign: "center",
               fontWeight: 600,
               mb: 2,
-              color: theme.palette.primary.main
+              color: theme.palette.primary.main,
             }}
           >
             International Experience
           </Typography>
-          
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'center',
-            mt: 2,
-            mb: 4
-          }}>
-            <Box sx={{ 
-              color: theme.palette.text.primary,
-              maxWidth: '900px',
-              width: '100%'
-            }}>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mt: 2,
+              mb: 4,
+            }}
+          >
+            <Box
+              sx={{
+                color: theme.palette.text.primary,
+                maxWidth: "900px",
+                width: "100%",
+              }}
+            >
               <WorldCitiesLine />
             </Box>
           </Box>

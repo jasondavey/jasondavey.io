@@ -70,9 +70,7 @@ const ProjectCard = styled(motion(Card))(({ theme }) => ({
         )}, ${alpha(theme.palette.grey[100], 0.9)})`,
   backdropFilter: "blur(10px)",
   border: `1px solid ${
-    theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.05)"
-      : "rgba(255, 255, 255, 0.8)"
+    theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.8)"
   }`,
   boxShadow:
     theme.palette.mode === "dark"
@@ -123,41 +121,17 @@ const projects: Project[] = [...allProjects].sort(
 const getIndustryIcon = (industry: string) => {
   switch (industry) {
     case "Fintech":
-      return (
-        <TrendingUpIcon
-          fontSize="small"
-          sx={{ verticalAlign: "middle", ml: 1 }}
-        />
-      );
+      return <TrendingUpIcon fontSize="small" sx={{ verticalAlign: "middle", ml: 1 }} />;
     case "Shipping":
-      return (
-        <LocalShippingIcon
-          fontSize="small"
-          sx={{ verticalAlign: "middle", ml: 1 }}
-        />
-      );
+      return <LocalShippingIcon fontSize="small" sx={{ verticalAlign: "middle", ml: 1 }} />;
     case "Media":
-      return (
-        <MovieIcon fontSize="small" sx={{ verticalAlign: "middle", ml: 1 }} />
-      );
+      return <MovieIcon fontSize="small" sx={{ verticalAlign: "middle", ml: 1 }} />;
     case "Legal":
-      return (
-        <GavelIcon fontSize="small" sx={{ verticalAlign: "middle", ml: 1 }} />
-      );
+      return <GavelIcon fontSize="small" sx={{ verticalAlign: "middle", ml: 1 }} />;
     case "Tourism":
-      return (
-        <TravelExploreIcon
-          fontSize="small"
-          sx={{ verticalAlign: "middle", ml: 1 }}
-        />
-      );
+      return <TravelExploreIcon fontSize="small" sx={{ verticalAlign: "middle", ml: 1 }} />;
     default:
-      return (
-        <AllInclusiveIcon
-          fontSize="small"
-          sx={{ verticalAlign: "middle", ml: 1 }}
-        />
-      );
+      return <AllInclusiveIcon fontSize="small" sx={{ verticalAlign: "middle", ml: 1 }} />;
   }
 };
 
@@ -187,14 +161,10 @@ const M3Projects = () => {
   const [detailsModalOpen, setDetailsModalOpen] = useState<boolean>(false);
 
   // Create refs array for project items - proper React pattern
-  const projectRefs = useRef<(HTMLDivElement | null)[]>(
-    projects.map(() => null)
-  );
+  const projectRefs = useRef<(HTMLDivElement | null)[]>(projects.map(() => null));
 
   // Use a state array to track visibility instead of useInView inside map
-  const [visibleProjects, setVisibleProjects] = useState<boolean[]>(
-    projects.map(() => false)
-  );
+  const [visibleProjects, setVisibleProjects] = useState<boolean[]>(projects.map(() => false));
 
   // Parallax scrolling effect
   const { scrollYProgress } = useScroll({
@@ -227,20 +197,11 @@ const M3Projects = () => {
       setFilteredProjects(projects);
     } else {
       // Map tab index to industry
-      const industries = [
-        "All",
-        "Fintech",
-        "Shipping",
-        "Media",
-        "Legal",
-        "Tourism",
-      ];
+      const industries = ["All", "Fintech", "Shipping", "Media", "Legal", "Tourism"];
       const selectedIndustry = industries[newValue];
 
       // Filter projects by the selected industry
-      setFilteredProjects(
-        projects.filter((project) => project.industry === selectedIndustry)
-      );
+      setFilteredProjects(projects.filter((project) => project.industry === selectedIndustry));
     }
   };
 
@@ -408,28 +369,12 @@ const M3Projects = () => {
                 },
               }}
             >
-              <Tab
-                label="All"
-                icon={<AllInclusiveIcon />}
-                iconPosition="start"
-              />
-              <Tab
-                label="Fintech"
-                icon={<TrendingUpIcon />}
-                iconPosition="start"
-              />
-              <Tab
-                label="Shipping"
-                icon={<LocalShippingIcon />}
-                iconPosition="start"
-              />
+              <Tab label="All" icon={<AllInclusiveIcon />} iconPosition="start" />
+              <Tab label="Fintech" icon={<TrendingUpIcon />} iconPosition="start" />
+              <Tab label="Shipping" icon={<LocalShippingIcon />} iconPosition="start" />
               <Tab label="Media" icon={<MovieIcon />} iconPosition="start" />
               <Tab label="Legal" icon={<GavelIcon />} iconPosition="start" />
-              <Tab
-                label="Tourism"
-                icon={<TravelExploreIcon />}
-                iconPosition="start"
-              />
+              <Tab label="Tourism" icon={<TravelExploreIcon />} iconPosition="start" />
             </Tabs>
           </Box>
         </Box>
@@ -486,10 +431,7 @@ const M3Projects = () => {
                   >
                     {(project.image || project.videoUrl) && (
                       <StyledCardMedia
-                        image={
-                          project.image ||
-                          getYouTubeThumbnail(project.videoUrl || "")
-                        }
+                        image={project.image || getYouTubeThumbnail(project.videoUrl || "")}
                         title={project.title}
                         sx={{ height: 240 }}
                       />
@@ -505,9 +447,7 @@ const M3Projects = () => {
                         mb: 1,
                       }}
                     >
-                      <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 1.5 }}
-                      >
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                         {project.prototype && (
                           <Chip
                             label="Prototype"
@@ -519,10 +459,7 @@ const M3Projects = () => {
                                   ? alpha(theme.palette.secondary.main, 0.2)
                                   : alpha(theme.palette.secondary.main, 0.1),
                               color: theme.palette.secondary.main,
-                              border: `1px solid ${alpha(
-                                theme.palette.secondary.main,
-                                0.3
-                              )}`,
+                              border: `1px solid ${alpha(theme.palette.secondary.main, 0.3)}`,
                               fontWeight: 600,
                               fontSize: "0.7rem",
                               height: "24px",
@@ -543,9 +480,7 @@ const M3Projects = () => {
                             backgroundClip: "text",
                             WebkitBackgroundClip: "text",
                             WebkitTextFillColor:
-                              hoveredProject === project.title
-                                ? "transparent"
-                                : "inherit",
+                              hoveredProject === project.title ? "transparent" : "inherit",
                             transition: "all 0.3s ease",
                             mb: 0,
                           }}
@@ -558,8 +493,7 @@ const M3Projects = () => {
                         <Box
                           component="img"
                           src={
-                            theme.palette.mode === "dark" &&
-                            project.darkModeCompanyIcon
+                            theme.palette.mode === "dark" && project.darkModeCompanyIcon
                               ? project.darkModeCompanyIcon
                               : project.companyIcon
                           }
@@ -594,10 +528,7 @@ const M3Projects = () => {
                         mb: 2,
                       }}
                     >
-                      <Typography
-                        variant="body2"
-                        sx={{ display: "flex", alignItems: "center" }}
-                      >
+                      <Typography variant="body2" sx={{ display: "flex", alignItems: "center" }}>
                         <strong>Industry:</strong>
                         <span style={{ marginLeft: "0.5rem" }}>
                           {project.industry}
@@ -606,15 +537,11 @@ const M3Projects = () => {
                       </Typography>
                       <Typography variant="body2">
                         {project.startYear}
-                        {project.endYear
-                          ? ` - ${project.endYear}`
-                          : " - Present"}
+                        {project.endYear ? ` - ${project.endYear}` : " - Present"}
                       </Typography>
                     </Box>
 
-                    <Box
-                      sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 2 }}
-                    >
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 2 }}>
                       {project.technologies.map((tech) => (
                         <Chip
                           key={tech}
@@ -628,10 +555,7 @@ const M3Projects = () => {
                                 : alpha(theme.palette.primary.light, 0.2),
                             color: theme.palette.primary.main,
                             fontWeight: 500,
-                            border: `1px solid ${alpha(
-                              theme.palette.primary.main,
-                              0.3
-                            )}`,
+                            border: `1px solid ${alpha(theme.palette.primary.main, 0.3)}`,
                             mb: 0.5,
                           }}
                         />

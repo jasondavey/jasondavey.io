@@ -45,5 +45,5 @@ export const FreedomAdvisorsTechMap: Record<
     icon: <FaLayerGroup className="text-blue-600" title="Microservices" />,
     url: "https://microservices.io/",
     category: "Architecture",
-  }
+  },
 };

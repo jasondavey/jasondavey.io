@@ -58,9 +58,7 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-border p-3">
-              <h3 className="text-lg font-semibold truncate">
-                {title || href}
-              </h3>
+              <h3 className="text-lg font-semibold truncate">{title || href}</h3>
               <div className="flex items-center gap-3">
                 <a
                   href={href}

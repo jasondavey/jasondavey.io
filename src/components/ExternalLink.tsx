@@ -3,7 +3,7 @@ import { useExternalLink } from "@/context/ExternalLinkContext";
 import { Link, LinkProps } from "@mui/material";
 import { SxProps, Theme } from "@mui/system";
 
-interface ExternalLinkProps extends Omit<LinkProps, 'title' | 'href'> {
+interface ExternalLinkProps extends Omit<LinkProps, "title" | "href"> {
   href: string;
   title: string;
   description?: string;

@@ -43,9 +43,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
           )}, ${alpha(theme.palette.grey[100], 0.9)})`,
     backdropFilter: "blur(10px)",
     border: `1px solid ${
-      theme.palette.mode === "dark"
-        ? "rgba(255, 255, 255, 0.05)"
-        : "rgba(255, 255, 255, 0.8)"
+      theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.8)"
     }`,
     boxShadow:
       theme.palette.mode === "dark"
@@ -124,11 +122,7 @@ interface ProjectDetailsModalProps {
   onClose: () => void;
 }
 
-const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
-  project,
-  open,
-  onClose,
-}) => {
+const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, open, onClose }) => {
   const theme = useTheme();
   const [tabValue, setTabValue] = React.useState(0);
 
@@ -137,12 +131,8 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
   };
 
   // Determine which tabs to show based on available data
-  const showBusinessTab = Boolean(
-    project.businessView || project.businessTerms
-  );
-  const showArchitectureTab = Boolean(
-    project.description || project.keyArchitecture
-  );
+  const showBusinessTab = Boolean(project.businessView || project.businessTerms);
+  const showArchitectureTab = Boolean(project.description || project.keyArchitecture);
   const showResultsTab = Boolean(project.resultsImpact);
   const showVideoTab = Boolean(project.videoUrl);
 
@@ -187,9 +177,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
             <Typography variant="h5" component="h2" fontWeight={600}>
               {project.title}
             </Typography>
-            <Box
-              sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}
-            >
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
               {project.companyName && (
                 <Typography variant="subtitle1" color="text.secondary">
                   {project.companyName}
@@ -263,9 +251,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               label="Results & Impact"
               icon={<BarChartIcon sx={{ fontSize: 18 }} />}
               iconPosition="start"
-              {...a11yProps(
-                (showBusinessTab ? 1 : 0) + (showArchitectureTab ? 1 : 0)
-              )}
+              {...a11yProps((showBusinessTab ? 1 : 0) + (showArchitectureTab ? 1 : 0))}
             />
           )}
           {showVideoTab && (
@@ -275,9 +261,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
               iconPosition="start"
               sx={{ minHeight: "auto", py: 1.5 }}
               {...a11yProps(
-                (showBusinessTab ? 1 : 0) +
-                  (showArchitectureTab ? 1 : 0) +
-                  (showResultsTab ? 1 : 0)
+                (showBusinessTab ? 1 : 0) + (showArchitectureTab ? 1 : 0) + (showResultsTab ? 1 : 0)
               )}
             />
           )}
@@ -312,10 +296,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
                       key={index}
                       label={term}
                       sx={{
-                        backgroundColor: alpha(
-                          theme.palette.secondary.main,
-                          0.1
-                        ),
+                        backgroundColor: alpha(theme.palette.secondary.main, 0.1),
                         color: theme.palette.secondary.main,
                         fontWeight: 500,
                       }}
@@ -470,9 +451,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({
           <TabPanel
             value={tabValue}
             index={
-              (showBusinessTab ? 1 : 0) +
-              (showArchitectureTab ? 1 : 0) +
-              (showResultsTab ? 1 : 0)
+              (showBusinessTab ? 1 : 0) + (showArchitectureTab ? 1 : 0) + (showResultsTab ? 1 : 0)
             }
           >
             <GlassContent>

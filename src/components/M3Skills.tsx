@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
-import { 
-  Box, 
-  Typography, 
-  Container, 
+import {
+  Box,
+  Typography,
+  Container,
   Grid,
   LinearProgress,
   useTheme,
   alpha,
-  Paper
+  Paper,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
@@ -17,9 +17,10 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: "relative",
   padding: theme.spacing(15, 0),
   overflow: "hidden",
-  backgroundColor: theme.palette.mode === "dark" 
-    ? alpha(theme.palette.background.default, 0.9)
-    : alpha(theme.palette.grey[50], 0.9),
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? alpha(theme.palette.background.default, 0.9)
+      : alpha(theme.palette.grey[50], 0.9),
   scrollMarginTop: "96px", // Matches the 'scroll-mt-24' from the original Skills component
 }));
 
@@ -27,35 +28,39 @@ const GradientPaper = styled(Paper)(({ theme }) => ({
   borderRadius: Number(theme.shape.borderRadius) * 3,
   padding: theme.spacing(3),
   height: "100%",
-  background: theme.palette.mode === "dark"
-    ? `linear-gradient(145deg, ${alpha(theme.palette.grey[900], 0.7)}, ${alpha(theme.palette.background.paper, 0.7)})`
-    : `linear-gradient(145deg, ${alpha(theme.palette.background.paper, 0.7)}, ${alpha(theme.palette.grey[100], 0.7)})`,
+  background:
+    theme.palette.mode === "dark"
+      ? `linear-gradient(145deg, ${alpha(theme.palette.grey[900], 0.7)}, ${alpha(theme.palette.background.paper, 0.7)})`
+      : `linear-gradient(145deg, ${alpha(theme.palette.background.paper, 0.7)}, ${alpha(theme.palette.grey[100], 0.7)})`,
   backdropFilter: "blur(10px)",
-  border: `1px solid ${theme.palette.mode === "dark"
-    ? "rgba(255, 255, 255, 0.05)"
-    : "rgba(255, 255, 255, 0.8)"}`,
-  boxShadow: theme.palette.mode === "dark"
-    ? "0 10px 30px rgba(0, 0, 0, 0.3)"
-    : "0 10px 30px rgba(0, 0, 0, 0.1)",
+  border: `1px solid ${
+    theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.8)"
+  }`,
+  boxShadow:
+    theme.palette.mode === "dark"
+      ? "0 10px 30px rgba(0, 0, 0, 0.3)"
+      : "0 10px 30px rgba(0, 0, 0, 0.1)",
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
   "&:hover": {
     transform: "translateY(-5px)",
-    boxShadow: theme.palette.mode === "dark"
-      ? "0 15px 40px rgba(0, 0, 0, 0.4)"
-      : "0 15px 40px rgba(0, 0, 0, 0.15)",
-  }
+    boxShadow:
+      theme.palette.mode === "dark"
+        ? "0 15px 40px rgba(0, 0, 0, 0.4)"
+        : "0 15px 40px rgba(0, 0, 0, 0.15)",
+  },
 }));
 
 const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
-  backgroundColor: theme.palette.mode === "dark" 
-    ? alpha(theme.palette.grey[700], 0.5)
-    : alpha(theme.palette.grey[300], 0.5),
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? alpha(theme.palette.grey[700], 0.5)
+      : alpha(theme.palette.grey[300], 0.5),
   "& .MuiLinearProgress-bar": {
     borderRadius: 5,
     background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-  }
+  },
 }));
 
 // Skill categories and skills
@@ -69,7 +74,7 @@ const skillCategories = [
       { name: "Next.js", level: 85 },
       { name: "HTML/CSS", level: 95 },
       { name: "Material UI", level: 90 },
-    ]
+    ],
   },
   {
     id: 2,
@@ -80,7 +85,7 @@ const skillCategories = [
       { name: "Python", level: 80 },
       { name: "GraphQL", level: 85 },
       { name: "RESTful APIs", level: 95 },
-    ]
+    ],
   },
   {
     id: 3,
@@ -91,7 +96,7 @@ const skillCategories = [
       { name: "AWS", level: 85 },
       { name: "CI/CD", level: 90 },
       { name: "Terraform", level: 80 },
-    ]
+    ],
   },
   {
     id: 4,
@@ -102,8 +107,8 @@ const skillCategories = [
       { name: "Agile/Scrum", level: 90 },
       { name: "Data Analysis", level: 85 },
       { name: "System Architecture", level: 90 },
-    ]
-  }
+    ],
+  },
 ];
 
 // Skill category component
@@ -120,7 +125,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px 0px" });
   const theme = useTheme();
-  
+
   return (
     <motion.div
       ref={ref}
@@ -129,11 +134,11 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
       transition={{ duration: 0.8, delay: 0.2 * index }}
     >
       <GradientPaper elevation={0}>
-        <Typography 
-          variant="h5" 
-          component="h3" 
+        <Typography
+          variant="h5"
+          component="h3"
           gutterBottom
-          sx={{ 
+          sx={{
             fontWeight: 700,
             mb: 3,
             background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
@@ -144,7 +149,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
         >
           {category.name}
         </Typography>
-        
+
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
           {category.skills.map((skill, idx) => (
             <Box key={skill.name}>
@@ -156,23 +161,16 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
                   {skill.level}%
                 </Typography>
               </Box>
-              
+
               <Box sx={{ position: "relative" }}>
-                <StyledLinearProgress
-                  variant="determinate"
-                  value={0}
-                  sx={{ opacity: 0.5 }}
-                />
+                <StyledLinearProgress variant="determinate" value={0} sx={{ opacity: 0.5 }} />
                 <Box sx={{ position: "absolute", top: 0, left: 0, width: "100%" }}>
                   <motion.div
                     initial={{ width: "0%" }}
                     animate={isInView ? { width: `${skill.level}%` } : { width: "0%" }}
-                    transition={{ duration: 1, delay: 0.3 + (0.1 * idx) }}
+                    transition={{ duration: 1, delay: 0.3 + 0.1 * idx }}
                   >
-                    <StyledLinearProgress
-                      variant="determinate"
-                      value={100}
-                    />
+                    <StyledLinearProgress variant="determinate" value={100} />
                   </motion.div>
                 </Box>
               </Box>
@@ -189,20 +187,20 @@ const M3Skills = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
-  
+
   const backgroundX = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
-  
+
   return (
     <SectionContainer ref={ref} id="skills">
       {/* Animated background elements */}
       <Box sx={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
         {/* Dynamic abstract shapes */}
         <motion.div
-          style={{ 
-            position: "absolute", 
-            top: "10%", 
+          style={{
+            position: "absolute",
+            top: "10%",
             right: "-10%",
             width: "50vw",
             height: "50vw",
@@ -211,11 +209,11 @@ const M3Skills = () => {
             x: backgroundX,
           }}
         />
-        
+
         <motion.div
-          style={{ 
-            position: "absolute", 
-            bottom: "5%", 
+          style={{
+            position: "absolute",
+            bottom: "5%",
             left: "-5%",
             width: "40vw",
             height: "40vw",
@@ -224,7 +222,7 @@ const M3Skills = () => {
             x: useTransform(scrollYProgress, [0, 1], ["0%", "10%"]),
           }}
         />
-        
+
         {/* Floating dots pattern */}
         <Box sx={{ position: "absolute", inset: 0 }}>
           {[...Array(20)].map((_, i) => (
@@ -253,7 +251,7 @@ const M3Skills = () => {
           ))}
         </Box>
       </Box>
-      
+
       <Container sx={{ position: "relative", zIndex: 1 }}>
         {/* Section heading */}
         <Box sx={{ textAlign: "center", mb: 10 }}>
@@ -276,7 +274,7 @@ const M3Skills = () => {
             >
               My Expertise
             </Typography>
-            
+
             <motion.div
               initial={{ width: "0%" }}
               whileInView={{ width: "120px" }}
@@ -288,7 +286,7 @@ const M3Skills = () => {
                 margin: "0 auto 2rem",
               }}
             />
-            
+
             <Typography
               variant="h2"
               component="h2"
@@ -304,7 +302,7 @@ const M3Skills = () => {
             >
               Skills & Technologies
             </Typography>
-            
+
             <Typography
               variant="body1"
               sx={{
@@ -316,12 +314,12 @@ const M3Skills = () => {
                 mb: 6,
               }}
             >
-              I continually expand my skill set to stay at the cutting edge of technology.
-              Here's a snapshot of my current technical and professional capabilities.
+              I continually expand my skill set to stay at the cutting edge of technology. Here's a
+              snapshot of my current technical and professional capabilities.
             </Typography>
           </motion.div>
         </Box>
-        
+
         {/* Skills grid */}
         <Grid container spacing={4}>
           {skillCategories.map((category, index) => (

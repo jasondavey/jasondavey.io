@@ -1,6 +1,9 @@
 import * as React from "react";
 
-export const AwsS3Icon = ({ title = "Amazon S3", ...props }: React.SVGProps<SVGSVGElement> & { title?: string }) => (
+export const AwsS3Icon = ({
+  title = "Amazon S3",
+  ...props
+}: React.SVGProps<SVGSVGElement> & { title?: string }) => (
   <svg
     viewBox="0 0 64 64"
     width={32}

@@ -52,10 +52,7 @@ export interface Project {
   /**
    * Technology icon mapping for custom technology display.
    */
-  techIconMap?: Record<
-    string,
-    { category: string; icon: ReactElement; url: string }
-  >;
+  techIconMap?: Record<string, { category: string; icon: ReactElement; url: string }>;
   showCodeButton?: boolean;
   externalLinks?: {
     url: string;

@@ -1,5 +1,11 @@
 import React from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Box } from "@mui/material";
 
 interface LocationModalProps {
@@ -23,7 +29,7 @@ const LocationModal: React.FC<LocationModalProps> = ({ isOpen, onClose, location
             Here's where you can find me in {location.name}
           </DialogDescription>
         </DialogHeader>
-        
+
         <Box className="w-full h-[400px] mt-2 rounded-lg overflow-hidden">
           <iframe
             src={location.embed}

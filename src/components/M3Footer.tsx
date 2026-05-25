@@ -39,9 +39,7 @@ const GlassPanel = styled(Box)(({ theme }) => ({
   backdropFilter: "blur(8px)",
   borderRadius: Number(theme.shape.borderRadius) * 3,
   border: `1px solid ${
-    theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.08)"
-      : "rgba(255, 255, 255, 0.8)"
+    theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.8)"
   }`,
   boxShadow:
     theme.palette.mode === "dark"
@@ -180,16 +178,13 @@ const M3Footer = () => {
               </Typography>
 
               <Typography variant="body2" sx={{ mb: 3, opacity: 0.7 }}>
-                Engineering leader passionate about creating innovative
-                solutions that solve real problems while developing great teams.
+                Engineering leader passionate about creating innovative solutions that solve real
+                problems while developing great teams.
               </Typography>
 
               {/* Social links */}
               <Box sx={{ display: "flex", mb: 3 }}>
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Link
                     href="https://www.linkedin.com/in/jasondavey/"
                     onClick={(e) => {
@@ -208,10 +203,7 @@ const M3Footer = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Link
                     href="https://github.com/jasondavey/"
                     onClick={(e) => {
@@ -230,12 +222,7 @@ const M3Footer = () => {
                   </Link>
                 </motion.div>
 
-
-
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <Link
                     href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
                     underline="none"
@@ -246,15 +233,8 @@ const M3Footer = () => {
                   </Link>
                 </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Link
-                    href="/JasonDaveyPatent.pdf"
-                    target="_blank"
-                    underline="none"
-                  >
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <Link href="/JasonDaveyPatent.pdf" target="_blank" underline="none">
                     <SocialIconButton aria-label="Patent">
                       <TbCertificate size="1.2em" />
                     </SocialIconButton>
@@ -301,7 +281,7 @@ const M3Footer = () => {
                   </motion.div>
                 ))}
               </Box>
-              
+
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -316,10 +296,7 @@ const M3Footer = () => {
                       theme.palette.primary.main,
                       0.1
                     )}, ${alpha(theme.palette.secondary.main, 0.1)})`,
-                    border: `1px solid ${alpha(
-                      theme.palette.primary.main,
-                      0.2
-                    )}`,
+                    border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
                   }}
                 >
                   <Typography variant="body2" sx={{ fontStyle: "italic" }}>
@@ -385,12 +362,8 @@ const M3Footer = () => {
             How this website was built
           </Link>
 
-          <Typography
-            variant="caption"
-            sx={{ display: "block", mt: 1.5, opacity: 0.5 }}
-          >
-            Built with React, TypeScript, and Material UI. Designed with M3
-            Expressive principles.
+          <Typography variant="caption" sx={{ display: "block", mt: 1.5, opacity: 0.5 }}>
+            Built with React, TypeScript, and Material UI. Designed with M3 Expressive principles.
           </Typography>
         </Box>
       </Container>

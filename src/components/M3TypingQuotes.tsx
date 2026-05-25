@@ -9,10 +9,10 @@ interface M3TypingQuotesProps {
   pauseDuration?: number;
 }
 
-const M3TypingQuotes: React.FC<M3TypingQuotesProps> = ({ 
-  quotes, 
-  speed = 40, 
-  pauseDuration = 2000 
+const M3TypingQuotes: React.FC<M3TypingQuotesProps> = ({
+  quotes,
+  speed = 40,
+  pauseDuration = 2000,
 }) => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
@@ -30,7 +30,7 @@ const M3TypingQuotes: React.FC<M3TypingQuotesProps> = ({
 
   useEffect(() => {
     if (typingTimer.current) clearTimeout(typingTimer.current);
-    
+
     if (isWaiting) {
       typingTimer.current = setTimeout(() => {
         setIsWaiting(false);
@@ -38,7 +38,7 @@ const M3TypingQuotes: React.FC<M3TypingQuotesProps> = ({
       }, pauseDuration);
       return;
     }
-    
+
     if (isDeleting) {
       // Deleting text logic
       if (displayedText === "") {
@@ -69,18 +69,18 @@ const M3TypingQuotes: React.FC<M3TypingQuotesProps> = ({
       {displayedText}
       <motion.span
         animate={{ opacity: [1, 0, 1] }}
-        transition={{ 
-          duration: 0.8, 
+        transition={{
+          duration: 0.8,
           repeat: Infinity,
-          repeatType: "loop"
+          repeatType: "loop",
         }}
-        style={{ 
+        style={{
           display: "inline-block",
           width: "0.7ch",
           height: "1.2em",
           marginLeft: "2px",
           backgroundColor: cursorColor,
-          verticalAlign: "text-bottom"
+          verticalAlign: "text-bottom",
         }}
       />
     </Box>

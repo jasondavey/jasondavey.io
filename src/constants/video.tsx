@@ -7,7 +7,10 @@ import { MdAudiotrack } from "react-icons/md";
 import { RiFunctionLine } from "react-icons/ri";
 import { AwsS3Icon } from "./AwsS3Icon";
 
-export const VideoSanitizerTechMap: Record<string, { icon: ReactElement; url: string; category: string }> = {
+export const VideoSanitizerTechMap: Record<
+  string,
+  { icon: ReactElement; url: string; category: string }
+> = {
   "AWS Lambda": {
     icon: <FaAws className="text-yellow-500" title="AWS Lambda" />,
     url: "https://aws.amazon.com/lambda/",

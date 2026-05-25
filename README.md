@@ -169,12 +169,10 @@ The project utilizes Vite's optimized build system with several customized build
 ### Build Commands
 
 - **Standard Build**: `npm run build`
-
   - Creates a production-ready, optimized build using Vite
   - Minifies code, optimizes assets, and generates static files
 
 - **Development Build**: `npm run build:dev`
-
   - Builds the application in development mode with source maps
   - Useful for debugging production-like builds locally
 

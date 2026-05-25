@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { lightThemeOptions, darkThemeOptions } from './m3Theme';
-import { ThemeContext } from './useM3Theme';
-
-
+import React, { useState, useEffect } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { lightThemeOptions, darkThemeOptions } from "./m3Theme";
+import { ThemeContext } from "./useM3Theme";
 
 interface M3ThemeProviderProps {
   children: React.ReactNode;
@@ -12,24 +10,24 @@ interface M3ThemeProviderProps {
 // Main theme provider component
 const M3ThemeProvider: React.FC<M3ThemeProviderProps> = ({ children }) => {
   const [mounted, setMounted] = useState(false);
-  const [mode, setMode] = useState<'light' | 'dark'>('dark');
+  const [mode, setMode] = useState<"light" | "dark">("dark");
 
   // Create the theme based on the current mode
   const theme = React.useMemo(
-    () => createTheme(mode === 'dark' ? darkThemeOptions : lightThemeOptions),
+    () => createTheme(mode === "dark" ? darkThemeOptions : lightThemeOptions),
     [mode]
   );
 
   const toggleTheme = () => {
-    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
     // Save preference to localStorage
-    localStorage.setItem('theme', mode === 'light' ? 'dark' : 'light');
+    localStorage.setItem("theme", mode === "light" ? "dark" : "light");
   };
 
   // Set mounted to true after first render and get preferred theme from localStorage
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
     if (savedTheme) {
       setMode(savedTheme);
     }
@@ -42,12 +40,10 @@ const M3ThemeProvider: React.FC<M3ThemeProviderProps> = ({ children }) => {
 
   // Create a clean theme object without any development attributes
   const cleanTheme = { ...theme };
-  
+
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme }}>
-      <ThemeProvider theme={cleanTheme}>
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={cleanTheme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
 };

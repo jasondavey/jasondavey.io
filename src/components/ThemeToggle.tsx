@@ -2,41 +2,41 @@ import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme === 'light' || storedTheme === 'dark') {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window !== "undefined") {
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme === "light" || storedTheme === "dark") {
         return storedTheme;
       }
       // Default to dark mode instead of checking system preference
-      return 'dark';
+      return "dark";
     }
-    return 'dark';
+    return "dark";
   });
 
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   return (
     <button
       onClick={toggleTheme}
-      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
       className="ml-3 rounded-full p-2 bg-gray-800/60 hover:bg-gray-700/80 text-yellow-300 hover:text-yellow-100 transition-colors border border-gray-700 focus:outline-none focus:ring"
       type="button"
     >
-      {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
     </button>
   );
 }

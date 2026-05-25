@@ -1,13 +1,13 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from "react";
 
 // Create theme context
 export type ThemeContextType = {
-  mode: 'light' | 'dark';
+  mode: "light" | "dark";
   toggleTheme: () => void;
 };
 
 export const ThemeContext = createContext<ThemeContextType>({
-  mode: 'light',
+  mode: "light",
   toggleTheme: () => {},
 });
 
