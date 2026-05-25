@@ -22,10 +22,7 @@ function AllProviders({ children }: { children: ReactNode }) {
   );
 }
 
-export function render(
-  ui: ReactElement,
-  options?: Omit<RenderOptions, "wrapper">
-) {
+export function render(ui: ReactElement, options?: Omit<RenderOptions, "wrapper">) {
   return rtlRender(ui, { wrapper: AllProviders, ...options });
 }
 

@@ -59,65 +59,76 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
         </DialogHeader>
 
         <Box className="p-6">
-          <Box 
-            sx={{ 
-              p: 4, 
+          <Box
+            sx={{
+              p: 4,
               borderRadius: 2,
-              bgcolor: mode === 'dark' ? alpha(theme.palette.background.paper, 0.9) : alpha(theme.palette.background.paper, 0.8),
-              border: `1px solid ${alpha(theme.palette.divider, mode === 'dark' ? 0.4 : 0.1)}`,
+              bgcolor:
+                mode === "dark"
+                  ? alpha(theme.palette.background.paper, 0.9)
+                  : alpha(theme.palette.background.paper, 0.8),
+              border: `1px solid ${alpha(theme.palette.divider, mode === "dark" ? 0.4 : 0.1)}`,
               mb: 4,
-              display: 'flex',
-              flexDirection: 'column',
+              display: "flex",
+              flexDirection: "column",
               gap: 2,
-              boxShadow: mode === 'dark' ? `0 4px 16px ${alpha(theme.palette.common.black, 0.6)}` : theme.shadows[3]
+              boxShadow:
+                mode === "dark"
+                  ? `0 4px 16px ${alpha(theme.palette.common.black, 0.6)}`
+                  : theme.shadows[3],
             }}
           >
-            <Typography 
-              variant="h6" 
+            <Typography
+              variant="h6"
               component="h3"
-              sx={{ 
-                color: 'text.primary',
-                fontWeight: 600 
+              sx={{
+                color: "text.primary",
+                fontWeight: 600,
               }}
             >
               {title}
             </Typography>
 
             {description && (
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  color: 'text.secondary',
-                  lineHeight: 1.6
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "text.secondary",
+                  lineHeight: 1.6,
                 }}
               >
                 {description}
               </Typography>
             )}
 
-            <Box 
-              sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
                 mt: 2,
                 py: 1,
                 px: 2,
                 borderRadius: 1,
-                bgcolor: mode === 'dark' ? alpha(theme.palette.background.default, 0.8) : alpha(theme.palette.background.default, 0.6),
-                border: `1px solid ${alpha(theme.palette.divider, mode === 'dark' ? 0.3 : 0.05)}`
+                bgcolor:
+                  mode === "dark"
+                    ? alpha(theme.palette.background.default, 0.8)
+                    : alpha(theme.palette.background.default, 0.6),
+                border: `1px solid ${alpha(theme.palette.divider, mode === "dark" ? 0.3 : 0.05)}`,
               }}
             >
-              <PublicIcon sx={{ 
-                fontSize: 20, 
-                mr: 1, 
-                color: mode === 'dark' ? 'primary.main' : 'primary.main'
-              }} />
-              <Typography 
-                variant="body2" 
-                sx={{ 
+              <PublicIcon
+                sx={{
+                  fontSize: 20,
+                  mr: 1,
+                  color: mode === "dark" ? "primary.main" : "primary.main",
+                }}
+              />
+              <Typography
+                variant="body2"
+                sx={{
                   fontWeight: 600,
-                  color: 'text.primary',
-                  opacity: 1
+                  color: "text.primary",
+                  opacity: 1,
                 }}
               >
                 {domain}
@@ -125,62 +136,69 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
             </Box>
           </Box>
 
-          <Box 
-            sx={{ 
-              bgcolor: mode === 'dark' ? alpha(theme.palette.background.paper, 0.9) : alpha(theme.palette.info.main, 0.04),
-              p: 3, 
-              borderRadius: 2, 
+          <Box
+            sx={{
+              bgcolor:
+                mode === "dark"
+                  ? alpha(theme.palette.background.paper, 0.9)
+                  : alpha(theme.palette.info.main, 0.04),
+              p: 3,
+              borderRadius: 2,
               mb: 2,
-              border: `1px solid ${alpha(mode === 'dark' ? theme.palette.primary.main : theme.palette.info.main, mode === 'dark' ? 0.4 : 0.1)}`,
-              boxShadow: theme.shadows[2]
+              border: `1px solid ${alpha(mode === "dark" ? theme.palette.primary.main : theme.palette.info.main, mode === "dark" ? 0.4 : 0.1)}`,
+              boxShadow: theme.shadows[2],
             }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-              <Box 
-                component="span" 
-                sx={{ 
-                  display: 'inline-flex',
+            <Box sx={{ display: "flex", alignItems: "center", mb: 1.5 }}>
+              <Box
+                component="span"
+                sx={{
+                  display: "inline-flex",
                   p: 0.5,
-                  borderRadius: '50%',
+                  borderRadius: "50%",
                   mr: 1,
-                  bgcolor: mode === 'dark' ? alpha(theme.palette.primary.main, 0.4) : alpha(theme.palette.info.main, 0.08)
+                  bgcolor:
+                    mode === "dark"
+                      ? alpha(theme.palette.primary.main, 0.4)
+                      : alpha(theme.palette.info.main, 0.08),
                 }}
               >
                 <PublicIcon fontSize="small" color="primary" />
               </Box>
-              <Typography 
-                variant="body2" 
-                sx={{ 
+              <Typography
+                variant="body2"
+                sx={{
                   fontWeight: 600,
-                  color: mode === 'dark' ? theme.palette.primary.light : 'info.main'
+                  color: mode === "dark" ? theme.palette.primary.light : "info.main",
                 }}
               >
                 Security Notice
               </Typography>
             </Box>
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                color: mode === 'dark' ? theme.palette.common.white : 'text.primary',
+            <Typography
+              variant="body2"
+              sx={{
+                color: mode === "dark" ? theme.palette.common.white : "text.primary",
                 lineHeight: 1.6,
-                fontWeight: 500
+                fontWeight: 500,
               }}
             >
-              You're about to leave Jason Davey's portfolio website and visit an external site. 
-              External sites are not under my control and may have different privacy and security policies.
+              You're about to leave Jason Davey's portfolio website and visit an external site.
+              External sites are not under my control and may have different privacy and security
+              policies.
             </Typography>
           </Box>
         </Box>
 
         <DialogFooter>
-          <Button 
-            onClick={onClose} 
+          <Button
+            onClick={onClose}
             className="mr-2 bg-background hover:bg-primary/10 text-primary border border-primary/40 shadow-sm"
           >
             Cancel
           </Button>
-          <Button 
-            onClick={handleVisit} 
+          <Button
+            onClick={handleVisit}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-md"
           >
             <OpenInNewIcon className="mr-2 h-4 w-4" /> Continue to {domain}

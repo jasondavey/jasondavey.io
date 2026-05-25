@@ -1,12 +1,5 @@
 import React, { useRef, useState } from "react";
-import {
-  Box,
-  Typography,
-  Container,
-  Paper,
-  useTheme,
-  alpha,
-} from "@mui/material";
+import { Box, Typography, Container, Paper, useTheme, alpha } from "@mui/material";
 import M3CareerHighlights from "./M3CareerHighlights";
 import {
   Timeline,
@@ -46,9 +39,7 @@ const GlassCard = styled(Paper)(({ theme }) => ({
         )}, ${alpha(theme.palette.grey[100], 0.7)})`,
   backdropFilter: "blur(10px)",
   border: `1px solid ${
-    theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.05)"
-      : "rgba(255, 255, 255, 0.8)"
+    theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.8)"
   }`,
   boxShadow:
     theme.palette.mode === "dark"
@@ -83,15 +74,7 @@ const experiences = [
       "Improved release confidence by diagnosing and resolving flaky Playwright end-to-end tests on subscribe and purchase paths",
       "Led platform modernization across TypeScript/Axios upgrades, EKS ramp-up, Nuxt upgrade validation, and CI credential rotation",
     ],
-    technologies: [
-      "TypeScript",
-      "Nuxt",
-      "Vue",
-      "Node.js",
-      "AWS",
-      "EKS",
-      "Playwright",
-    ],
+    technologies: ["TypeScript", "Nuxt", "Vue", "Node.js", "AWS", "EKS", "Playwright"],
   },
   {
     id: 2,
@@ -105,15 +88,7 @@ const experiences = [
       "Designed a multi-model LLM gateway spanning Claude 3, GPT-4 Turbo, and Gemini 2.5",
       "Designed the frontend and built the IaC/CDK stack (Vite + React, DynamoDB, Cognito, CloudFront, CI/CD pipelines) enabling daily production deploys by week eight",
     ],
-    technologies: [
-      "TypeScript",
-      "React",
-      "Vite",
-      "AWS CDK",
-      "DynamoDB",
-      "Cognito",
-      "CloudFront",
-    ],
+    technologies: ["TypeScript", "React", "Vite", "AWS CDK", "DynamoDB", "Cognito", "CloudFront"],
   },
   {
     id: 3,
@@ -129,15 +104,7 @@ const experiences = [
       "Developed an early-stage system leveraging Model Context Protocol (MCP) and AI assistants to provide customized insights",
       "Cultivated a high-trust engineering culture rooted in curiosity, ownership, and continuous learning",
     ],
-    technologies: [
-      "React",
-      "Node.js",
-      "NextJS",
-      "AWS",
-      "JAMStack",
-      "TypeScript",
-      "MUI",
-    ],
+    technologies: ["React", "Node.js", "NextJS", "AWS", "JAMStack", "TypeScript", "MUI"],
   },
   {
     id: 4,
@@ -153,15 +120,7 @@ const experiences = [
       "Instituted advanced security protocols, elevating platform-wide protection against cyber threats",
       "Redesigned the feature release lifecycle, cutting time-to-market by 25%",
     ],
-    technologies: [
-      "C#",
-      "ASP.NET",
-      "Azure",
-      "React",
-      "TypeScript",
-      "SQL Server",
-      "Redis",
-    ],
+    technologies: ["C#", "ASP.NET", "Azure", "React", "TypeScript", "SQL Server", "Redis"],
   },
   {
     id: 5,
@@ -178,15 +137,7 @@ const experiences = [
       "Championed best practices in CI/CD and DevOps to enhance delivery consistency and operational resilience",
       "Mentored teams of student engineers from Worcester Polytechnic University (WPI), who won best project two years running",
     ],
-    technologies: [
-      "C#",
-      "ASP.NET",
-      "JavaScript",
-      "SQL Server",
-      "AWS",
-      "Azure",
-      "HTML/CSS",
-    ],
+    technologies: ["C#", "ASP.NET", "JavaScript", "SQL Server", "AWS", "Azure", "HTML/CSS"],
   },
 ];
 
@@ -195,9 +146,7 @@ const M3Experience: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   // Create refs for each experience item outside of the map function
-  const experienceRefs = useRef<(HTMLDivElement | null)[]>(
-    Array(experiences.length).fill(null)
-  );
+  const experienceRefs = useRef<(HTMLDivElement | null)[]>(Array(experiences.length).fill(null));
 
   // Initialize visibility state for each experience
   const [visibleItems, setVisibleItems] = useState<boolean[]>(
@@ -224,9 +173,7 @@ const M3Experience: React.FC = () => {
   return (
     <SectionContainer ref={ref} id="experience">
       {/* Animated background elements */}
-      <Box
-        sx={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0 }}
-      >
+      <Box sx={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0 }}>
         <motion.div
           style={{
             position: "absolute",
@@ -264,20 +211,12 @@ const M3Experience: React.FC = () => {
             position: "absolute",
             inset: 0,
             backgroundImage: `linear-gradient(
-              ${
-                theme.palette.mode === "dark"
-                  ? "rgba(255,255,255,0.03)"
-                  : "rgba(0,0,0,0.02)"
-              } 1px,
+              ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"} 1px,
               transparent 1px
             ),
             linear-gradient(
               90deg,
-              ${
-                theme.palette.mode === "dark"
-                  ? "rgba(255,255,255,0.03)"
-                  : "rgba(0,0,0,0.02)"
-              } 1px,
+              ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)"} 1px,
               transparent 1px
             )`,
             backgroundSize: "20px 20px",
@@ -371,9 +310,8 @@ const M3Experience: React.FC = () => {
                 mb: 6,
               }}
             >
-              A timeline of my professional journey, highlighting key roles and
-              achievements that have shaped my expertise in engineering and
-              leadership.
+              A timeline of my professional journey, highlighting key roles and achievements that
+              have shaped my expertise in engineering and leadership.
             </Typography>
           </motion.div>
         </Box>
@@ -514,12 +452,7 @@ const M3Experience: React.FC = () => {
 
                       <Box component="ul" sx={{ pl: 2 }}>
                         {experience.achievements.map((achievement, i) => (
-                          <Typography
-                            component="li"
-                            variant="body2"
-                            key={i}
-                            sx={{ mb: 0.5 }}
-                          >
+                          <Typography component="li" variant="body2" key={i} sx={{ mb: 0.5 }}>
                             {achievement}
                           </Typography>
                         ))}
@@ -545,10 +478,7 @@ const M3Experience: React.FC = () => {
                               theme.palette.mode === "dark"
                                 ? theme.palette.primary.light
                                 : theme.palette.primary.dark,
-                            border: `1px solid ${alpha(
-                              theme.palette.primary.main,
-                              0.2
-                            )}`,
+                            border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
                           }}
                         >
                           {tech}

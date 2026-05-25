@@ -3,28 +3,21 @@ import { Technology } from "../../constants/TechnologyEnum";
 
 const ProjectDymoStamps: Project = {
   industry: "Shipping",
-  businessTerms: [
-    "Postal Solutions",
-    "Cloud-Native",
-    "SaaS Platform",
-    "Patented Technology",
-  ],
+  businessTerms: ["Postal Solutions", "Cloud-Native", "SaaS Platform", "Patented Technology"],
   businessView: (
     <>
       <p className="mb-2">
-        <strong>Problem:</strong> Small businesses and home office users needed
-        a convenient way to print postage without expensive hardware or trips to
-        the post office.
+        <strong>Problem:</strong> Small businesses and home office users needed a convenient way to
+        print postage without expensive hardware or trips to the post office.
       </p>
       <p className="mb-2">
-        <strong>Purpose:</strong> To create a cloud-native postage printing
-        solution that's secure, user-friendly, and accessible to users with DYMO
-        label printers.
+        <strong>Purpose:</strong> To create a cloud-native postage printing solution that's secure,
+        user-friendly, and accessible to users with DYMO label printers.
       </p>
       <p className="mb-2">
-        <strong>Business Solution:</strong> Designed and delivered DYMO Stamps
-        Online®, a patented web-based solution for printing postage that earned
-        recognition from PC Mag for its convenience and user-friendly interface.
+        <strong>Business Solution:</strong> Designed and delivered DYMO Stamps Online®, a patented
+        web-based solution for printing postage that earned recognition from PC Mag for its
+        convenience and user-friendly interface.
       </p>
     </>
   ),
@@ -32,32 +25,27 @@ const ProjectDymoStamps: Project = {
   description: (
     <>
       <p className="mb-2">
-        As the inventor of a patented online postage system (US Patent
-        11037223B1), I designed and implemented a secure web-based solution for
-        printing postage that balances security requirements with user
-        experience.
+        As the inventor of a patented online postage system (US Patent 11037223B1), I designed and
+        implemented a secure web-based solution for printing postage that balances security
+        requirements with user experience.
       </p>
       <p className="mb-2">
-        The system addresses critical security concerns in online postage
-        printing by implementing a novel approach to client-side validation that
-        prevents offline abuse while maintaining a seamless user experience. The
-        patent covers a method for conducting web-based postage transactions
-        with built-in validation checks, ensuring each revenue-generating
-        request meets strict security protocols.
+        The system addresses critical security concerns in online postage printing by implementing a
+        novel approach to client-side validation that prevents offline abuse while maintaining a
+        seamless user experience. The patent covers a method for conducting web-based postage
+        transactions with built-in validation checks, ensuring each revenue-generating request meets
+        strict security protocols.
       </p>
       <p className="mb-2">
-        This innovation became the foundation for DYMO Stamps Online®, a
-        cloud-native postage printing solution designed specifically for small
-        businesses and home office users with DYMO label printers. The platform
-        earned recognition from PC Mag, which praised its convenience compared
-        to visiting a post office and its user-friendly interface for printing
-        postage.
+        This innovation became the foundation for DYMO Stamps Online®, a cloud-native postage
+        printing solution designed specifically for small businesses and home office users with DYMO
+        label printers. The platform earned recognition from PC Mag, which praised its convenience
+        compared to visiting a post office and its user-friendly interface for printing postage.
       </p>
       <p className="mb-2">
-        <strong>Role:</strong> As the primary inventor on the patent, I
-        architected the solution, led its implementation, and designed the
-        security protocols that balanced USPS requirements with a frictionless
-        user experience. Read the full patent at{" "}
+        <strong>Role:</strong> As the primary inventor on the patent, I architected the solution,
+        led its implementation, and designed the security protocols that balanced USPS requirements
+        with a frictionless user experience. Read the full patent at{" "}
         <a
           href="https://patents.google.com/patent/US11037223B1/en"
           target="_blank"
@@ -92,19 +80,10 @@ const ProjectDymoStamps: Project = {
     <>
       <h3 className="font-semibold text-lg mb-1">Key Technical Achievements</h3>
       <ul className="list-disc ml-6 text-700 mb-2">
-        <li>
-          Secured US Patent 11037223B1 for a system and method of printing
-          postage
-        </li>
-        <li>
-          Designed secure client-server architecture that prevents offline abuse
-        </li>
-        <li>
-          Created web-based applet system for reliable printer integration
-        </li>
-        <li>
-          Implemented validation checks for revenue-generating transactions
-        </li>
+        <li>Secured US Patent 11037223B1 for a system and method of printing postage</li>
+        <li>Designed secure client-server architecture that prevents offline abuse</li>
+        <li>Created web-based applet system for reliable printer integration</li>
+        <li>Implemented validation checks for revenue-generating transactions</li>
         <li>Developed solution compatible with USPS security requirements</li>
       </ul>
 

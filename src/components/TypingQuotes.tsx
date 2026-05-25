@@ -62,7 +62,8 @@ const TypingQuotes: React.FC<TypingQuotesProps> = ({
 
   return (
     <span>
-      {displayed}<span className="blinking-cursor">|</span>
+      {displayed}
+      <span className="blinking-cursor">|</span>
     </span>
   );
 };

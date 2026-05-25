@@ -46,5 +46,5 @@ export const SoccerTourismTechMap: Record<
     category: "Infrastructure",
     icon: <SiTerraform className="text-purple-500" title="Terraform" />,
     url: "https://www.terraform.io/",
-  }
+  },
 };

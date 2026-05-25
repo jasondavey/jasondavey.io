@@ -30,7 +30,7 @@
   transition: all 0.3s ease;
 }
 
-#wcb a.wcb_a, 
+#wcb a.wcb_a,
 #wcb .wcb_a {
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@
   font-size: 0.8rem;
 }
 
-#wcb a.wcb_b, 
+#wcb a.wcb_b,
 #wcb .wcb_b {
   text-decoration: none;
   background-color: var(--wcb-hover-color);

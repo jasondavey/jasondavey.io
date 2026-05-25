@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Box, Typography, Container, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useThemeContext } from "@/theme";
 import M3TypingQuotes from "./M3TypingQuotes";
 
@@ -50,9 +50,10 @@ const ScrollButton = styled(motion.div)(({ theme }) => ({
   left: "50%",
   transform: "translateX(-50%)",
   zIndex: 10,
-  background: theme.palette.mode === "dark" 
-    ? `linear-gradient(135deg, ${theme.palette.primary.dark}, ${theme.palette.secondary.dark})`
-    : `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+  background:
+    theme.palette.mode === "dark"
+      ? `linear-gradient(135deg, ${theme.palette.primary.dark}, ${theme.palette.secondary.dark})`
+      : `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
   borderRadius: "50%",
   padding: theme.spacing(2),
   boxShadow: theme.shadows[10],
@@ -65,16 +66,16 @@ const M3Hero = () => {
   const theme = useTheme();
   const { mode } = useThemeContext();
   const isDark = mode === "dark";
-  
+
   const ref = useRef(null);
   const { scrollYProgress } = useScroll();
   const scrollYSpring = useSpring(scrollYProgress, { stiffness: 300, damping: 40 });
-  
+
   // Parallax effects
   const backgroundY = useTransform(scrollYSpring, [0, 1], ["0%", "20%"]);
   const contentOpacity = useTransform(scrollYSpring, [0, 0.2], [1, 0]);
   const contentY = useTransform(scrollYSpring, [0, 0.2], ["0%", "-10%"]);
-  
+
   const handleScrollDown = () => {
     document.getElementById("about")?.scrollIntoView({
       behavior: "smooth",
@@ -96,7 +97,7 @@ const M3Hero = () => {
   const primaryColor = theme.palette.primary.main;
   const secondaryColor = theme.palette.secondary.main;
   const accentColor = isDark ? theme.palette.success.light : theme.palette.success.main;
-  
+
   return (
     <Box
       component="section"
@@ -164,9 +165,8 @@ const M3Hero = () => {
               position: "absolute",
               inset: 0,
               backdropFilter: "blur(2px)",
-              background: theme.palette.mode === "dark"
-                ? "rgba(0,0,0,0.5)"
-                : "rgba(255,255,255,0.5)",
+              background:
+                theme.palette.mode === "dark" ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.5)",
             }}
           />
         </motion.div>
@@ -203,7 +203,7 @@ const M3Hero = () => {
           >
             Build Tech With
           </Typography>
-          
+
           <motion.div
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -220,7 +220,10 @@ const M3Hero = () => {
                   lg: "5.5rem",
                 },
                 fontWeight: 900,
-                color: theme.palette.mode === "dark" ? "rgba(200, 200, 200, 0.9)" : theme.palette.grey[700],
+                color:
+                  theme.palette.mode === "dark"
+                    ? "rgba(200, 200, 200, 0.9)"
+                    : theme.palette.grey[700],
                 letterSpacing: "-0.02em",
                 display: "block",
                 mb: 4,
@@ -238,12 +241,11 @@ const M3Hero = () => {
               p: 3,
               borderRadius: "16px",
               backdropFilter: "blur(12px)",
-              background: theme.palette.mode === "dark"
-                ? "rgba(0, 0, 0, 0.2)"
-                : "rgba(255, 255, 255, 0.2)",
-              border: `1px solid ${theme.palette.mode === "dark"
-                ? "rgba(255, 255, 255, 0.1)"
-                : "rgba(0, 0, 0, 0.05)"}`,
+              background:
+                theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.2)",
+              border: `1px solid ${
+                theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.05)"
+              }`,
               boxShadow: theme.shadows[4],
             }}
           >

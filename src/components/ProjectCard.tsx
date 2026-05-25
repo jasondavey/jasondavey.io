@@ -52,9 +52,9 @@ const ProjectCard: React.FC<Project> = ({
   const isEven = safeIndex % 2 === 0;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [archModalOpen, setArchModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<
-    "business" | "architecture" | "results"
-  >(businessView ? "business" : "architecture");
+  const [activeTab, setActiveTab] = useState<"business" | "architecture" | "results">(
+    businessView ? "business" : "architecture"
+  );
   const [linkCopied, setLinkCopied] = useState(false);
 
   // Function to copy the anchor URL to clipboard
@@ -90,17 +90,17 @@ const ProjectCard: React.FC<Project> = ({
   }, []);
 
   // Determine which logo to use based on theme
-  const logoToUse =
-    isDarkMode && darkModeCompanyIcon ? darkModeCompanyIcon : companyIcon;
+  const logoToUse = isDarkMode && darkModeCompanyIcon ? darkModeCompanyIcon : companyIcon;
 
   // Determine if we should apply special styling for dark mode
   // Only apply to Versys logo
-  const shouldInvertLogo =
-    isDarkMode && logoToUse && logoToUse.includes("versys.com");
+  const shouldInvertLogo = isDarkMode && logoToUse && logoToUse.includes("versys.com");
 
   const techInfos = technologies
     .map((tech) => ({ tech, info: techIconMap?.[tech] }))
-    .filter((entry): entry is { tech: string; info: NonNullable<typeof entry.info> } => !!entry.info);
+    .filter(
+      (entry): entry is { tech: string; info: NonNullable<typeof entry.info> } => !!entry.info
+    );
 
   const groups: Record<string, typeof techInfos> = {};
   techInfos.forEach(({ tech, info }) => {
@@ -137,9 +137,7 @@ const ProjectCard: React.FC<Project> = ({
                       src={logoToUse}
                       alt={companyName || "Company Logo"}
                       className={`h-5 rounded-sm ${
-                        shouldInvertLogo
-                          ? "invert brightness-200 contrast-200"
-                          : ""
+                        shouldInvertLogo ? "invert brightness-200 contrast-200" : ""
                       }`}
                     />
                   </a>
@@ -148,9 +146,7 @@ const ProjectCard: React.FC<Project> = ({
                     src={logoToUse}
                     alt={companyName || "Company Logo"}
                     className={`h-5 rounded-sm ${
-                      shouldInvertLogo
-                        ? "invert brightness-200 contrast-200"
-                        : ""
+                      shouldInvertLogo ? "invert brightness-200 contrast-200" : ""
                     }`}
                   />
                 ))}
@@ -166,8 +162,8 @@ const ProjectCard: React.FC<Project> = ({
                 {!endYear
                   ? `${startYear}–Present`
                   : startYear !== endYear
-                  ? `${startYear}–${endYear}`
-                  : `${endYear}`}
+                    ? `${startYear}–${endYear}`
+                    : `${endYear}`}
               </span>
             </div>
           )}
@@ -205,11 +201,7 @@ const ProjectCard: React.FC<Project> = ({
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 title="View Code"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
                 </svg>
               </a>
@@ -224,11 +216,7 @@ const ProjectCard: React.FC<Project> = ({
                 className="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded hover:bg-blue-200 dark:hover:bg-blue-800/40 transition"
                 title="View Demo"
               >
-                <svg
-                  className="w-4 h-4 mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
                 Demo
@@ -274,9 +262,7 @@ const ProjectCard: React.FC<Project> = ({
             )}
 
             {/* Video (if exists) */}
-            {videoUrl && (
-              <VideoEmbed videoUrl={videoUrl} className="w-full shadow-md" />
-            )}
+            {videoUrl && <VideoEmbed videoUrl={videoUrl} className="w-full shadow-md" />}
           </div>
         )}
 
@@ -345,8 +331,8 @@ const ProjectCard: React.FC<Project> = ({
                   businessView && resultsImpact
                     ? "grid-cols-3"
                     : businessView || resultsImpact
-                    ? "grid-cols-2"
-                    : "grid-cols-1"
+                      ? "grid-cols-2"
+                      : "grid-cols-1"
                 }`}
               >
                 {businessView && (
@@ -423,8 +409,7 @@ const ProjectCard: React.FC<Project> = ({
                           rel="noopener noreferrer"
                           className="inline-flex items-center px-4 py-2 bg-engineering-light text-engineering-accent rounded hover:bg-engineering-light/80 transition"
                         >
-                          {link.label}{" "}
-                          <FaExternalLinkAlt className="ml-2" size={12} />
+                          {link.label} <FaExternalLinkAlt className="ml-2" size={12} />
                         </a>
                       ))}
                     </div>
@@ -434,10 +419,7 @@ const ProjectCard: React.FC<Project> = ({
               {activeTab === "architecture" && (
                 <div className="whitespace-pre-line text-foreground dark:text-gray-200 leading-relaxed">
                   {archImage && (
-                    <div
-                      className="mb-4 cursor-pointer"
-                      onClick={() => setArchModalOpen(true)}
-                    >
+                    <div className="mb-4 cursor-pointer" onClick={() => setArchModalOpen(true)}>
                       <img
                         src={archImage}
                         alt="Architecture Diagram"
@@ -450,8 +432,7 @@ const ProjectCard: React.FC<Project> = ({
                   {details && <div className="mt-4 dark:text-gray-200">{details}</div>}
 
                   {/* Show demo button and external links inside Architecture tab */}
-                  {(showDemoButton && demo) ||
-                  (externalLinks && externalLinks.length > 0) ? (
+                  {(showDemoButton && demo) || (externalLinks && externalLinks.length > 0) ? (
                     <div className="flex flex-wrap gap-4 mt-6">
                       {showDemoButton && demo && (
                         <a
@@ -474,8 +455,7 @@ const ProjectCard: React.FC<Project> = ({
                             rel="noopener noreferrer"
                             className="inline-flex items-center px-4 py-2 bg-engineering-light text-engineering-accent rounded hover:bg-engineering-light/80 transition"
                           >
-                            {link.label}{" "}
-                            <FaExternalLinkAlt className="ml-2" size={12} />
+                            {link.label} <FaExternalLinkAlt className="ml-2" size={12} />
                           </a>
                         ))}
                     </div>
@@ -497,8 +477,7 @@ const ProjectCard: React.FC<Project> = ({
                           rel="noopener noreferrer"
                           className="inline-flex items-center px-4 py-2 bg-engineering-light text-engineering-accent rounded hover:bg-engineering-light/80 transition"
                         >
-                          {link.label}{" "}
-                          <FaExternalLinkAlt className="ml-2" size={12} />
+                          {link.label} <FaExternalLinkAlt className="ml-2" size={12} />
                         </a>
                       ))}
                     </div>
@@ -529,11 +508,7 @@ const ProjectCard: React.FC<Project> = ({
             >
               ×
             </button>
-            <img
-              src={archImage}
-              alt="Architecture Diagram"
-              className="w-full rounded-lg"
-            />
+            <img src={archImage} alt="Architecture Diagram" className="w-full rounded-lg" />
           </div>
         </div>
       )}

@@ -90,13 +90,7 @@ const LinkedIconButton = ({
   sx,
 }: LinkedIconButtonProps) => {
   return (
-    <Link
-      href={href}
-      download={download}
-      target={target}
-      rel={rel}
-      underline="none"
-    >
+    <Link href={href} download={download} target={target} rel={rel} underline="none">
       <IconButton aria-label={ariaLabel} title={title} sx={sx}>
         {children}
       </IconButton>
@@ -114,18 +108,14 @@ const LinkedIconButtonWithModal = ({
   sx,
 }: LinkedIconButtonProps & { description?: string }) => {
   const { openExternalLink } = useExternalLink();
-  
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     openExternalLink(href, title || ariaLabel, description);
   };
-  
+
   return (
-    <Link
-      href={href}
-      onClick={handleClick}
-      underline="none"
-    >
+    <Link href={href} onClick={handleClick} underline="none">
       <IconButton aria-label={ariaLabel} title={title} sx={sx}>
         {children}
       </IconButton>
@@ -141,20 +131,19 @@ const DocumentIconButton = ({
   documentType,
   children,
   sx,
-}: Omit<LinkedIconButtonProps, 'href'> & { documentUrl: string; documentType: 'resume' | 'patent' }) => {
+}: Omit<LinkedIconButtonProps, "href"> & {
+  documentUrl: string;
+  documentType: "resume" | "patent";
+}) => {
   const { showDocumentModal } = useDocumentModal();
-  
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     showDocumentModal(documentUrl, title || ariaLabel, documentType);
   };
-  
+
   return (
-    <Link
-      href={documentUrl}
-      onClick={handleClick}
-      underline="none"
-    >
+    <Link href={documentUrl} onClick={handleClick} underline="none">
       <IconButton aria-label={ariaLabel} title={title} sx={sx}>
         {children}
       </IconButton>
@@ -181,8 +170,7 @@ const handleSmoothScroll = (
       }
 
       // Get the target position
-      const targetPosition =
-        targetElement.getBoundingClientRect().top + window.scrollY;
+      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
       // Get the current scroll position
       const startPosition = window.scrollY;
       // Calculate distance
@@ -205,8 +193,7 @@ const handleSmoothScroll = (
         const progress = Math.min(timeElapsed / cappedDuration, 1);
 
         // Easing function for smoother start/stop
-        const ease = (t: number) =>
-          t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        const ease = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
         window.scrollTo(0, startPosition + distance * ease(progress));
 
@@ -286,8 +273,7 @@ const M3Navbar = () => {
         flexDirection: "column",
         height: "100%",
         bgcolor: "background.paper",
-        backgroundImage:
-          "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))",
+        backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))",
       }}
     >
       <Box
@@ -301,11 +287,7 @@ const M3Navbar = () => {
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <CodeIcon color="secondary" />
-          <Typography
-            variant="subtitle1"
-            color="common.white"
-            fontWeight="bold"
-          >
+          <Typography variant="subtitle1" color="common.white" fontWeight="bold">
             jasondavey.io
           </Typography>
           <IconButton
@@ -336,9 +318,7 @@ const M3Navbar = () => {
             <ListItemButton
               component="a"
               href={link.href}
-              onClick={(e) =>
-                handleSmoothScroll(e, link.href, handleDrawerClose)
-              }
+              onClick={(e) => handleSmoothScroll(e, link.href, handleDrawerClose)}
               sx={{
                 py: 1.5,
                 px: 2,
@@ -360,9 +340,7 @@ const M3Navbar = () => {
         ))}
       </List>
 
-      <Divider
-        sx={{ bgcolor: (theme) => alpha(theme.palette.common.white, 0.2) }}
-      />
+      <Divider sx={{ bgcolor: (theme) => alpha(theme.palette.common.white, 0.2) }} />
       <Box
         sx={{
           display: "flex",
@@ -434,12 +412,12 @@ const M3Navbar = () => {
             mt: { xs: 0, md: "12px" }, // Add some top margin
             borderRadius: { xs: 0, md: "16px" }, // Rounded edges on desktop
             backgroundColor: (theme) =>
-                  theme.palette.mode === "dark"
-                    ? alpha(theme.palette.primary.dark, scrollTrigger ? 0.25 : 0.35)
-                    : alpha(theme.palette.primary.dark, scrollTrigger ? 0.4 : 0.65), // More transparent when scrolling
+              theme.palette.mode === "dark"
+                ? alpha(theme.palette.primary.dark, scrollTrigger ? 0.25 : 0.35)
+                : alpha(theme.palette.primary.dark, scrollTrigger ? 0.4 : 0.65), // More transparent when scrolling
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)", // For Safari support
-            borderBottom: (theme) => 
+            borderBottom: (theme) =>
               `1px solid ${alpha(theme.palette.divider, scrollTrigger ? 0.15 : 0)}`,
             // Keep white text in both modes
             color: "#ffffff",
@@ -450,21 +428,16 @@ const M3Navbar = () => {
                   duration: theme.transitions.duration.standard,
                 }
               ),
-            boxShadow: scrollTrigger 
-              ? (theme) => `0 4px 30px ${alpha(theme.palette.common.black, 0.1)}` 
-              : 'none',
+            boxShadow: scrollTrigger
+              ? (theme) => `0 4px 30px ${alpha(theme.palette.common.black, 0.1)}`
+              : "none",
           }}
         >
           <Container maxWidth="lg">
             <Toolbar sx={{ py: scrollTrigger ? 0.5 : 1 }}>
               {/* Logo */}
-              <Box
-                sx={{ display: "flex", alignItems: "center", gap: 1, mr: 2 }}
-              >
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1, mr: 2 }}>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <IconButton
                     component="a"
                     href="#"
@@ -489,10 +462,7 @@ const M3Navbar = () => {
                 >
                   jasondavey.io
                 </Box>
-                <motion.div
-                  whileHover={{ rotate: 20, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
+                <motion.div whileHover={{ rotate: 20, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <IconButton
                     color="info"
                     onClick={() => setReadmeOpen(true)}
@@ -516,11 +486,9 @@ const M3Navbar = () => {
                   onClick={handleDrawerToggle}
                   sx={{
                     ml: 0.5,
-                    bgcolor: (theme) =>
-                      alpha(theme.palette.background.paper, 0.1),
+                    bgcolor: (theme) => alpha(theme.palette.background.paper, 0.1),
                     "&:hover": {
-                      bgcolor: (theme) =>
-                        alpha(theme.palette.background.paper, 0.2),
+                      bgcolor: (theme) => alpha(theme.palette.background.paper, 0.2),
                     },
                   }}
                 >
@@ -548,8 +516,7 @@ const M3Navbar = () => {
                         ? alpha(theme.palette.background.paper, 0.1)
                         : alpha(theme.palette.primary.dark, 0.7), // Darker background for light mode
                     backdropFilter: "blur(10px)",
-                    boxShadow: (theme) =>
-                      `0px 2px 8px ${alpha(theme.palette.common.black, 0.1)}`,
+                    boxShadow: (theme) => `0px 2px 8px ${alpha(theme.palette.common.black, 0.1)}`,
                     transition: "all 0.3s ease",
                     color: "#ffffff", // White text for both modes
                     "&:hover": {
@@ -558,20 +525,14 @@ const M3Navbar = () => {
                           ? alpha(theme.palette.background.paper, 0.15)
                           : alpha(theme.palette.primary.dark, 0.8),
                       boxShadow: (theme) =>
-                        `0px 3px 10px ${alpha(
-                          theme.palette.common.black,
-                          0.15
-                        )}`,
+                        `0px 3px 10px ${alpha(theme.palette.common.black, 0.15)}`,
                     },
                   }}
                 >
                   {/* Navigation Section */}
                   <Box sx={{ display: "flex", padding: "6px 8px" }}>
                     {navLinks.map((link, index) => (
-                      <Box
-                        key={link.href}
-                        sx={{ display: "flex", alignItems: "center" }}
-                      >
+                      <Box key={link.href} sx={{ display: "flex", alignItems: "center" }}>
                         <Link
                           href={link.href}
                           onClick={(e) => handleSmoothScroll(e, link.href)}
@@ -610,8 +571,7 @@ const M3Navbar = () => {
                     display: "flex",
                     alignItems: "center",
                     gap: 1,
-                    boxShadow: (theme) =>
-                      `0 2px 10px ${alpha(theme.palette.common.black, 0.15)}`,
+                    boxShadow: (theme) => `0 2px 10px ${alpha(theme.palette.common.black, 0.15)}`,
                     transition: "all 0.3s ease",
                     color: "#ffffff", // White text for both modes
                     "&:hover": {
@@ -619,8 +579,7 @@ const M3Navbar = () => {
                         theme.palette.mode === "dark"
                           ? alpha(theme.palette.primary.dark, 0.75)
                           : alpha(theme.palette.primary.dark, 0.95),
-                      boxShadow: (theme) =>
-                        `0 4px 12px ${alpha(theme.palette.common.black, 0.2)}`,
+                      boxShadow: (theme) => `0 4px 12px ${alpha(theme.palette.common.black, 0.2)}`,
                       transform: "translateY(-1px)",
                     },
                   }}
@@ -665,9 +624,7 @@ const M3Navbar = () => {
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.95 }}
                     style={{ display: "inline-block" }}
-                  >
-
-                  </Box>
+                  ></Box>
 
                   <Box
                     component={motion.div}
@@ -677,9 +634,7 @@ const M3Navbar = () => {
                   >
                     <LinkedIconButton
                       aria-label="Email"
-                      href={`mailto:${
-                        import.meta.env.VITE_EMAIL_ADDRESS_HELLO
-                      }`}
+                      href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
                     >
                       <EmailIcon
                         fontSize="small"
@@ -742,10 +697,7 @@ const M3Navbar = () => {
                       title="Buy Me a Coffee"
                       description="Support Jason's work or schedule a cappuccino chat."
                     >
-                      <LocalCafeIcon
-                        fontSize="small"
-                        sx={{ color: "#FFDD00" }}
-                      />
+                      <LocalCafeIcon fontSize="small" sx={{ color: "#FFDD00" }} />
                     </LinkedIconButtonWithModal>
                   </Box>
 

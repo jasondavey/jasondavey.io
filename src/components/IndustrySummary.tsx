@@ -13,7 +13,6 @@ import {
   FaBuilding,
 } from "react-icons/fa";
 
-
 interface IndustrySummaryProps {
   projects: Project[];
 }
@@ -21,7 +20,7 @@ interface IndustrySummaryProps {
 const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
   // Group projects by industry
   const projectsByIndustry: Record<string, Project[]> = {};
-  
+
   projects.forEach((project) => {
     const industry = project.industry;
     if (!projectsByIndustry[industry]) {
@@ -65,14 +64,9 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
   };
 
   return (
-    <div
-      className="mb-10 animate-fade-in opacity-0"
-      style={{ animationDelay: "0.15s" }}
-    >
-      <h3 className="text-lg font-semibold text-center mb-4">
-        Industry Experience
-      </h3>
-      
+    <div className="mb-10 animate-fade-in opacity-0" style={{ animationDelay: "0.15s" }}>
+      <h3 className="text-lg font-semibold text-center mb-4">Industry Experience</h3>
+
       {/* Modern Table Layout */}
       <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm max-w-4xl mx-auto">
         <table className="w-full border-collapse text-sm">
@@ -102,19 +96,22 @@ const IndustrySummary: React.FC<IndustrySummaryProps> = ({ projects }) => {
                 <td key={industry} className="p-3 align-top">
                   <div className="space-y-3">
                     {projectsByIndustry[industry].map((project, index) => (
-                      <div 
-                        key={index} 
+                      <div
+                        key={index}
                         className="flex items-center p-2 rounded-md hover:bg-muted transition-colors"
                       >
                         {project.companyIcon && (
                           <div className="w-6 h-6 mr-2 flex-shrink-0 relative">
-                            <img 
-                              src={project.companyIcon} 
+                            <img
+                              src={project.companyIcon}
                               alt={project.companyName || project.title}
                               className="w-full h-full object-contain"
                               style={{
-                                filter: document.documentElement.classList.contains('dark') && 
-                                  project.darkModeCompanyIcon ? 'invert(1)' : 'none'
+                                filter:
+                                  document.documentElement.classList.contains("dark") &&
+                                  project.darkModeCompanyIcon
+                                    ? "invert(1)"
+                                    : "none",
                               }}
                             />
                           </div>

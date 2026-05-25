@@ -1,5 +1,12 @@
 import type { ReactElement } from "react";
-import { SiTypescript, SiDotnet, SiReact, SiPostgresql, SiTerraform, SiDocker } from "react-icons/si";
+import {
+  SiTypescript,
+  SiDotnet,
+  SiReact,
+  SiPostgresql,
+  SiTerraform,
+  SiDocker,
+} from "react-icons/si";
 import { FaNodeJs, FaCode, FaLayerGroup, FaServer } from "react-icons/fa";
 
 export const StampsComTechMap: Record<
@@ -55,5 +62,5 @@ export const StampsComTechMap: Record<
     icon: <FaLayerGroup className="text-blue-600" title="Microservices" />,
     url: "https://microservices.io/",
     category: "Architecture",
-  }
+  },
 };

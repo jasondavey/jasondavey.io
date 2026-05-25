@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Paper,
-  useTheme,
-  alpha,
-  Tooltip,
-} from "@mui/material";
+import { Box, Typography, Paper, useTheme, alpha, Tooltip } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import WorkIcon from "@mui/icons-material/Work";
@@ -146,9 +139,7 @@ const M3CareerHighlights: React.FC = () => {
             maxWidth: "800px",
             mx: "auto",
             color:
-              theme.palette.mode === "dark"
-                ? theme.palette.grey[300]
-                : theme.palette.grey[700],
+              theme.palette.mode === "dark" ? theme.palette.grey[300] : theme.palette.grey[700],
           }}
         >
           Key achievements and milestones from my professional journey
@@ -176,11 +167,7 @@ const M3CareerHighlights: React.FC = () => {
             >
               <HighlightCard>
                 <IconWrapper>{item.icon}</IconWrapper>
-                <Typography
-                  variant="h5"
-                  component="h3"
-                  sx={{ fontWeight: 700, mb: 1 }}
-                >
+                <Typography variant="h5" component="h3" sx={{ fontWeight: 700, mb: 1 }}>
                   {item.title}
                 </Typography>
                 <Typography
@@ -227,12 +214,10 @@ const M3CareerHighlights: React.FC = () => {
                         transition: "color 0.2s ease",
                       }}
                       onMouseOver={(e) => {
-                        e.currentTarget.style.color =
-                          theme.palette.secondary.main;
+                        e.currentTarget.style.color = theme.palette.secondary.main;
                       }}
                       onMouseOut={(e) => {
-                        e.currentTarget.style.color =
-                          theme.palette.primary.main;
+                        e.currentTarget.style.color = theme.palette.primary.main;
                       }}
                     >
                       Reference
@@ -262,10 +247,7 @@ const M3CareerHighlights: React.FC = () => {
                         theme.palette.mode === "dark"
                           ? theme.palette.secondary.light
                           : theme.palette.secondary.dark,
-                      border: `1px solid ${alpha(
-                        theme.palette.secondary.main,
-                        0.2
-                      )}`,
+                      border: `1px solid ${alpha(theme.palette.secondary.main, 0.2)}`,
                     }}
                   >
                     {item.company}

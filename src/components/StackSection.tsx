@@ -1,17 +1,5 @@
-import {
-  FaReact,
-  FaAws,
-  FaHeart,
-  FaCode,
-  FaCommentAlt
-} from "react-icons/fa";
-import {
-  SiVite,
-  SiTailwindcss,
-  SiShadcnui,
-  SiVercel,
-  SiCypress
-} from "react-icons/si";
+import { FaReact, FaAws, FaHeart, FaCode, FaCommentAlt } from "react-icons/fa";
+import { SiVite, SiTailwindcss, SiShadcnui, SiVercel, SiCypress } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
 
 const stack = [
@@ -45,9 +33,8 @@ const StackSection = () => {
     <section id="stack" className="py-4 border-b">
       <div className="section-container text-center py-1">
         <p className="text-engineering-gray mb-2 max-w-2xl mx-auto">
-          <strong>{hostName}</strong> is built with a modern stack for speed,
-          scalability, and great developer experience. The favicon was generated
-          using{" "}
+          <strong>{hostName}</strong> is built with a modern stack for speed, scalability, and great
+          developer experience. The favicon was generated using{" "}
           <a
             href="https://favicon.io/"
             target="_blank"
@@ -67,8 +54,8 @@ const StackSection = () => {
           ))}
         </div>
         <p className="mt-8 text-xs text-engineering-gray">
-          Deployed on <span className="font-semibold">Vercel</span>. Domain
-          managed with <span className="font-semibold">AWS Route53</span>.
+          Deployed on <span className="font-semibold">Vercel</span>. Domain managed with{" "}
+          <span className="font-semibold">AWS Route53</span>.
         </p>
       </div>
       {/* Tools Used Section */}
@@ -80,8 +67,8 @@ const StackSection = () => {
               Lovable
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
-              Content and code for this project were generated and orchestrated
-              using Lovable's AI-driven workflow.
+              Content and code for this project were generated and orchestrated using Lovable's
+              AI-driven workflow.
             </div>
           </div>
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
@@ -90,8 +77,8 @@ const StackSection = () => {
               Windsurf IDE
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
-              Development was performed in Windsurf, an AI-powered IDE
-              seamlessly integrated with ChatGPT for agentic coding.
+              Development was performed in Windsurf, an AI-powered IDE seamlessly integrated with
+              ChatGPT for agentic coding.
             </div>
           </div>
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
@@ -100,8 +87,8 @@ const StackSection = () => {
               ChatGPT
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
-              ChatGPT provided intelligent assistance, code suggestions, and
-              content generation throughout the build process.
+              ChatGPT provided intelligent assistance, code suggestions, and content generation
+              throughout the build process.
             </div>
           </div>
           <div className="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 w-64 flex flex-col">
@@ -110,14 +97,14 @@ const StackSection = () => {
               Cypress
             </div>
             <div className="text-sm text-engineering-gray flex-grow">
-              Cypress powers the automated testing pipeline, ensuring all site
-              features function correctly before deployment to production.
+              Cypress powers the automated testing pipeline, ensuring all site features function
+              correctly before deployment to production.
             </div>
           </div>
         </div>
         <p className="text-xs text-engineering-gray">
-          These tools enabled rapid prototyping, high-quality code, and seamless
-          collaboration between human and AI.
+          These tools enabled rapid prototyping, high-quality code, and seamless collaboration
+          between human and AI.
         </p>
       </div>
     </section>
