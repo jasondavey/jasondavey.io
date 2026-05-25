@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import emailjs from "emailjs-com";
+import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
 import {
   Box,
   Typography,
@@ -39,9 +39,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
 }));
 
 const GlassCard = styled(Paper)(({ theme }) => ({
-  borderRadius: theme.shape.borderRadius
-    ? `${Number(theme.shape.borderRadius) * 3}px`
-    : "24px",
+  borderRadius: theme.shape.borderRadius ? `${Number(theme.shape.borderRadius) * 3}px` : "24px",
   overflow: "hidden",
   background:
     theme.palette.mode === "dark"
@@ -55,9 +53,7 @@ const GlassCard = styled(Paper)(({ theme }) => ({
         )}, ${alpha(theme.palette.grey[100], 0.7)})`,
   backdropFilter: "blur(10px)",
   border: `1px solid ${
-    theme.palette.mode === "dark"
-      ? "rgba(255, 255, 255, 0.05)"
-      : "rgba(255, 255, 255, 0.8)"
+    theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.8)"
   }`,
   boxShadow:
     theme.palette.mode === "dark"
@@ -67,9 +63,7 @@ const GlassCard = styled(Paper)(({ theme }) => ({
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
-    borderRadius: theme.shape.borderRadius
-      ? `${Number(theme.shape.borderRadius) * 2}px`
-      : "16px",
+    borderRadius: theme.shape.borderRadius ? `${Number(theme.shape.borderRadius) * 2}px` : "16px",
     transition: theme.transitions.create(["border-color", "box-shadow"]),
     backgroundColor:
       theme.palette.mode === "dark"
@@ -93,11 +87,7 @@ interface ContactInfoItemProps {
   secondary: string;
 }
 
-const ContactInfoItem = ({
-  icon,
-  primary,
-  secondary,
-}: ContactInfoItemProps) => {
+const ContactInfoItem = ({ icon, primary, secondary }: ContactInfoItemProps) => {
   const theme = useTheme();
 
   return (
@@ -186,15 +176,18 @@ const M3Contact = () => {
   const locations = {
     sanFrancisco: {
       name: "San Francisco, CA, USA",
-      embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555098464!2d-122.50764017948547!3d37.75781499002628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus",
+      embed:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555098464!2d-122.50764017948547!3d37.75781499002628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus",
     },
     losAngeles: {
       name: "Los Angeles, CA, USA",
-      embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27405770525!2d-118.69192047471653!3d34.02016130390376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus",
+      embed:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27405770525!2d-118.69192047471653!3d34.02016130390376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus",
     },
     atlanta: {
       name: "Atlanta, GA, USA",
-      embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212270.7411321579!2d-84.56068455!3d33.767351299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5045d6993098d%3A0x66fede2f990b630b!2sAtlanta%2C%20GA!5e0!3m2!1sen!2sus",
+      embed:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212270.7411321579!2d-84.56068455!3d33.767351299999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5045d6993098d%3A0x66fede2f990b630b!2sAtlanta%2C%20GA!5e0!3m2!1sen!2sus",
     },
   };
 
@@ -244,9 +237,7 @@ const M3Contact = () => {
     return { valid: isValid, message };
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -262,10 +253,7 @@ const M3Contact = () => {
 
   // Update form validity when individual field validations change
   useEffect(() => {
-    const formIsValid =
-      validation.name.valid &&
-      validation.email.valid &&
-      validation.message.valid;
+    const formIsValid = validation.name.valid && validation.email.valid && validation.message.valid;
 
     setValidation((prev) => ({
       ...prev,
@@ -291,17 +279,10 @@ const M3Contact = () => {
       name: nameValidation,
       email: emailValidation,
       message: messageValidation,
-      formValid:
-        nameValidation.valid &&
-        emailValidation.valid &&
-        messageValidation.valid,
+      formValid: nameValidation.valid && emailValidation.valid && messageValidation.valid,
     }));
 
-    if (
-      !nameValidation.valid ||
-      !emailValidation.valid ||
-      !messageValidation.valid
-    ) {
+    if (!nameValidation.valid || !emailValidation.valid || !messageValidation.valid) {
       setSnackbarMessage("Please fix the form errors before submitting");
       setSnackbarSeverity("error");
       setOpenSnackbar(true);
@@ -309,9 +290,7 @@ const M3Contact = () => {
     }
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      setSnackbarMessage(
-        "Contact form is not configured. Please email me directly."
-      );
+      setSnackbarMessage("Contact form is not configured. Please email me directly.");
       setSnackbarSeverity("error");
       setOpenSnackbar(true);
       return;
@@ -326,7 +305,9 @@ const M3Contact = () => {
         message: formData.message,
       };
 
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, {
+        publicKey: PUBLIC_KEY,
+      });
 
       // Reset form on success
       setFormData({
@@ -346,11 +327,26 @@ const M3Contact = () => {
       setSnackbarMessage("Thank you! Your message has been sent successfully.");
       setSnackbarSeverity("success");
       setOpenSnackbar(true);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to send email:", error);
-      setSnackbarMessage(
-        "Failed to send your message. Please try again later."
-      );
+      const status = error instanceof EmailJSResponseStatus ? error.status : undefined;
+      let userMessage = "Failed to send your message. Please try again later.";
+      if (status === 412) {
+        // EmailJS returns 412 when the request origin is not on the
+        // account's allow list. In production this should never fire; in
+        // dev it means localhost is not whitelisted on the EmailJS
+        // dashboard (Account -> Security -> Allow List).
+        userMessage =
+          "Email service rejected this origin. If you're on localhost, " +
+          "add it to the EmailJS allow list.";
+      } else if (status === 422) {
+        userMessage = "Email template rejected the submission. Please contact me directly.";
+      } else if (status === 0 || status === undefined) {
+        userMessage =
+          "Could not reach the email service. Please check your connection " +
+          "or contact me directly.";
+      }
+      setSnackbarMessage(userMessage);
       setSnackbarSeverity("error");
       setOpenSnackbar(true);
     } finally {
@@ -361,9 +357,7 @@ const M3Contact = () => {
   return (
     <SectionContainer ref={ref} id="contact" sx={{ scroll: "mt-20" }}>
       {/* Animated background elements */}
-      <Box
-        sx={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0 }}
-      >
+      <Box sx={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0 }}>
         {/* Gradient orbs */}
         <motion.div
           style={{
@@ -502,15 +496,11 @@ const M3Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         error={formData.name !== "" && !validation.name.valid}
-                        helperText={
-                          formData.name !== "" && validation.name.message
-                        }
+                        helperText={formData.name !== "" && validation.name.message}
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <PersonOutlineIcon
-                                sx={{ color: theme.palette.primary.main }}
-                              />
+                              <PersonOutlineIcon sx={{ color: theme.palette.primary.main }} />
                             </InputAdornment>
                           ),
                         }}
@@ -526,15 +516,11 @@ const M3Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         error={formData.email !== "" && !validation.email.valid}
-                        helperText={
-                          formData.email !== "" && validation.email.message
-                        }
+                        helperText={formData.email !== "" && validation.email.message}
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <EmailOutlineIcon
-                                sx={{ color: theme.palette.primary.main }}
-                              />
+                              <EmailOutlineIcon sx={{ color: theme.palette.primary.main }} />
                             </InputAdornment>
                           ),
                         }}
@@ -550,15 +536,13 @@ const M3Contact = () => {
                         rows={5}
                         value={formData.message}
                         onChange={handleChange}
-                        error={
-                          formData.message !== "" && !validation.message.valid
-                        }
+                        error={formData.message !== "" && !validation.message.valid}
                         helperText={
                           formData.message !== "" && validation.message.message
                             ? validation.message.message
                             : formData.message
-                            ? `${formData.message.length}/${validationRules.message.maxLength} characters`
-                            : ""
+                              ? `${formData.message.length}/${validationRules.message.maxLength} characters`
+                              : ""
                         }
                         InputProps={{
                           startAdornment: (
@@ -566,9 +550,7 @@ const M3Contact = () => {
                               position="start"
                               sx={{ alignSelf: "flex-start", mt: 1 }}
                             >
-                              <ChatBubbleOutlineIcon
-                                sx={{ color: theme.palette.primary.main }}
-                              />
+                              <ChatBubbleOutlineIcon sx={{ color: theme.palette.primary.main }} />
                             </InputAdornment>
                           ),
                         }}
@@ -576,10 +558,7 @@ const M3Contact = () => {
                     </Box>
 
                     <Box>
-                      <motion.div
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                         <Button
                           type="submit"
                           variant="contained"
@@ -600,27 +579,18 @@ const M3Contact = () => {
                             py: 1.5,
                             px: 4,
                             backgroundImage: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                            boxShadow: `0 8px 20px ${alpha(
-                              theme.palette.primary.main,
-                              0.3
-                            )}`,
+                            boxShadow: `0 8px 20px ${alpha(theme.palette.primary.main, 0.3)}`,
                             "&.Mui-disabled": {
                               backgroundImage:
                                 theme.palette.mode === "dark"
                                   ? `linear-gradient(90deg, ${alpha(
                                       theme.palette.primary.main,
                                       0.5
-                                    )}, ${alpha(
-                                      theme.palette.secondary.main,
-                                      0.5
-                                    )})`
+                                    )}, ${alpha(theme.palette.secondary.main, 0.5)})`
                                   : `linear-gradient(90deg, ${alpha(
                                       theme.palette.primary.main,
                                       0.7
-                                    )}, ${alpha(
-                                      theme.palette.secondary.main,
-                                      0.7
-                                    )})`,
+                                    )}, ${alpha(theme.palette.secondary.main, 0.7)})`,
                               color:
                                 theme.palette.mode === "dark"
                                   ? alpha(theme.palette.common.white, 0.5)
@@ -680,10 +650,7 @@ const M3Contact = () => {
                           theme.palette.primary.main,
                           0.1
                         )}, ${alpha(theme.palette.secondary.main, 0.1)})`,
-                        boxShadow: `0 4px 8px ${alpha(
-                          theme.palette.common.black,
-                          0.05
-                        )}`,
+                        boxShadow: `0 4px 8px ${alpha(theme.palette.common.black, 0.05)}`,
                       }}
                     >
                       <MailOutlineIcon
@@ -696,9 +663,7 @@ const M3Contact = () => {
                         Email
                       </Typography>
                       <Link
-                        href={`mailto:${
-                          import.meta.env.VITE_EMAIL_ADDRESS_HELLO
-                        }`}
+                        href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`}
                         underline="hover"
                         color="text.secondary"
                         sx={{
@@ -714,10 +679,7 @@ const M3Contact = () => {
 
                   <ContactInfoItem
                     icon={
-                      <PhoneIcon
-                        fontSize="medium"
-                        sx={{ color: theme.palette.primary.main }}
-                      />
+                      <PhoneIcon fontSize="medium" sx={{ color: theme.palette.primary.main }} />
                     }
                     primary="Phone"
                     secondary={import.meta.env.VITE_PHONE_NUMBER}
@@ -727,7 +689,7 @@ const M3Contact = () => {
                   <Typography variant="subtitle1" fontWeight={600} sx={{ mt: 2 }}>
                     Locations:
                   </Typography>
-                  
+
                   <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5, mt: 1 }}>
                     {/* San Francisco */}
                     <Button
@@ -772,7 +734,7 @@ const M3Contact = () => {
                       />
                       Los Angeles, CA, USA
                     </Button>
-                    
+
                     {/* Atlanta */}
                     <Button
                       onClick={() => openLocationModal(locations.atlanta)}
@@ -798,8 +760,7 @@ const M3Contact = () => {
                 </Box>
 
                 <Typography variant="body2" sx={{ mt: "auto", opacity: 0.7 }}>
-                  I'll respond to your message as soon as possible. Thank you
-                  for reaching out!
+                  I'll respond to your message as soon as possible. Thank you for reaching out!
                 </Typography>
               </GlassCard>
             </motion.div>
