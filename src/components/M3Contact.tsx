@@ -18,13 +18,13 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform } from "framer-motion";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutlined";
 import EmailOutlineIcon from "@mui/icons-material/EmailOutlined";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutlined";
 import SendIcon from "@mui/icons-material/Send";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import MailOutlineIcon from "@mui/icons-material/MailOutlined";
 import LocationModal from "./LocationModal";
 
 // Styled components
@@ -111,7 +111,7 @@ const ContactInfoItem = ({ icon, primary, secondary }: ContactInfoItemProps) => 
         {icon}
       </Box>
       <Box>
-        <Typography variant="subtitle1" fontWeight={600}>
+        <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
           {primary}
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -487,7 +487,7 @@ const M3Contact = () => {
                 </Typography>
 
                 <form onSubmit={handleSubmit}>
-                  <Stack spacing={3} width="100%">
+                  <Stack spacing={3} sx={{ width: "100%" }}>
                     <Box>
                       <StyledTextField
                         fullWidth
@@ -497,12 +497,14 @@ const M3Contact = () => {
                         onChange={handleChange}
                         error={formData.name !== "" && !validation.name.valid}
                         helperText={formData.name !== "" && validation.name.message}
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <PersonOutlineIcon sx={{ color: theme.palette.primary.main }} />
-                            </InputAdornment>
-                          ),
+                        slotProps={{
+                          input: {
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <PersonOutlineIcon sx={{ color: theme.palette.primary.main }} />
+                              </InputAdornment>
+                            ),
+                          },
                         }}
                       />
                     </Box>
@@ -517,12 +519,14 @@ const M3Contact = () => {
                         onChange={handleChange}
                         error={formData.email !== "" && !validation.email.valid}
                         helperText={formData.email !== "" && validation.email.message}
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <EmailOutlineIcon sx={{ color: theme.palette.primary.main }} />
-                            </InputAdornment>
-                          ),
+                        slotProps={{
+                          input: {
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <EmailOutlineIcon sx={{ color: theme.palette.primary.main }} />
+                              </InputAdornment>
+                            ),
+                          },
                         }}
                       />
                     </Box>
@@ -544,15 +548,17 @@ const M3Contact = () => {
                               ? `${formData.message.length}/${validationRules.message.maxLength} characters`
                               : ""
                         }
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment
-                              position="start"
-                              sx={{ alignSelf: "flex-start", mt: 1 }}
-                            >
-                              <ChatBubbleOutlineIcon sx={{ color: theme.palette.primary.main }} />
-                            </InputAdornment>
-                          ),
+                        slotProps={{
+                          input: {
+                            startAdornment: (
+                              <InputAdornment
+                                position="start"
+                                sx={{ alignSelf: "flex-start", mt: 1 }}
+                              >
+                                <ChatBubbleOutlineIcon sx={{ color: theme.palette.primary.main }} />
+                              </InputAdornment>
+                            ),
+                          },
                         }}
                       />
                     </Box>
@@ -659,7 +665,7 @@ const M3Contact = () => {
                       />
                     </Box>
                     <Box>
-                      <Typography variant="subtitle1" fontWeight={600}>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                         Email
                       </Typography>
                       <Link
@@ -686,7 +692,7 @@ const M3Contact = () => {
                   />
 
                   {/* Locations */}
-                  <Typography variant="subtitle1" fontWeight={600} sx={{ mt: 2 }}>
+                  <Typography variant="subtitle1" sx={{ mt: 2, fontWeight: 600 }}>
                     Locations:
                   </Typography>
 

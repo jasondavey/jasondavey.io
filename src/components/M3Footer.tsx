@@ -21,7 +21,7 @@ import { useExternalLink } from "@/context/ExternalLinkContext";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import MailOutlineIcon from "@mui/icons-material/MailOutlined";
 import { TbCertificate } from "react-icons/tb";
 
 // Styled components for visual enhancement

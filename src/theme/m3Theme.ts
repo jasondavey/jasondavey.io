@@ -107,10 +107,15 @@ const lightThemeOptions: ThemeOptions = {
             transform: "translateY(0)",
           },
         },
-        containedPrimary: {
-          background: "linear-gradient(135deg, #9c27b0 0%, #7B1FA2 100%)",
-        },
       },
+      variants: [
+        {
+          props: { variant: "contained", color: "primary" },
+          style: {
+            background: "linear-gradient(135deg, #9c27b0 0%, #7B1FA2 100%)",
+          },
+        },
+      ],
     },
     MuiCard: {
       styleOverrides: {

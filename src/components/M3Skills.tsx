@@ -154,7 +154,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
           {category.skills.map((skill, idx) => (
             <Box key={skill.name}>
               <Box sx={{ display: "flex", justifyContent: "space-between", mb: 0.5 }}>
-                <Typography variant="body2" fontWeight={500}>
+                <Typography variant="body2" sx={{ fontWeight: 500 }}>
                   {skill.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

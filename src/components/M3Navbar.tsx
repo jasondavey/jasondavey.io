@@ -287,7 +287,7 @@ const M3Navbar = () => {
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <CodeIcon color="secondary" />
-          <Typography variant="subtitle1" color="common.white" fontWeight="bold">
+          <Typography variant="subtitle1" sx={{ color: "common.white", fontWeight: "bold" }}>
             jasondavey.io
           </Typography>
           <IconButton
@@ -330,9 +330,11 @@ const M3Navbar = () => {
             >
               <ListItemText
                 primary={link.label}
-                primaryTypographyProps={{
-                  variant: "body1",
-                  fontWeight: 500,
+                slotProps={{
+                  primary: {
+                    variant: "body1",
+                    sx: { fontWeight: 500 },
+                  },
                 }}
               />
             </ListItemButton>

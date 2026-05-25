@@ -137,10 +137,12 @@ const M3ReadmeModal = ({ open, onOpenChange }: M3ReadmeModalProps) => {
           onClose={() => onOpenChange(false)}
           maxWidth="lg"
           fullWidth
-          PaperProps={{
-            style: { maxHeight: "90vh", height: "90vh" },
-            sx: {
-              overflow: "hidden",
+          slotProps={{
+            paper: {
+              style: { maxHeight: "90vh", height: "90vh" },
+              sx: {
+                overflow: "hidden",
+              },
             },
           }}
         >

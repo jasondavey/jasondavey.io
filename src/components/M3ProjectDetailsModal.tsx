@@ -174,7 +174,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
             />
           )}
           <Box>
-            <Typography variant="h5" component="h2" fontWeight={600}>
+            <Typography variant="h5" component="h2" sx={{ fontWeight: 600 }}>
               {project.title}
             </Typography>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
@@ -347,7 +347,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
 
               {project.archImage && (
                 <Box sx={{ mt: 4, mb: 3 }}>
-                  <Typography variant="h6" fontWeight={600} gutterBottom>
+                  <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
                     Architecture Diagram
                   </Typography>
                   <Paper
@@ -373,7 +373,7 @@ const M3ProjectDetailsModal: React.FC<ProjectDetailsModalProps> = ({ project, op
 
               {project.keyArchitecture && (
                 <Box sx={{ mt: 3 }}>
-                  <Typography variant="h6" fontWeight={600} gutterBottom>
+                  <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
                     Key Architecture Components
                   </Typography>
                   <Box
