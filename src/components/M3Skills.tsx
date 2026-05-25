@@ -327,7 +327,7 @@ const M3Skills = () => {
         {/* Skills grid */}
         <Grid container spacing={4}>
           {skillCategories.map((category, index) => (
-            <Grid item xs={12} md={6} key={category.id}>
+            <Grid size={{ xs: 12, md: 6 }} key={category.id}>
               <SkillCategory category={category} index={index} />
             </Grid>
           ))}
