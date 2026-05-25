@@ -373,7 +373,9 @@ const M3Experience: React.FC = () => {
 
               <TimelineSeparator>
                 <motion.div
-                  ref={(el) => (experienceRefs.current[index] = el)}
+                  ref={(el) => {
+                    experienceRefs.current[index] = el;
+                  }}
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}

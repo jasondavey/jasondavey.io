@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { SiTypescript } from "react-icons/si";
 import { FaEnvelope, FaReact } from "react-icons/fa";
 import { SiNetlify } from "react-icons/si";
@@ -22,7 +23,7 @@ export type VerascoreTechCategory =
 
 export const VerascoreTechMap: Record<
   string,
-  { icon: JSX.Element; url: string; category: VerascoreTechCategory }
+  { icon: ReactElement; url: string; category: VerascoreTechCategory }
 > = {
   TypeScript: {
     icon: <SiTypescript className="text-blue-600" title="TypeScript" />,

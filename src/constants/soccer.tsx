@@ -1,11 +1,11 @@
-import React from "react";
+import type { ReactElement } from "react";
 import { SiTypescript, SiPostgresql, SiTerraform, SiDocker } from "react-icons/si";
 import { FaReact, FaNodeJs, FaAws, FaLayerGroup } from "react-icons/fa";
 
 // This type signature exactly matches what Project.ts interface expects
 export const SoccerTourismTechMap: Record<
   string,
-  { category: string; icon: JSX.Element; url: string }
+  { category: string; icon: ReactElement; url: string }
 > = {
   React: {
     category: "Frontend",
