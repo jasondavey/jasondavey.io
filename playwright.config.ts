@@ -67,7 +67,14 @@ export default defineConfig({
   // Local: 1 worker by default - fewer parallel browsers = quieter laptop.
   // CI: 2 workers, ample headroom on the runner.
   workers: isCI ? 2 : 1,
-  reporter: isCI ? [["html", { open: "never" }], ["github"]] : "html",
+  reporter: isCI
+    ? [
+        ["html", { open: "never" }],
+        ["github"],
+        // JSON summary consumed by the PR-comment step in CI.
+        ["json", { outputFile: "playwright-results.json" }],
+      ]
+    : "html",
   use: {
     baseURL,
     trace: "on-first-retry",
