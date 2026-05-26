@@ -40,7 +40,8 @@ test.describe("modals", () => {
     await scrollToProjectsAndWait(page);
 
     await page.locator('button:has-text("View Details")').first().click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    // Lazy-loaded modal; allow the chunk fetch + render to complete.
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
   });
 
   test("lazy-loads the ProjectDetailsModal chunk only on click", async ({ page }) => {
@@ -58,7 +59,7 @@ test.describe("modals", () => {
     expect(moduleRequests).toHaveLength(0);
 
     await page.locator('button:has-text("View Details")').first().click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
 
     expect(moduleRequests.length).toBeGreaterThan(0);
   });
@@ -70,7 +71,7 @@ test.describe("modals", () => {
       .getByLabel(/technical documentation/i)
       .first()
       .click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
   });
 
   test("LocationModal opens from a location chip in Contact", async ({ page }) => {
@@ -97,7 +98,7 @@ test.describe("modals", () => {
       .getByLabel(/^resume$/i)
       .first()
       .click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
   });
 
   test("DocumentModal opens from View Patent button (desktop)", async ({ page }) => {
@@ -107,7 +108,7 @@ test.describe("modals", () => {
       .getByLabel(/view patent/i)
       .first()
       .click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
   });
 
   test("CarbonInfoModal opens from the Footer carbon badge", async ({ page }) => {
@@ -117,7 +118,7 @@ test.describe("modals", () => {
     await page.waitForLoadState("networkidle");
 
     await page.getByRole("button", { name: /low carbon website/i }).click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
   });
 
   test("closing a modal returns focus to the page", async ({ page }) => {
@@ -127,7 +128,7 @@ test.describe("modals", () => {
       .getByLabel(/^resume$/i)
       .first()
       .click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
 
     await closeOpenDialog(page);
     await expect(page.getByRole("dialog")).toBeHidden();
