@@ -123,7 +123,21 @@ const Feature: React.FC<FeatureProps> = ({ icon, title, description, delay }) =>
   );
 };
 
-const M3About = () => {
+// Pre-compute decorative shape positions once at module load so they stay
+// stable across re-renders. Random in render would re-roll positions on
+// every state change (purity rule).
+const floatingShapes = Array.from({ length: 6 }, () => ({
+  widthVw: Math.random() * 10 + 5,
+  heightVw: Math.random() * 10 + 5,
+  topPct: Math.random() * 80 + 10,
+  leftPct: Math.random() * 80 + 10,
+  animY: Math.random() * 30 - 15,
+  animX: Math.random() * 30 - 15,
+  animScale: Math.random() * 0.2 + 0.9,
+  duration: Math.random() * 8 + 5,
+}));
+
+const About = () => {
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -141,7 +155,7 @@ const M3About = () => {
 
       {/* Floating elements in background */}
       <Box sx={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0 }}>
-        {[...Array(6)].map((_, i) => (
+        {floatingShapes.map((shape, i) => (
           <motion.div
             key={i}
             style={{
@@ -152,19 +166,19 @@ const M3About = () => {
                   : theme.palette.primary.light
               }30, transparent)`,
               borderRadius: "50%",
-              width: `${Math.random() * 10 + 5}vw`,
-              height: `${Math.random() * 10 + 5}vw`,
-              top: `${Math.random() * 80 + 10}%`,
-              left: `${Math.random() * 80 + 10}%`,
+              width: `${shape.widthVw}vw`,
+              height: `${shape.heightVw}vw`,
+              top: `${shape.topPct}%`,
+              left: `${shape.leftPct}%`,
               opacity: 0.3,
             }}
             animate={{
-              y: [0, Math.random() * 30 - 15],
-              x: [0, Math.random() * 30 - 15],
-              scale: [1, Math.random() * 0.2 + 0.9],
+              y: [0, shape.animY],
+              x: [0, shape.animX],
+              scale: [1, shape.animScale],
             }}
             transition={{
-              duration: Math.random() * 8 + 5,
+              duration: shape.duration,
               repeat: Infinity,
               repeatType: "reverse",
               ease: "easeInOut",
@@ -309,4 +323,4 @@ const M3About = () => {
   );
 };
 
-export default M3About;
+export default About;

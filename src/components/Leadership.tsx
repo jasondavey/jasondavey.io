@@ -103,7 +103,7 @@ const PhilosophyCard: React.FC<PhilosophyCardProps> = ({ icon, title, descriptio
   );
 };
 
-const M3Leadership = () => {
+const Leadership = () => {
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -260,4 +260,4 @@ const M3Leadership = () => {
   );
 };
 
-export default M3Leadership;
+export default Leadership;

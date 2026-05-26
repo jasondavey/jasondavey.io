@@ -2,7 +2,7 @@ import { ReactElement, ReactNode } from "react";
 import { render as rtlRender, RenderOptions } from "@testing-library/react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { MemoryRouter } from "react-router-dom";
-import { ThemeContext } from "@/theme/useM3Theme";
+import { ThemeContext } from "@/theme/useTheme";
 import { ExternalLinkProvider } from "@/context/ExternalLinkContext";
 import { DocumentModalProvider } from "@/context/DocumentModalContext";
 

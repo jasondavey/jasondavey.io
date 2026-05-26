@@ -11,17 +11,17 @@ vi.mock("@emailjs/browser", async () => {
 });
 
 import emailjs from "@emailjs/browser";
-import M3Contact from "./M3Contact";
+import Contact from "./Contact";
 
 const sendSpy = vi.mocked(emailjs.send);
 
-describe("M3Contact form validation", () => {
+describe("Contact form validation", () => {
   beforeEach(() => {
     sendSpy.mockClear();
   });
 
   it("renders the three required input fields", () => {
-    render(<M3Contact />);
+    render(<Contact />);
     expect(screen.getByLabelText("Your Name")).toBeInTheDocument();
     expect(screen.getByLabelText("Your Email")).toBeInTheDocument();
     expect(screen.getByLabelText("Your Message")).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe("M3Contact form validation", () => {
 
   it("disables the submit button until all fields are valid", async () => {
     const user = userEvent.setup();
-    render(<M3Contact />);
+    render(<Contact />);
     const submitButton = screen.getByRole("button", { name: /send message/i });
     expect(submitButton).toBeDisabled();
 
@@ -44,21 +44,21 @@ describe("M3Contact form validation", () => {
 
   it("flags an invalid email format inline", async () => {
     const user = userEvent.setup();
-    render(<M3Contact />);
+    render(<Contact />);
     await user.type(screen.getByLabelText("Your Email"), "not-an-email");
     expect(await screen.findByText(/please enter a valid email address/i)).toBeInTheDocument();
   });
 
   it("flags a message shorter than 10 characters", async () => {
     const user = userEvent.setup();
-    render(<M3Contact />);
+    render(<Contact />);
     await user.type(screen.getByLabelText("Your Message"), "short");
     expect(await screen.findByText(/message must be at least 10 characters/i)).toBeInTheDocument();
   });
 
   it("sends the message via emailjs when all fields are valid", async () => {
     const user = userEvent.setup();
-    render(<M3Contact />);
+    render(<Contact />);
     await user.type(screen.getByLabelText("Your Name"), "Test User");
     await user.type(screen.getByLabelText("Your Email"), "test@example.com");
     await user.type(screen.getByLabelText("Your Message"), "This is a long enough test message.");

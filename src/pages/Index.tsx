@@ -1,12 +1,12 @@
-import M3Navbar from "@/components/M3Navbar";
-import M3Hero from "@/components/M3Hero";
-import M3About from "@/components/M3About";
-import M3Projects from "@/components/M3Projects";
-import M3Leadership from "@/components/M3Leadership";
-import M3Skills from "@/components/M3Skills";
-import M3Experience from "@/components/M3Experience";
-import M3Contact from "@/components/M3Contact";
-import M3Footer from "@/components/M3Footer";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Projects from "@/components/Projects";
+import Leadership from "@/components/Leadership";
+import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { ExternalLinkProvider } from "@/context/ExternalLinkContext";
 
@@ -14,16 +14,16 @@ const Index = () => {
   return (
     <ExternalLinkProvider>
       <div className="min-h-screen w-full max-w-full overflow-x-hidden">
-        <M3Navbar />
+        <Navbar />
         <SpeedInsights />
-        <M3Hero />
-        <M3About />
-        <M3Experience />
-        <M3Projects />
-        <M3Leadership />
-        <M3Skills />
-        <M3Contact />
-        <M3Footer />
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Leadership />
+        <Skills />
+        <Contact />
+        <Footer />
       </div>
     </ExternalLinkProvider>
   );

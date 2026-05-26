@@ -1,5 +1,6 @@
-import { createContext, useState, useContext, ReactNode } from "react";
-import DocumentModal from "@/components/DocumentModal";
+import { createContext, useState, useContext, ReactNode, Suspense, lazy } from "react";
+
+const DocumentModal = lazy(() => import("@/components/DocumentModal"));
 
 interface DocumentModalContextProps {
   showDocumentModal: (
@@ -35,13 +36,17 @@ export function DocumentModalProvider({ children }: DocumentModalProviderProps) 
   return (
     <DocumentModalContext.Provider value={{ showDocumentModal }}>
       {children}
-      <DocumentModal
-        isOpen={isOpen}
-        onClose={handleClose}
-        documentUrl={documentUrl}
-        title={title}
-        documentType={documentType}
-      />
+      {isOpen && (
+        <Suspense fallback={null}>
+          <DocumentModal
+            isOpen={isOpen}
+            onClose={handleClose}
+            documentUrl={documentUrl}
+            title={title}
+            documentType={documentType}
+          />
+        </Suspense>
+      )}
     </DocumentModalContext.Provider>
   );
 }

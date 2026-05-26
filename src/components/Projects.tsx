@@ -30,7 +30,8 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import MovieIcon from "@mui/icons-material/Movie";
 import GavelIcon from "@mui/icons-material/Gavel";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
-import M3ProjectDetailsModal from "./M3ProjectDetailsModal";
+import { Suspense, lazy } from "react";
+const ProjectDetailsModal = lazy(() => import("./ProjectDetailsModal"));
 
 // Import projects
 import ProjectVerascore from "./projects/ProjectVerascore";
@@ -149,7 +150,7 @@ const getYouTubeThumbnail = (videoUrl: string): string => {
   return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "";
 };
 
-const M3Projects = () => {
+const Projects = () => {
   const theme = useTheme();
   const { openExternalLink } = useExternalLink();
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -669,14 +670,16 @@ const M3Projects = () => {
 
       {/* Project Details Modal */}
       {selectedProject && (
-        <M3ProjectDetailsModal
-          project={selectedProject}
-          open={detailsModalOpen}
-          onClose={handleCloseDetails}
-        />
+        <Suspense fallback={null}>
+          <ProjectDetailsModal
+            project={selectedProject}
+            open={detailsModalOpen}
+            onClose={handleCloseDetails}
+          />
+        </Suspense>
       )}
     </SectionContainer>
   );
 };
 
-export default M3Projects;
+export default Projects;

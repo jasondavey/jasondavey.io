@@ -2,7 +2,7 @@ import { IconButton } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { motion } from "framer-motion";
-import { useThemeContext } from "./useM3Theme";
+import { useThemeContext } from "./useTheme";
 
 // Create a toggle for switching between light and dark mode
 const ColorModeToggle = () => {

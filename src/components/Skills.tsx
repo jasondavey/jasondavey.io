@@ -154,7 +154,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
           {category.skills.map((skill, idx) => (
             <Box key={skill.name}>
               <Box sx={{ display: "flex", justifyContent: "space-between", mb: 0.5 }}>
-                <Typography variant="body2" fontWeight={500}>
+                <Typography variant="body2" sx={{ fontWeight: 500 }}>
                   {skill.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
@@ -182,7 +182,18 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
   );
 };
 
-const M3Skills = () => {
+// Pre-compute dot positions at module load so they stay stable across
+// re-renders. Random in render would re-roll on every state change
+// (purity rule).
+const floatingDots = Array.from({ length: 20 }, () => ({
+  sizePx: Math.random() * 6 + 2,
+  topPct: Math.random() * 100,
+  leftPct: Math.random() * 100,
+  animY: Math.random() * 30 - 15,
+  duration: Math.random() * 5 + 5,
+}));
+
+const Skills = () => {
   const theme = useTheme();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -191,6 +202,7 @@ const M3Skills = () => {
   });
 
   const backgroundX = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+  const backgroundX2 = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
   return (
     <SectionContainer ref={ref} id="skills">
@@ -219,31 +231,31 @@ const M3Skills = () => {
             height: "40vw",
             borderRadius: "63% 37% 37% 63% / 43% 37% 63% 57%",
             background: `linear-gradient(145deg, ${alpha(theme.palette.secondary.main, 0.05)}, ${alpha(theme.palette.primary.main, 0.05)})`,
-            x: useTransform(scrollYProgress, [0, 1], ["0%", "10%"]),
+            x: backgroundX2,
           }}
         />
 
         {/* Floating dots pattern */}
         <Box sx={{ position: "absolute", inset: 0 }}>
-          {[...Array(20)].map((_, i) => (
+          {floatingDots.map((dot, i) => (
             <motion.div
               key={i}
               style={{
                 position: "absolute",
-                width: `${Math.random() * 6 + 2}px`,
-                height: `${Math.random() * 6 + 2}px`,
+                width: `${dot.sizePx}px`,
+                height: `${dot.sizePx}px`,
                 borderRadius: "50%",
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
+                top: `${dot.topPct}%`,
+                left: `${dot.leftPct}%`,
                 backgroundColor: theme.palette.primary.main,
                 opacity: 0.3,
               }}
               animate={{
-                y: [0, Math.random() * 30 - 15],
+                y: [0, dot.animY],
                 opacity: [0.3, 0.6, 0.3],
               }}
               transition={{
-                duration: Math.random() * 5 + 5,
+                duration: dot.duration,
                 repeat: Infinity,
                 repeatType: "reverse",
               }}
@@ -333,4 +345,4 @@ const M3Skills = () => {
   );
 };
 
-export default M3Skills;
+export default Skills;

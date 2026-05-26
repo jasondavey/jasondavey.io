@@ -1,14 +1,14 @@
 import { describe, expect, it } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { render, screen, within } from "@/test/render";
-import M3Navbar from "./M3Navbar";
+import Navbar from "./Navbar";
 import { navigationSections } from "@/utils/navigation";
 
 const visibleSections = navigationSections.filter((s) => s.href !== "#");
 
-describe("M3Navbar", () => {
+describe("Navbar", () => {
   it("renders every visible navigation section in the desktop nav", () => {
-    render(<M3Navbar />);
+    render(<Navbar />);
     for (const { name } of visibleSections) {
       const matches = screen.getAllByText(name);
       expect(matches.length).toBeGreaterThan(0);
@@ -16,14 +16,14 @@ describe("M3Navbar", () => {
   });
 
   it("exposes the GitHub and LinkedIn profile actions with accessible names", () => {
-    render(<M3Navbar />);
+    render(<Navbar />);
     expect(screen.getAllByLabelText(/github/i).length).toBeGreaterThan(0);
     expect(screen.getAllByLabelText(/linkedin/i).length).toBeGreaterThan(0);
   });
 
   it("opens the mobile drawer when the menu button is clicked", async () => {
     const user = userEvent.setup();
-    render(<M3Navbar />);
+    render(<Navbar />);
 
     const drawerListBefore = screen.queryByRole("presentation");
     // Drawer may render in a closed state with display:none.

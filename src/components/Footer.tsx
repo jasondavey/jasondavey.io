@@ -12,7 +12,8 @@ import {
 
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
-import ReadmeModal from "./ReadmeModal";
+import { Suspense, lazy } from "react";
+const ReadmeModal = lazy(() => import("./ReadmeModal"));
 import CarbonBadge from "./CarbonBadge";
 import { navigationSections } from "@/utils/navigation";
 import { useExternalLink } from "@/context/ExternalLinkContext";
@@ -21,7 +22,7 @@ import { useExternalLink } from "@/context/ExternalLinkContext";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import MailOutlineIcon from "@mui/icons-material/MailOutlined";
 import { TbCertificate } from "react-icons/tb";
 
 // Styled components for visual enhancement
@@ -89,7 +90,7 @@ const FooterLink = styled(Link)(({ theme }) => ({
   },
 }));
 
-const M3Footer = () => {
+const Footer = () => {
   const theme = useTheme();
   const [readmeOpen, setReadmeOpen] = useState(false);
   const { openExternalLink } = useExternalLink();
@@ -369,9 +370,13 @@ const M3Footer = () => {
       </Container>
 
       {/* Technical Documentation Modal */}
-      <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
+      {readmeOpen && (
+        <Suspense fallback={null}>
+          <ReadmeModal open={readmeOpen} onOpenChange={setReadmeOpen} />
+        </Suspense>
+      )}
     </Box>
   );
 };
 
-export default M3Footer;
+export default Footer;

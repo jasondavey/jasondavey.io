@@ -107,10 +107,15 @@ const lightThemeOptions: ThemeOptions = {
             transform: "translateY(0)",
           },
         },
-        containedPrimary: {
-          background: "linear-gradient(135deg, #9c27b0 0%, #7B1FA2 100%)",
-        },
       },
+      variants: [
+        {
+          props: { variant: "contained", color: "primary" },
+          style: {
+            background: "linear-gradient(135deg, #9c27b0 0%, #7B1FA2 100%)",
+          },
+        },
+      ],
     },
     MuiCard: {
       styleOverrides: {
@@ -213,9 +218,9 @@ const darkThemeOptions: ThemeOptions = {
 };
 
 // Create the theme with M3 Expressive design principles
-const m3Theme = createTheme(lightThemeOptions);
+const theme = createTheme(lightThemeOptions);
 
-export default m3Theme;
+export default theme;
 
 // Export both light and dark theme options for potential theme switching
 export { lightThemeOptions, darkThemeOptions };
