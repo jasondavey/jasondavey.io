@@ -1,101 +1,73 @@
 # Maintenance Follow-Ups (from 2026-05 pass)
 
-Tracked items that were intentionally deferred from the `chore/maintenance-2026-05`
-branch. Each one is real work, not a nice-to-have, but each needs its own focused PR
-because the blast radius is too large to bundle.
+Tracking what got done after the original maintenance PR and what's still open.
 
-## Deferred dependency major bumps
+## Done
 
-### MUI 7 → 9
+| Item | Where |
+| --- | --- |
+| MUI 7 → 9 migration | PR #4 |
+| Prettier mass-format pass | PR #3 |
+| Drop the M3 prefix from filenames + identifiers | PR #5 |
+| Vendor chunk splitting + lazy-loaded modals | PR #6 |
+| `strict: true` in tsconfig (zero fallout) | PR #7 |
+| Re-enable `react-hooks/purity` + `set-state-in-effect` | PR #8 |
+| Decompose `Contact.tsx` (803 → 148 LOC) and `Navbar.tsx` (757 → 82 LOC) | PR #9 |
 
-The 7 → 9 jump (skipping 8) introduces breaking API changes spread across the
-largest components in the site:
+## Open
 
-- `Typography` no longer accepts `fontWeight`, `color="common.white"`, etc. as
-  top-level props — they have to move into `sx={{ ... }}`.
-- `TextField` `InputProps` is removed; replace with `slotProps={{ input: ... }}`.
-- `Stack` no longer accepts `width` as a top-level prop — same `sx` migration.
-- Some `@mui/icons-material/*` re-exports were renamed (e.g. `MailOutline`,
-  `PersonOutline`, `ChatBubbleOutline`) — confirm canonical names in the v9
-  changelog before swapping.
+### Section-level lazy loading
 
-Most of the fallout is in `M3Contact.tsx`, `M3Navbar.tsx`, and `M3Footer.tsx`.
-Plan for a focused PR that does the rename pass with `tsc --noEmit` as the gate.
+The bundle-splitting PR (#6) lazy-loaded the six modals. The next step would be
+lazy-loading the below-the-fold sections themselves: `Experience`, `Projects`,
+`Skills`, `Leadership`, `Contact`, `Footer`. Only `Navbar` and `Hero` are
+visible on initial paint.
 
-### Tailwind 3 → 4
+Expected win: 200–400 KB deferred off first paint. Concrete UX improvement,
+especially on mobile.
 
-Tailwind 4 ships with a CSS-first config model — `tailwind.config.ts` becomes a
-`@theme` block in your stylesheet. The site has a custom MUI + Tailwind hybrid
-where Tailwind drives the shadcn UI primitives, so the migration needs care:
+Approach: `React.lazy` for each section + an `IntersectionObserver`-based
+sentinel that triggers the import as the user scrolls toward each section.
+Or a simpler "import after first paint via `requestIdleCallback`" pattern.
 
-1. Run `npx @tailwindcss/upgrade` against a fresh branch.
-2. Verify the shadcn `cn()` helper still resolves classes (utilities renamed in v4).
-3. Re-check dark-mode toggle behavior against the M3 ThemeProvider.
+### Cypress on macOS 26 / Darwin 25
 
-Tailwind 3.4 is fully supported and has no outstanding security advisories, so
-this is a low-urgency follow-up.
-
-## React 19 strict-mode rule disables
-
-Two new rules from `eslint-plugin-react-hooks` v7 are disabled globally in
-`eslint.config.js`:
-
-- `react-hooks/set-state-in-effect` — flags `setState` inside `useEffect`. Many
-  current effects use this pattern legitimately (loading from localStorage,
-  reacting to prop changes). Audit each useEffect, refactor to `useEffectEvent`
-  or `useMemo` where appropriate, then re-enable.
-- `react-hooks/purity` — flags `Math.random()` and similar impure calls during
-  render. We use these for decorative background animations in `M3About.tsx`,
-  `M3Skills.tsx`, `sidebar.tsx`. Replace with seeded random or `useMemo` then
-  re-enable.
-
-## TypeScript strict mode (partial)
-
-`tsconfig.app.json` currently has `strict: false` with explicit overrides for:
-
-- `noImplicitAny: true`
-- `strictNullChecks: true`
-- `noUnusedLocals: true`
-- `noUnusedParameters: true`
-- `noFallthroughCasesInSwitch: true`
-
-Still off: `strictFunctionTypes`, `strictBindCallApply`,
-`strictPropertyInitialization`, `alwaysStrict`. Enable them one at a time and
-audit fallout.
-
-## Large-file decomposition
-
-These files exceed the 800-line guideline in the global coding-style rules:
-
-- `src/components/M3Contact.tsx` — 836 LOC. Candidate split: ContactForm,
-  ValidationLogic, ContactInfoPanel.
-- `src/components/M3Navbar.tsx` — 810 LOC. Candidate split: DesktopNav,
-  MobileDrawer, ProfileLinkRow.
-
-## Cypress on macOS 26 / Darwin 25
-
-Cypress 15.15.0's bundled Electron does not start on macOS 26.5 (Darwin 25.5.0)
-with: `bad option: --no-sandbox`. CI runs on Ubuntu and is unaffected. Track
-the upstream issue and bump Cypress when a fixed Electron lands. Workarounds
-people are using:
+Cypress 15.x's bundled Electron doesn't start on macOS 26.5 (Darwin 25.5.0)
+with: `bad option: --no-sandbox`. CI runs on Ubuntu and is unaffected. No
+action needed here — track the upstream issue and bump Cypress when a fixed
+Electron lands. Workarounds if you need local Cypress before then:
 
 - Run Cypress in Docker on macOS.
-- Use `cypress open` (GUI mode) which uses a different launch path — may work.
+- Try `cypress open` (GUI mode) — uses a different launch path that sometimes
+  works.
 
-## Prettier formatting pass
-
-`prettier` is installed and configured (`.prettierrc.json`, `.prettierignore`),
-but the codebase has not been formatted. Run `npm run format` in its own
-dedicated commit so the diff is reviewable.
-
-## Bundle size
-
-Production bundle is ~1.07 MB un-split. Consider code-splitting with
-`build.rollupOptions.output.manualChunks` (now `rolldownOptions` under Vite 8).
-The main wins would be lazy-loading project detail modals and the M3 theme.
-
-## Build info timestamp
+### Build info timestamp
 
 `src/build-info.ts` is gitignored and regenerated by
 `scripts/generate-build-info.cjs` during `vercel-build`. Confirmed working —
-no follow-up needed, but flagged here as a sanity check item.
+nothing to do. Listed only as a periodic sanity-check.
+
+## Intentionally skipped
+
+### Tailwind 3 → 4
+
+Tailwind 4 ships a CSS-first config model and a faster Rust-based engine.
+Investigated and decided **not worth it for this codebase right now** because:
+
+- This site is **MUI-first**, not Tailwind-first. Tailwind only drives the
+  remaining shadcn primitives. The MUI styled-components handle everything
+  visible.
+- Build is already 600 ms; the Oxide engine would save invisible time.
+- CSS bundle is already 62 KB (12 KB gzip); a 30% reduction is ~4 KB gzip,
+  invisible at the latency this site already loads at.
+- The new features (container queries, 3D transforms) aren't used.
+- The browser-version bump (Safari 16.4+, Chrome 111+, Firefox 128+) is a
+  small but real regression for visitors on older browsers.
+- Migration cost (half a day of careful work plus risk of subtle shadcn
+  regressions) outweighs the marginal benefit.
+
+Revisit if:
+
+- The styling stack is ever rebuilt to be Tailwind-first (drop MUI).
+- A security advisory drops against Tailwind 3 (none today).
+- A feature needs container queries or other v4-only utilities.
