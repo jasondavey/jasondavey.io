@@ -1,5 +1,7 @@
 # jasondavey.io - A Digital Portfolio
 
+[![CI](https://github.com/jasondavey/jasondavey.io/actions/workflows/jasondavey.io.yml/badge.svg?branch=main)](https://github.com/jasondavey/jasondavey.io/actions/workflows/jasondavey.io.yml)
+
 ## Project Overview
 
 **GitHub Repository**: [jasondavey.io](https://github.com/jasondavey/jasondavey.io)

@@ -7,6 +7,7 @@ coverage
 cypress/videos
 cypress/screenshots
 playwright-report
+playwright-results.json
 test-results
 blob-report
 public
