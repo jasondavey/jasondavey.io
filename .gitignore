@@ -31,3 +31,9 @@ public/JasonDavey.docx
 cypress/videos
 .claude/settings.local.json
 public/_private
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
