@@ -36,29 +36,26 @@ interface ReadmeModalProps {
 
 const ReadmeModal = ({ open, onOpenChange }: ReadmeModalProps) => {
   const [readmeContent, setReadmeContent] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // isLoading is derived: we're loading whenever the modal is open and
+  // the content slot is still empty.
+  const isLoading = open && readmeContent === "";
 
   useEffect(() => {
-    if (open && readmeContent === "") {
-      setIsLoading(true);
-      // Fetch the README.md content
-      fetch("/README.md")
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to fetch README");
-          }
-          return response.text();
-        })
-        .then((content) => {
-          setReadmeContent(content);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching README:", error);
-          setReadmeContent("Failed to load README content. Please try again later.");
-          setIsLoading(false);
-        });
-    }
+    if (!open || readmeContent !== "") return;
+    fetch("/README.md")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch README");
+        }
+        return response.text();
+      })
+      .then((content) => {
+        setReadmeContent(content);
+      })
+      .catch((error) => {
+        console.error("Error fetching README:", error);
+        setReadmeContent("Failed to load README content. Please try again later.");
+      });
   }, [open, readmeContent]);
 
   return (

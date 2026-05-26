@@ -42,7 +42,13 @@ const TypingQuotes: React.FC<TypingQuotesProps> = ({
     if (isDeleting) {
       // Deleting text logic
       if (displayedText === "") {
+        // Typing state machine: when the current quote is fully deleted we
+        // transition to typing the next quote. This is a self-driving loop
+        // by design; the rule's "compute during render" advice doesn't fit
+        // an animation timeline.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsDeleting(false);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setCurrentQuoteIndex((prev) => (prev + 1) % quotes.length);
       } else {
         typingTimer.current = setTimeout(() => {

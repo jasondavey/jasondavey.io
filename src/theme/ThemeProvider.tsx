@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material/styles";
 import { lightThemeOptions, darkThemeOptions } from "./theme";
 import { ThemeContext } from "./useTheme";
@@ -7,43 +7,35 @@ interface ThemeProviderProps {
   children: React.ReactNode;
 }
 
-// Main theme provider component
-const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [mounted, setMounted] = useState(false);
-  const [mode, setMode] = useState<"light" | "dark">("dark");
+const readInitialMode = (): "light" | "dark" => {
+  if (typeof window === "undefined") return "dark";
+  const saved = window.localStorage.getItem("theme");
+  return saved === "light" || saved === "dark" ? saved : "dark";
+};
 
-  // Create the theme based on the current mode
+const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+  // Lazy initializer reads localStorage on first render only, avoiding
+  // the dark-to-light flash that a useEffect-based read would cause.
+  const [mode, setMode] = useState<"light" | "dark">(readInitialMode);
+
   const theme = React.useMemo(
     () => createTheme(mode === "dark" ? darkThemeOptions : lightThemeOptions),
     [mode]
   );
 
   const toggleTheme = () => {
-    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-    // Save preference to localStorage
-    localStorage.setItem("theme", mode === "light" ? "dark" : "light");
+    setMode((prevMode) => {
+      const next = prevMode === "light" ? "dark" : "light";
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("theme", next);
+      }
+      return next;
+    });
   };
-
-  // Set mounted to true after first render and get preferred theme from localStorage
-  useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme) {
-      setMode(savedTheme);
-    }
-  }, []);
-
-  // Wait until mounted to avoid hydration mismatch
-  if (!mounted) {
-    return null;
-  }
-
-  // Create a clean theme object without any development attributes
-  const cleanTheme = { ...theme };
 
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme }}>
-      <MuiThemeProvider theme={cleanTheme}>{children}</MuiThemeProvider>
+      <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
     </ThemeContext.Provider>
   );
 };

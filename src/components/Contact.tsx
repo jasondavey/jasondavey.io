@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
 import {
   Box,
@@ -150,13 +150,14 @@ const Contact = () => {
     message: "",
   });
 
-  // Validation state
+  // Validation state. formValid is derived (see below), not stored, so
+  // we never have to keep it in sync with the field-level flags.
   const [validation, setValidation] = useState({
     name: { valid: false, message: "" },
     email: { valid: false, message: "" },
     message: { valid: false, message: "" },
-    formValid: false,
   });
+  const formValid = validation.name.valid && validation.email.valid && validation.message.valid;
 
   // UI state
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -252,16 +253,6 @@ const Contact = () => {
     }));
   };
 
-  // Update form validity when individual field validations change
-  useEffect(() => {
-    const formIsValid = validation.name.valid && validation.email.valid && validation.message.valid;
-
-    setValidation((prev) => ({
-      ...prev,
-      formValid: formIsValid,
-    }));
-  }, [validation.name.valid, validation.email.valid, validation.message.valid]);
-
   // Handle snackbar close
   const handleSnackbarClose = () => {
     setOpenSnackbar(false);
@@ -275,13 +266,11 @@ const Contact = () => {
     const emailValidation = validateField("email", formData.email);
     const messageValidation = validateField("message", formData.message);
 
-    setValidation((prev) => ({
-      ...prev,
+    setValidation({
       name: nameValidation,
       email: emailValidation,
       message: messageValidation,
-      formValid: nameValidation.valid && emailValidation.valid && messageValidation.valid,
-    }));
+    });
 
     if (!nameValidation.valid || !emailValidation.valid || !messageValidation.valid) {
       setSnackbarMessage("Please fix the form errors before submitting");
@@ -322,7 +311,6 @@ const Contact = () => {
         name: { valid: false, message: "" },
         email: { valid: false, message: "" },
         message: { valid: false, message: "" },
-        formValid: false,
       });
 
       setSnackbarMessage("Thank you! Your message has been sent successfully.");
@@ -571,7 +559,7 @@ const Contact = () => {
                           variant="contained"
                           color="primary"
                           size="large"
-                          disabled={isSubmitting || !validation.formValid}
+                          disabled={isSubmitting || !formValid}
                           endIcon={
                             isSubmitting ? (
                               <CircularProgress size={20} color="inherit" />

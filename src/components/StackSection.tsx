@@ -18,16 +18,18 @@ const stack = [
   },
 ];
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+const readHostName = (): string => {
+  if (typeof window !== "undefined" && window.location.hostname) {
+    return window.location.hostname;
+  }
+  return "this site";
+};
 
 const StackSection = () => {
-  const [hostName, setHostName] = useState<string>("this site");
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hostname) {
-      setHostName(window.location.hostname);
-    }
-  }, []);
+  // Lazy initializer reads location.hostname on first render only.
+  const [hostName] = useState<string>(readHostName);
 
   return (
     <section id="stack" className="py-4 border-b">

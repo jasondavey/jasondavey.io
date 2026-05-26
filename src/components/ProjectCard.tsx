@@ -50,7 +50,9 @@ const ProjectCard: React.FC<Project> = ({
 }) => {
   const safeIndex = index ?? 0;
   const isEven = safeIndex % 2 === 0;
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() =>
+    typeof document !== "undefined" ? document.documentElement.classList.contains("dark") : false
+  );
   const [archModalOpen, setArchModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"business" | "architecture" | "results">(
     businessView ? "business" : "architecture"
@@ -68,13 +70,8 @@ const ProjectCard: React.FC<Project> = ({
     });
   };
 
-  // Detect theme changes
+  // Watch for theme changes (initial value is set by lazy initializer above).
   useEffect(() => {
-    // Set initial theme
-    const currentTheme = document.documentElement.classList.contains("dark");
-    setIsDarkMode(currentTheme);
-
-    // Watch for theme changes
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === "class") {
