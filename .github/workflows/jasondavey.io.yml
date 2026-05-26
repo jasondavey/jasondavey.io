@@ -69,21 +69,73 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
+  runPlaywrightTestsAgainstVercelPreview:
+    needs: staticChecks
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Capture Vercel preview URL
+        id: vercelPreviewWait
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 180
+
+      - name: Checkout jasondavey.io
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Run Playwright tests against Vercel Preview
+        env:
+          PW_BASE_URL: ${{ steps.vercelPreviewWait.outputs.url }}
+        run: npx playwright test
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+  deployOnGreen:
+    needs:
+      - runCypressTestsAgainstVercelPreview
+      - runPlaywrightTestsAgainstVercelPreview
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout jasondavey.io
+        if: github.ref == 'refs/heads/dev'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       # Deploy to production when tests pass on main branch
       - name: Deploy to Production
-        if: success() && github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: curl -X POST "${{ secrets.VERCEL_PROD_DEPLOY_HOOK }}"
 
-      # Direct merge from dev to main when tests pass on dev branch
+      # Direct merge from dev to main when both test jobs pass on dev
       - name: Setup Git Identity
-        if: success() && github.ref == 'refs/heads/dev'
+        if: github.ref == 'refs/heads/dev'
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
-      # Fetch all branches and perform merge
       - name: Direct merge dev to main
-        if: success() && github.ref == 'refs/heads/dev'
+        if: github.ref == 'refs/heads/dev'
         run: |
           git fetch origin
           git checkout main
