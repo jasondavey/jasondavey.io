@@ -4,7 +4,7 @@ import { FaEnvelope, FaReact } from "react-icons/fa";
 import { SiNetlify } from "react-icons/si";
 import { SiAuth0 } from "react-icons/si";
 import { SiFauna } from "react-icons/si";
-import { SiTwilio } from "react-icons/si";
+import { CgTwilio } from "react-icons/cg";
 import { SiDatadog } from "react-icons/si";
 import { FaAddressBook } from "react-icons/fa";
 import { FaNodeJs } from "react-icons/fa";
@@ -13,13 +13,7 @@ import { CrsCreditApiIcon } from "./CrsCreditApiIcon";
 import { IoLogoIonic } from "react-icons/io5";
 
 export type VerascoreTechCategory =
-  | "Frontend"
-  | "Backend"
-  | "Auth"
-  | "Db"
-  | "DevOps"
-  | "Comms"
-  | "Integration";
+  "Frontend" | "Backend" | "Auth" | "Db" | "DevOps" | "Comms" | "Integration";
 
 export const VerascoreTechMap: Record<
   string,
@@ -66,7 +60,7 @@ export const VerascoreTechMap: Record<
     category: "Integration",
   },
   Twilio: {
-    icon: <SiTwilio className="text-pink-500" title="Twilio" />,
+    icon: <CgTwilio className="text-pink-500" title="Twilio" />, // SiTwilio removed in react-icons 5.7
     url: "https://www.twilio.com/docs/usage/api",
     category: "Comms",
   },
