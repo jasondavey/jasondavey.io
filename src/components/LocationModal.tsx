@@ -1,12 +1,15 @@
 import React from "react";
 import {
   Dialog,
-  DialogContent,
-  DialogHeader,
   DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import { Box } from "@mui/material";
+  DialogContent,
+  Typography,
+  Box,
+  IconButton,
+  useTheme,
+  alpha,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface LocationModalProps {
   isOpen: boolean;
@@ -18,19 +21,38 @@ interface LocationModalProps {
 }
 
 const LocationModal: React.FC<LocationModalProps> = ({ isOpen, onClose, location }) => {
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white">
-            {location.name}
-          </DialogTitle>
-          <DialogDescription className="text-gray-700 dark:text-gray-300">
-            Here's where you can find me in {location.name}
-          </DialogDescription>
-        </DialogHeader>
+  const theme = useTheme();
 
-        <Box className="w-full h-[400px] mt-2 rounded-lg overflow-hidden">
+  return (
+    <Dialog open={isOpen} onClose={onClose} maxWidth="md" fullWidth>
+      <DialogTitle
+        sx={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 2 }}
+      >
+        <Box>
+          <Typography variant="h6" component="div" sx={{ fontWeight: 700 }}>
+            {location.name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Here&apos;s where you can find me in {location.name}
+          </Typography>
+        </Box>
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            color: theme.palette.text.secondary,
+            "&:hover": {
+              color: theme.palette.text.primary,
+              backgroundColor: alpha(theme.palette.text.primary, 0.1),
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
+
+      <DialogContent sx={{ pb: 3 }}>
+        <Box sx={{ width: "100%", height: 400, mt: 0.5, borderRadius: 2, overflow: "hidden" }}>
           <iframe
             src={location.embed}
             width="100%"
@@ -40,7 +62,6 @@ const LocationModal: React.FC<LocationModalProps> = ({ isOpen, onClose, location
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title={`Map of ${location.name}`}
-            className="w-full h-full"
           ></iframe>
         </Box>
       </DialogContent>

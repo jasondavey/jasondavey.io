@@ -1,15 +1,18 @@
 import React from "react";
 import {
   Dialog,
-  DialogContent,
-  DialogHeader,
   DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { useThemeContext } from "@/theme";
-import { Box, Typography, useTheme } from "@mui/material";
+  DialogContent,
+  DialogActions,
+  Button,
+  IconButton,
+  Box,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { alpha } from "@mui/material/styles";
+import { useThemeContext } from "@/theme";
+import CloseIcon from "@mui/icons-material/Close";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import PublicIcon from "@mui/icons-material/Public";
 
@@ -49,162 +52,179 @@ const ExternalLinkModal: React.FC<ExternalLinkModalProps> = ({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[550px] md:max-w-[600px] overflow-hidden border-opacity-70 shadow-lg bg-background">
-        <DialogHeader>
-          <DialogTitle className="flex items-center text-xl gap-2 font-semibold">
-            <PublicIcon color="primary" sx={{ fontSize: 24 }} />
-            <span className="text-foreground">External Link</span>
-          </DialogTitle>
-        </DialogHeader>
+    <Dialog open={isOpen} onClose={onClose} maxWidth="sm" fullWidth>
+      <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <PublicIcon color="primary" sx={{ fontSize: 24 }} />
+          <Typography variant="h6" component="span" sx={{ fontWeight: 600 }}>
+            External Link
+          </Typography>
+        </Box>
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            color: theme.palette.text.secondary,
+            "&:hover": {
+              color: theme.palette.text.primary,
+              backgroundColor: alpha(theme.palette.text.primary, 0.1),
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
 
-        <Box className="p-6">
-          <Box
+      <DialogContent>
+        <Box
+          sx={{
+            p: 4,
+            borderRadius: 2,
+            bgcolor:
+              mode === "dark"
+                ? alpha(theme.palette.background.paper, 0.9)
+                : alpha(theme.palette.background.paper, 0.8),
+            border: `1px solid ${alpha(theme.palette.divider, mode === "dark" ? 0.4 : 0.1)}`,
+            mb: 4,
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            boxShadow:
+              mode === "dark"
+                ? `0 4px 16px ${alpha(theme.palette.common.black, 0.6)}`
+                : theme.shadows[3],
+          }}
+        >
+          <Typography
+            variant="h6"
+            component="h3"
             sx={{
-              p: 4,
-              borderRadius: 2,
-              bgcolor:
-                mode === "dark"
-                  ? alpha(theme.palette.background.paper, 0.9)
-                  : alpha(theme.palette.background.paper, 0.8),
-              border: `1px solid ${alpha(theme.palette.divider, mode === "dark" ? 0.4 : 0.1)}`,
-              mb: 4,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              boxShadow:
-                mode === "dark"
-                  ? `0 4px 16px ${alpha(theme.palette.common.black, 0.6)}`
-                  : theme.shadows[3],
+              color: "text.primary",
+              fontWeight: 600,
             }}
           >
+            {title}
+          </Typography>
+
+          {description && (
             <Typography
-              variant="h6"
-              component="h3"
+              variant="body1"
               sx={{
-                color: "text.primary",
-                fontWeight: 600,
+                color: "text.secondary",
+                lineHeight: 1.6,
               }}
             >
-              {title}
+              {description}
             </Typography>
-
-            {description && (
-              <Typography
-                variant="body1"
-                sx={{
-                  color: "text.secondary",
-                  lineHeight: 1.6,
-                }}
-              >
-                {description}
-              </Typography>
-            )}
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                mt: 2,
-                py: 1,
-                px: 2,
-                borderRadius: 1,
-                bgcolor:
-                  mode === "dark"
-                    ? alpha(theme.palette.background.default, 0.8)
-                    : alpha(theme.palette.background.default, 0.6),
-                border: `1px solid ${alpha(theme.palette.divider, mode === "dark" ? 0.3 : 0.05)}`,
-              }}
-            >
-              <PublicIcon
-                sx={{
-                  fontSize: 20,
-                  mr: 1,
-                  color: mode === "dark" ? "primary.main" : "primary.main",
-                }}
-              />
-              <Typography
-                variant="body2"
-                sx={{
-                  fontWeight: 600,
-                  color: "text.primary",
-                  opacity: 1,
-                }}
-              >
-                {domain}
-              </Typography>
-            </Box>
-          </Box>
+          )}
 
           <Box
             sx={{
+              display: "flex",
+              alignItems: "center",
+              mt: 2,
+              py: 1,
+              px: 2,
+              borderRadius: 1,
               bgcolor:
                 mode === "dark"
-                  ? alpha(theme.palette.background.paper, 0.9)
-                  : alpha(theme.palette.info.main, 0.04),
-              p: 3,
-              borderRadius: 2,
-              mb: 2,
-              border: `1px solid ${alpha(mode === "dark" ? theme.palette.primary.main : theme.palette.info.main, mode === "dark" ? 0.4 : 0.1)}`,
-              boxShadow: theme.shadows[2],
+                  ? alpha(theme.palette.background.default, 0.8)
+                  : alpha(theme.palette.background.default, 0.6),
+              border: `1px solid ${alpha(theme.palette.divider, mode === "dark" ? 0.3 : 0.05)}`,
             }}
           >
-            <Box sx={{ display: "flex", alignItems: "center", mb: 1.5 }}>
-              <Box
-                component="span"
-                sx={{
-                  display: "inline-flex",
-                  p: 0.5,
-                  borderRadius: "50%",
-                  mr: 1,
-                  bgcolor:
-                    mode === "dark"
-                      ? alpha(theme.palette.primary.main, 0.4)
-                      : alpha(theme.palette.info.main, 0.08),
-                }}
-              >
-                <PublicIcon fontSize="small" color="primary" />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{
-                  fontWeight: 600,
-                  color: mode === "dark" ? theme.palette.primary.light : "info.main",
-                }}
-              >
-                Security Notice
-              </Typography>
-            </Box>
+            <PublicIcon
+              sx={{
+                fontSize: 20,
+                mr: 1,
+                color: "primary.main",
+              }}
+            />
             <Typography
               variant="body2"
               sx={{
-                color: mode === "dark" ? theme.palette.common.white : "text.primary",
-                lineHeight: 1.6,
-                fontWeight: 500,
+                fontWeight: 600,
+                color: "text.primary",
+                opacity: 1,
               }}
             >
-              You're about to leave Jason Davey's portfolio website and visit an external site.
-              External sites are not under my control and may have different privacy and security
-              policies.
+              {domain}
             </Typography>
           </Box>
         </Box>
 
-        <DialogFooter>
-          <Button
-            onClick={onClose}
-            className="mr-2 bg-background hover:bg-primary/10 text-primary border border-primary/40 shadow-sm"
+        <Box
+          sx={{
+            bgcolor:
+              mode === "dark"
+                ? alpha(theme.palette.background.paper, 0.9)
+                : alpha(theme.palette.info.main, 0.04),
+            p: 3,
+            borderRadius: 2,
+            mb: 1,
+            border: `1px solid ${alpha(mode === "dark" ? theme.palette.primary.main : theme.palette.info.main, mode === "dark" ? 0.4 : 0.1)}`,
+            boxShadow: theme.shadows[2],
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", mb: 1.5 }}>
+            <Box
+              component="span"
+              sx={{
+                display: "inline-flex",
+                p: 0.5,
+                borderRadius: "50%",
+                mr: 1,
+                bgcolor:
+                  mode === "dark"
+                    ? alpha(theme.palette.primary.main, 0.4)
+                    : alpha(theme.palette.info.main, 0.08),
+              }}
+            >
+              <PublicIcon fontSize="small" color="primary" />
+            </Box>
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: 600,
+                color: mode === "dark" ? theme.palette.primary.light : "info.main",
+              }}
+            >
+              Security Notice
+            </Typography>
+          </Box>
+          <Typography
+            variant="body2"
+            sx={{
+              color: mode === "dark" ? theme.palette.common.white : "text.primary",
+              lineHeight: 1.6,
+              fontWeight: 500,
+            }}
           >
-            Cancel
-          </Button>
-          <Button
-            onClick={handleVisit}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-md"
-          >
-            <OpenInNewIcon className="mr-2 h-4 w-4" /> Continue to {domain}
-          </Button>
-        </DialogFooter>
+            You&apos;re about to leave Jason Davey&apos;s portfolio website and visit an external
+            site. External sites are not under my control and may have different privacy and
+            security policies.
+          </Typography>
+        </Box>
       </DialogContent>
+
+      <DialogActions sx={{ px: 3, pb: 3 }}>
+        <Button
+          onClick={onClose}
+          variant="outlined"
+          sx={{ textTransform: "none", fontWeight: 600, borderRadius: "20px" }}
+        >
+          Cancel
+        </Button>
+        <Button
+          onClick={handleVisit}
+          variant="contained"
+          color="primary"
+          startIcon={<OpenInNewIcon />}
+          sx={{ textTransform: "none", fontWeight: 600, borderRadius: "20px" }}
+        >
+          Continue to {domain}
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 };

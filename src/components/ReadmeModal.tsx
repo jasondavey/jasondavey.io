@@ -1,16 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
-import { useTheme } from "@mui/material";
 import {
   Dialog,
-  DialogContent,
-  DialogHeader,
   DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+  DialogContent,
+  DialogActions,
+  Button,
+  Typography,
+  Box,
+  IconButton,
+  useTheme,
+  alpha,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import CarbonBadge from "./CarbonBadge";
 import CarbonInfoContent from "./CarbonInfoContent";
 
@@ -74,85 +77,89 @@ const ReadmeModal = ({ open, onOpenChange }: ReadmeModalProps) => {
   }, [open, readmeContent]);
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent
-        style={{ zIndex: 9999 }}
-        className="sm:max-w-[80%] md:max-w-[70%] max-h-[90vh] h-[90vh] p-6 flex flex-col overflow-hidden bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-800 dark:shadow-xl"
+    <Dialog
+      open={open}
+      onClose={() => onOpenChange(false)}
+      maxWidth="md"
+      fullWidth
+      slotProps={{ paper: { sx: { height: "90vh" } } }}
+    >
+      <DialogTitle
+        sx={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}
       >
-        {/* Close button overlay */}
-        <div
-          className="absolute top-3 right-3 text-gray-500 dark:text-gray-400 cursor-pointer"
-          onClick={() => onOpenChange(false)}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="feather feather-x"
-          >
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </div>
-        <DialogHeader className="flex-shrink-0">
-          <DialogTitle className="text-2xl text-gray-900 dark:text-white">
+        <Box>
+          <Typography variant="h5" component="div" sx={{ fontWeight: 700 }}>
             Project Documentation
-          </DialogTitle>
-          <DialogDescription className="text-gray-600 dark:text-gray-300">
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
             Technical details and specifications for jasondavey.io
-          </DialogDescription>
-        </DialogHeader>
+          </Typography>
+        </Box>
+        <IconButton
+          aria-label="close"
+          onClick={() => onOpenChange(false)}
+          sx={{
+            color: theme.palette.text.secondary,
+            "&:hover": {
+              color: theme.palette.text.primary,
+              backgroundColor: alpha(theme.palette.text.primary, 0.1),
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
 
-        {isLoading ? (
-          <div className="flex-1 flex justify-center items-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary dark:border-primary/70"></div>
-          </div>
-        ) : (
-          <ScrollArea className="flex-1 -mx-6 px-6 py-4">
-            <div
-              className="prose text-gray-900 dark:text-gray-100 prose-headings:mt-6 prose-headings:mb-3 prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg
-                prose-p:my-3 prose-li:my-1 prose-ul:my-3 prose-ol:my-3 prose-pre:my-4 
-                prose-code:bg-gray-100 prose-code:text-gray-900 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-                dark:prose-code:bg-gray-800 dark:prose-code:text-gray-100
-                prose-a:text-blue-600 dark:prose-a:text-blue-400
-                prose-hr:my-5 md:prose-base dark:prose-invert max-w-none pb-4 transition-colors duration-300"
-              dangerouslySetInnerHTML={{
-                __html: enhanceMarkdown(DOMPurify.sanitize(marked.parse(readmeContent) as string)),
-              }}
-            />
-
-            {carbonExpanded && (
-              <div
-                ref={carbonPanelRef}
-                className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"
-              >
-                <CarbonInfoContent />
-              </div>
-            )}
-          </ScrollArea>
-        )}
-
-        <div className="flex justify-between items-center pt-4 mt-2 border-t border-gray-200 dark:border-gray-700 flex-shrink-0 transition-colors duration-300">
-          <CarbonBadge
-            darkMode={theme.palette.mode === "dark"}
-            expanded={carbonExpanded}
-            onClick={() => setCarbonExpanded((v) => !v)}
+      {isLoading ? (
+        <Box sx={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <Box
+            sx={{
+              width: 48,
+              height: 48,
+              borderRadius: "50%",
+              border: `4px solid ${alpha(theme.palette.primary.main, 0.2)}`,
+              borderBottomColor: theme.palette.primary.main,
+              animation: "spin 1s linear infinite",
+              "@keyframes spin": { to: { transform: "rotate(360deg)" } },
+            }}
           />
-          <Button
-            variant="outline"
-            onClick={() => onOpenChange(false)}
-            className="bg-white text-gray-800 border-gray-200 hover:bg-gray-100 hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 transition-colors duration-300"
-          >
-            Close
-          </Button>
-        </div>
-      </DialogContent>
+        </Box>
+      ) : (
+        <DialogContent dividers sx={{ flex: 1, overflowY: "auto" }}>
+          <div
+            className="prose text-gray-900 dark:text-gray-100 prose-headings:mt-6 prose-headings:mb-3 prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg
+              prose-p:my-3 prose-li:my-1 prose-ul:my-3 prose-ol:my-3 prose-pre:my-4
+              prose-code:bg-gray-100 prose-code:text-gray-900 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+              dark:prose-code:bg-gray-800 dark:prose-code:text-gray-100
+              prose-a:text-blue-600 dark:prose-a:text-blue-400
+              prose-hr:my-5 md:prose-base dark:prose-invert max-w-none pb-4 transition-colors duration-300"
+            dangerouslySetInnerHTML={{
+              __html: enhanceMarkdown(DOMPurify.sanitize(marked.parse(readmeContent) as string)),
+            }}
+          />
+
+          {carbonExpanded && (
+            <Box ref={carbonPanelRef} sx={{ mt: 3, pt: 3, borderTop: 1, borderColor: "divider" }}>
+              <CarbonInfoContent />
+            </Box>
+          )}
+        </DialogContent>
+      )}
+
+      <DialogActions sx={{ px: 3, py: 2, justifyContent: "space-between" }}>
+        <CarbonBadge
+          darkMode={theme.palette.mode === "dark"}
+          expanded={carbonExpanded}
+          onClick={() => setCarbonExpanded((v) => !v)}
+        />
+        <Button
+          variant="outlined"
+          onClick={() => onOpenChange(false)}
+          sx={{ textTransform: "none", fontWeight: 600, borderRadius: "20px" }}
+        >
+          Close
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 };

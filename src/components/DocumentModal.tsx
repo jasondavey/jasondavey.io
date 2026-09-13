@@ -1,14 +1,17 @@
 import React from "react";
 import {
   Dialog,
-  DialogContent,
-  DialogHeader,
   DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Box, Button as MuiButton, Typography, useTheme } from "@mui/material";
-import { alpha } from "@mui/material/styles";
+  DialogContent,
+  DialogActions,
+  Button,
+  Typography,
+  Box,
+  IconButton,
+  useTheme,
+  alpha,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import DownloadIcon from "@mui/icons-material/Download";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ArticleIcon from "@mui/icons-material/Article";
@@ -31,7 +34,6 @@ const DocumentModal: React.FC<DocumentModalProps> = ({
   const theme = useTheme();
 
   const handleDownload = () => {
-    // Create an anchor element and trigger download
     const link = document.createElement("a");
     link.href = documentUrl;
     link.download = documentType === "resume" ? "JasonDaveyResume.pdf" : "JasonDaveyPatent.pdf";
@@ -41,21 +43,43 @@ const DocumentModal: React.FC<DocumentModalProps> = ({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[800px] md:max-w-[850px] h-[80vh] overflow-hidden flex flex-col">
-        <DialogHeader>
-          <DialogTitle className="flex items-center text-xl gap-2">
-            {documentType === "resume" ? (
-              <ArticleIcon color="primary" />
-            ) : (
-              <DescriptionIcon color="primary" />
-            )}
-            <span>{title}</span>
-          </DialogTitle>
-        </DialogHeader>
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      maxWidth="md"
+      fullWidth
+      slotProps={{ paper: { sx: { height: "80vh" } } }}
+    >
+      <DialogTitle
+        sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2 }}
+      >
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          {documentType === "resume" ? (
+            <ArticleIcon color="primary" />
+          ) : (
+            <DescriptionIcon color="primary" />
+          )}
+          <Typography variant="h6" component="span" sx={{ fontWeight: 600 }}>
+            {title}
+          </Typography>
+        </Box>
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            color: theme.palette.text.secondary,
+            "&:hover": {
+              color: theme.palette.text.primary,
+              backgroundColor: alpha(theme.palette.text.primary, 0.1),
+            },
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
 
-        <Box className="flex-grow overflow-hidden relative">
-          {/* Document preview */}
+      <DialogContent sx={{ display: "flex", flexDirection: "column", overflow: "hidden", pb: 2 }}>
+        <Box sx={{ flexGrow: 1, position: "relative" }}>
           <Box
             component="iframe"
             src={documentUrl}
@@ -69,25 +93,29 @@ const DocumentModal: React.FC<DocumentModalProps> = ({
             title={title}
           />
         </Box>
-
-        <DialogFooter className="mt-4 gap-2 flex-row">
-          <Typography variant="body2" sx={{ color: "text.secondary", flexGrow: 1 }}>
-            You can view and download this document for your reference.
-          </Typography>
-          <Button onClick={onClose} variant="outline" className="mr-2">
-            Close
-          </Button>
-          <MuiButton
-            onClick={handleDownload}
-            variant="contained"
-            color="primary"
-            startIcon={<DownloadIcon />}
-            sx={{ textTransform: "none", fontWeight: 600, borderRadius: "20px" }}
-          >
-            Download {documentType === "resume" ? "Resume" : "Patent"}
-          </MuiButton>
-        </DialogFooter>
       </DialogContent>
+
+      <DialogActions sx={{ px: 3, pb: 2, gap: 1 }}>
+        <Typography variant="body2" sx={{ color: "text.secondary", flexGrow: 1 }}>
+          You can view and download this document for your reference.
+        </Typography>
+        <Button
+          onClick={onClose}
+          variant="outlined"
+          sx={{ textTransform: "none", fontWeight: 600, borderRadius: "20px" }}
+        >
+          Close
+        </Button>
+        <Button
+          onClick={handleDownload}
+          variant="contained"
+          color="primary"
+          startIcon={<DownloadIcon />}
+          sx={{ textTransform: "none", fontWeight: 600, borderRadius: "20px" }}
+        >
+          Download {documentType === "resume" ? "Resume" : "Patent"}
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 };
