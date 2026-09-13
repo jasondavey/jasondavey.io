@@ -172,6 +172,21 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.2 }}
         >
           <Typography
+            component="p"
+            sx={{
+              textAlign: "left",
+              fontWeight: 700,
+              fontSize: "1.1rem",
+              letterSpacing: 0.5,
+              mb: 2,
+              color:
+                theme.palette.mode === "dark" ? theme.palette.grey[400] : theme.palette.grey[600],
+            }}
+          >
+            &lt;jasondavey&gt;
+          </Typography>
+
+          <Typography
             variant="h1"
             component="h1"
             sx={{

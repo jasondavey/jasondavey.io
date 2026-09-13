@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Box, Container, Typography, Link, useTheme, alpha, Divider } from "@mui/material";
+import { Box, Container, Typography, IconButton, useTheme, alpha, Divider } from "@mui/material";
+import BuildIcon from "@mui/icons-material/Build";
 import { Suspense, lazy } from "react";
 const ReadmeModal = lazy(() => import("./ReadmeModal"));
 
@@ -61,11 +62,12 @@ const Footer = () => {
           <Box
             sx={{
               display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
+              flexWrap: "nowrap",
               justifyContent: "center",
               alignItems: "center",
-              gap: { xs: 2, sm: 4 },
-              mb: 2,
+              gap: { xs: 1.5, sm: 4 },
+              mb: 1,
+              whiteSpace: "nowrap",
             }}
           >
             {/* Copyright */}
@@ -84,24 +86,21 @@ const Footer = () => {
                 minute: "numeric",
               })}
             </Typography>
-          </Box>
 
-          <Link
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              setReadmeOpen(true);
-            }}
-            sx={{
-              color: "text.secondary",
-              textDecoration: "none",
-              "&:hover": { color: "primary.main" },
-              fontSize: "0.75rem",
-              opacity: 0.6,
-            }}
-          >
-            How this website was built
-          </Link>
+            <IconButton
+              onClick={() => setReadmeOpen(true)}
+              aria-label="How this website was built"
+              title="How this website was built"
+              size="small"
+              sx={{
+                color: "text.secondary",
+                opacity: 0.6,
+                "&:hover": { color: "primary.main", opacity: 1 },
+              }}
+            >
+              <BuildIcon sx={{ fontSize: "1rem" }} />
+            </IconButton>
+          </Box>
         </Box>
       </Container>
 

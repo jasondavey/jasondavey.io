@@ -2,7 +2,7 @@ import { AppBar, Box, Container, IconButton, Link, Toolbar, Typography } from "@
 import { alpha } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
-import CodeIcon from "@mui/icons-material/Code";
+import BuildIcon from "@mui/icons-material/Build";
 
 import { ColorModeToggle } from "@/theme";
 import { navigationSections } from "@/utils/navigation";
@@ -54,34 +54,6 @@ const DesktopNav = ({ scrolled, onMobileMenuOpen, onReadmeOpen }: DesktopNavProp
     >
       <Container maxWidth="lg">
         <Toolbar sx={{ py: scrolled ? 0.5 : 1 }}>
-          {/* Logo */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1, mr: 2 }}>
-            <motion.div whileHover={{ rotate: 20, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <IconButton
-                onClick={onReadmeOpen}
-                color="inherit"
-                sx={{ p: 0.5 }}
-                aria-label="Technical Documentation"
-                title="Click here to find out how this website was built"
-              >
-                <CodeIcon sx={{ fontSize: "1.5rem" }} />
-              </IconButton>
-            </motion.div>
-            <Box
-              className="site-title"
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: "#ffffff !important", // Force white text with !important
-                fontWeight: 700,
-                fontSize: "1.25rem",
-                letterSpacing: 0.5,
-              }}
-            >
-              jasondavey.io
-            </Box>
-          </Box>
-
           {/* Mobile menu toggle */}
           <Box sx={{ display: { xs: "flex", md: "none" }, ml: "auto" }}>
             <ColorModeToggle />
@@ -201,6 +173,17 @@ const DesktopNav = ({ scrolled, onMobileMenuOpen, onReadmeOpen }: DesktopNavProp
                 <ColorModeToggle />
               </Box>
             </Box>
+
+            <motion.div whileHover={{ rotate: 20, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <IconButton
+                onClick={onReadmeOpen}
+                color="inherit"
+                aria-label="How this website was built"
+                title="How this website was built"
+              >
+                <BuildIcon sx={{ fontSize: "1rem" }} />
+              </IconButton>
+            </motion.div>
           </Box>
         </Toolbar>
       </Container>
