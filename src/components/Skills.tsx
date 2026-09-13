@@ -12,7 +12,6 @@ const SectionContainer = styled(Box)(({ theme }) => ({
     theme.palette.mode === "dark"
       ? alpha(theme.palette.background.default, 0.9)
       : alpha(theme.palette.grey[50], 0.9),
-  scrollMarginTop: "96px", // Matches the 'scroll-mt-24' from the original Skills component
 }));
 
 const GradientPaper = styled(Paper)(({ theme }) => ({
@@ -236,6 +235,7 @@ const Skills = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             <Typography
               variant="h2"
