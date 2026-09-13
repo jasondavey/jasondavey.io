@@ -47,7 +47,7 @@ const skillCategories = [
     id: 1,
     name: "Frontend & Product",
     blurb: "Shipped in production across VeraScore, Nularity, and PlayOn Sports.",
-    skills: ["React", "TypeScript", "Next.js", "Vue / Nuxt", "Material UI"],
+    skills: ["React", "TypeScript", "Next.js", "Vue", "Nuxt", "Material UI"],
   },
   {
     id: 2,
