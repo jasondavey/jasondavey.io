@@ -67,7 +67,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Montserrat", "sans-serif"],
+        sans: ["Courier New", "Courier", "monospace"],
       },
       keyframes: {
         "accordion-down": {

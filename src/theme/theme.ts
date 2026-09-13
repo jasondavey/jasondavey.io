@@ -39,18 +39,16 @@ const lightThemeOptions: ThemeOptions = {
     },
   },
   typography: {
-    fontFamily: '"Montserrat", "Roboto Flex", "Roboto", sans-serif',
+    fontFamily: '"Courier New", Courier, monospace',
     h1: {
       fontWeight: 800,
       fontSize: "3.5rem",
       lineHeight: 1.2,
-      letterSpacing: "-0.02em",
     },
     h2: {
       fontWeight: 700,
       fontSize: "2.75rem",
       lineHeight: 1.3,
-      letterSpacing: "-0.01em",
     },
     h3: {
       fontSize: "2rem",
