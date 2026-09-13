@@ -23,6 +23,14 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     [mode]
   );
 
+  // Tailwind's dark mode here is class-based (see tailwind.config.ts), so the
+  // Radix/shadcn components (Dialog, etc.) only pick up dark styling if this
+  // class is present on the root element — it doesn't follow MUI's theme on
+  // its own.
+  React.useEffect(() => {
+    document.documentElement.classList.toggle("dark", mode === "dark");
+  }, [mode]);
+
   const toggleTheme = () => {
     setMode((prevMode) => {
       const next = prevMode === "light" ? "dark" : "light";

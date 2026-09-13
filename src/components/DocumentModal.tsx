@@ -58,7 +58,7 @@ const DocumentModal: React.FC<DocumentModalProps> = ({
           {/* Document preview */}
           <Box
             component="iframe"
-            src={`${documentUrl}#toolbar=0`}
+            src={documentUrl}
             sx={{
               width: "100%",
               height: "100%",
