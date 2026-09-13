@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Box, Typography, Container, Paper, useTheme, alpha } from "@mui/material";
-import CareerHighlights from "./CareerHighlights";
 import CurrentFocus from "./CurrentFocus";
 import {
   Timeline,
@@ -222,27 +221,6 @@ const Experience: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-50px" }}
           >
-            <Typography
-              variant="h2"
-              component="h2"
-              sx={{
-                fontWeight: 800,
-                mb: 2,
-                background: `linear-gradient(90deg, ${theme.palette.text.primary}, ${theme.palette.primary.main})`,
-                backgroundClip: "text",
-                textFillColor: "transparent",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              Career
-            </Typography>
-
-            {/* Career Highlights Section */}
-            <Box sx={{ mb: 8, px: { xs: 2, md: 0 } }}>
-              <CareerHighlights />
-            </Box>
-
             <Typography
               variant="h2"
               component="h2"

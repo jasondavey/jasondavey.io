@@ -3,6 +3,7 @@ import { Box, Typography, Container, useTheme } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import { motion, useScroll, useTransform } from "framer-motion";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import CareerHighlights from "./CareerHighlights";
 
 // Styled components for enhanced visual design
 const SectionContainer = styled(Box)(({ theme }) => ({
@@ -134,7 +135,7 @@ const About = () => {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Hands-On by Nature, Leader by Necessity
+                Hands-on, ego free, servant leadership
               </Typography>
 
               <Typography
@@ -173,6 +174,10 @@ const About = () => {
                 </Typography>
               </Box>
             </Box>
+          </Box>
+
+          <Box sx={{ mt: 10 }}>
+            <CareerHighlights />
           </Box>
         </motion.div>
       </ContentWrapper>
