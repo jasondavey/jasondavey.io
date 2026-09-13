@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Box, Container, Typography, Link, useTheme, alpha, Divider } from "@mui/material";
 import { Suspense, lazy } from "react";
 const ReadmeModal = lazy(() => import("./ReadmeModal"));
-import CarbonBadge from "./CarbonBadge";
 
 const Footer = () => {
   const theme = useTheme();
@@ -73,11 +72,6 @@ const Footer = () => {
             <Typography variant="caption" sx={{ opacity: 0.7 }}>
               © {new Date().getFullYear()} Jason Davey. All rights reserved.
             </Typography>
-
-            {/* Website Carbon Badge */}
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <CarbonBadge darkMode={theme.palette.mode === "dark"} />
-            </Box>
 
             {/* Last Build Time */}
             <Typography variant="caption" sx={{ opacity: 0.7 }}>

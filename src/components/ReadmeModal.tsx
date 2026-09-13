@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
+import { useTheme } from "@mui/material";
 import {
   Dialog,
   DialogContent,
@@ -10,6 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import CarbonBadge from "./CarbonBadge";
+import CarbonInfoContent from "./CarbonInfoContent";
 
 // Configure marked options for better formatting
 marked.setOptions({
@@ -35,10 +38,22 @@ interface ReadmeModalProps {
 }
 
 const ReadmeModal = ({ open, onOpenChange }: ReadmeModalProps) => {
+  const theme = useTheme();
   const [readmeContent, setReadmeContent] = useState<string>("");
+  const [carbonExpanded, setCarbonExpanded] = useState(false);
+  const carbonPanelRef = useRef<HTMLDivElement>(null);
   // isLoading is derived: we're loading whenever the modal is open and
   // the content slot is still empty.
   const isLoading = open && readmeContent === "";
+
+  // The panel renders inside the scrollable README area, below whatever the
+  // reader currently has scrolled to — without this it can expand entirely
+  // off-screen and look like the click did nothing.
+  useEffect(() => {
+    if (carbonExpanded) {
+      carbonPanelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [carbonExpanded]);
 
   useEffect(() => {
     if (!open || readmeContent !== "") return;
@@ -111,10 +126,24 @@ const ReadmeModal = ({ open, onOpenChange }: ReadmeModalProps) => {
                 __html: enhanceMarkdown(DOMPurify.sanitize(marked.parse(readmeContent) as string)),
               }}
             />
+
+            {carbonExpanded && (
+              <div
+                ref={carbonPanelRef}
+                className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"
+              >
+                <CarbonInfoContent />
+              </div>
+            )}
           </ScrollArea>
         )}
 
-        <div className="flex justify-end pt-4 mt-2 border-t border-gray-200 dark:border-gray-700 flex-shrink-0 transition-colors duration-300">
+        <div className="flex justify-between items-center pt-4 mt-2 border-t border-gray-200 dark:border-gray-700 flex-shrink-0 transition-colors duration-300">
+          <CarbonBadge
+            darkMode={theme.palette.mode === "dark"}
+            expanded={carbonExpanded}
+            onClick={() => setCarbonExpanded((v) => !v)}
+          />
           <Button
             variant="outline"
             onClick={() => onOpenChange(false)}

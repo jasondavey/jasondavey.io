@@ -1,0 +1,84 @@
+// Explanatory content for the "is this site eco-friendly" panel — extracted
+// so it can be shown inline (e.g. inside the Project Documentation modal)
+// rather than as its own stacked dialog.
+const CarbonInfoContent = () => {
+  return (
+    <div className="space-y-4">
+      <h2 className="flex items-center gap-2 text-xl font-semibold text-gray-900 dark:text-white">
+        <span className="text-green-500">🌍</span> Is JasonDavey.io Eco-Friendly?
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300">I care about the planet too</p>
+
+      <p className="text-gray-700 dark:text-gray-200">
+        That's why I've checked how environmentally friendly this website is using
+        WebsiteCarbon.com, a tool that estimates the carbon footprint of websites.
+      </p>
+
+      <h3 className="text-lg font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">
+        <span className="text-green-500">🔎</span> What Does WebsiteCarbon Do?
+      </h3>
+      <p className="text-gray-700 dark:text-gray-200">
+        WebsiteCarbon calculates how much energy it takes to load a webpage and turns that into an
+        estimate of CO₂ (carbon dioxide) emissions. Here's how it works, in plain English:
+      </p>
+      <ul className="list-disc ml-6 space-y-1 text-gray-700 dark:text-gray-200">
+        <li>It measures how big the page is (like how many images, scripts, and files are loaded).</li>
+        <li>It estimates how much electricity is needed to load that data on your device.</li>
+        <li>It checks if my web hosting runs on green energy (like solar or wind).</li>
+        <li>
+          Then it tells me how much carbon is released every time someone visits the site — and
+          even gives a yearly estimate based on traffic.
+        </li>
+      </ul>
+
+      <h3 className="text-lg font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">
+        <span className="text-green-500">💚</span> Why It Matters
+      </h3>
+      <p className="text-gray-700 dark:text-gray-200">
+        Every website uses electricity, and that means carbon emissions — unless it's powered by
+        renewable energy. By keeping my site lightweight and using a green host, I can lower my
+        digital carbon footprint.
+      </p>
+
+      <h3 className="text-lg font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">
+        <span className="text-green-500">✅</span> What I'm Doing
+      </h3>
+      <p className="text-gray-700 dark:text-gray-200">This website is:</p>
+      <ul className="list-disc ml-6 space-y-1 text-gray-700 dark:text-gray-200">
+        <li>Designed with performance in mind, meaning fewer emissions.</li>
+        <li>Hosted on green infrastructure, which uses renewable energy.</li>
+      </ul>
+      <p className="text-gray-700 dark:text-gray-200">
+        I'm always looking for ways to make it even more efficient — because sustainability
+        matters, even online.
+      </p>
+
+      <div className="text-sm text-center border-t border-gray-200 dark:border-gray-700 pt-4">
+        <a
+          href="https://websitecarbon.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
+        >
+          Learn more at WebsiteCarbon.com
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default CarbonInfoContent;
