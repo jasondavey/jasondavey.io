@@ -1,11 +1,8 @@
 import React, { useRef } from "react";
-import { Box, Typography, Container, Card, CardContent, useTheme } from "@mui/material";
-import WorldCitiesLine from "./WorldCitiesLine";
+import { Box, Typography, Container, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import AutoGraphIcon from "@mui/icons-material/AutoGraph";
-import SpeedIcon from "@mui/icons-material/Speed";
+import { motion, useScroll, useTransform } from "framer-motion";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 // Styled components for enhanced visual design
 const SectionContainer = styled(Box)(({ theme }) => ({
@@ -32,97 +29,6 @@ const ContentWrapper = styled(Container)(() => ({
   zIndex: 1,
 }));
 
-const StyledCard = styled(Card)(({ theme }) => ({
-  borderRadius: Number(theme.shape.borderRadius) * 4,
-  overflow: "hidden",
-  transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
-  background:
-    theme.palette.mode === "dark"
-      ? `linear-gradient(135deg, ${theme.palette.background.paper}, ${theme.palette.grey[900]})`
-      : `linear-gradient(135deg, #ffffff, ${theme.palette.grey[50]})`,
-  boxShadow:
-    theme.palette.mode === "dark"
-      ? "0 8px 32px rgba(0, 0, 0, 0.2)"
-      : "0 8px 32px rgba(0, 0, 0, 0.05)",
-  backdropFilter: "blur(10px)",
-  border: `1px solid ${
-    theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.8)"
-  }`,
-  "&:hover": {
-    transform: "translateY(-8px)",
-    boxShadow:
-      theme.palette.mode === "dark"
-        ? "0 16px 48px rgba(0, 0, 0, 0.3)"
-        : "0 16px 48px rgba(0, 0, 0, 0.1)",
-  },
-}));
-
-// Feature card component for key highlights
-interface FeatureProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  delay: number;
-}
-
-const Feature: React.FC<FeatureProps> = ({ icon, title, description, delay }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px 0px" });
-  const theme = useTheme();
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.8, delay }}
-    >
-      <StyledCard>
-        <CardContent sx={{ p: 4 }}>
-          <motion.div whileHover={{ rotate: [0, -10, 10, -10, 0] }} transition={{ duration: 0.5 }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                mb: 3,
-                color: theme.palette.primary.main,
-                fontSize: "3rem",
-              }}
-            >
-              {icon}
-            </Box>
-          </motion.div>
-          <Typography
-            variant="h5"
-            component="h3"
-            sx={{
-              fontWeight: 600,
-              mb: 2,
-              textAlign: "center",
-              background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            {title}
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              textAlign: "center",
-              opacity: 0.85,
-              lineHeight: 1.7,
-            }}
-          >
-            {description}
-          </Typography>
-        </CardContent>
-      </StyledCard>
-    </motion.div>
-  );
-};
-
 // Pre-compute decorative shape positions once at module load so they stay
 // stable across re-renders. Random in render would re-roll positions on
 // every state change (purity rule).
@@ -146,7 +52,6 @@ const About = () => {
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
@@ -230,7 +135,7 @@ const About = () => {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Passionate Engineer & Leader
+              Hands-On by Nature, Leader by Necessity
             </Typography>
 
             <Typography
@@ -244,81 +149,34 @@ const About = () => {
                 mb: 6,
               }}
             >
-              British born, American raised, I build tech with passion and purpose, creating
-              intuitive customer centric experiences and value. I'm typically involved from
-              conception to release, fostering success through hands-on technical and project
-              leadership. And with expertise spanning both engineering and leadership, I bring a
-              unique perspective that blends technical excellence with strategic vision.
+              British born, American raised, I've spent 15+ years moving between hands-on
+              engineering and engineering leadership — often at the same company, sometimes in the
+              same week. I've architected platforms from a blank whiteboard to production, and I've
+              built the teams and culture that keep shipping long after I've moved on. Whichever
+              mode a problem calls for, that's where I go.
             </Typography>
-          </Box>
-        </motion.div>
 
-        <motion.div style={{ y: y2 }}>
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
-              gap: 4,
-            }}
-          >
-            <Feature
-              icon={<LightbulbIcon fontSize="inherit" />}
-              title="Innovative Problem Solver"
-              description="I approach challenges with an eye for efficiency and elegance, finding creative solutions that balance complexity with maintainability."
-              delay={0.2}
-            />
-            <Feature
-              icon={<SpeedIcon fontSize="inherit" />}
-              title="Performance Focused"
-              description="I believe in building systems that not only work well today, but scale gracefully to meet tomorrow's demands without sacrificing speed."
-              delay={0.4}
-            />
-            <Feature
-              icon={<AutoGraphIcon fontSize="inherit" />}
-              title="Data-Driven Leader"
-              description="I make decisions grounded in analytics and user feedback, ensuring our technical direction aligns with measurable business outcomes."
-              delay={0.6}
-            />
-          </Box>
-        </motion.div>
-      </ContentWrapper>
-
-      {/* International Experience Section */}
-      <Box sx={{ mt: 8, px: 2 }}>
-        <motion.div style={{ opacity, y: y2 }}>
-          <Typography
-            variant="h5"
-            component="h3"
-            sx={{
-              textAlign: "center",
-              fontWeight: 600,
-              mb: 2,
-              color: theme.palette.primary.main,
-            }}
-          >
-            International Experience
-          </Typography>
-
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              mt: 2,
-              mb: 4,
-            }}
-          >
             <Box
               sx={{
-                color: theme.palette.text.primary,
-                maxWidth: "900px",
-                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 0.75,
               }}
             >
-              <WorldCitiesLine />
+              <LocationOnIcon
+                sx={{ fontSize: "1rem", color: theme.palette.text.secondary, opacity: 0.6 }}
+              />
+              <Typography
+                variant="body2"
+                sx={{ color: theme.palette.text.secondary, opacity: 0.7, letterSpacing: 0.3 }}
+              >
+                San Francisco · Atlanta · London · Singapore
+              </Typography>
             </Box>
           </Box>
         </motion.div>
-      </Box>
+      </ContentWrapper>
     </SectionContainer>
   );
 };

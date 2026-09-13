@@ -2,10 +2,7 @@ import React from "react";
 import { Box, Typography, Paper, useTheme, alpha, Tooltip } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
-import WorkIcon from "@mui/icons-material/Work";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import SchoolIcon from "@mui/icons-material/School";
-import StarIcon from "@mui/icons-material/Star";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import BadgeIcon from "@mui/icons-material/Badge";
 import LinkIcon from "@mui/icons-material/Link";
@@ -87,31 +84,6 @@ const highlightItems = [
     company: "Stamps.com",
     reference: "https://www.pcmag.com/archive/dymo-stamps-online-303933",
   },
-  {
-    id: 4,
-    title: "4x Time-to-Market Acceleration",
-    description:
-      "Spearheaded Project Phoenix at EQIS Capital, resulting in a 70% reduction in operational costs and accelerated time-to-market by 4x.",
-    icon: <StarIcon fontSize="large" />,
-    company: "EQIS Capital",
-  },
-  {
-    id: 5,
-    title: "Flagship Platform Launch",
-    description:
-      "Architected and led development of VeraScore's flagship financial scoring platform to MVP in six months.",
-    icon: <EmojiEventsIcon fontSize="large" />,
-    company: "VeraScore",
-    reference: "https://lnkd.in/gmTRAUEx",
-  },
-  {
-    id: 6,
-    title: "Engineering Excellence",
-    description:
-      "Directed a company-wide migration to cloud infrastructure at EQIS Capital, enhancing deployment agility and improving system resilience by 30%.",
-    icon: <WorkIcon fontSize="large" />,
-    company: "EQIS Capital",
-  },
 ];
 
 const CareerHighlights: React.FC = () => {
@@ -142,7 +114,7 @@ const CareerHighlights: React.FC = () => {
               theme.palette.mode === "dark" ? theme.palette.grey[300] : theme.palette.grey[700],
           }}
         >
-          Key achievements and milestones from my professional journey
+          Independently verified recognition — a patent, press coverage, and an academic award
         </Typography>
       </Box>
 

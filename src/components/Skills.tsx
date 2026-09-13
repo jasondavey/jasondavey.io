@@ -1,14 +1,5 @@
 import React, { useRef } from "react";
-import {
-  Box,
-  Typography,
-  Container,
-  Grid,
-  LinearProgress,
-  useTheme,
-  alpha,
-  Paper,
-} from "@mui/material";
+import { Box, Typography, Container, Grid, Chip, useTheme, alpha, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
@@ -50,63 +41,37 @@ const GradientPaper = styled(Paper)(({ theme }) => ({
   },
 }));
 
-const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 10,
-  borderRadius: 5,
-  backgroundColor:
-    theme.palette.mode === "dark"
-      ? alpha(theme.palette.grey[700], 0.5)
-      : alpha(theme.palette.grey[300], 0.5),
-  "& .MuiLinearProgress-bar": {
-    borderRadius: 5,
-    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-  },
-}));
-
-// Skill categories and skills
+// Skill categories, grounded in where each was actually used in production
+// rather than an arbitrary self-rated percentage.
 const skillCategories = [
   {
     id: 1,
-    name: "Frontend Development",
-    skills: [
-      { name: "React", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "Next.js", level: 85 },
-      { name: "HTML/CSS", level: 95 },
-      { name: "Material UI", level: 90 },
-    ],
+    name: "Frontend & Product",
+    blurb: "Shipped in production across VeraScore, Nularity, and PlayOn Sports.",
+    skills: ["React", "TypeScript", "Next.js", "Vue / Nuxt", "Material UI"],
   },
   {
     id: 2,
-    name: "Backend Development",
-    skills: [
-      { name: "Node.js", level: 90 },
-      { name: "Express", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "GraphQL", level: 85 },
-      { name: "RESTful APIs", level: 95 },
-    ],
+    name: "Backend & Data",
+    blurb: "From Stamps.com's shipping platform to VeraScore's multi-tenant SaaS backend.",
+    skills: ["Node.js", "C# / .NET", "RESTful APIs", "GraphQL", "SQL Server"],
   },
   {
     id: 3,
-    name: "DevOps & Cloud",
-    skills: [
-      { name: "Docker", level: 85 },
-      { name: "Kubernetes", level: 80 },
-      { name: "AWS", level: 85 },
-      { name: "CI/CD", level: 90 },
-      { name: "Terraform", level: 80 },
-    ],
+    name: "Cloud & DevOps",
+    blurb:
+      "Migrated EQIS to cloud infrastructure (+30% resilience); built Nularity's IaC/CDK stack solo.",
+    skills: ["AWS (EKS, CloudFront)", "Azure", "Docker", "CI/CD", "Terraform / CDK"],
   },
   {
     id: 4,
-    name: "Other Skills",
+    name: "Leadership & Delivery",
+    blurb: "VP Engineering at EQIS Capital and VeraScore; Staff Engineer at PlayOn Sports.",
     skills: [
-      { name: "UX Design", level: 85 },
-      { name: "Team Leadership", level: 95 },
-      { name: "Agile/Scrum", level: 90 },
-      { name: "Data Analysis", level: 85 },
-      { name: "System Architecture", level: 90 },
+      "Team Building",
+      "Agile / Scrum",
+      "System Architecture",
+      "Cross-Functional Leadership",
     ],
   },
 ];
@@ -116,7 +81,8 @@ interface SkillCategoryProps {
   category: {
     id: number;
     name: string;
-    skills: Array<{ name: string; level: number }>;
+    blurb: string;
+    skills: string[];
   };
   index: number;
 }
@@ -140,7 +106,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
           gutterBottom
           sx={{
             fontWeight: 700,
-            mb: 3,
+            mb: 1,
             background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
@@ -150,31 +116,30 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ category, index }) => {
           {category.name}
         </Typography>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
-          {category.skills.map((skill, idx) => (
-            <Box key={skill.name}>
-              <Box sx={{ display: "flex", justifyContent: "space-between", mb: 0.5 }}>
-                <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                  {skill.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {skill.level}%
-                </Typography>
-              </Box>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+          {category.blurb}
+        </Typography>
 
-              <Box sx={{ position: "relative" }}>
-                <StyledLinearProgress variant="determinate" value={0} sx={{ opacity: 0.5 }} />
-                <Box sx={{ position: "absolute", top: 0, left: 0, width: "100%" }}>
-                  <motion.div
-                    initial={{ width: "0%" }}
-                    animate={isInView ? { width: `${skill.level}%` } : { width: "0%" }}
-                    transition={{ duration: 1, delay: 0.3 + 0.1 * idx }}
-                  >
-                    <StyledLinearProgress variant="determinate" value={100} />
-                  </motion.div>
-                </Box>
-              </Box>
-            </Box>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+          {category.skills.map((skill) => (
+            <Chip
+              key={skill}
+              label={skill}
+              size="small"
+              sx={{
+                borderRadius: "16px",
+                fontWeight: 500,
+                background:
+                  theme.palette.mode === "dark"
+                    ? alpha(theme.palette.primary.main, 0.15)
+                    : alpha(theme.palette.primary.main, 0.1),
+                color:
+                  theme.palette.mode === "dark"
+                    ? theme.palette.primary.light
+                    : theme.palette.primary.dark,
+                border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
+              }}
+            />
           ))}
         </Box>
       </GradientPaper>
@@ -326,8 +291,8 @@ const Skills = () => {
                 mb: 6,
               }}
             >
-              I continually expand my skill set to stay at the cutting edge of technology. Here's a
-              snapshot of my current technical and professional capabilities.
+              The tools I reach for, grouped by where I've actually shipped them in production — not
+              a self-rated percentage.
             </Typography>
           </motion.div>
         </Box>

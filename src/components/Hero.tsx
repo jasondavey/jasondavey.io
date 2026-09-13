@@ -1,10 +1,12 @@
 import { useRef } from "react";
-import { Box, Typography, Container, useTheme } from "@mui/material";
+import { Box, Typography, Container, Button, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import DescriptionIcon from "@mui/icons-material/Description";
+import MailOutlineIcon from "@mui/icons-material/MailOutlined";
 import { useThemeContext } from "@/theme";
-import TypingQuotes from "./TypingQuotes";
+import { useDocumentModal } from "@/context/DocumentModalContext";
 
 // Create dimensional layered elements with M3 styling
 const BackgroundLayer = styled(Box)(() => ({
@@ -66,6 +68,7 @@ const Hero = () => {
   const theme = useTheme();
   const { mode } = useThemeContext();
   const isDark = mode === "dark";
+  const { showDocumentModal } = useDocumentModal();
 
   const ref = useRef(null);
   const { scrollYProgress } = useScroll();
@@ -82,16 +85,13 @@ const Hero = () => {
     });
   };
 
-  const quotes = [
-    "Hello...",
-    "Ask me what I mean by...",
-    '"I bend over backwards to be lazy."',
-    "Think first, then make things (Jennie Baird)",
-    "Code like your future self is on vacation",
-    "Success comes from having a passion in what you do.",
-    `Email ${import.meta.env.VITE_EMAIL_ADDRESS_HELLO}`,
-    "Explore this site, get to know my work, and let's build something great!",
-  ];
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleDownloadResume = () => {
+    showDocumentModal("/jasonrdavey.pdf", "Jason Davey's Resume", "resume");
+  };
 
   // Color palette based on M3 Expressive
   const primaryColor = theme.palette.primary.main;
@@ -185,15 +185,15 @@ const Hero = () => {
             component="h1"
             sx={{
               fontSize: {
-                xs: "3rem",
-                sm: "4rem",
-                md: "5rem",
-                lg: "6rem",
+                xs: "2.75rem",
+                sm: "3.75rem",
+                md: "4.5rem",
+                lg: "5.25rem",
               },
               fontWeight: 800,
-              letterSpacing: "-0.05em",
-              lineHeight: 1,
-              mb: 2,
+              letterSpacing: "-0.03em",
+              lineHeight: 1.05,
+              mb: 3,
               background: `linear-gradient(90deg, ${theme.palette.text.primary} 40%, ${primaryColor} 90%)`,
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
@@ -201,68 +201,55 @@ const Hero = () => {
               textAlign: "left",
             }}
           >
-            Build Tech With
+            Engineering Leader Who Still Ships
           </Typography>
 
-          <motion.div
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            <Typography
-              variant="h2"
-              component="span"
-              sx={{
-                fontSize: {
-                  xs: "2.5rem",
-                  sm: "3.5rem",
-                  md: "4.5rem",
-                  lg: "5.5rem",
-                },
-                fontWeight: 900,
-                color:
-                  theme.palette.mode === "dark"
-                    ? "rgba(200, 200, 200, 0.9)"
-                    : theme.palette.grey[700],
-                letterSpacing: "-0.02em",
-                display: "block",
-                mb: 4,
-              }}
-            >
-              Jason D
-            </Typography>
-          </motion.div>
-
-          {/* Typing quotes with modern styling */}
-          <Box
+          <Typography
+            variant="h6"
+            component="p"
             sx={{
-              maxWidth: "600px",
-              mb: 6,
-              p: 3,
-              borderRadius: "16px",
-              backdropFilter: "blur(12px)",
-              background:
-                theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.2)",
-              border: `1px solid ${
-                theme.palette.mode === "dark" ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.05)"
-              }`,
-              boxShadow: theme.shadows[4],
+              maxWidth: "640px",
+              mb: 5,
+              fontWeight: 400,
+              lineHeight: 1.6,
+              color:
+                theme.palette.mode === "dark"
+                  ? "rgba(230, 230, 230, 0.85)"
+                  : theme.palette.grey[800],
             }}
           >
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                color: accentColor,
-                fontWeight: 500,
-                fontSize: {
-                  xs: "1rem",
-                  sm: "1.25rem",
-                },
-              }}
+            15+ years building and leading teams across fintech, media, and logistics — from
+            Staff-level architecture to VP Engineering. I go where the problem needs me: writing
+            code, growing engineers, or both.
+          </Typography>
+
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2 }}>
+            <Button
+              variant="contained"
+              size="large"
+              startIcon={<DescriptionIcon />}
+              onClick={handleDownloadResume}
+              sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
             >
-              <TypingQuotes quotes={quotes} speed={40} />
-            </Typography>
+              Download Resume
+            </Button>
+            <Button
+              variant="outlined"
+              size="large"
+              onClick={() => scrollToSection("experience")}
+              sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
+            >
+              View Experience
+            </Button>
+            <Button
+              variant="text"
+              size="large"
+              startIcon={<MailOutlineIcon />}
+              onClick={() => scrollToSection("contact")}
+              sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
+            >
+              Get in Touch
+            </Button>
           </Box>
         </motion.div>
       </ContentContainer>

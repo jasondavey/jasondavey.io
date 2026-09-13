@@ -179,8 +179,8 @@ const Footer = () => {
               </Typography>
 
               <Typography variant="body2" sx={{ mb: 3, opacity: 0.7 }}>
-                Engineering leader passionate about creating innovative solutions that solve real
-                problems while developing great teams.
+                Engineering leader who still ships — 15+ years across fintech, media, and logistics,
+                moving between hands-on architecture and building the teams around it.
               </Typography>
 
               {/* Social links */}

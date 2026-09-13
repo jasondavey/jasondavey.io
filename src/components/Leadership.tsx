@@ -119,19 +119,19 @@ const Leadership = () => {
       icon: <PeopleIcon fontSize="inherit" />,
       title: "Empowering Teams",
       description:
-        "I believe in building high-performance teams by fostering autonomy, continuous learning, and creating an environment where everyone's voice is valued.",
+        "At EQIS Capital I rebuilt the release lifecycle around psychological safety and shared ownership — cutting time-to-market by 25% and giving engineers real authority over the systems they owned.",
     },
     {
       icon: <TbTargetArrow size="1.8em" />,
       title: "Mission-Driven",
       description:
-        "Success comes from having a clear vision and purpose. I drive alignment between team goals and broader organizational objectives to deliver impactful results.",
+        "At VeraScore our mission was fair credit access for underserved communities. I aligned a cross-functional team around that mission to take our flagship scoring platform from prototype to production in under six months.",
     },
     {
       icon: <FaChartLine size="1.6em" />,
       title: "Data-Informed Decisions",
       description:
-        "I leverage analytics to make strategic decisions, balancing quantitative metrics with qualitative insights and maintaining a focus on continuous improvement.",
+        "Project Phoenix at EQIS Capital cut operational costs 70% and accelerated time-to-market 4x by rebuilding our decisions around real usage data instead of assumptions.",
     },
   ];
 
