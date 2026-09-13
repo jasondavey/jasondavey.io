@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Box, Typography, Container, Paper, useTheme, alpha } from "@mui/material";
 import CareerHighlights from "./CareerHighlights";
+import CurrentFocus from "./CurrentFocus";
 import {
   Timeline,
   TimelineItem,
@@ -61,21 +62,6 @@ const CustomTimelineDot = styled(TimelineDot)(({ theme }) => ({
 
 // Experience data
 const experiences = [
-  {
-    id: 1,
-    role: "Staff Software Engineer",
-    company: "PlayOn Sports",
-    duration: "September 2025 - Present",
-    description:
-      "At PlayOn Sports I work on the national platform for high school sports streaming, ticketing, and media that powers NFHS Network and MaxPreps. My focus is connecting consumer subscription growth across both products, hardening the subscribe and purchase paths, and modernizing the platform so the team can ship with confidence.",
-    achievements: [
-      "Helped design and lead the MaxPreps subscription integration, connecting PlayOn's high school sports ecosystem with consumer subscription growth across NFHS Network and MaxPreps",
-      "Delivered subscription lifecycle improvements across transactional emails, membership and purchase receipts, and brand-aware dunning and cancellation flows",
-      "Improved release confidence by diagnosing and resolving flaky Playwright end-to-end tests on subscribe and purchase paths",
-      "Led platform modernization across TypeScript/Axios upgrades, EKS ramp-up, Nuxt upgrade validation, and CI credential rotation",
-    ],
-    technologies: ["TypeScript", "Nuxt", "Vue", "Node.js", "AWS", "EKS", "Playwright"],
-  },
   {
     id: 2,
     role: "VP Engineering",
@@ -226,6 +212,8 @@ const Experience: React.FC = () => {
       </Box>
 
       <Container sx={{ position: "relative", zIndex: 1 }}>
+        <CurrentFocus />
+
         {/* Section heading */}
         <Box sx={{ textAlign: "center", mb: 10 }}>
           <motion.div
@@ -310,8 +298,7 @@ const Experience: React.FC = () => {
                 mb: 6,
               }}
             >
-              A timeline of my professional journey, highlighting key roles and achievements that
-              have shaped my expertise in engineering and leadership.
+              The path that led here — key roles and achievements across engineering and leadership.
             </Typography>
           </motion.div>
         </Box>
