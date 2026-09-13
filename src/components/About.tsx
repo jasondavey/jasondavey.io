@@ -96,33 +96,6 @@ const About = () => {
         <motion.div style={{ opacity, y: y1 }}>
           <Box sx={{ textAlign: "center", mb: 10, position: "relative" }}>
             <Typography
-              component="span"
-              sx={{
-                color: theme.palette.primary.main,
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: 1.5,
-                fontSize: "0.9rem",
-                mb: 2,
-                display: "block",
-              }}
-            >
-              About Me
-            </Typography>
-
-            <motion.div
-              initial={{ width: "0%" }}
-              whileInView={{ width: "120px" }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              style={{
-                height: "4px",
-                background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                borderRadius: "2px",
-                margin: "0 auto 2rem",
-              }}
-            />
-
-            <Typography
               variant="h2"
               component="h2"
               sx={{
