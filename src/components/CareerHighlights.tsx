@@ -105,17 +105,6 @@ const CareerHighlights: React.FC = () => {
         >
           Highlights
         </Typography>
-        <Typography
-          variant="h6"
-          sx={{
-            maxWidth: "800px",
-            mx: "auto",
-            color:
-              theme.palette.mode === "dark" ? theme.palette.grey[300] : theme.palette.grey[700],
-          }}
-        >
-          Independently verified recognition — a patent, press coverage, and an academic award
-        </Typography>
       </Box>
 
       <Box
