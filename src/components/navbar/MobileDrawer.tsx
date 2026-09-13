@@ -12,7 +12,6 @@ import {
 import { alpha } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import CodeIcon from "@mui/icons-material/Code";
-import PublicIcon from "@mui/icons-material/Public";
 
 import { navigationSections } from "@/utils/navigation";
 import { DrawerProfileLinks } from "./ProfileLinks";
@@ -50,28 +49,24 @@ const MobileDrawer = ({ open, onClose, onReadmeOpen }: MobileDrawerProps) => {
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <CodeIcon color="secondary" />
-          <Typography variant="subtitle1" sx={{ color: "common.white", fontWeight: "bold" }}>
-            jasondavey.io
-          </Typography>
           <IconButton
-            color="info"
             onClick={(e) => {
               e.stopPropagation();
               onReadmeOpen();
               onClose();
             }}
             aria-label="Technical Documentation"
+            title="Click here to find out how this website was built"
             size="small"
+            sx={{ p: 0.5 }}
           >
-            <PublicIcon fontSize="small" />
+            <CodeIcon color="secondary" />
           </IconButton>
+          <Typography variant="subtitle1" sx={{ color: "common.white", fontWeight: "bold" }}>
+            jasondavey.io
+          </Typography>
         </Box>
-        <IconButton
-          onClick={onClose}
-          aria-label="Close menu"
-          sx={{ color: "common.white" }}
-        >
+        <IconButton onClick={onClose} aria-label="Close menu" sx={{ color: "common.white" }}>
           <CloseIcon />
         </IconButton>
       </Box>

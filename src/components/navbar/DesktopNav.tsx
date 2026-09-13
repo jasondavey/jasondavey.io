@@ -3,7 +3,6 @@ import { alpha } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
 import CodeIcon from "@mui/icons-material/Code";
-import PublicIcon from "@mui/icons-material/Public";
 
 import { ColorModeToggle } from "@/theme";
 import { navigationSections } from "@/utils/navigation";
@@ -57,14 +56,13 @@ const DesktopNav = ({ scrolled, onMobileMenuOpen, onReadmeOpen }: DesktopNavProp
         <Toolbar sx={{ py: scrolled ? 0.5 : 1 }}>
           {/* Logo */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 1, mr: 2 }}>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ rotate: 20, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <IconButton
-                component="a"
-                href="#"
-                onClick={(e) => handleSmoothScroll(e, "#")}
+                onClick={onReadmeOpen}
                 color="inherit"
                 sx={{ p: 0.5 }}
-                aria-label="Home"
+                aria-label="Technical Documentation"
+                title="Click here to find out how this website was built"
               >
                 <CodeIcon sx={{ fontSize: "1.5rem" }} />
               </IconButton>
@@ -82,18 +80,6 @@ const DesktopNav = ({ scrolled, onMobileMenuOpen, onReadmeOpen }: DesktopNavProp
             >
               jasondavey.io
             </Box>
-            <motion.div whileHover={{ rotate: 20, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <IconButton
-                color="info"
-                onClick={onReadmeOpen}
-                aria-label="Technical Documentation"
-                title="Click here to find out how this website was built"
-                size="small"
-                sx={{ ml: 1 }}
-              >
-                <PublicIcon fontSize="small" />
-              </IconButton>
-            </motion.div>
           </Box>
 
           {/* Mobile menu toggle */}
