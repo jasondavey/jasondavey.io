@@ -7,6 +7,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import MailOutlineIcon from "@mui/icons-material/MailOutlined";
 import { useThemeContext } from "@/theme";
 import { useDocumentModal } from "@/context/DocumentModalContext";
+import { handleSmoothScroll } from "./navbar/smoothScroll";
 
 // Create dimensional layered elements with M3 styling
 const BackgroundLayer = styled(Box)(() => ({
@@ -78,16 +79,6 @@ const Hero = () => {
   const backgroundY = useTransform(scrollYSpring, [0, 1], ["0%", "20%"]);
   const contentOpacity = useTransform(scrollYSpring, [0, 0.2], [1, 0]);
   const contentY = useTransform(scrollYSpring, [0, 0.2], ["0%", "-10%"]);
-
-  const handleScrollDown = () => {
-    document.getElementById("about")?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const handleDownloadResume = () => {
     showDocumentModal("/jasonrdavey.pdf", "Jason Davey's Resume", "resume");
@@ -236,7 +227,7 @@ const Hero = () => {
             <Button
               variant="outlined"
               size="large"
-              onClick={() => scrollToSection("experience")}
+              onClick={(e) => handleSmoothScroll(e, "#experience")}
               sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
             >
               View Experience
@@ -245,7 +236,7 @@ const Hero = () => {
               variant="text"
               size="large"
               startIcon={<MailOutlineIcon />}
-              onClick={() => scrollToSection("contact")}
+              onClick={(e) => handleSmoothScroll(e, "#contact")}
               sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
             >
               Get in Touch
@@ -256,7 +247,7 @@ const Hero = () => {
 
       {/* Scroll down button with dynamic animation */}
       <ScrollButton
-        onClick={handleScrollDown}
+        onClick={(e) => handleSmoothScroll(e, "#about")}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         animate={{

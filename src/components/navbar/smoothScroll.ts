@@ -1,8 +1,9 @@
-// Smooth scrolling handler shared between the desktop nav and the mobile drawer.
-// Extracted from Navbar.tsx during the navbar decomposition — behavior is identical
-// to the original inline implementation.
+// Section-navigation click handler shared between the desktop nav, the mobile
+// drawer, and the Hero CTAs. Jumps immediately (no animated scroll) so it can't
+// undershoot on pages where below-the-fold content still expands via
+// scroll-triggered animations (e.g. Experience's timeline connectors).
 export const handleSmoothScroll = (
-  e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+  e: React.MouseEvent<Element>,
   targetId: string,
   closeMenu?: () => void
 ): void => {
@@ -23,41 +24,6 @@ export const handleSmoothScroll = (
     closeMenu();
   }
 
-  // Get the target position
-  const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-  // Get the current scroll position
-  const startPosition = window.scrollY;
-  // Calculate distance
-  const distance = targetPosition - startPosition;
-
-  // Speed in pixels per millisecond
-  const speed = 0.5;
-  // Calculate duration based on distance and speed
-  const duration = Math.abs(distance / speed);
-  // Cap duration to provide minimum and maximum scroll times
-  const cappedDuration = Math.max(500, Math.min(duration, 2000));
-
-  // Start time
-  let startTime: number | null = null;
-
-  // Animation function
-  function animation(currentTime: number) {
-    if (startTime === null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const progress = Math.min(timeElapsed / cappedDuration, 1);
-
-    // Easing function for smoother start/stop
-    const ease = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
-
-    window.scrollTo(0, startPosition + distance * ease(progress));
-
-    if (timeElapsed < cappedDuration) {
-      requestAnimationFrame(animation);
-    } else {
-      // Update URL hash without causing a jump
-      window.history.pushState(null, "", targetId);
-    }
-  }
-
-  requestAnimationFrame(animation);
+  targetElement.scrollIntoView({ behavior: "auto", block: "start" });
+  window.history.pushState(null, "", targetId);
 };
