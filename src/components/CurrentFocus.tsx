@@ -2,7 +2,7 @@ import { Suspense, lazy, useState } from "react";
 import { Box, Typography, Paper, Chip, Button, useTheme, alpha } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
-import { currentRole, focusPillars, FocusPillar } from "@/constants/currentFocus";
+import { currentRole, currentStats, focusPillars, FocusPillar } from "@/constants/currentFocus";
 
 const FocusDetailsModal = lazy(() => import("./FocusDetailsModal"));
 
@@ -126,10 +126,38 @@ const CurrentFocus = () => {
 
           <Typography
             variant="body1"
-            sx={{ maxWidth: "800px", opacity: 0.85, lineHeight: 1.8, mb: 5 }}
+            sx={{ maxWidth: "800px", opacity: 0.85, lineHeight: 1.8, mb: 4 }}
           >
             {currentRole.mission}
           </Typography>
+
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr 1fr", sm: "repeat(4, 1fr)" },
+              gap: { xs: 2, sm: 3 },
+              mb: 5,
+            }}
+          >
+            {currentStats.map((stat) => (
+              <Box key={stat.label}>
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{
+                    fontWeight: 800,
+                    color: theme.palette.primary.main,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {stat.label}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.4 }}>
+                  {stat.detail}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
 
           <Box
             sx={{

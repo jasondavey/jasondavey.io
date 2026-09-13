@@ -7,7 +7,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Button as MuiButton, Typography, useTheme } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import DownloadIcon from "@mui/icons-material/Download";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -77,13 +77,15 @@ const DocumentModal: React.FC<DocumentModalProps> = ({
           <Button onClick={onClose} variant="outline" className="mr-2">
             Close
           </Button>
-          <Button
+          <MuiButton
             onClick={handleDownload}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+            variant="contained"
+            color="primary"
+            startIcon={<DownloadIcon />}
+            sx={{ textTransform: "none", fontWeight: 600, borderRadius: "20px" }}
           >
-            <DownloadIcon className="h-4 w-4" />
             Download {documentType === "resume" ? "Resume" : "Patent"}
-          </Button>
+          </MuiButton>
         </DialogFooter>
       </DialogContent>
     </Dialog>

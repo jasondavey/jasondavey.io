@@ -7,6 +7,7 @@ import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { ExternalLinkProvider } from "@/context/ExternalLinkContext";
 
@@ -24,6 +25,7 @@ const Index = () => {
         <Skills />
         <Contact />
         <Footer />
+        <ScrollToTopButton />
       </div>
     </ExternalLinkProvider>
   );
