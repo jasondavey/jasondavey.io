@@ -108,10 +108,6 @@ const Footer = () => {
           >
             How this website was built
           </Link>
-
-          <Typography variant="caption" sx={{ display: "block", mt: 1.5, opacity: 0.5 }}>
-            Built with React, TypeScript, and Material UI. Designed with M3 Expressive principles.
-          </Typography>
         </Box>
       </Container>
 

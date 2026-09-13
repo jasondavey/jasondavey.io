@@ -21,46 +21,44 @@ const CarbonBadge: React.FC<{ darkMode?: boolean }> = ({ darkMode = false }) => 
       {/* Badge that triggers the modal */}
       <button
         onClick={() => setIsModalOpen(true)}
+        title="Website Carbon: low carbon website"
         style={{
           display: "inline-flex",
           alignItems: "center",
           fontFamily:
             '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-          fontSize: "14px",
           color: textColor,
           textDecoration: "none",
           backgroundColor: bgColor,
-          padding: "8px 12px",
-          borderRadius: "8px",
+          padding: "4px 4px",
+          borderRadius: "6px",
           boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
           transition: "all 0.3s ease",
-          maxWidth: "280px",
           margin: "0 auto",
         }}
         className="hover:opacity-90"
       >
-        <span style={{ marginRight: "8px", opacity: 0.8, fontSize: "12px" }}>Website Carbon</span>
         <span
           style={{
             backgroundColor: hoverColor,
-            padding: "4px 8px",
+            padding: "3px 6px",
             borderRadius: "4px",
             color: linkColor,
             fontWeight: 500,
             display: "flex",
             alignItems: "center",
-            fontSize: "12px",
+            fontSize: "11px",
           }}
         >
-          Low carbon website
+          Low carbon
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
             style={{
-              width: "16px",
-              height: "16px",
+              width: "13px",
+              height: "13px",
               fill: "currentColor",
-              marginLeft: "5px",
+              marginLeft: "4px",
               transform: "translateY(1px)",
             }}
           >

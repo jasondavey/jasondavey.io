@@ -27,9 +27,9 @@ const CarbonInfoModal: React.FC<CarbonInfoModalProps> = ({ isOpen, onClose }) =>
 
         <div className="space-y-4 mt-4">
           <p className="mb-4 text-gray-700 dark:text-gray-200">
-            I care about more than just design and speed — I care about the planet too. That's why
-            I've checked how environmentally friendly this website is using WebsiteCarbon.com, a
-            tool that estimates the carbon footprint of websites.
+            I care about more than just design and speed. That's why I've checked how
+            environmentally friendly this website is using WebsiteCarbon.com, a tool that estimates
+            the carbon footprint of websites.
           </p>
 
           <h3 className="text-lg font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">
