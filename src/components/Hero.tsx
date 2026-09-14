@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Typography, Container, Button, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
@@ -70,6 +71,7 @@ const Hero = () => {
   const { mode } = useThemeContext();
   const isDark = mode === "dark";
   const { showDocumentModal } = useDocumentModal();
+  const navigate = useNavigate();
 
   const ref = useRef(null);
   const { scrollYProgress } = useScroll();
@@ -242,7 +244,7 @@ const Hero = () => {
             <Button
               variant="outlined"
               size="large"
-              onClick={(e) => handleSmoothScroll(e, "#experience")}
+              onClick={(e) => handleSmoothScroll(e, "#experience", navigate)}
               sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
             >
               View Experience
@@ -251,7 +253,7 @@ const Hero = () => {
               variant="text"
               size="large"
               startIcon={<MailOutlineIcon />}
-              onClick={(e) => handleSmoothScroll(e, "#contact")}
+              onClick={(e) => handleSmoothScroll(e, "#contact", navigate)}
               sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
             >
               Get in Touch
@@ -262,7 +264,7 @@ const Hero = () => {
 
       {/* Scroll down button with dynamic animation */}
       <ScrollButton
-        onClick={(e) => handleSmoothScroll(e, "#about")}
+        onClick={(e) => handleSmoothScroll(e, "#about", navigate)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         animate={{

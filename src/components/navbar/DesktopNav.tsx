@@ -1,8 +1,10 @@
 import { AppBar, Box, Container, IconButton, Link, Toolbar, Typography } from "@mui/material";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { alpha } from "@mui/material/styles";
 import { motion } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
 import BuildIcon from "@mui/icons-material/Build";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 import { ColorModeToggle } from "@/theme";
 import { navigationSections } from "@/utils/navigation";
@@ -22,6 +24,8 @@ const navLinks = navigationSections
   .map((section) => ({ href: section.href, label: section.name }));
 
 const DesktopNav = ({ scrolled, onMobileMenuOpen, onReadmeOpen }: DesktopNavProps) => {
+  const navigate = useNavigate();
+
   return (
     <AppBar
       position="fixed"
@@ -112,7 +116,7 @@ const DesktopNav = ({ scrolled, onMobileMenuOpen, onReadmeOpen }: DesktopNavProp
                   <Box key={link.href} sx={{ display: "flex", alignItems: "center" }}>
                     <Link
                       href={link.href}
-                      onClick={(e) => handleSmoothScroll(e, link.href)}
+                      onClick={(e) => handleSmoothScroll(e, link.href, navigate)}
                       underline="none"
                       sx={{ display: "flex" }}
                     >
@@ -173,6 +177,18 @@ const DesktopNav = ({ scrolled, onMobileMenuOpen, onReadmeOpen }: DesktopNavProp
                 <ColorModeToggle />
               </Box>
             </Box>
+
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <IconButton
+                component={RouterLink}
+                to="/diary"
+                color="inherit"
+                aria-label="Diary"
+                title="Diary"
+              >
+                <MenuBookIcon sx={{ fontSize: "1rem" }} />
+              </IconButton>
+            </motion.div>
 
             <motion.div whileHover={{ rotate: 20, scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <IconButton

@@ -9,9 +9,11 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { alpha } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import CodeIcon from "@mui/icons-material/Code";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 import { navigationSections } from "@/utils/navigation";
 import { DrawerProfileLinks } from "./ProfileLinks";
@@ -29,6 +31,7 @@ const navLinks = navigationSections
   .map((section) => ({ href: section.href, label: section.name }));
 
 const MobileDrawer = ({ open, onClose, onReadmeOpen }: MobileDrawerProps) => {
+  const navigate = useNavigate();
   const drawer = (
     <Box
       sx={{
@@ -77,7 +80,7 @@ const MobileDrawer = ({ open, onClose, onReadmeOpen }: MobileDrawerProps) => {
             <ListItemButton
               component="a"
               href={link.href}
-              onClick={(e) => handleSmoothScroll(e, link.href, onClose)}
+              onClick={(e) => handleSmoothScroll(e, link.href, navigate, onClose)}
               sx={{
                 py: 1.5,
                 px: 2,
@@ -99,6 +102,32 @@ const MobileDrawer = ({ open, onClose, onReadmeOpen }: MobileDrawerProps) => {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem disablePadding>
+          <ListItemButton
+            component={RouterLink}
+            to="/diary"
+            onClick={onClose}
+            sx={{
+              py: 1.5,
+              px: 2,
+              transition: "background-color 0.3s",
+              "&:hover": {
+                bgcolor: "action.hover",
+              },
+            }}
+          >
+            <MenuBookIcon fontSize="small" sx={{ mr: 1.5 }} />
+            <ListItemText
+              primary="Diary"
+              slotProps={{
+                primary: {
+                  variant: "body1",
+                  sx: { fontWeight: 500 },
+                },
+              }}
+            />
+          </ListItemButton>
+        </ListItem>
       </List>
 
       <Divider sx={{ bgcolor: (theme) => alpha(theme.palette.common.white, 0.2) }} />
