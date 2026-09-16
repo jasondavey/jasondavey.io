@@ -73,6 +73,13 @@ const skillCategories = [
       "Cross-Functional Leadership",
     ],
   },
+  {
+    id: 5,
+    name: "AI & Agentic Tooling",
+    blurb:
+      "Daily driver for planning, code review, and hands-on implementation across every project here.",
+    skills: ["Claude Code", "Claude (Opus / Sonnet)", "OpenAI Codex", "Agentic Workflows"],
+  },
 ];
 
 // Skill category component
@@ -167,6 +174,12 @@ const Skills = () => {
 
   const backgroundX = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
   const backgroundX2 = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+
+  const featuredCategory =
+    skillCategories.find((category) => category.id === 5) ?? skillCategories[0];
+  const remainingCategories = skillCategories.filter(
+    (category) => category.id !== featuredCategory.id
+  );
 
   return (
     <SectionContainer ref={ref} id="skills">
@@ -271,10 +284,16 @@ const Skills = () => {
         </Box>
 
         {/* Skills grid */}
-        <Grid container spacing={4}>
-          {skillCategories.map((category, index) => (
+        <Grid container spacing={4} sx={{ justifyContent: "center" }}>
+          <Grid size={{ xs: 12, md: 6 }} key={featuredCategory.id}>
+            <SkillCategory category={featuredCategory} index={0} />
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={4} sx={{ mt: 4 }}>
+          {remainingCategories.map((category, index) => (
             <Grid size={{ xs: 12, md: 6 }} key={category.id}>
-              <SkillCategory category={category} index={index} />
+              <SkillCategory category={category} index={index + 1} />
             </Grid>
           ))}
         </Grid>
