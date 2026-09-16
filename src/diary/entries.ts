@@ -13,9 +13,7 @@ export function parseEntries(rawFiles: Record<string, string>): DiaryEntry[] {
     const parsed = frontmatterSchema.safeParse(attributes);
 
     if (!parsed.success) {
-      throw new Error(
-        `Invalid diary entry frontmatter in "${path}": ${parsed.error.message}`
-      );
+      throw new Error(`Invalid diary entry frontmatter in "${path}": ${parsed.error.message}`);
     }
 
     return {
@@ -49,4 +47,8 @@ export function getEntryBySlug(slug: string): DiaryEntry | undefined {
 
 export function getLatestEntry(): DiaryEntry | undefined {
   return allEntries[0];
+}
+
+export function getLatestEntries(limit: number): DiaryEntry[] {
+  return allEntries.slice(0, limit);
 }

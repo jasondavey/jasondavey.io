@@ -9,6 +9,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutlined";
 import { useThemeContext } from "@/theme";
 import { useDocumentModal } from "@/context/DocumentModalContext";
 import { handleSmoothScroll } from "./navbar/smoothScroll";
+import HeroDiaryTeaser from "./diary/HeroDiaryTeaser";
 
 // Create dimensional layered elements with M3 styling
 const BackgroundLayer = styled(Box)(() => ({
@@ -167,99 +168,121 @@ const Hero = () => {
 
       {/* Main content */}
       <ContentContainer>
-        <motion.div
-          style={{ opacity: contentOpacity, y: contentY }}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
+            alignItems: { xs: "flex-start", lg: "center" },
+            justifyContent: "space-between",
+            gap: { xs: 6, lg: 5 },
+            width: "100%",
+          }}
         >
-          <Typography
-            component="p"
+          <motion.div
+            style={{ opacity: contentOpacity, y: contentY, flex: "1 1 auto", minWidth: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            <Typography
+              component="p"
+              sx={{
+                textAlign: "left",
+                fontWeight: 700,
+                fontSize: "1.1rem",
+                letterSpacing: 0.5,
+                mb: 2,
+                color:
+                  theme.palette.mode === "dark" ? theme.palette.grey[400] : theme.palette.grey[600],
+              }}
+            >
+              &lt;jasondavey&gt;
+            </Typography>
+
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={{
+                fontSize: {
+                  xs: "2.75rem",
+                  sm: "3.75rem",
+                  md: "4.5rem",
+                  lg: "5.25rem",
+                },
+                fontWeight: 800,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.05,
+                mb: 3,
+                background: `linear-gradient(90deg, ${theme.palette.text.primary} 40%, ${primaryColor} 90%)`,
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                textAlign: "left",
+              }}
+            >
+              Engineering Leader Who Still Ships
+            </Typography>
+
+            <Typography
+              variant="h6"
+              component="p"
+              sx={{
+                maxWidth: "640px",
+                mb: 5,
+                fontWeight: 400,
+                lineHeight: 1.6,
+                color:
+                  theme.palette.mode === "dark"
+                    ? "rgba(230, 230, 230, 0.85)"
+                    : theme.palette.grey[800],
+              }}
+            >
+              15+ years building and leading teams across fintech, media, and logistics — from
+              Staff-level architecture to VP Engineering. I go where the problem needs me: writing
+              code, growing engineers, or both.
+            </Typography>
+
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2 }}>
+              <Button
+                variant="contained"
+                size="large"
+                startIcon={<DescriptionIcon />}
+                onClick={handleDownloadResume}
+                sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
+              >
+                Download Resume
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                onClick={(e) => handleSmoothScroll(e, "#experience", navigate)}
+                sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
+              >
+                View Experience
+              </Button>
+              <Button
+                variant="text"
+                size="large"
+                startIcon={<MailOutlineIcon />}
+                onClick={(e) => handleSmoothScroll(e, "#contact", navigate)}
+                sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
+              >
+                Get in Touch
+              </Button>
+            </Box>
+          </motion.div>
+
+          <Box
             sx={{
-              textAlign: "left",
-              fontWeight: 700,
-              fontSize: "1.1rem",
-              letterSpacing: 0.5,
-              mb: 2,
-              color:
-                theme.palette.mode === "dark" ? theme.palette.grey[400] : theme.palette.grey[600],
+              width: { xs: "100%", lg: "auto" },
+              flexShrink: 0,
+              display: "flex",
+              justifyContent: { xs: "flex-start", lg: "flex-end" },
             }}
           >
-            &lt;jasondavey&gt;
-          </Typography>
-
-          <Typography
-            variant="h1"
-            component="h1"
-            sx={{
-              fontSize: {
-                xs: "2.75rem",
-                sm: "3.75rem",
-                md: "4.5rem",
-                lg: "5.25rem",
-              },
-              fontWeight: 800,
-              letterSpacing: "-0.03em",
-              lineHeight: 1.05,
-              mb: 3,
-              background: `linear-gradient(90deg, ${theme.palette.text.primary} 40%, ${primaryColor} 90%)`,
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              textAlign: "left",
-            }}
-          >
-            Engineering Leader Who Still Ships
-          </Typography>
-
-          <Typography
-            variant="h6"
-            component="p"
-            sx={{
-              maxWidth: "640px",
-              mb: 5,
-              fontWeight: 400,
-              lineHeight: 1.6,
-              color:
-                theme.palette.mode === "dark"
-                  ? "rgba(230, 230, 230, 0.85)"
-                  : theme.palette.grey[800],
-            }}
-          >
-            15+ years building and leading teams across fintech, media, and logistics — from
-            Staff-level architecture to VP Engineering. I go where the problem needs me: writing
-            code, growing engineers, or both.
-          </Typography>
-
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2 }}>
-            <Button
-              variant="contained"
-              size="large"
-              startIcon={<DescriptionIcon />}
-              onClick={handleDownloadResume}
-              sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
-            >
-              Download Resume
-            </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              onClick={(e) => handleSmoothScroll(e, "#experience", navigate)}
-              sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
-            >
-              View Experience
-            </Button>
-            <Button
-              variant="text"
-              size="large"
-              startIcon={<MailOutlineIcon />}
-              onClick={(e) => handleSmoothScroll(e, "#contact", navigate)}
-              sx={{ textTransform: "none", fontWeight: 600, borderRadius: "24px", px: 3 }}
-            >
-              Get in Touch
-            </Button>
+            <HeroDiaryTeaser />
           </Box>
-        </motion.div>
+        </Box>
       </ContentContainer>
 
       {/* Scroll down button with dynamic animation */}
