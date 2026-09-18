@@ -6,9 +6,16 @@ test.describe("diary", () => {
     const teaser = page.getByText("Ink Still Drying");
     await expect(teaser).toBeVisible();
 
-    const readMore = page.getByRole("link", { name: /read more/i }).first();
-    const href = await readMore.getAttribute("href");
-    expect(href).toMatch(/^\/diary\/.+/);
+    // The teaser titles each entry as a link to its detail page, and closes
+    // with a single "Visit the diary" link to the index.
+    const entryLink = page.locator('a[href^="/diary/"]').first();
+    await expect(entryLink).toBeVisible();
+    expect(await entryLink.getAttribute("href")).toMatch(/^\/diary\/.+/);
+
+    await expect(page.getByRole("link", { name: /visit the diary/i })).toHaveAttribute(
+      "href",
+      "/diary"
+    );
   });
 
   test("lists entries and navigates to an entry's detail page", async ({ page }) => {
