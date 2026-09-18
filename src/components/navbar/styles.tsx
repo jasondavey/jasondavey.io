@@ -1,6 +1,6 @@
 import { IconButton, Link, SxProps, Theme } from "@mui/material";
-import { useExternalLink } from "@/context/ExternalLinkContext";
-import { useDocumentModal } from "@/context/DocumentModalContext";
+import { useExternalLink } from "@/context/useExternalLink";
+import { useDocumentModal } from "@/context/useDocumentModal";
 
 // Interface for LinkedIconButton props (local to this file).
 interface LinkedIconButtonProps {

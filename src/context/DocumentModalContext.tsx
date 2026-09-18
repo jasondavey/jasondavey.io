@@ -1,16 +1,7 @@
-import { createContext, useState, useContext, ReactNode, Suspense, lazy } from "react";
+import { useState, ReactNode, Suspense, lazy } from "react";
+import { DocumentModalContext } from "./useDocumentModal";
 
 const DocumentModal = lazy(() => import("@/components/DocumentModal"));
-
-interface DocumentModalContextProps {
-  showDocumentModal: (
-    documentUrl: string,
-    title: string,
-    documentType: "resume" | "patent"
-  ) => void;
-}
-
-const DocumentModalContext = createContext<DocumentModalContextProps | undefined>(undefined);
 
 interface DocumentModalProviderProps {
   children: ReactNode;
@@ -49,13 +40,4 @@ export function DocumentModalProvider({ children }: DocumentModalProviderProps) 
       )}
     </DocumentModalContext.Provider>
   );
-}
-
-// Exported as a named function for better React Fast Refresh support
-export function useDocumentModal(): DocumentModalContextProps {
-  const context = useContext(DocumentModalContext);
-  if (context === undefined) {
-    throw new Error("useDocumentModal must be used within a DocumentModalProvider");
-  }
-  return context;
 }

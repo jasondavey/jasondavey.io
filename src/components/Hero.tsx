@@ -7,7 +7,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import DescriptionIcon from "@mui/icons-material/Description";
 import MailOutlineIcon from "@mui/icons-material/MailOutlined";
 import { useThemeContext } from "@/theme";
-import { useDocumentModal } from "@/context/DocumentModalContext";
+import { useDocumentModal } from "@/context/useDocumentModal";
 import { handleSmoothScroll } from "./navbar/smoothScroll";
 import HeroDiaryTeaser from "./diary/HeroDiaryTeaser";
 

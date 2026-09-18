@@ -129,7 +129,11 @@ const HeroDiaryTeaser = () => {
               >
                 <ArrowBackIosNewIcon sx={{ fontSize: "0.75rem" }} />
               </IconButton>
-              <IconButton size="small" onClick={() => goTo(index + 1)} aria-label="Next diary entry">
+              <IconButton
+                size="small"
+                onClick={() => goTo(index + 1)}
+                aria-label="Next diary entry"
+              >
                 <ArrowForwardIosIcon sx={{ fontSize: "0.75rem" }} />
               </IconButton>
             </>

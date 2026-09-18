@@ -1,5 +1,5 @@
 import React from "react";
-import { useExternalLink } from "@/context/ExternalLinkContext";
+import { useExternalLink } from "@/context/useExternalLink";
 import { Link, LinkProps } from "@mui/material";
 import { SxProps, Theme } from "@mui/system";
 

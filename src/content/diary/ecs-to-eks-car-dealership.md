@@ -5,9 +5,9 @@ excerpt: Moving from ECS to EKS isn't a car swap — it's trading a car someone 
 tags: [aws, kubernetes, ecs, eks, infrastructure]
 ---
 
-Every few months someone asks why a team would migrate off ECS to EKS, and every few months I reach for the same metaphor because it's the one that actually lands with people who aren't knee-deep in container orchestration: **ECS is buying a car off the lot. EKS is buying the parts and building one yourself.**
+A few months ago, I was asked to deliver an ECS to EKS migration of our Tier 1 services (meaning the services our business depends on for customer value and revenue). As a long time ECS configurator, I was curious about EKS. Here's some take-aways from what I learned.
 
-It's not a perfect metaphor, but it's honest about the thing that matters most in this decision, which isn't features — it's ownership.
+ECS is a managed service underlying infrastructure complexities abstracted away allowing teams to focus on business value through feature development  At a high level, four differences do most of the work. ECS is AWS's own orchestrator — proprietary, free at the control plane, and integrated with the rest of AWS by default — while EKS rents you a conformant Kubernetes control plane by the hour. ECS is opinionated where EKS is extensible: ECS settles most scheduling, networking, and rollout questions for you, and EKS hands every one of them back. ECS task definitions run on AWS and nowhere else, while Kubernetes manifests run anywhere Kubernetes does. And ECS asks very little of your team's skill set, where EKS assumes — or quickly creates — real Kubernetes depth. Everything below is that summary with the receipts attached.
 
 ## ECS: drive it off the lot
 

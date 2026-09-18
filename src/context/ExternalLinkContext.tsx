@@ -1,12 +1,7 @@
-import React, { createContext, useContext, useState, ReactNode, Suspense, lazy } from "react";
+import React, { useState, ReactNode, Suspense, lazy } from "react";
+import { ExternalLinkContext } from "./useExternalLink";
 
 const ExternalLinkModal = lazy(() => import("@/components/ExternalLinkModal"));
-
-interface ExternalLinkContextType {
-  openExternalLink: (url: string, title: string, description?: string) => void;
-}
-
-const ExternalLinkContext = createContext<ExternalLinkContextType | undefined>(undefined);
 
 interface ExternalLinkProviderProps {
   children: ReactNode;
@@ -45,12 +40,4 @@ export const ExternalLinkProvider: React.FC<ExternalLinkProviderProps> = ({ chil
       )}
     </ExternalLinkContext.Provider>
   );
-};
-
-export const useExternalLink = (): ExternalLinkContextType => {
-  const context = useContext(ExternalLinkContext);
-  if (context === undefined) {
-    throw new Error("useExternalLink must be used within an ExternalLinkProvider");
-  }
-  return context;
 };

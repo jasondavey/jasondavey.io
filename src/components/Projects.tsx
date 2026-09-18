@@ -43,7 +43,7 @@ import ProjectDymoStamps from "./projects/ProjectDymoStamps";
 import ProjectIntelliPad from "./projects/ProjectIntelliPad";
 import ProjectBlackRock from "./projects/ProjectBlackRock";
 import { Project } from "./Project";
-import { useExternalLink } from "@/context/ExternalLinkContext";
+import { useExternalLink } from "@/context/useExternalLink";
 
 // Styled components for M3 Expressive design
 const SectionContainer = styled(Box)(({ theme }) => ({

@@ -30,5 +30,16 @@ export default tseslint.config(
     rules: {
       "react-refresh/only-export-components": "off",
     },
+  },
+  {
+    // Playwright specs render no React. Its fixture callbacks take a `use`
+    // argument, which the React hooks rules misread as React's `use()` hook.
+    files: ["e2e/**/*.{ts,tsx}"],
+    rules: {
+      "react-hooks/rules-of-hooks": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/purity": "off",
+      "react-refresh/only-export-components": "off",
+    },
   }
 );
