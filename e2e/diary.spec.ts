@@ -3,7 +3,7 @@ import { test, expect } from "./fixtures";
 test.describe("diary", () => {
   test("home page teaser links to the latest entry", async ({ page }) => {
     await page.goto("/");
-    const teaser = page.getByText("Latest from the diary");
+    const teaser = page.getByText("Ink Still Drying");
     await expect(teaser).toBeVisible();
 
     const readMore = page.getByRole("link", { name: /read more/i }).first();

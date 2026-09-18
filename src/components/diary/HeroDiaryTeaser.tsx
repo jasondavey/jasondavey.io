@@ -70,7 +70,7 @@ const HeroDiaryTeaser = () => {
       >
         <MenuBookIcon fontSize="small" />
         <Typography variant="overline" sx={{ letterSpacing: 1, fontWeight: 700, lineHeight: 1 }}>
-          Latest from the diary
+          Ink Still Drying
         </Typography>
       </Stack>
 
